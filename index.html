@@ -174,12 +174,22 @@
               </div>
               <div>
                 <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Договор СДЭК *</label>
-                <select id="contractSelect" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm bg-white transition">
-                  <option value="no_contract">Нет договора (новый)</option>
-                  <option value="no_shipments_6m">Нет отправок 6+ мес.</option>
-                  <option value="has_active_contract">Есть действующий</option>
+                <select id="contractSelect" onchange="handleContractChange(this.value)" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm bg-white transition">
+                  <option value="no_contract">Нет договора</option>
+                  <option value="no_shipments_6m">Есть договор (нет отправок 6+ мес.)</option>
+                  <option value="has_active_contract">Есть действующий договор (отправляю)</option>
                 </select>
               </div>
+            </div>
+
+            <!-- Плашка-предупреждение при наличии договора -->
+            <div id="contractWarning" class="hidden p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-[11px] leading-snug space-y-1">
+              <div class="font-bold flex items-center gap-1.5 text-amber-900">
+                <span>⚠️</span> Внимание по действующим договорам
+              </div>
+              <p>
+                Мы подключаем только новых клиентов или при отсутствии отправок от 6 месяцев. Если у вас есть действующий договор с регулярными отправками — пожалуйста, обратитесь к закрепленному за вами менеджеру СДЭК.
+              </p>
             </div>
 
             <div>
@@ -374,6 +384,15 @@
   </footer>
 
   <script>
+    function handleContractChange(val) {
+      const warning = document.getElementById('contractWarning');
+      if (val === 'has_active_contract') {
+        warning.classList.remove('hidden');
+      } else {
+        warning.classList.add('hidden');
+      }
+    }
+
     function handleFormSubmit(e) {
       e.preventDefault();
       const contract = document.getElementById('contractSelect').value;
@@ -383,6 +402,7 @@
       }
       alert('Спасибо за заявку! Мы свяжемся с вами в течение 15 минут для оформления договора.');
       e.target.reset();
+      document.getElementById('contractWarning').classList.add('hidden');
     }
   </script>
 </body>
