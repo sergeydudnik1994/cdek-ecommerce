@@ -127,18 +127,18 @@
             Подключите официальный договор со СДЭК за 1 рабочий день. Автоматический расчет в корзине сайта, наложенный платеж по 54-ФЗ и доставка более чем в 5 000 пунктов выдачи.
           </p>
 
-          <!-- Блок метрик -->
+          <!-- Метрики в разных фирменных цветах -->
           <div class="grid grid-cols-3 gap-6 pt-6 border-t border-[#0A3942]">
             <div>
               <div class="text-3xl sm:text-4xl font-black text-brand-green">5 000+</div>
               <div class="text-xs text-slate-400 mt-1">ПВЗ и постаматов</div>
             </div>
             <div>
-              <div class="text-3xl sm:text-4xl font-black text-brand-green">240+</div>
+              <div class="text-3xl sm:text-4xl font-black text-white">240+</div>
               <div class="text-xs text-slate-400 mt-1">Страны назначения</div>
             </div>
             <div>
-              <div class="text-3xl sm:text-4xl font-black text-brand-green">−50%</div>
+              <div class="text-3xl sm:text-4xl font-black text-brand-orange">−50%</div>
               <div class="text-xs text-slate-400 mt-1">Тарифы дешевле</div>
             </div>
           </div>
@@ -151,39 +151,42 @@
             <p class="text-slate-500 text-xs mt-1">Оставьте заявку и получите персональный расчет тарифов для вашего бизнеса</p>
           </div>
 
-          <form id="orderForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+          <form id="orderForm" onsubmit="handleFormSubmit(event)" class="space-y-3.5">
             <div>
               <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Имя / Компания *</label>
-              <input type="text" id="companyInput" required placeholder="ООО / ИП или ваше имя" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm transition" />
+              <input type="text" id="companyInput" required placeholder="ООО / ИП или ваше имя" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm transition" />
             </div>
 
             <div>
               <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Телефон *</label>
-              <input type="tel" id="phoneInput" required placeholder="+7 (999) 000-00-00" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm transition" />
+              <input type="tel" id="phoneInput" required placeholder="+7 (999) 000-00-00" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm transition" />
             </div>
 
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Способ связи</label>
-                <select id="channelSelect" class="w-full px-3 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm bg-white transition">
-                  <option value="Telegram">Telegram</option>
-                  <option value="WhatsApp">WhatsApp</option>
-                  <option value="MAX">MAX</option>
-                  <option value="Звонок">Звонок</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Договор СДЭК</label>
-                <select id="contractSelect" class="w-full px-3 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm bg-white transition">
-                  <option value="Нет">Нет (новый)</option>
-                  <option value="Есть">Есть действующий</option>
-                </select>
-              </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Удобный способ связи</label>
+              <select id="channelSelect" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm bg-white transition">
+                <option value="Telegram">Telegram</option>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="MAX">MAX</option>
+                <option value="Звонок">Телефонный звонок</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Наличие договора СДЭК *</label>
+              <select id="contractSelect" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm bg-white transition">
+                <option value="no_contract">Нет договора (новый клиент)</option>
+                <option value="no_shipments_6m">Не было отправок 6+ месяцев</option>
+                <option value="has_active_contract">Есть действующий, отправляю</option>
+              </select>
+              <p class="text-[10px] text-amber-600 mt-1 leading-normal">
+                Мы подключаем только новых клиентов или при отсутствии отправок от 6 мес.
+              </p>
             </div>
 
             <div>
               <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Платформа / CMS сайта</label>
-              <select id="cmsSelect" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm bg-white transition">
+              <select id="cmsSelect" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm bg-white transition">
                 <option value="Tilda">Tilda Publishing</option>
                 <option value="1C-Bitrix">1С-Битрикс</option>
                 <option value="InSales">InSales</option>
@@ -193,7 +196,7 @@
               </select>
             </div>
 
-            <button type="submit" class="w-full mt-2 bg-brand-green hover:bg-brand-green-hover text-brand-dark font-black text-sm py-3.5 px-6 rounded-xl transition duration-200 shadow-md cursor-pointer">
+            <button type="submit" class="w-full mt-1 bg-brand-green hover:bg-brand-green-hover text-brand-dark font-black text-sm py-3.5 px-6 rounded-xl transition duration-200 shadow-md cursor-pointer">
               Получить расчет и доступ
             </button>
 
@@ -360,8 +363,8 @@
     function handleFormSubmit(e) {
       e.preventDefault();
       const contract = document.getElementById('contractSelect').value;
-      if (contract === 'Есть') {
-        alert('Внимание: мы подключаем только новых клиентов СДЭК. Пожалуйста, обратитесь к вашему действующему менеджеру.');
+      if (contract === 'has_active_contract') {
+        alert('Мы подключаем только новых клиентов или при отсутствии отправок более 6 месяцев. Если у вас есть действующий договор с регулярными отправками — пожалуйста, обратитесь к вашему закрепленному менеджеру СДЭК.');
         return;
       }
       alert('Спасибо за заявку! Мы свяжемся с вами в течение 15 минут для оформления договора.');
