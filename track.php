@@ -98,7 +98,7 @@ if ($http_code === 401 || $http_code === 403) {
     }
 }
 
-// Извлечение города (фильтрует ФИО людей и служебные объекты)
+// Извлечение города
 function extractCity($obj) {
     if (empty($obj)) return null;
     if (is_string($obj)) return trim($obj);
@@ -139,40 +139,54 @@ function extractCity($obj) {
 
 // Извлечение реального адреса ПВЗ / доставки
 function extractPvzAddress($resData) {
-    // 1. Проверка объекта warehouse
     if (!empty($resData['warehouse']) && is_array($resData['warehouse'])) {
-        $wh = $resData['warehouse'];
-        if (!empty($wh['address']) && is_string($wh['address'])) return trim($wh['address']);
-        if (!empty($wh['location']['address']) && is_string($wh['location']['address'])) return trim($wh['location']['address']);
-        if (!empty($wh['formatted']) && is_string($wh['formatted'])) return trim($wh['formatted']);
-        if (!empty($wh['name']) && is_string($wh['name'])) return trim($wh['name']);
+        foreach (['address', 'formatted', 'location', 'name'] as $k) {
+            if (!empty($resData['warehouse'][$k]) && is_string($resData['warehouse'][$k])) {
+                return trim($resData['warehouse'][$k]);
+            }
+        }
     }
-
-    // 2. Проверка deliveryDetail
     if (!empty($resData['deliveryDetail']) && is_array($resData['deliveryDetail'])) {
         $dd = $resData['deliveryDetail'];
-        if (!empty($dd['deliveryPoint']['address']) && is_string($dd['deliveryPoint']['address'])) return trim($dd['deliveryPoint']['address']);
-        if (!empty($dd['deliveryPoint']['location']['address']) && is_string($dd['deliveryPoint']['location']['address'])) return trim($dd['deliveryPoint']['location']['address']);
-        if (!empty($dd['deliveryPoint']['name']) && is_string($dd['deliveryPoint']['name'])) return trim($dd['deliveryPoint']['name']);
-        if (!empty($dd['address']['formatted']) && is_string($dd['address']['formatted'])) return trim($dd['address']['formatted']);
-        if (!empty($dd['address']) && is_string($dd['address'])) return trim($dd['address']);
+        if (!empty($dd['deliveryPoint']) && is_array($dd['deliveryPoint'])) {
+            foreach (['address', 'formatted', 'name'] as $k) {
+                if (!empty($dd['deliveryPoint'][$k]) && is_string($dd['deliveryPoint'][$k])) {
+                    return trim($dd['deliveryPoint'][$k]);
+                }
+            }
+        }
+        if (!empty($dd['address'])) {
+            if (is_string($dd['address'])) return trim($dd['address']);
+            if (is_array($dd['address'])) {
+                foreach (['formatted', 'line', 'address'] as $k) {
+                    if (!empty($dd['address'][$k]) && is_string($dd['address'][$k])) {
+                        return trim($dd['address'][$k]);
+                    }
+                }
+            }
+        }
     }
-
-    // 3. Проверка order
     if (!empty($resData['order']) && is_array($resData['order'])) {
         $ord = $resData['order'];
-        if (!empty($ord['deliveryPoint']['address']) && is_string($ord['deliveryPoint']['address'])) return trim($ord['deliveryPoint']['address']);
-        if (!empty($ord['deliveryPoint']['name']) && is_string($ord['deliveryPoint']['name'])) return trim($ord['deliveryPoint']['name']);
-        if (!empty($ord['recipient']['address']['formatted']) && is_string($ord['recipient']['address']['formatted'])) return trim($ord['recipient']['address']['formatted']);
-        if (!empty($ord['recipient']['address']['line']) && is_string($ord['recipient']['address']['line'])) return trim($ord['recipient']['address']['line']);
+        if (!empty($ord['deliveryPoint']) && is_array($ord['deliveryPoint'])) {
+            foreach (['address', 'formatted', 'name'] as $k) {
+                if (!empty($ord['deliveryPoint'][$k]) && is_string($ord['deliveryPoint'][$k])) {
+                    return trim($ord['deliveryPoint'][$k]);
+                }
+            }
+        }
+        if (!empty($ord['recipient']['address'])) {
+            $addr = $ord['recipient']['address'];
+            if (is_string($addr)) return trim($addr);
+            if (is_array($addr)) {
+                foreach (['formatted', 'line', 'address'] as $k) {
+                    if (!empty($addr[$k]) && is_string($addr[$k])) {
+                        return trim($addr[$k]);
+                    }
+                }
+            }
+        }
     }
-
-    // 4. Поиск в последнем статусе
-    if (!empty($resData['statuses']) && is_array($resData['statuses'])) {
-        $last = end($resData['statuses']);
-        if (!empty($last['warehouseName']) && is_string($last['warehouseName'])) return trim($last['warehouseName']);
-    }
-
     return null;
 }
 
@@ -208,7 +222,7 @@ if ($http_code === 200 && !empty($response['result'])) {
     // Город отправления
     $city_from = extractCity($order['sender'] ?? null) 
               ?: (extractCity($resData['fromLocation'] ?? null) 
-              ?: 'Сочи');
+              ?: 'Отправитель');
 
     // Город назначения
     $city_to = extractCity($order['recipient'] ?? null)
@@ -225,13 +239,15 @@ if ($http_code === 200 && !empty($response['result'])) {
             $city_to = trim($lastStatus['city']);
         }
     }
-    $city_to = $city_to ?: 'Владимир';
+    $city_to = $city_to ?: 'Пункт назначения';
 
-    // Адрес ПВЗ
-    $pvz_address = extractPvzAddress($resData) ?: 'ул. Чайковского, 9';
+    // Адрес ПВЗ (null если не передан)
+    $pvz_address = extractPvzAddress($resData);
 
-    // Получатель
+    // Получатель (null если не передан)
     $raw_recipient = extractRecipientName($resData);
+    $recipient_name = null;
+
     if (!empty($raw_recipient)) {
         if (preg_match('/^[А-ЯЁA-Z]\.[А-ЯЁA-Z]\.[А-ЯЁA-Z]\.?$/u', str_replace(' ', '', $raw_recipient))) {
             $recipient_name = $raw_recipient;
@@ -248,8 +264,6 @@ if ($http_code === 200 && !empty($response['result'])) {
                 $recipient_name = $raw_recipient;
             }
         }
-    } else {
-        $recipient_name = 'Мячин Е. В.';
     }
 
     // Этапы доставки
