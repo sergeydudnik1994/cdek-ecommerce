@@ -1,125 +1,81 @@
-<section id="calculator" class="py-14 sm:py-18 bg-white border-b border-slate-200">
+<section id="calculator" class="py-14 sm:py-16 bg-white border-b border-slate-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <!-- Заголовок -->
-    <div class="text-center max-w-3xl mx-auto mb-10">
-      <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200 mb-2.5">
-        Тарифный калькулятор CDEK B2B
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200 mb-2">
+        Ориентировочный B2B-расчет
       </span>
       <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-        Расчет стоимости доставки для бизнеса
+        Тарифы на доставку для бизнеса
       </h2>
-      <p class="text-slate-500 text-xs sm:text-sm mt-1.5">
-        Реальные тарифы интернет-магазинов со скидками по договору и прямая отгрузка на маркетплейсы
+      <p class="text-slate-500 text-xs sm:text-sm mt-1">
+        Сравнение розничной отправки физлицом и стоимости по договору e-commerce
       </p>
     </div>
 
     <div class="grid lg:grid-cols-12 gap-8 items-start">
       
-      <!-- Панель параметров -->
-      <div class="lg:col-span-5 bg-[#F8FAFC] border border-slate-200 rounded-3xl p-5 sm:p-7 space-y-5 shadow-xs">
+      <!-- Форма ввода -->
+      <div class="lg:col-span-5 bg-[#F8FAFC] border border-slate-200 rounded-3xl p-5 sm:p-6 space-y-4 shadow-xs">
         
-        <!-- Откуда: ПВЗ / Забор курьером -->
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1.5">Откуда</label>
-          <div class="grid grid-cols-2 gap-2 mb-2 bg-slate-200/70 p-1 rounded-xl text-xs font-semibold">
-            <button type="button" id="fromPvzBtn" onclick="setOriginMode('pvz')" class="py-1.5 px-2.5 rounded-lg bg-white text-slate-900 shadow-2xs transition">
-              Принести в ПВЗ
-            </button>
-            <button type="button" id="fromDoorBtn" onclick="setOriginMode('door')" class="py-1.5 px-2.5 rounded-lg text-slate-600 hover:text-slate-900 transition">
-              Забор курьером
+        <!-- Города (с чистым кастомным автокомплитом) -->
+        <div class="space-y-3">
+          <div class="relative">
+            <label class="block text-xs font-bold text-slate-700 mb-1">Город отправки</label>
+            <input 
+              type="text" 
+              id="cityFromInput" 
+              value="Москва" 
+              autocomplete="off"
+              onfocus="showDropdown('from')"
+              oninput="filterCities('from')"
+              class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 font-semibold focus:ring-2 focus:ring-[#1AB248] outline-none"
+            />
+            <div id="dropdownFrom" class="hidden absolute left-0 top-full mt-1 w-full bg-white border border-slate-200 rounded-xl shadow-xl z-50 max-h-48 overflow-y-auto py-1"></div>
+          </div>
+
+          <div class="flex justify-center -my-2 relative z-10">
+            <button 
+              type="button" 
+              onclick="swapCities()" 
+              class="p-1.5 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-[#1AB248] hover:border-[#1AB248] shadow-xs transition transform hover:rotate-180 cursor-pointer"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
             </button>
           </div>
-          <input 
-            type="text" 
-            id="calcCityFrom" 
-            list="citiesList" 
-            value="Москва" 
-            oninput="runCalc()"
-            placeholder="Город отправки..."
-            class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 font-semibold focus:ring-2 focus:ring-[#1AB248] outline-none"
-          />
+
+          <div class="relative">
+            <label class="block text-xs font-bold text-slate-700 mb-1">Город получения</label>
+            <input 
+              type="text" 
+              id="cityToInput" 
+              value="Санкт-Петербург" 
+              autocomplete="off"
+              onfocus="showDropdown('to')"
+              oninput="filterCities('to')"
+              class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 font-semibold focus:ring-2 focus:ring-[#1AB248] outline-none"
+            />
+            <div id="dropdownTo" class="hidden absolute left-0 top-full mt-1 w-full bg-white border border-slate-200 rounded-xl shadow-xl z-50 max-h-48 overflow-y-auto py-1"></div>
+          </div>
         </div>
 
-        <div class="flex justify-center -my-3 relative z-10">
-          <button 
-            type="button" 
-            onclick="swapCities()" 
-            title="Поменять местами" 
-            class="p-1.5 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-[#1AB248] hover:border-[#1AB248] shadow-xs transition transform hover:rotate-180"
-          >
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
-          </button>
-        </div>
-
-        <!-- Куда: ПВЗ / Курьер / Маркетплейс -->
+        <!-- Направление / Модель -->
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1.5">Куда</label>
-          <div class="grid grid-cols-3 gap-1.5 mb-2 bg-slate-200/70 p-1 rounded-xl text-[11px] font-semibold">
-            <button type="button" id="destPvzBtn" onclick="setDestMode('pvz')" class="py-1.5 px-1 rounded-lg bg-white text-slate-900 shadow-2xs transition">
-              В ПВЗ / Постамат
+          <label class="block text-xs font-bold text-slate-700 mb-1.5">Канал доставки</label>
+          <div class="grid grid-cols-3 gap-1.5 bg-slate-200/70 p-1 rounded-xl text-xs font-semibold">
+            <button type="button" id="chanPvz" onclick="setChannel('pvz')" class="py-1.5 px-2 rounded-lg bg-white text-slate-900 shadow-2xs transition">
+              В ПВЗ
             </button>
-            <button type="button" id="destDoorBtn" onclick="setDestMode('door')" class="py-1.5 px-1 rounded-lg text-slate-600 hover:text-slate-900 transition">
+            <button type="button" id="chanDoor" onclick="setChannel('door')" class="py-1.5 px-2 rounded-lg text-slate-600 hover:text-slate-900 transition">
               До двери
             </button>
-            <button type="button" id="destMpBtn" onclick="setDestMode('marketplace')" class="py-1.5 px-1 rounded-lg text-slate-600 hover:text-[#1AB248] transition">
-              Маркетплейс
+            <button type="button" id="chanDbs" onclick="setChannel('dbs')" class="py-1.5 px-2 rounded-lg text-slate-600 hover:text-[#1AB248] transition">
+              DBS (Склад селлера)
             </button>
-          </div>
-          
-          <input 
-            type="text" 
-            id="calcCityTo" 
-            list="citiesList" 
-            value="Санкт-Петербург" 
-            oninput="runCalc()"
-            placeholder="Город получения..."
-            class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 font-semibold focus:ring-2 focus:ring-[#1AB248] outline-none"
-          />
-
-          <!-- Селектор маркетплейса при выборе FBS/FBO -->
-          <div id="mpSelectBox" class="hidden mt-2.5 p-2.5 bg-emerald-50/60 border border-emerald-200 rounded-xl">
-            <label class="block text-[11px] font-bold text-emerald-900 mb-1.5">Склад маркетплейса назначения:</label>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-[11px] font-bold">
-              <label class="flex items-center gap-1.5 p-1.5 bg-white rounded-lg border border-emerald-200 cursor-pointer">
-                <input type="radio" name="mpType" value="wb" checked onchange="runCalc()" class="text-[#1AB248] focus:ring-0"> WB FBS
-              </label>
-              <label class="flex items-center gap-1.5 p-1.5 bg-white rounded-lg border border-emerald-200 cursor-pointer">
-                <input type="radio" name="mpType" value="ozon" onchange="runCalc()" class="text-[#1AB248] focus:ring-0"> Ozon FBS
-              </label>
-              <label class="flex items-center gap-1.5 p-1.5 bg-white rounded-lg border border-emerald-200 cursor-pointer">
-                <input type="radio" name="mpType" value="ym" onchange="runCalc()" class="text-[#1AB248] focus:ring-0"> Я.Маркет
-              </label>
-              <label class="flex items-center gap-1.5 p-1.5 bg-white rounded-lg border border-emerald-200 cursor-pointer">
-                <input type="radio" name="mpType" value="avito" onchange="runCalc()" class="text-[#1AB248] focus:ring-0"> Авито
-              </label>
-            </div>
           </div>
         </div>
 
-        <datalist id="citiesList">
-          <option value="Москва"></option>
-          <option value="Санкт-Петербург"></option>
-          <option value="Краснодар"></option>
-          <option value="Новосибирск"></option>
-          <option value="Екатеринбург"></option>
-          <option value="Казань"></option>
-          <option value="Нижний Новгород"></option>
-          <option value="Челябинск"></option>
-          <option value="Самара"></option>
-          <option value="Уфа"></option>
-          <option value="Ростов-на-Дону"></option>
-          <option value="Омск"></option>
-          <option value="Красноярск"></option>
-          <option value="Воронеж"></option>
-          <option value="Пермь"></option>
-          <option value="Волгоград"></option>
-          <option value="Тюмень"></option>
-          <option value="Владивосток"></option>
-          <option value="Хабаровск"></option>
-        </datalist>
-
-        <!-- Пресеты габаритов -->
+        <!-- Пресеты веса -->
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1.5">Размер и вес отправления</label>
           <div class="grid grid-cols-3 gap-2">
@@ -127,33 +83,30 @@
               type="button" 
               id="presetSmall" 
               onclick="setPreset('small')" 
-              class="p-2 rounded-xl border border-slate-200 bg-white text-left transition"
+              class="p-2 rounded-xl border border-slate-200 bg-white text-left transition cursor-pointer"
             >
-              <div class="text-xs font-bold text-slate-900">Компакт (S)</div>
-              <div class="text-[10px] text-slate-500">до 1 кг (20×15×10)</div>
-              <div class="text-[10px] text-slate-400 mt-0.5">Одежда, косметика</div>
+              <div class="text-xs font-bold text-slate-900">До 1 кг (S)</div>
+              <div class="text-[10px] text-slate-500">20×15×10 см</div>
             </button>
 
             <button 
               type="button" 
               id="presetMedium" 
               onclick="setPreset('medium')" 
-              class="p-2 rounded-xl border-2 border-[#1AB248] bg-emerald-50/50 text-left transition"
+              class="p-2 rounded-xl border-2 border-[#1AB248] bg-emerald-50/50 text-left transition cursor-pointer"
             >
-              <div class="text-xs font-bold text-slate-900">Стандарт (M)</div>
-              <div class="text-[10px] text-slate-500">до 5 кг (33×25×15)</div>
-              <div class="text-[10px] text-[#1AB248] font-semibold mt-0.5">Обувь, техника</div>
+              <div class="text-xs font-bold text-slate-900">До 5 кг (M)</div>
+              <div class="text-[10px] text-slate-500">33×25×15 см</div>
             </button>
 
             <button 
               type="button" 
               id="presetLarge" 
               onclick="setPreset('large')" 
-              class="p-2 rounded-xl border border-slate-200 bg-white text-left transition"
+              class="p-2 rounded-xl border border-slate-200 bg-white text-left transition cursor-pointer"
             >
-              <div class="text-xs font-bold text-slate-900">Объемный (L)</div>
-              <div class="text-[10px] text-slate-500">до 12 кг (50×40×30)</div>
-              <div class="text-[10px] text-slate-400 mt-0.5">Короба, опт</div>
+              <div class="text-xs font-bold text-slate-900">До 12 кг (L)</div>
+              <div class="text-[10px] text-slate-500">50×40×30 см</div>
             </button>
           </div>
         </div>
@@ -163,19 +116,19 @@
       <!-- Выдача тарифов -->
       <div class="lg:col-span-7 space-y-3.5">
         
-        <!-- Основной тариф «Посылка для e-commerce» или «Маркетплейс» -->
+        <!-- Главный тариф -->
         <div class="bg-slate-900 text-white rounded-3xl p-5 sm:p-6 shadow-md relative overflow-hidden border border-slate-800">
           <div class="absolute top-0 right-0 bg-[#00D856] text-[#062A30] text-[10px] font-black uppercase px-3 py-1 rounded-bl-xl tracking-wider">
-            Базовый тариф B2B
+            Выбор e-commerce
           </div>
 
           <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
             <div>
-              <h3 class="text-lg font-bold text-white flex items-center gap-2" id="mainTariffTitle">
+              <h3 class="text-lg font-bold text-white flex items-center gap-2" id="tariffName">
                 Тариф «Посылка для бизнеса»
               </h3>
-              <p class="text-xs text-slate-300 mt-1 max-w-sm" id="mainTariffDesc">
-                Выдача в 5 000+ ПВЗ и постаматов с примеркой и частичным выкупом
+              <p class="text-xs text-slate-300 mt-1 max-w-sm" id="tariffDesc">
+                Выдача в более чем 5 000 ПВЗ СДЭК с примеркой и частичным выкупом
               </p>
               <div class="flex items-center gap-3 pt-2 text-xs text-emerald-400 font-semibold">
                 <span>Срок: <strong id="calcDays" class="text-white">1-2 раб. дня</strong></span>
@@ -198,13 +151,13 @@
                 href="/#lead-form" 
                 class="inline-flex items-center justify-center px-5 py-2.5 bg-[#00D856] hover:bg-[#00BF4C] text-[#062A30] font-black text-xs uppercase tracking-wider rounded-xl transition shadow-xs active:scale-95"
               >
-                Подключить тариф
+                Подключить со скидкой
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Экспресс авиа-доставка -->
+        <!-- Экспресс авиа -->
         <div class="bg-white border border-slate-200 rounded-3xl p-4 sm:p-5 shadow-2xs">
           <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
             <div>
@@ -212,7 +165,7 @@
                 <h4 class="text-sm sm:text-base font-bold text-slate-900">Экспресс-доставка (Авиа)</h4>
                 <span class="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold">Срочно</span>
               </div>
-              <p class="text-xs text-slate-500 mt-0.5">Приоритетная доставка самолетом прямо в руки покупателю</p>
+              <p class="text-xs text-slate-500 mt-0.5">Авиаперевозка приоритетных заказов клиентам</p>
               <div class="text-xs text-slate-700 mt-1.5">
                 Срок: <strong class="text-slate-900" id="calcExpressDays">1 рабочий день</strong>
               </div>
@@ -222,21 +175,21 @@
               <div class="text-xs text-slate-400 line-through" id="calcExpressRetail">2 290 ₽</div>
               <div class="text-xl sm:text-2xl font-black text-slate-900" id="calcExpressB2B">1 350 ₽</div>
               <a href="/#lead-form" class="text-xs font-bold text-[#1AB248] hover:text-[#158E3A] transition">
-                Выбрать экспресс →
+                Оформить экспресс →
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Экономичный тариф / Магистраль -->
+        <!-- Магистральный экспресс / Эконом -->
         <div class="bg-white border border-slate-200 rounded-3xl p-4 sm:p-5 shadow-2xs">
           <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
             <div>
               <div class="flex items-center gap-2">
                 <h4 class="text-sm sm:text-base font-bold text-slate-900">Экономичная посылка / Магистраль</h4>
-                <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[10px] font-bold">Наземная логистика</span>
+                <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[10px] font-bold">Наземная</span>
               </div>
-              <p class="text-xs text-slate-500 mt-0.5">Оптимально для партий товаров и регулярных региональных поставок</p>
+              <p class="text-xs text-slate-500 mt-0.5">Экономичная перевозка партий между складами и филиалами</p>
               <div class="text-xs text-slate-700 mt-1.5">
                 Срок: <strong class="text-slate-900" id="calcEconDays">2-3 дня</strong>
               </div>
@@ -246,7 +199,7 @@
               <div class="text-xs text-slate-400 line-through" id="calcEconRetail">650 ₽</div>
               <div class="text-xl sm:text-2xl font-black text-slate-900" id="calcEconB2B">390 ₽</div>
               <a href="/#lead-form" class="text-xs font-bold text-[#1AB248] hover:text-[#158E3A] transition">
-                Выбрать эконом →
+                Оформить эконом →
               </a>
             </div>
           </div>
@@ -256,61 +209,99 @@
 
     </div>
 
+    <p class="text-center text-slate-400 text-[11px] mt-6">
+      * Расчет носит ознакомительный характер. Фиксированные персональные ставки и API-ключи активируются в ЛК после оформления договора.
+    </p>
+
   </div>
 </section>
 
 <script>
-  let originMode = 'pvz';
-  let destMode = 'pvz';
+  const cities = [
+    "Москва", "Санкт-Петербург", "Краснодар", "Новосибирск", "Екатеринбург",
+    "Казань", "Нижний Новгород", "Челябинск", "Самара", "Уфа",
+    "Ростов-на-Дону", "Омск", "Красноярск", "Воронеж", "Пермь",
+    "Волгоград", "Саратов", "Тюмень", "Тольятти", "Ижевск",
+    "Барнаул", "Иркутск", "Хабаровск", "Владивосток", "Ярославль",
+    "Сочи", "Ставрополь", "Калининград"
+  ];
+
+  let currentChannel = 'pvz';
   let currentPreset = 'medium';
 
-  // Пресеты с весом и реальными габаритами
   const presets = {
-    small: { weight: 1.0, l: 20, w: 15, h: 10 },
-    medium: { weight: 5.0, l: 33, w: 25, h: 15 },
-    large: { weight: 12.0, l: 50, w: 40, h: 30 }
+    small: { weight: 1.0 },
+    medium: { weight: 5.0 },
+    large: { weight: 12.0 }
   };
 
-  function setOriginMode(mode) {
-    originMode = mode;
-    const pBtn = document.getElementById('fromPvzBtn');
-    const dBtn = document.getElementById('fromDoorBtn');
-    if (mode === 'pvz') {
-      pBtn.className = "py-1.5 px-2.5 rounded-lg bg-white text-slate-900 shadow-2xs transition";
-      dBtn.className = "py-1.5 px-2.5 rounded-lg text-slate-600 hover:text-slate-900 transition";
-    } else {
-      dBtn.className = "py-1.5 px-2.5 rounded-lg bg-white text-slate-900 shadow-2xs transition";
-      pBtn.className = "py-1.5 px-2.5 rounded-lg text-slate-600 hover:text-slate-900 transition";
-    }
-    runCalc();
+  function showDropdown(type) {
+    filterCities(type);
+    document.getElementById(type === 'from' ? 'dropdownFrom' : 'dropdownTo').classList.remove('hidden');
   }
 
-  function setDestMode(mode) {
-    destMode = mode;
-    const pBtn = document.getElementById('destPvzBtn');
-    const dBtn = document.getElementById('destDoorBtn');
-    const mBtn = document.getElementById('destMpBtn');
-    const mpBox = document.getElementById('mpSelectBox');
-
-    [pBtn, dBtn, mBtn].forEach(b => b.className = "py-1.5 px-1 rounded-lg text-slate-600 hover:text-slate-900 transition");
-
-    if (mode === 'pvz') {
-      pBtn.className = "py-1.5 px-1 rounded-lg bg-white text-slate-900 shadow-2xs transition";
-      mpBox.classList.add('hidden');
-      document.getElementById('mainTariffTitle').innerText = "Тариф «Посылка для бизнеса»";
-      document.getElementById('mainTariffDesc').innerText = "Выдача в 5 000+ ПВЗ и постаматов с примеркой и частичным выкупом";
-    } else if (mode === 'door') {
-      dBtn.className = "py-1.5 px-1 rounded-lg bg-white text-slate-900 shadow-2xs transition";
-      mpBox.classList.add('hidden');
-      document.getElementById('mainTariffTitle').innerText = "Тариф «Посылка Курьер»";
-      document.getElementById('mainTariffDesc').innerText = "Доставка до двери покупателя с предварительным звонком";
-    } else if (mode === 'marketplace') {
-      mBtn.className = "py-1.5 px-1 rounded-lg bg-emerald-600 text-white shadow-2xs transition";
-      mpBox.classList.remove('hidden');
-      document.getElementById('mainTariffTitle').innerText = "Доставка до склада маркетплейса";
-      document.getElementById('mainTariffDesc').innerText = "Сдача поставок FBS/FBO по строгим слотам без очередей и штрафов";
+  function filterCities(type) {
+    const input = document.getElementById(type === 'from' ? 'cityFromInput' : 'cityToInput');
+    const dropdown = document.getElementById(type === 'from' ? 'dropdownFrom' : 'dropdownTo');
+    const query = input.value.toLowerCase().trim();
+    
+    const filtered = cities.filter(c => c.toLowerCase().includes(query));
+    if (filtered.length === 0) {
+      dropdown.innerHTML = '<div class="px-3 py-2 text-xs text-slate-400">Город не найден</div>';
+    } else {
+      dropdown.innerHTML = filtered.map(c => 
+        `<div onclick="selectCity('${type}', '${c}')" class="px-3 py-2 text-xs text-slate-800 hover:bg-emerald-50 hover:text-[#1AB248] cursor-pointer font-medium transition">${c}</div>`
+      ).join('');
     }
-    runCalc();
+    runCalculation();
+  }
+
+  function selectCity(type, name) {
+    document.getElementById(type === 'from' ? 'cityFromInput' : 'cityToInput').value = name;
+    document.getElementById(type === 'from' ? 'dropdownFrom' : 'dropdownTo').classList.add('hidden');
+    runCalculation();
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('#cityFromInput') && !e.target.closest('#dropdownFrom')) {
+      document.getElementById('dropdownFrom')?.classList.add('hidden');
+    }
+    if (!e.target.closest('#cityToInput') && !e.target.closest('#dropdownTo')) {
+      document.getElementById('dropdownTo')?.classList.add('hidden');
+    }
+  });
+
+  function swapCities() {
+    const fromEl = document.getElementById('cityFromInput');
+    const toEl = document.getElementById('cityToInput');
+    const tmp = fromEl.value;
+    fromEl.value = toEl.value;
+    toEl.value = tmp;
+    runCalculation();
+  }
+
+  function setChannel(ch) {
+    currentChannel = ch;
+    const pBtn = document.getElementById('chanPvz');
+    const dBtn = document.getElementById('chanDoor');
+    const dbsBtn = document.getElementById('chanDbs');
+
+    [pBtn, dBtn, dbsBtn].forEach(b => b.className = "py-1.5 px-2 rounded-lg text-slate-600 hover:text-slate-900 transition");
+
+    if (ch === 'pvz') {
+      pBtn.className = "py-1.5 px-2 rounded-lg bg-white text-slate-900 shadow-2xs transition";
+      document.getElementById('tariffName').innerText = "Тариф «Посылка для бизнеса»";
+      document.getElementById('tariffDesc').innerText = "Выдача в 5 000+ ПВЗ и постаматов с примеркой и частичным выкупом";
+    } else if (ch === 'door') {
+      dBtn.className = "py-1.5 px-2 rounded-lg bg-white text-slate-900 shadow-2xs transition";
+      document.getElementById('tariffName').innerText = "Тариф «Посылка Курьер»";
+      document.getElementById('tariffDesc').innerText = "Доставка до двери покупателя с предварительным звонком";
+    } else if (ch === 'dbs') {
+      dbsBtn.className = "py-1.5 px-2 rounded-lg bg-white text-[#1AB248] shadow-2xs transition";
+      document.getElementById('tariffName').innerText = "Тариф «DBS Маркетплейсы»";
+      document.getElementById('tariffDesc').innerText = "Прямая доставка покупателям маркетплейсов со склада продавца";
+    }
+    runCalculation();
   }
 
   function setPreset(pKey) {
@@ -318,31 +309,19 @@
     ['small', 'medium', 'large'].forEach(k => {
       const el = document.getElementById('preset' + k.charAt(0).toUpperCase() + k.slice(1));
       if (k === pKey) {
-        el.className = "p-2 rounded-xl border-2 border-[#1AB248] bg-emerald-50/50 text-left transition";
-        el.querySelector('div:last-child').className = "text-[10px] text-[#1AB248] font-semibold mt-0.5";
+        el.className = "p-2 rounded-xl border-2 border-[#1AB248] bg-emerald-50/50 text-left transition cursor-pointer";
       } else {
-        el.className = "p-2 rounded-xl border border-slate-200 bg-white text-left transition";
-        el.querySelector('div:last-child').className = "text-[10px] text-slate-400 mt-0.5";
+        el.className = "p-2 rounded-xl border border-slate-200 bg-white text-left transition cursor-pointer";
       }
     });
-    runCalc();
+    runCalculation();
   }
 
-  function swapCities() {
-    const f = document.getElementById('calcCityFrom');
-    const t = document.getElementById('calcCityTo');
-    const tmp = f.value;
-    f.value = t.value;
-    t.value = tmp;
-    runCalc();
-  }
+  function runCalculation() {
+    const from = (document.getElementById('cityFromInput').value || '').trim();
+    const to = (document.getElementById('cityToInput').value || '').trim();
+    const weight = presets[currentPreset].weight;
 
-  function runCalc() {
-    const from = (document.getElementById('calcCityFrom').value || '').trim();
-    const to = (document.getElementById('calcCityTo').value || '').trim();
-    const preset = presets[currentPreset];
-
-    // Дистанционный множитель
     let dist = 1.0;
     if (from.toLowerCase() === to.toLowerCase()) {
       dist = 0.7;
@@ -350,7 +329,7 @@
       (from === "Москва" && to === "Санкт-Петербург") ||
       (from === "Санкт-Петербург" && to === "Москва")
     ) {
-      dist = 1.0; // Базовая калибровка: 5 кг Мск-СПб ровно 400 ₽ розница
+      dist = 1.0;
     } else if (to === "Владивосток" || from === "Владивосток" || to === "Хабаровск") {
       dist = 2.2;
     } else if (to === "Новосибирск" || from === "Новосибирск") {
@@ -359,32 +338,37 @@
       dist = 1.25;
     }
 
-    // Надбавки за курьерские заборы / вручения
-    const originDoorCost = (originMode === 'door') ? 170 : 0;
-    const destDoorCost = (destMode === 'door') ? 150 : (destMode === 'marketplace' ? 90 : 0);
+    const doorMarkup = (currentChannel === 'door') ? 140 : 0;
 
-    // 1. Посылка / Маркетплейс
-    let baseRetailParcel = (250 + (preset.weight * 30)) * dist + originDoorCost + destDoorCost;
-    if (from === "Москва" && to === "Санкт-Петербург" && currentPreset === 'medium' && originMode === 'pvz' && destMode === 'pvz') {
-      baseRetailParcel = 400; // Точное соответствие cdek.ru
+    // 1. Расчет «Посылка»
+    let retParcel = Math.round((260 + (weight * 28)) * dist + doorMarkup);
+    if (from === "Москва" && to === "Санкт-Петербург" && currentPreset === 'medium' && currentChannel === 'pvz') {
+      retParcel = 400; // Ровно как на cdek.ru
+    } else if (from === "Москва" && to === "Санкт-Петербург" && currentPreset === 'small' && currentChannel === 'pvz') {
+      retParcel = 310;
     }
 
-    const b2bParcel = Math.round(baseRetailParcel * 0.65);
-    const retParcel = Math.round(baseRetailParcel);
+    let b2bParcel = Math.round(retParcel * 0.65);
+
+    // Логика DBS: при весе <= 1 кг скидка еще 20% от B2B тарифа, свыше 1 кг = стандартная посылка
+    if (currentChannel === 'dbs') {
+      if (weight <= 1.0) {
+        b2bParcel = Math.round(b2bParcel * 0.8);
+      }
+    }
+
     const discPercent = Math.round((1 - (b2bParcel / retParcel)) * 100);
 
     // 2. Экспресс (Авиа)
-    let baseRetailExp = (1450 + (preset.weight * 160)) * dist + originDoorCost + destDoorCost;
+    let retExp = Math.round((1650 + (weight * 130)) * dist + doorMarkup);
     if (from === "Москва" && to === "Санкт-Петербург" && currentPreset === 'medium') {
-      baseRetailExp = 2290; // Точное соответствие cdek.ru
+      retExp = 2290;
     }
-    const b2bExp = Math.round(baseRetailExp * 0.59);
-    const retExp = Math.round(baseRetailExp);
+    const b2bExp = Math.round(retExp * 0.59);
 
     // 3. Эконом / Магистраль
-    let baseRetailEcon = (380 + (preset.weight * 40)) * dist + originDoorCost;
-    const b2bEcon = Math.round(baseRetailEcon * 0.6);
-    const retEcon = Math.round(baseRetailEcon);
+    let retEcon = Math.round((420 + (weight * 35)) * dist);
+    const b2bEcon = Math.round(retEcon * 0.6);
 
     // Сроки
     let days = "1-2 раб. дня";
@@ -419,5 +403,5 @@
     document.getElementById('calcEconDays').innerText = econDays;
   }
 
-  document.addEventListener('DOMContentLoaded', runCalc);
+  document.addEventListener('DOMContentLoaded', runCalculation);
 </script>
