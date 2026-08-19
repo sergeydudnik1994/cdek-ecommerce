@@ -15,8 +15,8 @@
 <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between">
     
-    <!-- Логотип и дескриптор (компактный и точный под CDEK) -->
-    <a href="/" class="flex items-center gap-3 group">
+    <!-- Логотип и дескриптор -->
+    <a href="/" class="flex items-center gap-3 group flex-shrink-0">
       <img 
         src="https://www.cdek.ru/storage/source/logo/1/U1ck-s9wX-Um8xJ0F3EU5SPwz5kf8Utu.svg" 
         alt="СДЭК" 
@@ -28,16 +28,19 @@
     </a>
 
     <!-- Навигация (Desktop) -->
-    <nav class="hidden lg:flex items-center gap-7 text-xs sm:text-sm font-medium text-slate-700">
+    <nav class="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-medium text-slate-700">
+      <a href="/#calculator" class="flex items-center gap-1.5 text-[#1AB248] font-bold hover:text-[#158E3A] transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        Калькулятор B2B
+      </a>
+
       <a href="/#benefits" class="hover:text-[#1AB248] transition-colors">Преимущества</a>
       
-      <!-- Интеграции с выпадающим меню -->
+      <!-- Интеграции -->
       <div class="relative group py-2">
         <a href="/#integrations" class="hover:text-[#1AB248] transition-colors flex items-center gap-1">
           Интеграции и CMS
-          <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-          </svg>
+          <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </a>
         <div class="absolute left-0 top-full hidden group-hover:block w-56 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-50">
           <a href="/integrations/tilda/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#1AB248] rounded-xl transition">Tilda Publishing</a>
@@ -55,9 +58,7 @@
       <div class="relative group py-2">
         <span class="cursor-pointer hover:text-[#1AB248] transition-colors flex items-center gap-1">
           Услуги
-          <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-          </svg>
+          <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </span>
         <div class="absolute left-0 top-full hidden group-hover:block w-52 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-50">
           <a href="/services/dostavka-odezhdy/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#1AB248] rounded-xl transition">Магазины одежды (примерка)</a>
@@ -65,50 +66,120 @@
         </div>
       </div>
 
-      <a href="/#steps" class="hover:text-[#1AB248] transition-colors">Как подключить</a>
-      
-      <!-- Ссылка на локальный трекинг -->
-      <a href="/tracking/" class="flex items-center gap-1 text-slate-700 hover:text-[#1AB248] transition-colors font-medium">
-        <svg class="w-3.5 h-3.5 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-        Трекинг
-      </a>
+      <!-- Трекинг (Desktop) -->
+      <button onclick="openTrackingModal()" class="flex items-center gap-1.5 text-slate-700 hover:text-[#1AB248] transition cursor-pointer">
+        <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        Отследить заказ
+      </button>
     </nav>
 
-    <!-- Кнопка действия (Desktop) + Кнопка бургера (Mobile) -->
-    <div class="flex items-center gap-3">
-      <a href="/#lead-form" class="hidden sm:inline-flex items-center justify-center bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all shadow-xs cursor-pointer active:scale-95">
-        Заключить договор
+    <!-- Правый блок кнопок (Desktop + Mobile) -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <!-- Мобильная кнопка быстрого трекинга (всегда видна на телефонах) -->
+      <button onclick="openTrackingModal()" aria-label="Отследить посылку" class="lg:hidden flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold transition cursor-pointer">
+        <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <span>Трекинг</span>
+      </button>
+
+      <!-- Главная кнопка договора -->
+      <a href="/#lead-form" class="inline-flex items-center justify-center bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-xs uppercase tracking-wider px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl transition-all shadow-xs cursor-pointer active:scale-95">
+        Договор
       </a>
       
-      <!-- Мобильный бургер кнопка -->
-      <button onclick="toggleMobileMenu()" aria-label="Меню" class="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition cursor-pointer">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
+      <!-- Мобильный бургер -->
+      <button onclick="toggleMobileMenu()" aria-label="Открыть меню" class="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition cursor-pointer">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
 
   </div>
 
-  <!-- Выдвижное мобильное меню (Burger Drawer) -->
+  <!-- Мобильное меню -->
   <div id="mobileMenu" class="lg:hidden hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-xl">
-    <a href="/#benefits" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-slate-800 border-b border-slate-100">Преимущества</a>
-    <a href="/integrations/tilda/" onclick="toggleMobileMenu()" class="block py-2 text-sm font-medium text-slate-600 pl-3">↳ Интеграции с CMS (Tilda, Bitrix...)</a>
-    <a href="/services/fulfillment/" onclick="toggleMobileMenu()" class="block py-2 text-sm font-medium text-slate-600 pl-3">↳ Услуги и Фулфилмент</a>
-    <a href="/tracking/" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-slate-800 border-b border-slate-100">Отследить отправление</a>
-    <a href="/#lead-form" onclick="toggleMobileMenu()" class="block w-full py-3 text-center bg-[#1AB248] text-white font-bold text-xs uppercase rounded-xl shadow-xs">
-      Заключить договор
+    <a href="/#calculator" onclick="toggleMobileMenu()" class="flex items-center gap-2 py-2 text-sm font-bold text-[#1AB248] border-b border-slate-100">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+      Калькулятор B2B тарифов
     </a>
+    <a href="/tracking/" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-slate-800 border-b border-slate-100">
+      Страница отслеживания грузов
+    </a>
+    <a href="/#benefits" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-slate-800 border-b border-slate-100">Преимущества для бизнеса</a>
+    
+    <div class="py-1">
+      <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Интеграции & CMS</div>
+      <a href="/integrations/tilda/" onclick="toggleMobileMenu()" class="block py-1.5 text-xs text-slate-600 pl-2">Tilda Publishing</a>
+      <a href="/integrations/bitrix/" onclick="toggleMobileMenu()" class="block py-1.5 text-xs text-slate-600 pl-2">1С-Битрикс</a>
+      <a href="/integrations/moysklad/" onclick="toggleMobileMenu()" class="block py-1.5 text-xs text-slate-600 pl-2">МойСклад</a>
+      <a href="/integrations/api/" onclick="toggleMobileMenu()" class="block py-1.5 text-xs text-slate-600 pl-2">Rest API 2.0</a>
+    </div>
+
+    <div class="py-1 border-t border-slate-100">
+      <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Услуги</div>
+      <a href="/services/dostavka-odezhdy/" onclick="toggleMobileMenu()" class="block py-1.5 text-xs text-slate-600 pl-2">Магазины одежды (примерка)</a>
+      <a href="/services/fulfillment/" onclick="toggleMobileMenu()" class="block py-1.5 text-xs text-slate-600 pl-2">Складской фулфилмент</a>
+    </div>
   </div>
 </header>
+
+<!-- Модальное окно трекинга посылки -->
+<div id="trackingModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm">
+  <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl relative border border-slate-100">
+    <button type="button" onclick="closeTrackingModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-1.5 rounded-full hover:bg-slate-100 transition cursor-pointer">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <div class="text-center mb-5">
+      <div class="w-12 h-12 rounded-2xl bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center mx-auto mb-3">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      </div>
+      <h3 class="text-xl font-extrabold text-slate-900">Отследить заказ СДЭК</h3>
+      <p class="text-xs text-slate-500 mt-1">Введите номер накладной (10 цифр) или трек-номер заказа</p>
+    </div>
+    <form onsubmit="handleTrackSubmit(event)" class="space-y-3">
+      <input type="text" id="trackNumberInput" required placeholder="Например: 1234567890" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none text-sm text-slate-900 placeholder:text-slate-400 transition" />
+      <button type="submit" class="w-full py-3.5 px-6 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition shadow-xs cursor-pointer active:scale-95">
+        Найти посылку
+      </button>
+    </form>
+  </div>
+</div>
 
 <script>
   function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
-    if (menu) {
-      menu.classList.toggle('hidden');
+    if (menu) menu.classList.toggle('hidden');
+  }
+
+  function openTrackingModal() {
+    const modal = document.getElementById('trackingModal');
+    if (modal) {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      setTimeout(() => document.getElementById('trackNumberInput')?.focus(), 50);
     }
   }
+
+  function closeTrackingModal() {
+    const modal = document.getElementById('trackingModal');
+    if (modal) {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+  }
+
+  function handleTrackSubmit(e) {
+    e.preventDefault();
+    const trackVal = document.getElementById('trackNumberInput')?.value.trim();
+    if (trackVal) {
+      window.open(`https://www.cdek.ru/ru/tracking?order_id=${encodeURIComponent(trackVal)}`, '_blank');
+      closeTrackingModal();
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeTrackingModal();
+  });
+
+  document.getElementById('trackingModal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'trackingModal') closeTrackingModal();
+  });
 </script>
