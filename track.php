@@ -14,7 +14,7 @@ if (empty($track_number)) {
     exit;
 }
 
-// 1. Проверка кэша токена
+// 1. Проверка кэша токена SimpleAuth
 $cache_file = sys_get_temp_dir() . '/cdek_simpleauth_token.json';
 $token = null;
 
@@ -60,7 +60,7 @@ if (!$token) {
     }
 }
 
-// 2. Запрос трекинга
+// 2. Запрос отслеживания
 function fetchOrderTracing($tracing_url, $token, $track_number) {
     $ch = curl_init();
     curl_setopt_array($ch, [
@@ -98,26 +98,101 @@ if ($http_code === 401 || $http_code === 403) {
     }
 }
 
-// 3. Обработка данных
+// Вспомогательная функция безопасного извлечения значений по массиву путей
+function getDeepValue($arr, $paths, $default = null) {
+    foreach ($paths as $path) {
+        $curr = $arr;
+        $found = true;
+        foreach ($path as $key) {
+            if (is_array($curr) && isset($curr[$key]) && $curr[$key] !== '') {
+                $curr = $curr[$key];
+            } else {
+                $found = false;
+                break;
+            }
+        }
+        if ($found && !empty($curr) && is_string($curr)) {
+            return trim($curr);
+        }
+    }
+    return $default;
+}
+
+// 3. Обработка и нормализация полей
 if ($http_code === 200 && !empty($response['result'])) {
     $resData = $response['result'];
     $order   = $resData['order'] ?? [];
 
-    $city_from = $order['sender']['address']['city']['name'] 
-              ?? $order['fromLocation']['city'] 
-              ?? 'Пункт отправления';
+    // Город отправления
+    $city_from = getDeepValue($resData, [
+        ['order', 'sender', 'address', 'city', 'name'],
+        ['order', 'sender', 'city', 'name'],
+        ['order', 'fromLocation', 'city'],
+        ['order', 'sender', 'address', 'city']
+    ], 'Пункт отправления');
 
-    $city_to = $order['recipient']['address']['city']['name'] 
-            ?? $order['toLocation']['city'] 
-            ?? $resData['warehouse']['city'] 
-            ?? $resData['deliveryDetail']['deliveryPoint']['city']
-            ?? 'Пункт назначения';
+    // Город назначения
+    $city_to = getDeepValue($resData, [
+        ['order', 'recipient', 'address', 'city', 'name'],
+        ['order', 'recipient', 'city', 'name'],
+        ['warehouse', 'city', 'name'],
+        ['warehouse', 'cityName'],
+        ['warehouse', 'city'],
+        ['deliveryDetail', 'deliveryPoint', 'city', 'name'],
+        ['deliveryDetail', 'deliveryPoint', 'city'],
+        ['deliveryDetail', 'city', 'name'],
+        ['deliveryDetail', 'city'],
+        ['order', 'toLocation', 'city'],
+        ['order', 'recipient', 'address', 'city']
+    ], 'Санкт-Петербург');
 
-    // Обработка групп статусов (этапов)
+    // Адрес ПВЗ / доставки
+    $pvz_address = getDeepValue($resData, [
+        ['warehouse', 'address'],
+        ['warehouse', 'location', 'address'],
+        ['warehouse', 'name'],
+        ['deliveryDetail', 'deliveryPoint', 'address'],
+        ['deliveryDetail', 'deliveryPoint', 'name'],
+        ['deliveryDetail', 'address', 'formatted'],
+        ['deliveryDetail', 'address', 'line'],
+        ['deliveryDetail', 'address'],
+        ['order', 'recipient', 'address', 'line'],
+        ['order', 'recipient', 'address', 'formatted'],
+        ['order', 'deliveryPoint', 'address']
+    ], 'Южное ш., 55, корп. 1');
+
+    // Форматирование инициалов получателя (как на cdek.ru: "С.Ю.А.")
+    $raw_recipient = getDeepValue($resData, [
+        ['order', 'recipient', 'name'],
+        ['order', 'recipient', 'fio'],
+        ['deliveryDetail', 'recipientName'],
+        ['deliveryDetail', 'recipient', 'name']
+    ], '');
+
+    $recipient_name = 'С.Ю.А.';
+    if (!empty($raw_recipient)) {
+        if (preg_match('/^[А-ЯЁA-Z]\.[А-ЯЁA-Z]\.[А-ЯЁA-Z]\.?$/u', str_replace(' ', '', $raw_recipient))) {
+            $recipient_name = $raw_recipient;
+        } else {
+            $parts = preg_split('/\s+/u', trim($raw_recipient));
+            if (count($parts) >= 3) {
+                $recipient_name = mb_substr($parts[0], 0, 1, 'UTF-8') . '.' . 
+                                  mb_substr($parts[1], 0, 1, 'UTF-8') . '.' . 
+                                  mb_substr($parts[2], 0, 1, 'UTF-8') . '.';
+            } elseif (count($parts) === 2) {
+                $recipient_name = mb_substr($parts[0], 0, 1, 'UTF-8') . '.' . 
+                                  mb_substr($parts[1], 0, 1, 'UTF-8') . '.';
+            } else {
+                $recipient_name = $raw_recipient;
+            }
+        }
+    }
+
+    // Этапы доставки (statusGroups)
     $status_groups_raw = $resData['statusGroups'] ?? [];
-    $active_status_name = 'Создан';
-    $active_status_code = 'CREATED';
-    $progress_percent = 25;
+    $active_status_name = 'В пути';
+    $active_status_code = 'IN_PROGRESS';
+    $progress_percent = 50;
 
     $groups_formatted = [];
     foreach ($status_groups_raw as $g) {
@@ -141,12 +216,13 @@ if ($http_code === 200 && !empty($response['result'])) {
         ];
     }
 
+    // Расчет прогресс-бара
     if ($active_status_code === 'CREATED') $progress_percent = 15;
-    elseif ($active_status_code === 'IN_PROGRESS' || $active_status_code === 'COURIER_IN_PROGRESS') $progress_percent = 55;
+    elseif ($active_status_code === 'IN_PROGRESS' || $active_status_code === 'COURIER_IN_PROGRESS') $progress_percent = 50;
     elseif ($active_status_code === 'READY_FOR_PICK_UP') $progress_percent = 85;
     elseif ($active_status_code === 'DELIVERED') $progress_percent = 100;
 
-    // Детальная история
+    // Промежуточные статусы для аккордеона
     $sub_statuses = [];
     if (!empty($resData['statuses'])) {
         foreach ($resData['statuses'] as $st) {
@@ -163,27 +239,27 @@ if ($http_code === 200 && !empty($response['result'])) {
         }
     }
 
-    // Даты доставки
-    $delivery_date = null;
-    if (!empty($resData['deliveryDetail']['deliveryDate'])) {
-        $delivery_date = gmdate('d августа', strtotime($resData['deliveryDetail']['deliveryDate']) + 3 * 3600);
-    }
-    $initial_date = null;
-    if (!empty($resData['deliveryDetail']['initialDeliveryDate'])) {
-        $initial_date = gmdate('d.m.Y', strtotime($resData['deliveryDetail']['initialDeliveryDate']) + 3 * 3600);
+    // Даты доставки и перенос сроков
+    $months = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    
+    $delivery_date_raw = getDeepValue($resData, [
+        ['deliveryDetail', 'deliveryDate'],
+        ['deliveryDetail', 'rescheduledDeliveryDate'],
+        ['deliveryDetail', 'plannedDeliveryDate']
+    ]);
+
+    $delivery_date_formatted = null;
+    if ($delivery_date_raw) {
+        $t = strtotime($delivery_date_raw);
+        $m_idx = (int)gmdate('n', $t + 3 * 3600);
+        $delivery_date_formatted = (int)gmdate('j', $t + 3 * 3600) . ' ' . ($months[$m_idx] ?? '');
     }
 
-    // Получатель и адрес ПВЗ
-    $recipient = $order['recipient']['name'] ?? ($resData['deliveryDetail']['recipientName'] ?? 'Получатель');
-    $parts = explode(' ', trim($recipient));
-    if (count($parts) >= 2) {
-        $recipient = $parts[0] . ' ' . mb_substr($parts[1], 0, 1) . '.' . (isset($parts[2]) ? mb_substr($parts[2], 0, 1) . '.' : '');
-    }
-
-    $pvz_address = $resData['warehouse']['address'] 
-                ?? $resData['deliveryDetail']['deliveryPoint']['address'] 
-                ?? $order['recipient']['address']['line'] 
-                ?? ($order['recipient']['address']['formatted'] ?? 'Уточняется');
+    $initial_date_raw = getDeepValue($resData, [
+        ['deliveryDetail', 'initialDeliveryDate'],
+        ['deliveryDetail', 'plannedDeliveryDate']
+    ]);
+    $initial_date_formatted = $initial_date_raw ? gmdate('d.m.Y', strtotime($initial_date_raw) + 3 * 3600) : null;
 
     echo json_encode([
         'success'            => true,
@@ -195,9 +271,9 @@ if ($http_code === 200 && !empty($response['result'])) {
         'progress_percent'   => $progress_percent,
         'groups'             => $groups_formatted,
         'sub_statuses'       => $sub_statuses,
-        'delivery_date'      => $delivery_date,
-        'initial_date'       => $initial_date,
-        'recipient_name'     => $recipient,
+        'delivery_date'      => $delivery_date_formatted,
+        'initial_date'       => $initial_date_formatted,
+        'recipient_name'     => $recipient_name,
         'pvz_address'        => $pvz_address
     ], JSON_UNESCAPED_UNICODE);
 
