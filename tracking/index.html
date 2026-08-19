@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Отследить заказ и посылку СДЭК | Онлайн трекинг</title>
-  <meta name="description" content="Отслеживание посылок и заказов СДЭК в режиме реального времени по номеру накладной." />
+  <title>Отслеживание заказа | СДЭК</title>
   <link rel="canonical" href="https://cdek-ecommerce.ru/tracking/" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,40 +19,36 @@
 
   <!--# include virtual="/components/header.html" -->
 
-  <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-8">
+  <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-6">
     
-    <!-- Шапка страницы -->
     <div>
-      <h1 class="text-3xl sm:text-4xl font-light text-slate-900 tracking-tight">Отслеживание заказа</h1>
-      <p class="text-sm text-slate-500 mt-2">Введите номер накладной для просмотра статуса и маршрута доставки</p>
+      <h1 class="text-3xl sm:text-4xl font-light text-slate-900 tracking-tight">Отслеживание</h1>
+      <p class="text-sm text-slate-500 mt-1">Введите номер заказа для просмотра статуса и маршрута доставки</p>
     </div>
 
-    <!-- Поисковый виджет -->
-    <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-slate-200/80">
-      <form id="trackingForm" onsubmit="executeTracking(event)" class="flex flex-col sm:flex-row gap-3">
-        <div class="relative flex-grow">
-          <input 
-            type="text" 
-            id="trackNumber" 
-            required 
-            placeholder="Номер заказа" 
-            class="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-base outline-none focus:bg-white focus:border-[#1AB248] focus:ring-2 focus:ring-[#1AB248]/20 transition"
-          />
-        </div>
+    <!-- Поисковое поле -->
+    <div class="bg-white rounded-3xl p-6 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80">
+      <form id="trackingForm" onsubmit="executeTracking(event)" class="flex gap-3">
+        <input 
+          type="text" 
+          id="trackNumber" 
+          required 
+          placeholder="Номер заказа" 
+          class="flex-grow px-5 py-3.5 bg-[#F6F7F9] border border-slate-200 rounded-2xl text-base outline-none focus:bg-white focus:border-[#1AB248] focus:ring-2 focus:ring-[#1AB248]/20 transition"
+        />
         <button 
           type="submit" 
           id="trackBtn"
-          class="sm:w-auto px-8 py-3.5 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-xs uppercase tracking-wider rounded-2xl transition shadow-md shadow-[#1AB248]/20 flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+          class="px-6 sm:px-8 py-3.5 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold rounded-2xl transition shadow-md shadow-[#1AB248]/20 flex items-center justify-center cursor-pointer active:scale-95 flex-shrink-0"
         >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
           </svg>
-          Найти
         </button>
       </form>
     </div>
 
-    <!-- Индикатор загрузки -->
+    <!-- Лоадер -->
     <div id="trackLoading" class="hidden text-center py-12">
       <div class="inline-block w-8 h-8 border-4 border-[#1AB248]/20 border-t-[#1AB248] rounded-full animate-spin"></div>
       <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-3">Запрашиваем данные у СДЭК...</p>
@@ -62,66 +57,88 @@
     <!-- Ошибка -->
     <div id="trackError" class="hidden p-5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-sm"></div>
 
-    <!-- Карточка результата трекинга -->
-    <div id="trackResult" class="hidden bg-white rounded-3xl p-6 sm:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-slate-200/80 space-y-8">
+    <!-- Карточка результата -->
+    <div id="trackResult" class="hidden bg-white rounded-3xl p-6 sm:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-8">
       
-      <!-- Мета-информация -->
+      <!-- Верхняя линия: Номер, Маршрут, Бейдж -->
       <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100">
-        <div>
-          <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Накладная</div>
-          <div class="text-xl font-bold text-slate-900" id="resNumber">№ —</div>
-        </div>
-        <div class="text-left sm:text-center">
-          <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Маршрут</div>
-          <div class="text-lg font-semibold text-slate-800" id="resRoute">— — —</div>
-        </div>
-        <div class="text-left sm:text-right">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider border border-emerald-200" id="resStatus">
+        <div class="text-lg font-bold text-slate-900" id="resNumber">№ —</div>
+        <div class="text-base sm:text-lg font-semibold text-slate-800" id="resRoute">—</div>
+        <div id="resBadgeWrapper">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-50 text-orange-600 border border-orange-200" id="resStatusBadge">
             В пути
           </span>
         </div>
       </div>
 
-      <!-- Графическая шкала -->
-      <div class="relative py-4">
-        <div class="flex items-center justify-between text-base font-bold text-slate-900 mb-2">
-          <span id="resCityFrom">Откуда</span>
-          <span id="resCityTo">Куда</span>
+      <!-- Маршрутная шкала с грузовиком -->
+      <div class="space-y-2">
+        <div class="flex items-center justify-between text-xl sm:text-2xl font-bold text-slate-900">
+          <span id="resCityFrom">—</span>
+          <span id="resCityTo">—</span>
         </div>
-        <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden relative">
-          <div class="h-full bg-[#1AB248] rounded-full w-2/3 transition-all duration-700"></div>
+        <div class="h-1.5 w-full bg-slate-100 rounded-full relative overflow-visible">
+          <div class="h-full bg-[#1AB248] rounded-full transition-all duration-700" id="resProgressBar" style="width: 50%;"></div>
+          <div class="absolute -top-3 w-7 h-7 bg-white border-2 border-[#1AB248] rounded-full flex items-center justify-center shadow-md transition-all duration-700" id="resTruckIcon" style="left: calc(50% - 14px);">
+            <svg class="w-3.5 h-3.5 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
+            </svg>
+          </div>
         </div>
       </div>
 
-      <!-- Детали и история перемещений -->
-      <div class="grid md:grid-cols-12 gap-8 pt-4">
+      <!-- Основная сетка -->
+      <div class="grid lg:grid-cols-12 gap-8 pt-4">
         
-        <!-- История статусов (таймлайн) -->
-        <div class="md:col-span-7 space-y-4">
-          <h3 class="text-base font-bold text-slate-900">История перемещения</h3>
-          <div class="relative pl-6 border-l-2 border-slate-200 space-y-6" id="resTimeline">
-            <!-- Динамически заполняется скриптом -->
-          </div>
+        <!-- Левая колонка: 4 официальных этапа + аккордеон -->
+        <div class="lg:col-span-7 space-y-6" id="resMilestones">
+          <!-- Генерируется динамически -->
         </div>
 
-        <!-- Плашка с получателем и ПВЗ -->
-        <div class="md:col-span-5 bg-[#F5F8FE] rounded-2xl p-6 border border-slate-200/80 space-y-4">
-          <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider">Информация о доставке</h4>
+        <!-- Правая колонка: Информация о доставке и Памятка -->
+        <div class="lg:col-span-5 space-y-4">
           
-          <div>
-            <div class="text-xs text-slate-400">Получатель</div>
-            <div class="text-sm font-semibold text-slate-800" id="resRecipient">—</div>
+          <!-- Карточка доставки -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+            
+            <div class="p-3.5 bg-[#F6FBF6] border border-[#D2EDD5] rounded-xl flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-[#1AB248] text-white flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">✓</div>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Мы уведомим о поступлении заказа в пункт выдачи в СМС, мессенджере или мобильном приложении
+              </p>
+            </div>
+
+            <div>
+              <div class="text-xs text-slate-400">Получатель</div>
+              <div class="text-sm font-bold text-slate-800" id="resRecipient">—</div>
+            </div>
+
+            <div>
+              <div class="text-xs text-slate-400">Адрес пункта выдачи СДЭК</div>
+              <div class="text-sm font-semibold text-slate-800" id="resPvzAddress">—</div>
+            </div>
+
+            <div id="resDateBox" class="p-3.5 bg-[#FFF9F2] border border-[#FFE8C2] rounded-xl hidden">
+              <div class="text-xs font-bold text-slate-900" id="resDeliveryDateText">Доставка ожидается</div>
+              <div class="text-[11px] text-slate-500 mt-0.5" id="resInitialDateText"></div>
+            </div>
+
           </div>
 
-          <div id="resDateBlock">
-            <div class="text-xs text-slate-400">Ориентировочная дата вручения</div>
-            <div class="text-sm font-bold text-[#1AB248]" id="resDeliveryDate">—</div>
+          <!-- Карточка "Вручение по паспорту" -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-3">
+            <h4 class="text-sm font-bold text-slate-900">Вручение по паспорту</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              При получении предъявите оригинал паспорта (для организаций дополнительно доверенность).
+            </p>
+            <div class="pt-2 border-t border-slate-100">
+              <div class="text-xs font-bold text-slate-800">Как получать без паспорта?</div>
+              <p class="text-xs text-slate-500 mt-0.5">
+                Подключите CDEK ID и получайте посылки по коду из СМС за пару секунд.
+              </p>
+            </div>
           </div>
 
-          <div id="resPvzBlock">
-            <div class="text-xs text-slate-400">Пункт выдачи / Адрес</div>
-            <div class="text-sm text-slate-700" id="resPoint">—</div>
-          </div>
         </div>
 
       </div>
@@ -159,39 +176,40 @@
 
         if (response.ok && data.success) {
           document.getElementById('resNumber').innerText = '№ ' + data.cdek_number;
-          document.getElementById('resRoute').innerText = `${data.city_from} → ${data.city_to}`;
+          document.getElementById('resRoute').innerText = `${data.city_from} — ${data.city_to}`;
           document.getElementById('resCityFrom').innerText = data.city_from;
           document.getElementById('resCityTo').innerText = data.city_to;
-          document.getElementById('resStatus').innerText = data.status_name;
           document.getElementById('resRecipient').innerText = data.recipient_name;
-          
-          if (data.delivery_date) {
-            document.getElementById('resDeliveryDate').innerText = data.delivery_date;
-            document.getElementById('resDateBlock').classList.remove('hidden');
+          document.getElementById('resPvzAddress').innerText = data.pvz_address;
+
+          // Бейдж статуса
+          const badge = document.getElementById('resStatusBadge');
+          badge.innerText = data.status_name;
+          if (data.status_code === 'DELIVERED') {
+            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200';
           } else {
-            document.getElementById('resDateBlock').classList.add('hidden');
+            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-50 text-orange-600 border border-orange-200';
           }
 
-          if (data.delivery_point) {
-            document.getElementById('resPoint').innerText = data.delivery_point;
-            document.getElementById('resPvzBlock').classList.remove('hidden');
+          // Прогресс бар
+          const pct = data.progress_percent || 25;
+          document.getElementById('resProgressBar').style.width = pct + '%';
+          document.getElementById('resTruckIcon').style.left = `calc(${pct}% - 14px)`;
+
+          // Плашка с датой доставки
+          const dateBox = document.getElementById('resDateBox');
+          if (data.delivery_date) {
+            dateBox.classList.remove('hidden');
+            document.getElementById('resDeliveryDateText').innerText = `Доставка: ${data.delivery_date}`;
+            if (data.initial_date) {
+              document.getElementById('resInitialDateText').innerText = `Изначальная дата: ${data.initial_date}`;
+            }
+          } else {
+            dateBox.classList.add('hidden');
           }
 
-          // Построение таймлайна
-          const timeline = document.getElementById('resTimeline');
-          timeline.innerHTML = '';
-          if (data.history && data.history.length > 0) {
-            data.history.forEach((st, idx) => {
-              const item = document.createElement('div');
-              item.className = 'relative';
-              item.innerHTML = `
-                <div class="absolute -left-[31px] top-1 w-3.5 h-3.5 rounded-full ${idx === 0 ? 'bg-[#1AB248] ring-4 ring-[#1AB248]/20' : 'bg-slate-300'}"></div>
-                <div class="text-sm font-bold text-slate-800">${st.name}</div>
-                <div class="text-xs text-slate-400 mt-0.5">${st.date} ${st.city ? '• ' + st.city : ''}</div>
-              `;
-              timeline.appendChild(item);
-            });
-          }
+          // Построение 4 этапов
+          renderMilestones(data.groups, data.sub_statuses);
 
           resultBox.classList.remove('hidden');
         } else {
@@ -205,13 +223,91 @@
       }
     }
 
-    // Автопоиск при переходе по ссылке вида ?cdek_number=123
+    function renderMilestones(groups, subStatuses) {
+      const container = document.getElementById('resMilestones');
+      container.innerHTML = '';
+
+      const milestoneIcons = {
+        'CREATED': `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>`,
+        'IN_PROGRESS': `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>`,
+        'READY_FOR_PICK_UP': `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>`,
+        'DELIVERED': `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>`
+      };
+
+      groups.forEach((g, idx) => {
+        const isFuture = g.future;
+        const iconSvg = milestoneIcons[g.code] || milestoneIcons['CREATED'];
+        
+        let circleClass = 'bg-slate-100 text-slate-400 border border-slate-200';
+        let textClass = 'text-slate-400';
+
+        if (!isFuture) {
+          if (g.code === 'CREATED') {
+            circleClass = 'bg-[#FFD21E] text-white shadow-md shadow-[#FFD21E]/30';
+            textClass = 'text-slate-900';
+          } else if (g.code === 'IN_PROGRESS' || g.code === 'COURIER_IN_PROGRESS') {
+            circleClass = 'bg-[#FF7A00] text-white shadow-md shadow-[#FF7A00]/30';
+            textClass = 'text-slate-900';
+          } else if (g.code === 'READY_FOR_PICK_UP' || g.code === 'DELIVERED') {
+            circleClass = 'bg-[#1AB248] text-white shadow-md shadow-[#1AB248]/30';
+            textClass = 'text-slate-900';
+          }
+        }
+
+        const stepEl = document.createElement('div');
+        stepEl.className = 'relative flex items-start gap-4';
+
+        let subHtml = '';
+        if (g.code === 'IN_PROGRESS' && !isFuture && subStatuses && subStatuses.length > 0) {
+          subHtml = `
+            <div class="mt-2">
+              <button type="button" onclick="toggleSubStatuses()" class="text-xs font-bold text-[#1AB248] hover:underline flex items-center gap-1 cursor-pointer">
+                Подробнее <span id="subArrow">▾</span>
+              </button>
+              <div id="subList" class="hidden mt-3 pl-4 border-l-2 border-slate-100 space-y-3">
+                ${subStatuses.map(s => `
+                  <div class="text-xs">
+                    <div class="font-bold text-slate-700">${s.name}</div>
+                    <div class="text-slate-400">${s.date} ${s.city ? '• ' + s.city : ''}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+
+        stepEl.innerHTML = `
+          <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 ${circleClass}">
+            ${iconSvg}
+          </div>
+          <div class="flex-grow pt-1.5">
+            <div class="flex items-center justify-between">
+              <div class="text-base font-bold ${textClass}">${g.name}</div>
+              <div class="text-xs text-slate-400 font-medium">${g.date || ''}</div>
+            </div>
+            ${subHtml}
+          </div>
+        `;
+
+        container.appendChild(stepEl);
+      });
+    }
+
+    function toggleSubStatuses() {
+      const list = document.getElementById('subList');
+      const arrow = document.getElementById('subArrow');
+      if (list) {
+        list.classList.toggle('hidden');
+        if (arrow) arrow.innerText = list.classList.contains('hidden') ? '▾' : '▴';
+      }
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
-      const trackParam = params.get('cdek_number');
+      const trackParam = params.get('order_id') || params.get('cdek_number');
       if (trackParam) {
-        const numInput = document.getElementById('trackNumber');
-        if (numInput) numInput.value = trackParam;
+        const input = document.getElementById('trackNumber');
+        if (input) input.value = trackParam;
         executeTracking();
       }
     });
