@@ -98,24 +98,118 @@ if ($http_code === 401 || $http_code === 403) {
     }
 }
 
-// Вспомогательная функция безопасного извлечения значений по массиву путей
-function getDeepValue($arr, $paths, $default = null) {
-    foreach ($paths as $path) {
-        $curr = $arr;
-        $found = true;
-        foreach ($path as $key) {
-            if (is_array($curr) && isset($curr[$key]) && $curr[$key] !== '') {
-                $curr = $curr[$key];
-            } else {
-                $found = false;
-                break;
-            }
+// Вспомогательные функции точного извлечения данных
+function extractCity($obj) {
+    if (empty($obj)) return null;
+    if (is_string($obj)) return trim($obj);
+    if (is_array($obj)) {
+        if (!empty($obj['city'])) {
+            $res = extractCity($obj['city']);
+            if ($res) return $res;
         }
-        if ($found && !empty($curr) && is_string($curr)) {
-            return trim($curr);
+        if (!empty($obj['cityName']) && is_string($obj['cityName'])) {
+            return trim($obj['cityName']);
+        }
+        if (!empty($obj['address']) && is_array($obj['address'])) {
+            $res = extractCity($obj['address']);
+            if ($res) return $res;
+        }
+        if (!empty($obj['deliveryPoint']) && is_array($obj['deliveryPoint'])) {
+            $res = extractCity($obj['deliveryPoint']);
+            if ($res) return $res;
+        }
+        if (!empty($obj['location']) && is_array($obj['location'])) {
+            $res = extractCity($obj['location']);
+            if ($res) return $res;
+        }
+        if (!empty($obj['name']) && is_string($obj['name'])) {
+            $keys = array_keys($obj);
+            $hasPersonKeys = false;
+            foreach ($keys as $k) {
+                if (in_array(strtolower($k), ['fio', 'surname', 'phone', 'email', 'recipient', 'sender'], true)) {
+                    $hasPersonKeys = true;
+                    break;
+                }
+            }
+            if (!$hasPersonKeys) return trim($obj['name']);
         }
     }
-    return $default;
+    return null;
+}
+
+function extractPvzAddress($resData) {
+    if (!empty($resData['warehouse']) && is_array($resData['warehouse'])) {
+        foreach (['address', 'formatted', 'location', 'name'] as $k) {
+            if (!empty($resData['warehouse'][$k]) && is_string($resData['warehouse'][$k])) {
+                return trim($resData['warehouse'][$k]);
+            }
+        }
+    }
+    if (!empty($resData['deliveryDetail']) && is_array($resData['deliveryDetail'])) {
+        $dd = $resData['deliveryDetail'];
+        if (!empty($dd['deliveryPoint']) && is_array($dd['deliveryPoint'])) {
+            foreach (['address', 'formatted', 'name'] as $k) {
+                if (!empty($dd['deliveryPoint'][$k]) && is_string($dd['deliveryPoint'][$k])) {
+                    return trim($dd['deliveryPoint'][$k]);
+                }
+            }
+        }
+        if (!empty($dd['address'])) {
+            if (is_string($dd['address'])) return trim($dd['address']);
+            if (is_array($dd['address'])) {
+                foreach (['formatted', 'line', 'address'] as $k) {
+                    if (!empty($dd['address'][$k]) && is_string($dd['address'][$k])) {
+                        return trim($dd['address'][$k]);
+                    }
+                }
+            }
+        }
+    }
+    if (!empty($resData['order']) && is_array($resData['order'])) {
+        $ord = $resData['order'];
+        if (!empty($ord['deliveryPoint']) && is_array($ord['deliveryPoint'])) {
+            foreach (['address', 'formatted', 'name'] as $k) {
+                if (!empty($ord['deliveryPoint'][$k]) && is_string($ord['deliveryPoint'][$k])) {
+                    return trim($ord['deliveryPoint'][$k]);
+                }
+            }
+        }
+        if (!empty($ord['recipient']['address'])) {
+            $addr = $ord['recipient']['address'];
+            if (is_string($addr)) return trim($addr);
+            if (is_array($addr)) {
+                foreach (['formatted', 'line', 'address'] as $k) {
+                    if (!empty($addr[$k]) && is_string($addr[$k])) {
+                        return trim($addr[$k]);
+                    }
+                }
+            }
+        }
+    }
+    return null;
+}
+
+function extractRecipientName($resData) {
+    $raw = null;
+    if (!empty($resData['order']['recipient'])) {
+        $rec = $resData['order']['recipient'];
+        if (is_string($rec)) $raw = $rec;
+        elseif (is_array($rec)) {
+            foreach (['name', 'fio', 'receiver'] as $k) {
+                if (!empty($rec[$k]) && is_string($rec[$k])) { $raw = $rec[$k]; break; }
+            }
+        }
+    }
+    if (!$raw && !empty($resData['deliveryDetail'])) {
+        $dd = $resData['deliveryDetail'];
+        foreach (['recipientName', 'fio', 'recipient'] as $k) {
+            if (!empty($dd[$k])) {
+                if (is_string($dd[$k])) { $raw = $dd[$k]; break; }
+                if (is_array($dd[$k]) && !empty($dd[$k]['name']) && is_string($dd[$k]['name'])) { $raw = $dd[$k]['name']; break; }
+            }
+        }
+    }
+    return $raw ? trim($raw) : null;
 }
 
 // 3. Обработка и нормализация полей
@@ -124,63 +218,45 @@ if ($http_code === 200 && !empty($response['result'])) {
     $order   = $resData['order'] ?? [];
 
     // Город отправления
-    $city_from = getDeepValue($resData, [
-        ['order', 'sender', 'address', 'city', 'name'],
-        ['order', 'sender', 'city', 'name'],
-        ['order', 'fromLocation', 'city'],
-        ['order', 'sender', 'address', 'city']
-    ], 'Пункт отправления');
+    $city_from = extractCity($order['sender'] ?? null) 
+              ?: (extractCity($resData['fromLocation'] ?? null) 
+              ?: 'Отправитель');
 
     // Город назначения
-    $city_to = getDeepValue($resData, [
-        ['order', 'recipient', 'address', 'city', 'name'],
-        ['order', 'recipient', 'city', 'name'],
-        ['warehouse', 'city', 'name'],
-        ['warehouse', 'cityName'],
-        ['warehouse', 'city'],
-        ['deliveryDetail', 'deliveryPoint', 'city', 'name'],
-        ['deliveryDetail', 'deliveryPoint', 'city'],
-        ['deliveryDetail', 'city', 'name'],
-        ['deliveryDetail', 'city'],
-        ['order', 'toLocation', 'city'],
-        ['order', 'recipient', 'address', 'city']
-    ], 'Санкт-Петербург');
+    $city_to = extractCity($order['recipient'] ?? null)
+            ?: (extractCity($resData['warehouse'] ?? null)
+            ?: (extractCity($resData['deliveryDetail'] ?? null)
+            ?: (extractCity($resData['toLocation'] ?? null)
+            ?: null)));
+
+    if (!$city_to && !empty($resData['statuses']) && is_array($resData['statuses'])) {
+        $lastStatus = end($resData['statuses']);
+        if (!empty($lastStatus['currentCity']['name'])) {
+            $city_to = trim($lastStatus['currentCity']['name']);
+        } elseif (!empty($lastStatus['city']) && is_string($lastStatus['city'])) {
+            $city_to = trim($lastStatus['city']);
+        }
+    }
+    $city_to = $city_to ?: 'Пункт назначения';
 
     // Адрес ПВЗ / доставки
-    $pvz_address = getDeepValue($resData, [
-        ['warehouse', 'address'],
-        ['warehouse', 'location', 'address'],
-        ['warehouse', 'name'],
-        ['deliveryDetail', 'deliveryPoint', 'address'],
-        ['deliveryDetail', 'deliveryPoint', 'name'],
-        ['deliveryDetail', 'address', 'formatted'],
-        ['deliveryDetail', 'address', 'line'],
-        ['deliveryDetail', 'address'],
-        ['order', 'recipient', 'address', 'line'],
-        ['order', 'recipient', 'address', 'formatted'],
-        ['order', 'deliveryPoint', 'address']
-    ], 'Южное ш., 55, корп. 1');
+    $pvz_address = extractPvzAddress($resData) ?: 'Пункт выдачи СДЭК';
 
-    // Форматирование инициалов получателя (как на cdek.ru: "С.Ю.А.")
-    $raw_recipient = getDeepValue($resData, [
-        ['order', 'recipient', 'name'],
-        ['order', 'recipient', 'fio'],
-        ['deliveryDetail', 'recipientName'],
-        ['deliveryDetail', 'recipient', 'name']
-    ], '');
+    // Получатель
+    $raw_recipient = extractRecipientName($resData);
+    $recipient_name = 'Данные защищены 152-ФЗ';
 
-    $recipient_name = 'С.Ю.А.';
     if (!empty($raw_recipient)) {
         if (preg_match('/^[А-ЯЁA-Z]\.[А-ЯЁA-Z]\.[А-ЯЁA-Z]\.?$/u', str_replace(' ', '', $raw_recipient))) {
             $recipient_name = $raw_recipient;
         } else {
             $parts = preg_split('/\s+/u', trim($raw_recipient));
             if (count($parts) >= 3) {
-                $recipient_name = mb_substr($parts[0], 0, 1, 'UTF-8') . '.' . 
+                $recipient_name = $parts[0] . ' ' . 
                                   mb_substr($parts[1], 0, 1, 'UTF-8') . '.' . 
                                   mb_substr($parts[2], 0, 1, 'UTF-8') . '.';
             } elseif (count($parts) === 2) {
-                $recipient_name = mb_substr($parts[0], 0, 1, 'UTF-8') . '.' . 
+                $recipient_name = $parts[0] . ' ' . 
                                   mb_substr($parts[1], 0, 1, 'UTF-8') . '.';
             } else {
                 $recipient_name = $raw_recipient;
@@ -224,7 +300,7 @@ if ($http_code === 200 && !empty($response['result'])) {
 
     // Промежуточные статусы для аккордеона
     $sub_statuses = [];
-    if (!empty($resData['statuses'])) {
+    if (!empty($resData['statuses']) && is_array($resData['statuses'])) {
         foreach ($resData['statuses'] as $st) {
             $dt = '';
             if (!empty($st['dateTime']) || !empty($st['timestamp'])) {
@@ -242,11 +318,15 @@ if ($http_code === 200 && !empty($response['result'])) {
     // Даты доставки и перенос сроков
     $months = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
     
-    $delivery_date_raw = getDeepValue($resData, [
-        ['deliveryDetail', 'deliveryDate'],
-        ['deliveryDetail', 'rescheduledDeliveryDate'],
-        ['deliveryDetail', 'plannedDeliveryDate']
-    ]);
+    $delivery_date_raw = null;
+    if (!empty($resData['deliveryDetail'])) {
+        foreach (['deliveryDate', 'rescheduledDeliveryDate', 'plannedDeliveryDate'] as $k) {
+            if (!empty($resData['deliveryDetail'][$k]) && is_string($resData['deliveryDetail'][$k])) {
+                $delivery_date_raw = $resData['deliveryDetail'][$k];
+                break;
+            }
+        }
+    }
 
     $delivery_date_formatted = null;
     if ($delivery_date_raw) {
@@ -255,10 +335,7 @@ if ($http_code === 200 && !empty($response['result'])) {
         $delivery_date_formatted = (int)gmdate('j', $t + 3 * 3600) . ' ' . ($months[$m_idx] ?? '');
     }
 
-    $initial_date_raw = getDeepValue($resData, [
-        ['deliveryDetail', 'initialDeliveryDate'],
-        ['deliveryDetail', 'plannedDeliveryDate']
-    ]);
+    $initial_date_raw = $resData['deliveryDetail']['initialDeliveryDate'] ?? null;
     $initial_date_formatted = $initial_date_raw ? gmdate('d.m.Y', strtotime($initial_date_raw) + 3 * 3600) : null;
 
     echo json_encode([
