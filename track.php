@@ -1,12 +1,8 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
-// --- УЧЕТНЫЕ ДАННЫЕ АПИ-TRACING СДЭК ---
-$cdek_client_id     = 'apiuser-cdek-ecommerce';
-$cdek_client_secret = '60910f5286789ba520baad4a8137f6d3';
-
-$auth_url = 'https://api.cdek.ru/v2/oauth/token?parameters';
-$api_url  = 'https://api.cdek.ru/v2/orders';
+$login    = 'apiuser-cdek-ecommerce';
+$password = '60910f5286789ba520baad4a8137f6d3';
 
 $track_number = isset($_GET['cdek_number']) ? trim($_GET['cdek_number']) : '';
 
@@ -15,78 +11,86 @@ if (empty($track_number)) {
     exit;
 }
 
-// 1. Проверка кэшированного токена
-$token_cache_file = sys_get_temp_dir() . '/cdek_tracking_token.json';
-$access_token = null;
-
-if (file_exists($token_cache_file)) {
-    $cached = json_decode(file_get_contents($token_cache_file), true);
-    if (!empty($cached['token']) && !empty($cached['expires_at']) && $cached['expires_at'] > time()) {
-        $access_token = $cached['token'];
-    }
-}
-
-// 2. Получение OAuth токена от СДЭК
-if (!$access_token) {
-    $ch_token = curl_init();
-    curl_setopt_array($ch_token, [
-        CURLOPT_URL            => $auth_url,
+// Функция запроса OAuth токена
+function getCdekToken($baseUrl, $client_id, $client_secret) {
+    $ch = curl_init();
+    curl_setopt_array($ch, [
+        CURLOPT_URL            => $baseUrl . '/v2/oauth/token',
         CURLOPT_POST           => true,
         CURLOPT_POSTFIELDS     => http_build_query([
             'grant_type'    => 'client_credentials',
-            'client_id'     => $cdek_client_id,
-            'client_secret' => $cdek_client_secret
+            'client_id'     => $client_id,
+            'client_secret' => $client_secret
         ]),
-        CURLOPT_HTTPHEADER     => [
-            'Content-Type: application/x-www-form-urlencoded',
-            'Accept: application/json'
-        ],
-        CURLOPT_USERAGENT      => 'CDEK-Ecommerce-Client/1.0 (Linux; Ubuntu)',
+        CURLOPT_HTTPHEADER     => ['Content-Type: application/x-www-form-urlencoded', 'Accept: application/json'],
+        CURLOPT_USERAGENT      => 'CDEK-Ecommerce-Client/1.0',
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT        => 12,
-        CURLOPT_SSL_VERIFYPEER => false,
-        CURLOPT_SSL_VERIFYHOST => false
+        CURLOPT_TIMEOUT        => 10,
+        CURLOPT_SSL_VERIFYPEER => false
     ]);
+    $res = curl_exec($ch);
+    $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
 
-    $token_res = curl_exec($ch_token);
-    $token_http_code = curl_getinfo($ch_token, CURLINFO_HTTP_CODE);
-    $curl_err = curl_error($ch_token);
-    curl_close($ch_token);
+    $json = json_decode($res, true);
+    return ($code === 200 && !empty($json['access_token'])) ? $json['access_token'] : null;
+}
 
-    $token_data = json_decode($token_res, true);
+// 1. Пробуем боевой контур, если нет — тестовый
+$hosts = ['https://api.cdek.ru', 'https://api.edu.cdek.ru'];
+$active_host = null;
+$token = null;
 
-    if ($token_http_code === 200 && !empty($token_data['access_token'])) {
-        $access_token = $token_data['access_token'];
-        $expires_in = $token_data['expires_in'] ?? 3600;
-        file_put_contents($token_cache_file, json_encode([
-            'token' => $access_token,
-            'expires_at' => time() + $expires_in - 300
-        ]));
-    } else {
-        $detail = $token_data['error_description'] ?? ($token_data['message'] ?? $token_res);
-        if ($curl_err) $detail .= ' | cURL Error: ' . $curl_err;
-        echo json_encode([
-            'success' => false, 
-            'message' => "Ошибка авторизации СДЭК (HTTP $token_http_code): $detail"
-        ], JSON_UNESCAPED_UNICODE);
-        exit;
+foreach ($hosts as $host) {
+    $token = getCdekToken($host, $login, $password);
+    if ($token) {
+        $active_host = $host;
+        break;
     }
 }
 
-// 3. Запрос данных о посылке
+// 2. Если OAuth не подошел, пробуем прямой запрос через Tracing API (Basic Auth)
+if (!$token) {
+    $ch_direct = curl_init();
+    curl_setopt_array($ch_direct, [
+        CURLOPT_URL            => 'https://api.cdek.ru/v2/orders?cdek_number=' . urlencode($track_number),
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_USERPWD        => "$login:$password",
+        CURLOPT_HTTPHEADER     => ['Accept: application/json'],
+        CURLOPT_USERAGENT      => 'CDEK-Ecommerce-Client/1.0',
+        CURLOPT_TIMEOUT        => 10,
+        CURLOPT_SSL_VERIFYPEER => false
+    ]);
+    $direct_res = curl_exec($ch_direct);
+    $direct_code = curl_getinfo($ch_direct, CURLINFO_HTTP_CODE);
+    curl_close($ch_direct);
+
+    $direct_data = json_decode($direct_res, true);
+    if ($direct_code === 200 && !empty($direct_data['entity'])) {
+        renderOrder($direct_data['entity'], $track_number);
+        exit;
+    }
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'Не удалось авторизовать учетную запись в шлюзе СДЭК. Проверьте в инструкции тип авторизации (OAuth2 или Basic Auth).'
+    ], JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+// 3. Запрос заказа через полученный OAuth токен
 $ch_order = curl_init();
 curl_setopt_array($ch_order, [
-    CURLOPT_URL            => $api_url . '?cdek_number=' . urlencode($track_number),
+    CURLOPT_URL            => $active_host . '/v2/orders?cdek_number=' . urlencode($track_number),
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HTTPHEADER     => [
-        'Authorization: Bearer ' . $access_token,
+        'Authorization: Bearer ' . $token,
         'Content-Type: application/json',
         'Accept: application/json'
     ],
-    CURLOPT_USERAGENT      => 'CDEK-Ecommerce-Client/1.0 (Linux; Ubuntu)',
-    CURLOPT_TIMEOUT        => 12,
-    CURLOPT_SSL_VERIFYPEER => false,
-    CURLOPT_SSL_VERIFYHOST => false
+    CURLOPT_USERAGENT      => 'CDEK-Ecommerce-Client/1.0',
+    CURLOPT_TIMEOUT        => 10,
+    CURLOPT_SSL_VERIFYPEER => false
 ]);
 
 $order_res = curl_exec($ch_order);
@@ -95,18 +99,16 @@ curl_close($ch_order);
 
 $order_data = json_decode($order_res, true);
 
-// Если токен протух, сбрасываем кэш
-if ($http_code === 401) {
-    if (file_exists($token_cache_file)) @unlink($token_cache_file);
-    echo json_encode(['success' => false, 'message' => 'Сессия устарела. Попробуйте еще раз.'], JSON_UNESCAPED_UNICODE);
-    exit;
+if ($http_code === 200 && !empty($order_data['entity'])) {
+    renderOrder($order_data['entity'], $track_number);
+} else {
+    $msg = $order_data['requests'][0]['errors'][0]['message'] ?? 'Накладная не найдена. Проверьте номер отправления.';
+    echo json_encode(['success' => false, 'message' => $msg], JSON_UNESCAPED_UNICODE);
 }
 
-if ($http_code === 200 && !empty($order_data['entity'])) {
-    $entity = $order_data['entity'];
+function renderOrder($entity, $track_number) {
     $statuses = $entity['statuses'] ?? [];
-
-    $result = [
+    echo json_encode([
         'success'        => true,
         'cdek_number'    => $entity['cdek_number'] ?? $track_number,
         'city_from'      => $entity['from_location']['city'] ?? 'Город отправки',
@@ -123,9 +125,5 @@ if ($http_code === 200 && !empty($order_data['entity'])) {
                 'city' => $st['city'] ?? ''
             ];
         }, $statuses)
-    ];
-    echo json_encode($result, JSON_UNESCAPED_UNICODE);
-} else {
-    $msg = $order_data['requests'][0]['errors'][0]['message'] ?? 'Накладная не найдена. Проверьте правильность номера.';
-    echo json_encode(['success' => false, 'message' => $msg], JSON_UNESCAPED_UNICODE);
+    ], JSON_UNESCAPED_UNICODE);
 }
