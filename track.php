@@ -1,7 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
-// --- УЧЕТНЫЕ ДАННЫЕ СЕРВИСА TRACING 2.0 ---
 $user_login = 'apiuser-cdek-ecommerce';
 $raw_pass   = '60910f5286789ba520baad4a8137f6d3';
 
@@ -15,7 +14,7 @@ if (empty($track_number)) {
     exit;
 }
 
-// 1. Проверяем локальный кэш токена
+// 1. Проверка кэша токена
 $cache_file = sys_get_temp_dir() . '/cdek_simpleauth_token.json';
 $token = null;
 
@@ -26,25 +25,16 @@ if (file_exists($cache_file)) {
     }
 }
 
-// 2. Функция авторизации в SimpleAuth
 function authorizeCdek($auth_url, $user, $pass) {
-    // В спецификации Tracing 2.0 требуется md5-хэш пароля в hex-формате
     $hashed_pass = (strlen($pass) === 32 && ctype_xdigit($pass)) ? $pass : md5($pass);
-
-    $payload = json_encode([
-        'user'       => $user,
-        'hashedPass' => $hashed_pass
-    ], JSON_UNESCAPED_UNICODE);
+    $payload = json_encode(['user' => $user, 'hashedPass' => $hashed_pass], JSON_UNESCAPED_UNICODE);
 
     $ch = curl_init();
     curl_setopt_array($ch, [
         CURLOPT_URL            => $auth_url,
         CURLOPT_POST           => true,
         CURLOPT_POSTFIELDS     => $payload,
-        CURLOPT_HTTPHEADER     => [
-            'Content-Type: application/json',
-            'Accept: application/json'
-        ],
+        CURLOPT_HTTPHEADER     => ['Content-Type: application/json', 'Accept: application/json'],
         CURLOPT_USERAGENT      => 'CDEK-Ecommerce-Tracing/2.0',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_TIMEOUT        => 10,
@@ -57,55 +47,20 @@ function authorizeCdek($auth_url, $user, $pass) {
     curl_close($ch);
 
     $data = json_decode($res, true);
-
-    // Если 32-значный пароль уже был исходным и хэш от хэша не подошел, пробуем md5($pass)
-    if ($http_code !== 200 && $hashed_pass === $pass) {
-        $payload_retry = json_encode([
-            'user'       => $user,
-            'hashedPass' => md5($pass)
-        ], JSON_UNESCAPED_UNICODE);
-
-        $ch_retry = curl_init();
-        curl_setopt_array($ch_retry, [
-            CURLOPT_URL            => $auth_url,
-            CURLOPT_POST           => true,
-            CURLOPT_POSTFIELDS     => $payload_retry,
-            CURLOPT_HTTPHEADER     => ['Content-Type: application/json', 'Accept: application/json'],
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_TIMEOUT        => 10,
-            CURLOPT_SSL_VERIFYPEER => false
-        ]);
-        $res = curl_exec($ch_retry);
-        $http_code = curl_getinfo($ch_retry, CURLINFO_HTTP_CODE);
-        curl_close($ch_retry);
-        $data = json_decode($res, true);
-    }
-
-    if ($http_code === 200 && !empty($data['token'])) {
-        return $data['token'];
-    }
-
-    return null;
+    return ($http_code === 200 && !empty($data['token'])) ? $data['token'] : null;
 }
 
-// Получаем токен, если нет в кэше
 if (!$token) {
     $token = authorizeCdek($auth_url, $user_login, $raw_pass);
     if ($token) {
-        file_put_contents($cache_file, json_encode([
-            'token'      => $token,
-            'expires_at' => time() + 3300 // кэшируем на 55 минут
-        ]));
+        file_put_contents($cache_file, json_encode(['token' => $token, 'expires_at' => time() + 3300]));
     } else {
-        echo json_encode([
-            'success' => false, 
-            'message' => 'Не удалось получить токен авторизации SimpleAuth СДЭК'
-        ], JSON_UNESCAPED_UNICODE);
+        echo json_encode(['success' => false, 'message' => 'Ошибка авторизации в шлюзе СДЭК'], JSON_UNESCAPED_UNICODE);
         exit;
     }
 }
 
-// 3. Запрос данных отслеживания заказа в Tracing 2.0
+// 2. Запрос трекинга
 function fetchOrderTracing($tracing_url, $token, $track_number) {
     $ch = curl_init();
     curl_setopt_array($ch, [
@@ -134,7 +89,6 @@ function fetchOrderTracing($tracing_url, $token, $track_number) {
 
 list($http_code, $response) = fetchOrderTracing($tracing_url, $token, $track_number);
 
-// Если токен устарел (401/403), сбрасываем кэш и пробуем еще один раз
 if ($http_code === 401 || $http_code === 403) {
     if (file_exists($cache_file)) @unlink($cache_file);
     $token = authorizeCdek($auth_url, $user_login, $raw_pass);
@@ -144,88 +98,110 @@ if ($http_code === 401 || $http_code === 403) {
     }
 }
 
-// 4. Парсинг ответа Tracing 2.0
+// 3. Обработка данных
 if ($http_code === 200 && !empty($response['result'])) {
     $resData = $response['result'];
     $order   = $resData['order'] ?? [];
 
-    $city_from = $order['sender']['address']['city']['name'] ?? ($order['fromLocation']['city'] ?? 'Пункт отправки');
-    $city_to   = $order['recipient']['address']['city']['name'] ?? ($order['toLocation']['city'] ?? 'Пункт назначения');
+    $city_from = $order['sender']['address']['city']['name'] 
+              ?? $order['fromLocation']['city'] 
+              ?? 'Пункт отправления';
 
-    // Текущий статус
-    $status_groups = $resData['statusGroups'] ?? [];
-    $statuses      = $resData['statuses'] ?? [];
+    $city_to = $order['recipient']['address']['city']['name'] 
+            ?? $order['toLocation']['city'] 
+            ?? $resData['warehouse']['city'] 
+            ?? $resData['deliveryDetail']['deliveryPoint']['city']
+            ?? 'Пункт назначения';
 
-    $status_name = 'В обработке';
-    $status_code = '';
+    // Обработка групп статусов (этапов)
+    $status_groups_raw = $resData['statusGroups'] ?? [];
+    $active_status_name = 'Создан';
+    $active_status_code = 'CREATED';
+    $progress_percent = 25;
 
-    if (!empty($status_groups)) {
-        // Берем последний актуальный статус из групп
-        $last_group = end($status_groups);
-        $status_name = $last_group['name'] ?? $status_name;
-        $status_code = $last_group['code'] ?? '';
-    } elseif (!empty($statuses)) {
-        $first_st = reset($statuses);
-        $status_name = $first_st['name'] ?? $status_name;
-        $status_code = $first_st['code'] ?? '';
+    $groups_formatted = [];
+    foreach ($status_groups_raw as $g) {
+        $is_future = !empty($g['future']);
+        $dt = '';
+        if (!empty($g['timestamp'])) {
+            $dt = gmdate('d.m.Y', strtotime($g['timestamp']) + 3 * 3600);
+        }
+
+        if (!$is_future) {
+            $active_status_name = $g['name'] ?? $active_status_name;
+            $active_status_code = $g['code'] ?? $active_status_code;
+        }
+
+        $groups_formatted[] = [
+            'code'      => $g['code'] ?? '',
+            'name'      => $g['name'] ?? '',
+            'future'    => $is_future,
+            'date'      => $dt,
+            'comment'   => $g['comment'] ?? ''
+        ];
     }
 
-    // Формируем историю перемещений
-    $history = [];
-    if (!empty($statuses)) {
-        foreach ($statuses as $st) {
+    if ($active_status_code === 'CREATED') $progress_percent = 15;
+    elseif ($active_status_code === 'IN_PROGRESS' || $active_status_code === 'COURIER_IN_PROGRESS') $progress_percent = 55;
+    elseif ($active_status_code === 'READY_FOR_PICK_UP') $progress_percent = 85;
+    elseif ($active_status_code === 'DELIVERED') $progress_percent = 100;
+
+    // Детальная история
+    $sub_statuses = [];
+    if (!empty($resData['statuses'])) {
+        foreach ($resData['statuses'] as $st) {
             $dt = '';
-            if (!empty($st['dateTime']) || !empty($st['timestamp']) || !empty($st['date'])) {
-                $raw_date = $st['dateTime'] ?? ($st['timestamp'] ?? $st['date']);
-                $timestamp = strtotime($raw_date);
-                if ($timestamp) {
-                    // Конвертируем UTC в МСК (+3 часа)
-                    $dt = gmdate('d.m.Y H:i', $timestamp + 3 * 3600);
-                }
+            if (!empty($st['dateTime']) || !empty($st['timestamp'])) {
+                $raw = $st['dateTime'] ?? $st['timestamp'];
+                $dt = gmdate('d.m.Y H:i', strtotime($raw) + 3 * 3600);
             }
-
-            $city_name = $st['currentCity']['name'] ?? ($st['city'] ?? '');
-
-            $history[] = [
-                'name' => $st['name'] ?? ($st['title'] ?? 'Статус обновлен'),
+            $sub_statuses[] = [
+                'name' => $st['name'] ?? ($st['title'] ?? 'Обновление статуса'),
                 'date' => $dt,
-                'city' => $city_name
+                'city' => $st['currentCity']['name'] ?? ($st['city'] ?? '')
             ];
         }
     }
 
-    // Форматируем дату планируемой доставки
+    // Даты доставки
     $delivery_date = null;
     if (!empty($resData['deliveryDetail']['deliveryDate'])) {
-        $delivery_date = date('d.m.Y', strtotime($resData['deliveryDetail']['deliveryDate']));
+        $delivery_date = gmdate('d августа', strtotime($resData['deliveryDetail']['deliveryDate']) + 3 * 3600);
+    }
+    $initial_date = null;
+    if (!empty($resData['deliveryDetail']['initialDeliveryDate'])) {
+        $initial_date = gmdate('d.m.Y', strtotime($resData['deliveryDetail']['initialDeliveryDate']) + 3 * 3600);
     }
 
-    $recipient_name = 'Клиент';
-    if (!empty($order['recipient']['name'])) {
-        $recipient_name = mb_substr($order['recipient']['name'], 0, 1) . '.***';
+    // Получатель и адрес ПВЗ
+    $recipient = $order['recipient']['name'] ?? ($resData['deliveryDetail']['recipientName'] ?? 'Получатель');
+    $parts = explode(' ', trim($recipient));
+    if (count($parts) >= 2) {
+        $recipient = $parts[0] . ' ' . mb_substr($parts[1], 0, 1) . '.' . (isset($parts[2]) ? mb_substr($parts[2], 0, 1) . '.' : '');
     }
 
-    $point = $resData['warehouse']['address'] ?? ($order['recipient']['address']['line'] ?? '');
+    $pvz_address = $resData['warehouse']['address'] 
+                ?? $resData['deliveryDetail']['deliveryPoint']['address'] 
+                ?? $order['recipient']['address']['line'] 
+                ?? ($order['recipient']['address']['formatted'] ?? 'Уточняется');
 
     echo json_encode([
-        'success'        => true,
-        'cdek_number'    => $order['number'] ?? $track_number,
-        'city_from'      => $city_from,
-        'city_to'        => $city_to,
-        'status_name'    => $status_name,
-        'status_code'    => $status_code,
-        'delivery_date'  => $delivery_date,
-        'recipient_name' => $recipient_name,
-        'delivery_point' => $point,
-        'history'        => $history
+        'success'            => true,
+        'cdek_number'        => $order['number'] ?? $track_number,
+        'city_from'          => $city_from,
+        'city_to'            => $city_to,
+        'status_name'        => $active_status_name,
+        'status_code'        => $active_status_code,
+        'progress_percent'   => $progress_percent,
+        'groups'             => $groups_formatted,
+        'sub_statuses'       => $sub_statuses,
+        'delivery_date'      => $delivery_date,
+        'initial_date'       => $initial_date,
+        'recipient_name'     => $recipient,
+        'pvz_address'        => $pvz_address
     ], JSON_UNESCAPED_UNICODE);
 
 } else {
-    $msg = 'Накладная с таким номером не найдена. Проверьте правильность ввода.';
-    if (!empty($response['errors'][0]['message'])) {
-        $msg = $response['errors'][0]['message'];
-    } elseif (!empty($response['message'])) {
-        $msg = $response['message'];
-    }
+    $msg = $response['errors'][0]['message'] ?? ($response['message'] ?? 'Накладная не найдена. Проверьте правильность номера.');
     echo json_encode(['success' => false, 'message' => $msg], JSON_UNESCAPED_UNICODE);
 }
