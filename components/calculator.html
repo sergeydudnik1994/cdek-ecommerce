@@ -22,7 +22,7 @@
         <!-- Левая колонка: Параметры -->
         <div class="lg:col-span-7 space-y-6">
           
-          <!-- Направление -->
+          <!-- Направление с автокомплитом -->
           <div class="space-y-3">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 relative">
               
@@ -37,13 +37,13 @@
                     value="Москва" 
                     autocomplete="off"
                     placeholder="Город отправки" 
-                    oninput="runDynamicCalc()"
                     class="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-8 pr-12 sm:pr-3.5 py-3 text-sm font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none transition shadow-2xs"
                   />
                 </div>
+                <ul id="suggest-from" class="absolute z-50 w-full bg-white border border-slate-200 rounded-2xl mt-1.5 hidden max-h-52 overflow-y-auto shadow-2xl text-xs font-semibold py-1"></ul>
               </div>
 
-              <!-- Кнопка реверса (Справа на мобилках, по центру на ПК) -->
+              <!-- Кнопка реверса (Справа на смартфонах, по центру на ПК) -->
               <button 
                 type="button" 
                 onclick="swapCalcCities()" 
@@ -67,10 +67,10 @@
                     value="Санкт-Петербург" 
                     autocomplete="off"
                     placeholder="Город получения" 
-                    oninput="runDynamicCalc()"
                     class="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-8 pr-12 sm:pr-3.5 py-3 text-sm font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none transition shadow-2xs"
                   />
                 </div>
+                <ul id="suggest-to" class="absolute z-50 w-full bg-white border border-slate-200 rounded-2xl mt-1.5 hidden max-h-52 overflow-y-auto shadow-2xl text-xs font-semibold py-1"></ul>
               </div>
 
             </div>
@@ -81,7 +81,7 @@
               <button type="button" onclick="setQuickRoute('Москва', 'Санкт-Петербург')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → СПб</button>
               <button type="button" onclick="setQuickRoute('Москва', 'Краснодар')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → Краснодар</button>
               <button type="button" onclick="setQuickRoute('Москва', 'Новосибирск')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → Новосибирск</button>
-              <button type="button" onclick="setQuickRoute('Москва', 'Екатеринбург')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → Екатеринбург</button>
+              <button type="button" onclick="setQuickRoute('Москва', 'Владивосток')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → Владивосток</button>
             </div>
           </div>
 
@@ -252,45 +252,78 @@
 <script>
   let currentCalcMode = 'pvz';
   let currentCalcWeight = 1;
+  let debounceTimer = null;
 
-  const tariffMatrix = {
-    'москва-санкт-петербург': {
-      pvz:  { base: 262.5, base_w: 1, step1: 36.75, w1_limit: 3, step2: 42.0, days: '1–2 раб. дня' },
-      door: { base: 525.0, base_w: 1, step1: 42.00, w1_limit: 3, step2: 47.25, days: '1–2 раб. дня' }
-    },
-    'санкт-петербург-москва': {
-      pvz:  { base: 262.5, base_w: 1, step1: 36.75, w1_limit: 3, step2: 42.0, days: '1–2 раб. дня' },
-      door: { base: 525.0, base_w: 1, step1: 42.00, w1_limit: 3, step2: 47.25, days: '1–2 раб. дня' }
-    },
-    'москва-краснодар': {
-      pvz:  { base: 325.5, base_w: 1, step1: 52.50, w1_limit: 3, step2: 63.0, days: '2–3 раб. дня' },
-      door: { base: 588.0, base_w: 1, step1: 57.75, w1_limit: 3, step2: 68.25, days: '2–3 раб. дня' }
-    },
-    'краснодар-москва': {
-      pvz:  { base: 325.5, base_w: 1, step1: 52.50, w1_limit: 3, step2: 63.0, days: '2–3 раб. дня' },
-      door: { base: 588.0, base_w: 1, step1: 57.75, w1_limit: 3, step2: 68.25, days: '2–3 раб. дня' }
-    },
-    'москва-москва': {
-      pvz:  { base: 204.75, base_w: 2, step1: 31.50, w1_limit: 2, step2: 31.50, days: '1 раб. день' },
-      door: { base: 404.25, base_w: 2, step1: 36.75, w1_limit: 2, step2: 36.75, days: '1 раб. день' }
-    },
-    'краснодар-краснодар': {
-      pvz:  { base: 195.0, base_w: 2, step1: 30.00, w1_limit: 2, step2: 30.00, days: '1 раб. день' },
-      door: { base: 385.0, base_w: 2, step1: 35.00, w1_limit: 2, step2: 35.00, days: '1 раб. день' }
-    },
-    'санкт-петербург-санкт-петербург': {
-      pvz:  { base: 204.75, base_w: 2, step1: 31.50, w1_limit: 2, step2: 31.50, days: '1 раб. день' },
-      door: { base: 404.25, base_w: 2, step1: 36.75, w1_limit: 2, step2: 36.75, days: '1 раб. день' }
-    },
-    'москва-новосибирск': {
-      pvz:  { base: 460.0, base_w: 1, step1: 75.00, w1_limit: 3, step2: 85.0, days: '3–4 раб. дня' },
-      door: { base: 740.0, base_w: 1, step1: 85.00, w1_limit: 3, step2: 95.0, days: '3–4 раб. дня' }
-    },
-    'москва-екатеринбург': {
-      pvz:  { base: 360.0, base_w: 1, step1: 58.00, w1_limit: 3, step2: 65.0, days: '2–3 раб. дня' },
-      door: { base: 620.0, base_w: 1, step1: 65.00, w1_limit: 3, step2: 75.0, days: '2–3 раб. дня' }
-    }
-  };
+  // Базовый список 150+ ключевых городов РФ для моментального автокомплита
+  let russianCities = [
+    "Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Казань", "Нижний Новгород", 
+    "Челябинск", "Красноярск", "Самара", "Уфа", "Ростов-на-Дону", "Омск", "Краснодар", 
+    "Воронеж", "Пермь", "Волгоград", "Саратов", "Тюмень", "Тольятти", "Барнаул", "Ижевск", 
+    "Махачкала", "Хабаровск", "Ульяновск", "Иркутск", "Владивосток", "Ярославль", "Севастополь", 
+    "Ставрополь", "Томск", "Кемерово", "Набережные Челны", "Оренбург", "Новокузнецк", "Балашиха", 
+    "Рязань", "Чебоксары", "Пенза", "Липецк", "Калининград", "Астрахань", "Тула", "Киров", 
+    "Сочи", "Курск", "Улан-Удэ", "Тверь", "Магнитогорск", "Сургут", "Брянск", "Иваново", 
+    "Якутск", "Владимир", "Симферополь", "Белгород", "Калуга", "Чита", "Грозный", "Волжский", 
+    "Смоленск", "Подольск", "Саранск", "Вологда", "Курган", "Череповец", "Орёл", "Архангельск", 
+    "Владикавказ", "Нижневартовск", "Йошкар-Ола", "Кострома", "Новороссийск", "Стерлитамак", 
+    "Химки", "Мытищи", "Таганрог", "Сыктывкар", "Комсомольск-на-Амуре", "Нижнекамск", "Нальчик", 
+    "Шахты", "Дзержинск", "Энгельс", "Орск", "Братск", "Ангарск", "Королёв", "Благовещенск", 
+    "Старый Оскол", "Великий Новгород", "Люберцы", "Псков", "Бийск", "Прокопьевск", "Абакан", 
+    "Армавир", "Балаково", "Южно-Сахалинск", "Рыбинск", "Северодвинск", "Петропавловск-Камчатский", 
+    "Красногорск", "Норильск", "Уссурийск", "Волгодонск", "Сызрань", "Каменск-Уральский", 
+    "Златоуст", "Альметьевск", "Электросталь", "Керчь", "Миасс", "Салават", "Хасавюрт", 
+    "Пятигорск", "Копейск", "Находка", "Рубцовск", "Майкоп", "Коломна", "Березники", "Домодедово", 
+    "Ковров", "Одинцово", "Нефтекамск", "Кисловодск", "Батайск", "Нефтеюганск", "Новочебоксарск", 
+    "Серпухов", "Щёлково", "Дербент", "Каспийск", "Черкесск", "Новомосковск", "Первоуральск", 
+    "Назрань", "Раменское", "Димитровград", "Орехово-Зуево", "Невинномысск", "Новый Уренгой", 
+    "Муром", "Октябрьский", "Видное", "Северск", "Ессентуки", "Долгопрудный", "Артём", "Жуковский"
+  ];
+
+  // Фоновая подгрузка полной базы городов России (1 100+ населенных пунктов)
+  fetch('https://raw.githubusercontent.com/pensnarik/russian-cities/master/russian-cities.json')
+    .then(res => res.json())
+    .then(data => {
+      if (Array.isArray(data)) {
+        const fullList = data.map(item => item.name);
+        russianCities = [...new Set([...russianCities, ...fullList])];
+      }
+    })
+    .catch(() => {});
+
+  // Настройка автокомплита городов
+  function setupCityAutocomplete(inputId, listId) {
+    const input = document.getElementById(inputId);
+    const list = document.getElementById(listId);
+
+    input.addEventListener('input', function() {
+      const val = this.value.trim().toLowerCase();
+      list.innerHTML = '';
+      if (!val) { list.classList.add('hidden'); runDynamicCalc(); return; }
+
+      const matches = russianCities.filter(c => c.toLowerCase().includes(val)).slice(0, 10);
+      if (matches.length === 0) { list.classList.add('hidden'); runDynamicCalc(); return; }
+
+      matches.forEach(city => {
+        const li = document.createElement('li');
+        li.className = 'px-4 py-2 cursor-pointer hover:bg-emerald-50 hover:text-[#1AB248] text-slate-800 border-b border-slate-100 last:border-0 transition';
+        const regex = new RegExp(`(${val})`, 'gi');
+        li.innerHTML = city.replace(regex, '<span class="text-[#1AB248] font-bold">$1</span>');
+        
+        li.addEventListener('click', () => {
+          input.value = city;
+          list.classList.add('hidden');
+          runDynamicCalc();
+        });
+        list.appendChild(li);
+      });
+      list.classList.remove('hidden');
+      runDynamicCalc();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (e.target !== input && e.target !== list) list.classList.add('hidden');
+    });
+  }
 
   function setQuickRoute(from, to) {
     document.getElementById('calc-city-from').value = from;
@@ -358,6 +391,7 @@
     });
   }
 
+  // Расчет: сначала запрос к cdek-service.php, при задержке — моментальный расчет по поясам СДЭК
   function runDynamicCalc() {
     const from = (document.getElementById('calc-city-from').value || '').trim() || 'Москва';
     const to = (document.getElementById('calc-city-to').value || '').trim() || 'Санкт-Петербург';
@@ -366,44 +400,74 @@
 
     document.getElementById('res-route').innerText = `${from} → ${to}`;
 
-    const key = `${from.toLowerCase()}-${to.toLowerCase()}`;
-    let cfg;
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(async () => {
+      try {
+        const resp = await fetch('/cdek-service.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ cityFrom: from, cityTo: to, weight: weight, mode: mode })
+        });
+        const data = await resp.json();
+        if (data.success && data.result) {
+          renderCalcResult(data.result.price, data.result.retailPrice, `${data.result.deliveryPeriodMin}–${data.result.deliveryPeriodMax} раб. дня`);
+          return;
+        }
+      } catch (e) {}
 
-    if (tariffMatrix[key]) {
-      cfg = tariffMatrix[key][mode];
-    } else {
-      const isLocal = from.toLowerCase() === to.toLowerCase();
-      if (isLocal) {
-        cfg = (mode === 'pvz') 
-          ? { base: 205.0, base_w: 2, step1: 31.5, w1_limit: 2, step2: 31.5, days: '1 раб. день' }
-          : { base: 405.0, base_w: 2, step1: 36.75, w1_limit: 2, step2: 36.75, days: '1 раб. день' };
-      } else {
-        cfg = (mode === 'pvz')
-          ? { base: 340.0, base_w: 1, step1: 55.0, w1_limit: 3, step2: 65.0, days: '2–4 раб. дня' }
-          : { base: 610.0, base_w: 1, step1: 60.0, w1_limit: 3, step2: 70.0, days: '2–4 раб. дня' };
-      }
+      // Зональный расчет для любых городов РФ
+      fallbackZoneCalc(from, to, weight, mode);
+    }, 150);
+  }
+
+  function fallbackZoneCalc(from, to, weight, mode) {
+    const f = from.toLowerCase();
+    const t = to.toLowerCase();
+    const isLocal = (f === t);
+
+    // Определение тарифного пояса (1–6)
+    let basePrice = isLocal ? 205 : 320;
+    let stepPrice = isLocal ? 31.5 : 50;
+    let days = isLocal ? '1 раб. день' : '2–3 раб. дня';
+
+    const farEast = ["владивосток", "хабаровск", "якутск", "петропавловск-камчатский", "южно-сахалинск", "магадан", "чита", "благовещенск"];
+    const siberia = ["новосибирск", "красноярск", "омск", "томск", "иркутск", "барнаул", "кемерово", "новокузнецк"];
+    const ural = ["екатеринбург", "челябинск", "тюмень", "пермь", "уфа", "курган", "магнитогорск", "сургут"];
+
+    if (farEast.some(c => f.includes(c) || t.includes(c))) {
+      basePrice = 580; stepPrice = 95; days = '4–7 раб. дней';
+    } else if (siberia.some(c => f.includes(c) || t.includes(c))) {
+      basePrice = 450; stepPrice = 75; days = '3–5 раб. дней';
+    } else if (ural.some(c => f.includes(c) || t.includes(c))) {
+      basePrice = 360; stepPrice = 58; days = '2–4 раб. дня';
     }
 
-    let b2bPrice = 0;
-    if (weight <= cfg.base_w) {
-      b2bPrice = cfg.base;
-    } else if (weight <= cfg.w1_limit) {
-      b2bPrice = cfg.base + (weight - cfg.base_w) * cfg.step1;
-    } else {
-      b2bPrice = cfg.base + (cfg.w1_limit - cfg.base_w) * cfg.step1 + (weight - cfg.w1_limit) * cfg.step2;
+    if (mode === 'door') {
+      basePrice += 260;
+      stepPrice += 10;
     }
 
+    let b2bPrice = (weight <= 1) ? basePrice : (basePrice + (weight - 1) * stepPrice);
     const finalB2B = Math.round(b2bPrice);
     const finalRetail = Math.round(b2bPrice * 1.55);
-    const saved = finalRetail - finalB2B;
-    const discount = Math.round((saved / finalRetail) * 100);
 
-    document.getElementById('res-price').innerText = `${finalB2B} ₽`;
-    document.getElementById('res-retail').innerText = `${finalRetail} ₽`;
-    document.getElementById('res-days').innerText = cfg.days;
+    renderCalcResult(finalB2B, finalRetail, days);
+  }
+
+  function renderCalcResult(b2b, retail, days) {
+    const saved = retail - b2b;
+    const discount = Math.round((saved / retail) * 100);
+
+    document.getElementById('res-price').innerText = `${b2b} ₽`;
+    document.getElementById('res-retail').innerText = `${retail} ₽`;
+    document.getElementById('res-days').innerText = days;
     document.getElementById('res-discount').innerText = `−${discount}%`;
     document.getElementById('res-saved').innerText = `Экономия ${saved} ₽`;
   }
 
-  document.addEventListener('DOMContentLoaded', runDynamicCalc);
+  document.addEventListener('DOMContentLoaded', () => {
+    setupCityAutocomplete('calc-city-from', 'suggest-from');
+    setupCityAutocomplete('calc-city-to', 'suggest-to');
+    runDynamicCalc();
+  });
 </script>
