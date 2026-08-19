@@ -1,19 +1,13 @@
 <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-[0_2px_10px_rgba(0,0,0,0.04)]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
     
-    <!-- Логотип и дескриптор направления -->
+    <!-- Единый официальный логотип и дескриптор -->
     <a href="/" class="flex items-center gap-3.5 group">
-      <!-- Векторный логотип СДЭК с фирменным знаком -->
-      <div class="flex items-center gap-2">
-        <svg class="w-8 h-8 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M13.2112 18.2121H9.4624C3.61421 18.2121 7.86291 5.81289 12.7864 5.81289H18.7096C19.6592 5.81289 21.3337 5.98756 22.1585 3.64242L23.4331 0H15.3106C10.912 0 7.488 1.54678 5.01378 4.14138C0.740098 8.58211 -0.709452 15.5177 0.315234 18.8358C1.28993 21.9044 3.93912 23.9252 8.08781 23.9751L11.3118 24H15.2856L16.2603 21.0811C16.9851 19.0104 15.3606 18.2121 13.2112 18.2121Z" fill="#1AB248"/>
-        </svg>
-        <span class="text-2xl sm:text-[26px] font-black tracking-tighter text-[#1AB248] uppercase italic">
-          CDEK
-        </span>
-      </div>
-
-      <!-- Дескриптор только на русском языке -->
+      <img 
+        src="https://www.cdek.ru/storage/source/logo/1/U1ck-s9wX-Um8xJ0F3EU5SPwz5kf8Utu.svg" 
+        alt="СДЭК" 
+        class="h-8 sm:h-9 w-auto" 
+      />
       <span class="hidden md:inline-block pl-3.5 border-l border-slate-300 text-[11px] font-bold uppercase tracking-wider text-slate-500 leading-tight">
         Интернет-магазинам<br>и селлерам
       </span>
@@ -24,12 +18,18 @@
       <a href="/#benefits" class="hover:text-[#1AB248] transition-colors">Преимущества</a>
       <a href="/#integrations" class="hover:text-[#1AB248] transition-colors">Интеграции и CMS</a>
       <a href="/#steps" class="hover:text-[#1AB248] transition-colors">Подключение</a>
-      <a href="/tracking/" class="flex items-center gap-1.5 text-slate-700 hover:text-[#1AB248] transition-colors">
+      
+      <!-- Интерактивная кнопка трекинга -->
+      <button 
+        type="button" 
+        onclick="openTrackingModal()" 
+        class="flex items-center gap-1.5 text-slate-700 hover:text-[#1AB248] transition-colors font-semibold cursor-pointer"
+      >
         <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
         Отследить заказ
-      </a>
+      </button>
     </nav>
 
     <!-- Кнопка действия -->
@@ -41,3 +41,84 @@
 
   </div>
 </header>
+
+<!-- Модальное окно отслеживания заказа -->
+<div id="trackingModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm">
+  <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl relative border border-slate-100">
+    
+    <!-- Кнопка закрытия -->
+    <button 
+      type="button" 
+      onclick="closeTrackingModal()" 
+      class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-1.5 rounded-full hover:bg-slate-100 transition cursor-pointer"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <div class="text-center mb-6">
+      <div class="w-12 h-12 rounded-2xl bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center mx-auto mb-3">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-black text-slate-900 tracking-tight">Отследить посылку</h3>
+      <p class="text-xs text-slate-500 mt-1">Введите номер накладной или заказа СДЭК</p>
+    </div>
+
+    <form onsubmit="handleTrackSubmit(event)" class="space-y-3.5">
+      <div>
+        <input 
+          type="text" 
+          id="trackNumberInput" 
+          required 
+          placeholder="Например: 1234567890" 
+          class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none text-sm text-slate-900 placeholder:text-slate-400 transition"
+        />
+      </div>
+      <button 
+        type="submit" 
+        class="w-full py-3.5 px-6 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-xs uppercase tracking-wider rounded-xl transition shadow-md shadow-[#1AB248]/20 cursor-pointer active:scale-95"
+      >
+        Найти отправление
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function openTrackingModal() {
+    const modal = document.getElementById('trackingModal');
+    if (modal) {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      setTimeout(() => document.getElementById('trackNumberInput')?.focus(), 50);
+    }
+  }
+
+  function closeTrackingModal() {
+    const modal = document.getElementById('trackingModal');
+    if (modal) {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+  }
+
+  function handleTrackSubmit(e) {
+    e.preventDefault();
+    const trackVal = document.getElementById('trackNumberInput')?.value.trim();
+    if (trackVal) {
+      window.open(`https://www.cdek.ru/ru/tracking?order_id=${encodeURIComponent(trackVal)}`, '_blank');
+      closeTrackingModal();
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeTrackingModal();
+  });
+
+  document.getElementById('trackingModal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'trackingModal') closeTrackingModal();
+  });
+</script>
