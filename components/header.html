@@ -1,36 +1,43 @@
-<div class="bg-[#041C20] text-slate-300 text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-[#0A3942]">
-  <div class="max-w-7xl mx-auto flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <span class="flex items-center gap-1.5 font-semibold text-white">
-        <span class="w-2 h-2 rounded-full bg-[#00D856]"></span>
-        Официальный сервис подключения СДЭК
-      </span>
-      <span class="text-slate-600 hidden sm:inline">|</span>
-      <span class="text-slate-400 hidden sm:inline">Тарифы для юрлиц, ИП, самозанятых и селлеров</span>
-    </div>
-    <div class="text-slate-400 text-[11px]">Оформление онлайн за 1 день</div>
-  </div>
-</div>
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-[0_2px_10px_rgba(0,0,0,0.04)]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
+    
+    <!-- Логотип и дескриптор направления -->
+    <a href="/" class="flex items-center gap-3.5 group">
+      <!-- Векторный логотип СДЭК с фирменным знаком -->
+      <div class="flex items-center gap-2">
+        <svg class="w-8 h-8 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M13.2112 18.2121H9.4624C3.61421 18.2121 7.86291 5.81289 12.7864 5.81289H18.7096C19.6592 5.81289 21.3337 5.98756 22.1585 3.64242L23.4331 0H15.3106C10.912 0 7.488 1.54678 5.01378 4.14138C0.740098 8.58211 -0.709452 15.5177 0.315234 18.8358C1.28993 21.9044 3.93912 23.9252 8.08781 23.9751L11.3118 24H15.2856L16.2603 21.0811C16.9851 19.0104 15.3606 18.2121 13.2112 18.2121Z" fill="#1AB248"/>
+        </svg>
+        <span class="text-2xl sm:text-[26px] font-black tracking-tighter text-[#1AB248] uppercase italic">
+          CDEK
+        </span>
+      </div>
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100 shadow-sm">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-3">
-      <svg class="h-8 sm:h-9 w-auto" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="0" y="31" fill="#00D856" font-family="Inter, system-ui, sans-serif" font-weight="900" font-style="italic" font-size="34" letter-spacing="-0.06em">CDEK</text>
-      </svg>
-      <span class="hidden md:inline-block pl-3 border-l border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-500">
-        E-Commerce & Селлеры
+      <!-- Дескриптор только на русском языке -->
+      <span class="hidden md:inline-block pl-3.5 border-l border-slate-300 text-[11px] font-bold uppercase tracking-wider text-slate-500 leading-tight">
+        Интернет-магазинам<br>и селлерам
       </span>
     </a>
 
-    <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
-      <a href="/#benefits" class="hover:text-[#00D856] transition">Преимущества</a>
-      <a href="/#integrations" class="hover:text-[#00D856] transition">Интеграции & CMS</a>
-      <a href="/#steps" class="hover:text-[#00D856] transition">Подключение</a>
+    <!-- Навигация -->
+    <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-700">
+      <a href="/#benefits" class="hover:text-[#1AB248] transition-colors">Преимущества</a>
+      <a href="/#integrations" class="hover:text-[#1AB248] transition-colors">Интеграции и CMS</a>
+      <a href="/#steps" class="hover:text-[#1AB248] transition-colors">Подключение</a>
+      <a href="/tracking/" class="flex items-center gap-1.5 text-slate-700 hover:text-[#1AB248] transition-colors">
+        <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        Отследить заказ
+      </a>
     </nav>
 
-    <a href="#lead-form" class="bg-[#00D856] hover:bg-[#00BF4C] text-[#062A30] font-extrabold px-5 py-2.5 rounded-xl transition duration-200 shadow-sm text-sm">
-      Заключить договор
-    </a>
+    <!-- Кнопка действия -->
+    <div class="flex items-center gap-3">
+      <a href="#lead-form" class="inline-flex items-center justify-center bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-xl transition-all shadow-md shadow-[#1AB248]/20 cursor-pointer active:scale-95">
+        Заключить договор
+      </a>
+    </div>
+
   </div>
 </header>
