@@ -152,8 +152,14 @@ def build_all():
     with open(data_path, "r", encoding="utf-8") as f:
         pages = json.load(f)
 
-    # Список страниц, включающий калькулятор и трекинг
-    all_urls = [f"{DOMAIN}/", f"{DOMAIN}/tracking/", f"{DOMAIN}/calculator/"]
+    # Базовые посадочные страницы сайта
+    all_urls = [
+        f"{DOMAIN}/", 
+        f"{DOMAIN}/tracking/", 
+        f"{DOMAIN}/calculator/",
+        f"{DOMAIN}/integrations/dbs/",
+        f"{DOMAIN}/policy/"
+    ]
 
     for p in pages:
         dir_path = os.path.join(ROOT_DIR, p["slug"])
@@ -170,7 +176,15 @@ def build_all():
     sitemap_path = os.path.join(ROOT_DIR, "sitemap.xml")
     sitemap_content = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for url in all_urls:
-        priority = "1.0" if url == f"{DOMAIN}/" else ("0.9" if "tracking" in url or "calculator" in url else "0.8")
+        if url == f"{DOMAIN}/":
+            priority = "1.0"
+        elif any(k in url for k in ["tracking", "calculator", "integrations/dbs"]):
+            priority = "0.9"
+        elif "policy" in url:
+            priority = "0.3"
+        else:
+            priority = "0.8"
+
         sitemap_content.append(f"""  <url>
     <loc>{url}</loc>
     <lastmod>{TODAY}</lastmod>
