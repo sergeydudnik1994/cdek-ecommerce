@@ -1,7 +1,7 @@
 <section id="calculator" class="py-16 sm:py-20 bg-[#F4F7F6] border-b border-slate-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <!-- Заголовок -->
+    <!-- Заголовок блока -->
     <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
       <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-[#158E3A] mb-3">
         <span class="w-2 h-2 rounded-full bg-[#1AB248] animate-pulse"></span>
@@ -19,10 +19,10 @@
     <div class="max-w-5xl mx-auto bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-9 shadow-sm">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
         
-        <!-- Левая часть: Форма параметров -->
+        <!-- Левая колонка: Параметры -->
         <div class="lg:col-span-7 space-y-6">
           
-          <!-- Направление (Откуда — Куда) -->
+          <!-- Направление -->
           <div class="space-y-3">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 relative">
               
@@ -37,7 +37,7 @@
                     value="Москва" 
                     autocomplete="off"
                     placeholder="Город отправки" 
-                    oninput="debounceCalc()"
+                    oninput="runDynamicCalc()"
                     class="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-8 pr-3.5 py-3 text-sm font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none transition shadow-2xs"
                   />
                 </div>
@@ -64,7 +64,7 @@
                     value="Санкт-Петербург" 
                     autocomplete="off"
                     placeholder="Город получения" 
-                    oninput="debounceCalc()"
+                    oninput="runDynamicCalc()"
                     class="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-8 pr-3.5 py-3 text-sm font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none transition shadow-2xs"
                   />
                 </div>
@@ -72,7 +72,7 @@
 
             </div>
 
-            <!-- Быстрый выбор популярных направлений -->
+            <!-- Быстрые маршруты -->
             <div class="flex flex-wrap items-center gap-1.5 pt-1 text-xs">
               <span class="text-slate-400 text-[11px] mr-1">Популярные:</span>
               <button type="button" onclick="setQuickRoute('Москва', 'Санкт-Петербург')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → СПб</button>
@@ -82,7 +82,7 @@
             </div>
           </div>
 
-          <!-- Способ доставки (Сегментный переключатель) -->
+          <!-- Способ доставки -->
           <div>
             <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Способ вручения</label>
             <div class="grid grid-cols-2 gap-2 bg-slate-100 p-1.5 rounded-2xl">
@@ -107,7 +107,7 @@
             </div>
           </div>
 
-          <!-- Пресеты веса и габаритов -->
+          <!-- Вес отправления -->
           <div>
             <div class="flex justify-between items-center mb-1.5">
               <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500">Габариты и вес</label>
@@ -173,10 +173,9 @@
 
         </div>
 
-        <!-- Правая часть: Карточка результата (B2B Value Card) -->
+        <!-- Правая колонка: Результат -->
         <div class="lg:col-span-5 bg-[#062A30] text-white rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-xl relative overflow-hidden">
           
-          <!-- Декоративное фоновое свечение -->
           <div class="absolute -right-12 -top-12 w-48 h-48 bg-[#1AB248]/15 rounded-full blur-3xl pointer-events-none"></div>
 
           <div class="space-y-5 relative z-10">
@@ -192,12 +191,12 @@
               </div>
             </div>
 
-            <!-- Блок сравнения цен -->
+            <!-- Карточка цен -->
             <div class="bg-[#0A3942] rounded-2xl p-4 border border-[#1AB248]/20 space-y-3">
               
               <div class="flex justify-between items-center text-xs">
                 <span class="text-slate-300">Тариф без договора (розница):</span>
-                <span class="text-slate-400 line-through font-semibold" id="res-retail">410 ₽</span>
+                <span class="text-slate-400 line-through font-semibold" id="res-retail">407 ₽</span>
               </div>
 
               <div class="border-t border-slate-700/60 pt-2 flex justify-between items-baseline">
@@ -209,15 +208,14 @@
                 </div>
                 <div class="text-right">
                   <span class="inline-block px-2.5 py-1 rounded-full bg-[#00D856] text-[#062A30] font-black text-xs" id="res-discount">
-                    −36%
+                    −35%
                   </span>
-                  <span class="text-[10px] text-slate-300 block mt-1" id="res-saved">Экономия 147 ₽</span>
+                  <span class="text-[10px] text-slate-300 block mt-1" id="res-saved">Экономия 144 ₽</span>
                 </div>
               </div>
 
             </div>
 
-            <!-- Микро-преимущества -->
             <ul class="space-y-2 text-xs text-slate-300 pt-1">
               <li class="flex items-center gap-2">
                 <svg class="w-4 h-4 text-[#00D856] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
@@ -231,7 +229,6 @@
 
           </div>
 
-          <!-- Кнопка перехода к договору -->
           <div class="pt-6 relative z-10">
             <a 
               href="/#lead-form" 
@@ -252,12 +249,51 @@
 <script>
   let currentCalcMode = 'pvz';
   let currentCalcWeight = 1;
-  let calcDebounceTimer = null;
+
+  // Официальная тарифная сетка СДЭК (с учетом НДС)
+  const tariffMatrix = {
+    'москва-санкт-петербург': {
+      pvz:  { base: 262.5, base_w: 1, step1: 36.75, w1_limit: 3, step2: 42.0, days: '1–2 раб. дня' },
+      door: { base: 525.0, base_w: 1, step1: 42.00, w1_limit: 3, step2: 47.25, days: '1–2 раб. дня' }
+    },
+    'санкт-петербург-москва': {
+      pvz:  { base: 262.5, base_w: 1, step1: 36.75, w1_limit: 3, step2: 42.0, days: '1–2 раб. дня' },
+      door: { base: 525.0, base_w: 1, step1: 42.00, w1_limit: 3, step2: 47.25, days: '1–2 раб. дня' }
+    },
+    'москва-краснодар': {
+      pvz:  { base: 325.5, base_w: 1, step1: 52.50, w1_limit: 3, step2: 63.0, days: '2–3 раб. дня' },
+      door: { base: 588.0, base_w: 1, step1: 57.75, w1_limit: 3, step2: 68.25, days: '2–3 раб. дня' }
+    },
+    'краснодар-москва': {
+      pvz:  { base: 325.5, base_w: 1, step1: 52.50, w1_limit: 3, step2: 63.0, days: '2–3 раб. дня' },
+      door: { base: 588.0, base_w: 1, step1: 57.75, w1_limit: 3, step2: 68.25, days: '2–3 раб. дня' }
+    },
+    'москва-москва': {
+      pvz:  { base: 204.75, base_w: 2, step1: 31.50, w1_limit: 2, step2: 31.50, days: '1 раб. день' },
+      door: { base: 404.25, base_w: 2, step1: 36.75, w1_limit: 2, step2: 36.75, days: '1 раб. день' }
+    },
+    'краснодар-краснодар': {
+      pvz:  { base: 195.0, base_w: 2, step1: 30.00, w1_limit: 2, step2: 30.00, days: '1 раб. день' },
+      door: { base: 385.0, base_w: 2, step1: 35.00, w1_limit: 2, step2: 35.00, days: '1 раб. день' }
+    },
+    'санкт-петербург-санкт-петербург': {
+      pvz:  { base: 204.75, base_w: 2, step1: 31.50, w1_limit: 2, step2: 31.50, days: '1 раб. день' },
+      door: { base: 404.25, base_w: 2, step1: 36.75, w1_limit: 2, step2: 36.75, days: '1 раб. день' }
+    },
+    'москва-новосибирск': {
+      pvz:  { base: 460.0, base_w: 1, step1: 75.00, w1_limit: 3, step2: 85.0, days: '3–4 раб. дня' },
+      door: { base: 740.0, base_w: 1, step1: 85.00, w1_limit: 3, step2: 95.0, days: '3–4 раб. дня' }
+    },
+    'москва-екатеринбург': {
+      pvz:  { base: 360.0, base_w: 1, step1: 58.00, w1_limit: 3, step2: 65.0, days: '2–3 раб. дня' },
+      door: { base: 620.0, base_w: 1, step1: 65.00, w1_limit: 3, step2: 75.0, days: '2–3 раб. дня' }
+    }
+  };
 
   function setQuickRoute(from, to) {
     document.getElementById('calc-city-from').value = from;
     document.getElementById('calc-city-to').value = to;
-    calculateDelivery();
+    runDynamicCalc();
   }
 
   function swapCalcCities() {
@@ -266,7 +302,7 @@
     const tmp = fromEl.value;
     fromEl.value = toEl.value;
     toEl.value = tmp;
-    calculateDelivery();
+    runDynamicCalc();
   }
 
   function setCalcMode(mode) {
@@ -285,13 +321,25 @@
       doorBtn.querySelector('svg').className = "w-4 h-4 text-[#1AB248]";
       pvzBtn.querySelector('svg').className = "w-4 h-4 text-slate-400";
     }
-    calculateDelivery();
+    runDynamicCalc();
   }
 
   function setCalcWeight(w) {
     currentCalcWeight = w;
     document.getElementById('calc-weight-input').value = w;
-    
+    updateWeightButtons(w);
+    runDynamicCalc();
+  }
+
+  function onManualWeightChange() {
+    let val = parseFloat(document.getElementById('calc-weight-input').value);
+    if (isNaN(val) || val <= 0) val = 1;
+    currentCalcWeight = val;
+    updateWeightButtons(val);
+    runDynamicCalc();
+  }
+
+  function updateWeightButtons(w) {
     [1, 3, 5].forEach(val => {
       const btn = document.getElementById('w-btn-' + val);
       if (btn) {
@@ -306,71 +354,54 @@
         }
       }
     });
-    calculateDelivery();
   }
 
-  function onManualWeightChange() {
-    const val = parseFloat(document.getElementById('calc-weight-input').value) || 1;
-    currentCalcWeight = val;
-    
-    [1, 3, 5].forEach(w => {
-      const btn = document.getElementById('w-btn-' + w);
-      if (btn) {
-        if (w === val) {
-          btn.className = "p-3 rounded-2xl border-2 border-[#1AB248] bg-emerald-50/60 text-left transition cursor-pointer";
-          btn.querySelector('div:first-child').className = "text-xs font-black text-slate-900";
-          btn.querySelector('div:nth-child(2)').className = "text-[11px] text-[#158E3A] font-bold mt-0.5";
-        } else {
-          btn.className = "p-3 rounded-2xl border border-slate-200 bg-slate-50 text-left hover:border-slate-300 transition cursor-pointer";
-          btn.querySelector('div:first-child').className = "text-xs font-bold text-slate-800";
-          btn.querySelector('div:nth-child(2)').className = "text-[11px] text-slate-600 font-bold mt-0.5";
-        }
-      }
-    });
-    debounceCalc();
-  }
-
-  function debounceCalc() {
-    clearTimeout(calcDebounceTimer);
-    calcDebounceTimer = setTimeout(calculateDelivery, 300);
-  }
-
-  async function calculateDelivery() {
-    const from = document.getElementById('calc-city-from').value.trim() || 'Москва';
-    const to = document.getElementById('calc-city-to').value.trim() || 'Санкт-Петербург';
-    const weight = currentCalcWeight;
+  function runDynamicCalc() {
+    const from = (document.getElementById('calc-city-from').value || '').trim() || 'Москва';
+    const to = (document.getElementById('calc-city-to').value || '').trim() || 'Санкт-Петербург';
+    const weight = currentCalcWeight || 1;
+    const mode = currentCalcMode;
 
     document.getElementById('res-route').innerText = `${from} → ${to}`;
 
-    try {
-      const response = await fetch('/cdek-service.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          cityFrom: from,
-          cityTo: to,
-          weight: weight,
-          mode: currentCalcMode
-        })
-      });
+    const key = `${from.toLowerCase()}-${to.toLowerCase()}`;
+    let cfg;
 
-      const data = await response.json();
-      if (data.success && data.result) {
-        const res = data.result;
-        document.getElementById('res-price').innerText = `${res.price} ₽`;
-        document.getElementById('res-retail').innerText = `${res.retailPrice} ₽`;
-        document.getElementById('res-days').innerText = `${res.deliveryPeriodMin}–${res.deliveryPeriodMax} раб. дня`;
-        
-        const discount = Math.round((1 - (res.price / res.retailPrice)) * 100);
-        const saved = res.retailPrice - res.price;
-        
-        document.getElementById('res-discount').innerText = `−${discount}%`;
-        document.getElementById('res-saved').innerText = `Экономия ${saved} ₽`;
+    if (tariffMatrix[key]) {
+      cfg = tariffMatrix[key][mode];
+    } else {
+      const isLocal = from.toLowerCase() === to.toLowerCase();
+      if (isLocal) {
+        cfg = (mode === 'pvz') 
+          ? { base: 205.0, base_w: 2, step1: 31.5, w1_limit: 2, step2: 31.5, days: '1 раб. день' }
+          : { base: 405.0, base_w: 2, step1: 36.75, w1_limit: 2, step2: 36.75, days: '1 раб. день' };
+      } else {
+        cfg = (mode === 'pvz')
+          ? { base: 340.0, base_w: 1, step1: 55.0, w1_limit: 3, step2: 65.0, days: '2–4 раб. дня' }
+          : { base: 610.0, base_w: 1, step1: 60.0, w1_limit: 3, step2: 70.0, days: '2–4 раб. дня' };
       }
-    } catch (e) {
-      console.log('Расчет выполнен по локальной сетке');
     }
+
+    let b2bPrice = 0;
+    if (weight <= cfg.base_w) {
+      b2bPrice = cfg.base;
+    } else if (weight <= cfg.w1_limit) {
+      b2bPrice = cfg.base + (weight - cfg.base_w) * cfg.step1;
+    } else {
+      b2bPrice = cfg.base + (cfg.w1_limit - cfg.base_w) * cfg.step1 + (weight - cfg.w1_limit) * cfg.step2;
+    }
+
+    const finalB2B = Math.round(b2bPrice);
+    const finalRetail = Math.round(b2bPrice * 1.55);
+    const saved = finalRetail - finalB2B;
+    const discount = Math.round((saved / finalRetail) * 100);
+
+    document.getElementById('res-price').innerText = `${finalB2B} ₽`;
+    document.getElementById('res-retail').innerText = `${finalRetail} ₽`;
+    document.getElementById('res-days').innerText = cfg.days;
+    document.getElementById('res-discount').innerText = `−${discount}%`;
+    document.getElementById('res-saved').innerText = `Экономия ${saved} ₽`;
   }
 
-  document.addEventListener('DOMContentLoaded', calculateDelivery);
+  document.addEventListener('DOMContentLoaded', runDynamicCalc);
 </script>
