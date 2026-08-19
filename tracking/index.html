@@ -60,12 +60,12 @@
     <!-- Карточка результата -->
     <div id="trackResult" class="hidden bg-white rounded-3xl p-6 sm:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-8">
       
-      <!-- Верхняя линия: Номер, Маршрут, Бейдж -->
+      <!-- Верхняя плашка -->
       <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100">
         <div class="text-lg font-bold text-slate-900" id="resNumber">№ —</div>
         <div class="text-base sm:text-lg font-semibold text-slate-800" id="resRoute">—</div>
         <div id="resBadgeWrapper">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-50 text-orange-600 border border-orange-200" id="resStatusBadge">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-50 text-[#FF7A00] border border-orange-200" id="resStatusBadge">
             В пути
           </span>
         </div>
@@ -95,16 +95,15 @@
           <!-- Генерируется динамически -->
         </div>
 
-        <!-- Правая колонка: Информация о доставке и Памятка -->
+        <!-- Правая колонка -->
         <div class="lg:col-span-5 space-y-4">
           
-          <!-- Карточка доставки -->
           <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
             
             <div class="p-3.5 bg-[#F6FBF6] border border-[#D2EDD5] rounded-xl flex items-start gap-3">
               <div class="w-5 h-5 rounded-full bg-[#1AB248] text-white flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">✓</div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                Мы уведомим о поступлении заказа в пункт выдачи в СМС, мессенджере или мобильном приложении
+                Мы уведомим о поступлении заказа в пункт выдачи в мобильном приложении, мессенджере или по СМС
               </p>
             </div>
 
@@ -119,13 +118,12 @@
             </div>
 
             <div id="resDateBox" class="p-3.5 bg-[#FFF9F2] border border-[#FFE8C2] rounded-xl hidden">
-              <div class="text-xs font-bold text-slate-900" id="resDeliveryDateText">Доставка ожидается</div>
+              <div class="text-xs font-bold text-slate-900" id="resDeliveryDateText">Доставка перенесена</div>
               <div class="text-[11px] text-slate-500 mt-0.5" id="resInitialDateText"></div>
             </div>
 
           </div>
 
-          <!-- Карточка "Вручение по паспорту" -->
           <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-3">
             <h4 class="text-sm font-bold text-slate-900">Вручение по паспорту</h4>
             <p class="text-xs text-slate-500 leading-relaxed">
@@ -134,7 +132,7 @@
             <div class="pt-2 border-t border-slate-100">
               <div class="text-xs font-bold text-slate-800">Как получать без паспорта?</div>
               <p class="text-xs text-slate-500 mt-0.5">
-                Подключите CDEK ID и получайте посылки по коду из СМС за пару секунд.
+                Чтобы получать заказы быстро и просто по коду из уведомления, подключите CDEK ID.
               </p>
             </div>
           </div>
@@ -182,25 +180,25 @@
           document.getElementById('resRecipient').innerText = data.recipient_name;
           document.getElementById('resPvzAddress').innerText = data.pvz_address;
 
-          // Бейдж статуса
+          // Бейдж
           const badge = document.getElementById('resStatusBadge');
           badge.innerText = data.status_name;
           if (data.status_code === 'DELIVERED') {
             badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200';
           } else {
-            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-50 text-orange-600 border border-orange-200';
+            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-50 text-[#FF7A00] border border-orange-200';
           }
 
-          // Прогресс бар
-          const pct = data.progress_percent || 25;
+          // Прогресс
+          const pct = data.progress_percent || 50;
           document.getElementById('resProgressBar').style.width = pct + '%';
           document.getElementById('resTruckIcon').style.left = `calc(${pct}% - 14px)`;
 
-          // Плашка с датой доставки
+          // Дата
           const dateBox = document.getElementById('resDateBox');
           if (data.delivery_date) {
             dateBox.classList.remove('hidden');
-            document.getElementById('resDeliveryDateText').innerText = `Доставка: ${data.delivery_date}`;
+            document.getElementById('resDeliveryDateText').innerText = `Доставка перенесена на ${data.delivery_date}`;
             if (data.initial_date) {
               document.getElementById('resInitialDateText').innerText = `Изначальная дата: ${data.initial_date}`;
             }
@@ -234,7 +232,7 @@
         'DELIVERED': `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>`
       };
 
-      groups.forEach((g, idx) => {
+      groups.forEach((g) => {
         const isFuture = g.future;
         const iconSvg = milestoneIcons[g.code] || milestoneIcons['CREATED'];
         
