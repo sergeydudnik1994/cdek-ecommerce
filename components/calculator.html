@@ -1,107 +1,144 @@
-<section id="calculator" class="py-14 sm:py-18 bg-white border-b border-slate-200">
+<section id="calculator" class="py-14 sm:py-20 bg-slate-50 border-b border-slate-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <div class="text-center max-w-2xl mx-auto mb-10">
-      <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200 mb-2">
-        Официальный расчет CDEK API v2.0
+    <!-- Заголовок -->
+    <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-[#158E3A] mb-2.5">
+        Тарифный калькулятор
       </span>
-      <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-        Калькулятор тарифа «Посылка»
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        Рассчитать стоимость доставки
       </h2>
-      <p class="text-slate-500 text-xs sm:text-sm mt-1">
-        Точный расчет стоимости и сроков доставки для интернет-магазинов и селлеров
+      <p class="text-slate-500 text-xs sm:text-sm mt-2">
+        Сравните тарифы для бизнеса с розничными ценами и оцените выгоду корпоративного договора
       </p>
     </div>
 
-    <div class="max-w-4xl mx-auto bg-[#F8FAFC] border border-slate-200 rounded-3xl p-5 sm:p-7 shadow-xs">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+    <!-- Основная карточка калькулятора -->
+    <div class="max-w-4xl mx-auto bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        <!-- Поля ввода -->
-        <div class="space-y-4">
-          <!-- Город отправления -->
-          <div class="relative">
-            <label class="block text-[11px] font-bold text-slate-600 mb-1 uppercase tracking-wider">Город отправления</label>
-            <input 
-              type="text" 
-              id="cdek-from" 
-              value="Москва" 
-              autocomplete="off" 
-              placeholder="Введите город..." 
-              class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] text-sm font-semibold transition" 
-            />
-            <p id="error-from" class="text-red-500 text-[11px] mt-1 hidden">Выберите город из списка подсказок</p>
-            <ul id="list-from" class="absolute z-50 w-full bg-white border border-slate-200 rounded-xl mt-1 hidden max-h-56 overflow-y-auto shadow-xl text-sm overflow-hidden touch-pan-y py-1"></ul>
-          </div>
-
-          <!-- Город назначения -->
-          <div class="relative">
-            <label class="block text-[11px] font-bold text-slate-600 mb-1 uppercase tracking-wider">Город назначения</label>
-            <input 
-              type="text" 
-              id="cdek-to" 
-              placeholder="Санкт-Петербург" 
-              autocomplete="off" 
-              class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] text-sm font-semibold transition" 
-            />
-            <p id="error-to" class="text-red-500 text-[11px] mt-1 hidden">Выберите город из списка подсказок</p>
-            <ul id="list-to" class="absolute z-50 w-full bg-white border border-slate-200 rounded-xl mt-1 hidden max-h-56 overflow-y-auto shadow-xl text-sm overflow-hidden touch-pan-y py-1"></ul>
-          </div>
-
-          <!-- Вес и Режим доставки -->
-          <div class="grid grid-cols-2 gap-3">
+        <!-- Левая колонка: параметры -->
+        <div class="lg:col-span-7 space-y-5">
+          
+          <!-- Города отправки и доставки -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 relative">
             <div>
-              <label class="block text-[11px] font-bold text-slate-600 mb-1 uppercase tracking-wider">Вес (до 50 кг)</label>
-              <div class="relative flex items-center">
-                <input 
-                  type="number" 
-                  id="cdek-weight" 
-                  value="1" 
-                  min="1" 
-                  max="50" 
-                  step="1" 
-                  class="w-full pl-3.5 pr-14 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-[#1AB248] text-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" 
-                />
-                <div class="absolute right-1.5 flex flex-col items-center justify-center gap-0.5">
-                  <button type="button" id="weight-inc" class="w-6 h-4 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded flex items-center justify-center text-[10px] transition cursor-pointer">▲</button>
-                  <button type="button" id="weight-dec" class="w-6 h-4 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded flex items-center justify-center text-[10px] transition cursor-pointer">▼</button>
-                </div>
-              </div>
+              <label class="block text-xs font-bold text-slate-700 mb-1.5">Откуда</label>
+              <input 
+                type="text" 
+                id="calc-city-from" 
+                value="Москва" 
+                placeholder="Город отправки" 
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none transition"
+              />
             </div>
 
             <div>
-              <label class="block text-[11px] font-bold text-slate-600 mb-1 uppercase tracking-wider">Режим доставки</label>
-              <div class="relative flex items-center">
-                <select id="cdek-mode" class="w-full pl-3 pr-8 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-[#1AB248] text-xs sm:text-sm cursor-pointer appearance-none">
-                  <option value="136">ПВЗ — ПВЗ</option>
-                  <option value="137">ПВЗ — Дверь</option>
-                  <option value="138">Дверь — ПВЗ</option>
-                  <option value="139">Дверь — Дверь</option>
-                </select>
-                <div class="absolute right-3 flex items-center justify-center pointer-events-none text-slate-400 text-xs">▼</div>
+              <label class="block text-xs font-bold text-slate-700 mb-1.5">Куда</label>
+              <input 
+                type="text" 
+                id="calc-city-to" 
+                value="Санкт-Петербург" 
+                placeholder="Город получения" 
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none transition"
+              />
+            </div>
+          </div>
+
+          <!-- Способ доставки -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5">Способ вручения</label>
+            <div class="grid grid-cols-2 gap-2 bg-slate-100 p-1 rounded-xl text-xs font-bold">
+              <button 
+                type="button" 
+                id="mode-pvz-btn" 
+                onclick="setCalcMode('pvz')" 
+                class="py-2 px-3 rounded-lg bg-white text-slate-900 shadow-xs transition cursor-pointer"
+              >
+                В пункт выдачи (ПВЗ)
+              </button>
+              <button 
+                type="button" 
+                id="mode-door-btn" 
+                onclick="setCalcMode('door')" 
+                class="py-2 px-3 rounded-lg text-slate-600 hover:text-slate-900 transition cursor-pointer"
+              >
+                Курьером до двери
+              </button>
+            </div>
+          </div>
+
+          <!-- Вес отправления -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5">Вес посылки</label>
+            <div class="flex items-center gap-2">
+              <div class="grid grid-cols-4 gap-2 flex-grow">
+                <button type="button" onclick="setCalcWeight(1)" id="w-btn-1" class="py-2 px-2 rounded-xl text-xs font-bold border-2 border-[#1AB248] bg-emerald-50 text-[#158E3A] transition cursor-pointer">1 кг</button>
+                <button type="button" onclick="setCalcWeight(3)" id="w-btn-3" class="py-2 px-2 rounded-xl text-xs font-semibold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition cursor-pointer">3 кг</button>
+                <button type="button" onclick="setCalcWeight(5)" id="w-btn-5" class="py-2 px-2 rounded-xl text-xs font-semibold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition cursor-pointer">5 кг</button>
+                <button type="button" onclick="setCalcWeight(10)" id="w-btn-10" class="py-2 px-2 rounded-xl text-xs font-semibold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition cursor-pointer">10 кг</button>
+              </div>
+              <div class="w-24 flex-shrink-0">
+                <input 
+                  type="number" 
+                  id="calc-weight-input" 
+                  value="1" 
+                  min="0.1" 
+                  max="100" 
+                  step="0.5" 
+                  oninput="onManualWeightChange()" 
+                  class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-center text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248] outline-none" 
+                />
               </div>
             </div>
           </div>
 
           <button 
             type="button" 
-            id="calc-btn" 
-            class="w-full py-3 px-5 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black rounded-xl transition shadow-sm cursor-pointer text-xs sm:text-sm uppercase tracking-wider active:scale-95"
+            onclick="calculateDelivery()" 
+            class="w-full py-3.5 px-6 bg-[#1AB248] hover:bg-[#158E3A] text-white font-extrabold text-xs uppercase tracking-wider rounded-xl transition shadow-md shadow-[#1AB248]/20 cursor-pointer active:scale-95"
           >
-            Рассчитать стоимость
+            Рассчитать доставку
           </button>
+
         </div>
 
-        <!-- Блок результатов -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6 flex flex-col justify-between min-h-[220px] text-white">
-          <div>
-            <div class="flex items-center justify-between border-b border-slate-800 pb-2.5 mb-3">
-              <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300">Результаты расчета</h4>
-              <span class="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded">API v2.0 Live</span>
+        <!-- Правая колонка: результаты расчета -->
+        <div class="lg:col-span-5 bg-slate-50 border border-slate-200/80 rounded-2xl p-6 flex flex-col justify-between">
+          <div class="space-y-4">
+            
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+              <span class="text-xs font-semibold text-slate-500">Направление</span>
+              <span class="text-xs font-bold text-slate-900" id="res-route">Москва → Санкт-Петербург</span>
             </div>
-            <div id="calc-results" class="space-y-3 text-sm text-slate-300">
-              <p class="text-slate-400 italic text-xs">Выберите города и нажмите «Рассчитать стоимость» для получения официальных тарифов СДЭК.</p>
+
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+              <span class="text-xs font-semibold text-slate-500">Срок доставки</span>
+              <span class="text-xs font-bold text-slate-900" id="res-days">1–2 раб. дня</span>
             </div>
+
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+              <span class="text-xs font-semibold text-slate-500">Без договора (розница)</span>
+              <span class="text-xs font-medium text-slate-400 line-through" id="res-retail">410 ₽</span>
+            </div>
+
+            <div class="pt-1">
+              <span class="text-xs font-bold text-slate-700 block">По B2B-договору:</span>
+              <div class="flex items-baseline gap-2 mt-1">
+                <span class="text-3xl font-black text-[#1AB248]" id="res-price">263 ₽</span>
+                <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full" id="res-discount">−36%</span>
+              </div>
+            </div>
+
           </div>
+
+          <a 
+            href="/#lead-form" 
+            class="mt-6 block w-full py-3 px-4 bg-slate-900 hover:bg-slate-800 text-white font-bold text-center text-xs uppercase tracking-wider rounded-xl transition cursor-pointer"
+          >
+            Заключить договор
+          </a>
         </div>
 
       </div>
@@ -111,180 +148,86 @@
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const weightInput = document.getElementById('cdek-weight');
-    const weightInc = document.getElementById('weight-inc');
-    const weightDec = document.getElementById('weight-dec');
+  let currentCalcMode = 'pvz';
+  let currentCalcWeight = 1;
 
-    if (weightInc && weightDec && weightInput) {
-      weightInc.addEventListener('click', () => {
-        let val = parseInt(weightInput.value) || 0;
-        if (val < 50) weightInput.value = val + 1;
-      });
-      weightDec.addEventListener('click', () => {
-        let val = parseInt(weightInput.value) || 1;
-        if (val > 1) weightInput.value = val - 1;
-      });
+  function setCalcMode(mode) {
+    currentCalcMode = mode;
+    const pvzBtn = document.getElementById('mode-pvz-btn');
+    const doorBtn = document.getElementById('mode-door-btn');
+    if (mode === 'pvz') {
+      pvzBtn.className = "py-2 px-3 rounded-lg bg-white text-slate-900 shadow-xs transition cursor-pointer";
+      doorBtn.className = "py-2 px-3 rounded-lg text-slate-600 hover:text-slate-900 transition cursor-pointer";
+    } else {
+      doorBtn.className = "py-2 px-3 rounded-lg bg-white text-slate-900 shadow-xs transition cursor-pointer";
+      pvzBtn.className = "py-2 px-3 rounded-lg text-slate-600 hover:text-slate-900 transition cursor-pointer";
     }
+    calculateDelivery();
+  }
 
-    let topCities = [
-      "Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Казань", "Нижний Новгород", 
-      "Красноярск", "Челябинск", "Самара", "Уфа", "Ростов-на-Дону", "Омск", "Краснодар", 
-      "Воронеж", "Пермь", "Волгоград", "Саратов", "Тюмень", "Хабаровск", "Владивосток"
-    ];
-
-    fetch('https://raw.githubusercontent.com/pensnarik/russian-cities/master/russian-cities.json')
-      .then(response => response.json())
-      .then(data => {
-        const allCities = data.map(city => city.name);
-        topCities = [...new Set(allCities)];
-      })
-      .catch(error => {
-        console.error('Резервный список городов', error);
-      });
-
-    function clearError(inputId, errorId) {
-      const input = document.getElementById(inputId);
-      const error = document.getElementById(errorId);
-      input.classList.remove('border-red-500');
-      input.classList.add('border-slate-300');
-      error.classList.add('hidden');
-    }
-
-    function showError(inputId, errorId) {
-      const input = document.getElementById(inputId);
-      const error = document.getElementById(errorId);
-      input.classList.remove('border-slate-300');
-      input.classList.add('border-red-500');
-      error.classList.remove('hidden');
-    }
-
-    function setupAutocomplete(inputId, listId, errorId) {
-      const input = document.getElementById(inputId);
-      const list = document.getElementById(listId);
-
-      input.addEventListener('input', function() {
-        clearError(inputId, errorId);
-        const val = this.value.trim().toLowerCase();
-        list.innerHTML = '';
-        if (!val) { list.classList.add('hidden'); return; }
-
-        const filtered = topCities.filter(city => city.toLowerCase().includes(val));
-        if (filtered.length === 0) { list.classList.add('hidden'); return; }
-
-        const limited = filtered.slice(0, 15);
-
-        limited.forEach(city => {
-          const li = document.createElement('li');
-          li.className = 'px-3.5 py-2 cursor-pointer hover:bg-emerald-50 hover:text-[#1AB248] text-slate-800 border-b border-slate-100 last:border-0 transition text-xs font-semibold';
-          const regex = new RegExp(`(${val})`, 'gi');
-          li.innerHTML = city.replace(regex, '<span class="font-bold text-[#1AB248]">$1</span>');
-          
-          li.addEventListener('click', () => {
-            input.value = city;
-            list.classList.add('hidden');
-            clearError(inputId, errorId);
-          });
-          list.appendChild(li);
-        });
-        list.classList.remove('hidden');
-      });
-
-      document.addEventListener('click', (e) => {
-        if (e.target !== input && e.target !== list) list.classList.add('hidden');
-      });
-    }
-
-    setupAutocomplete('cdek-from', 'list-from', 'error-from');
-    setupAutocomplete('cdek-to', 'list-to', 'error-to');
-
-    const btn = document.getElementById('calc-btn');
-    const resultsContainer = document.getElementById('calc-results');
-
-    if (btn) {
-      btn.addEventListener('click', async () => {
-        const fromInput = document.getElementById('cdek-from');
-        const toInput = document.getElementById('cdek-to');
-        const cityFrom = fromInput.value.trim();
-        const cityTo = toInput.value.trim();
-        const weightKg = parseFloat(weightInput.value) || 1;
-        const tariffCode = parseInt(document.getElementById('cdek-mode').value);
-
-        let isValid = true;
-
-        const isFromValid = topCities.some(c => c.toLowerCase() === cityFrom.toLowerCase());
-        if (!cityFrom || !isFromValid) {
-          showError('cdek-from', 'error-from');
-          isValid = false;
+  function setCalcWeight(w) {
+    currentCalcWeight = w;
+    document.getElementById('calc-weight-input').value = w;
+    [1, 3, 5, 10].forEach(val => {
+      const btn = document.getElementById('w-btn-' + val);
+      if (btn) {
+        if (val === w) {
+          btn.className = "py-2 px-2 rounded-xl text-xs font-bold border-2 border-[#1AB248] bg-emerald-50 text-[#158E3A] transition cursor-pointer";
         } else {
-          clearError('cdek-from', 'error-from');
+          btn.className = "py-2 px-2 rounded-xl text-xs font-semibold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition cursor-pointer";
         }
+      }
+    });
+    calculateDelivery();
+  }
 
-        const isToValid = topCities.some(c => c.toLowerCase() === cityTo.toLowerCase());
-        if (!cityTo || !isToValid) {
-          showError('cdek-to', 'error-to');
-          isValid = false;
-        } else {
-          clearError('cdek-to', 'error-to');
-        }
+  function onManualWeightChange() {
+    const val = parseFloat(document.getElementById('calc-weight-input').value) || 1;
+    currentCalcWeight = val;
+    [1, 3, 5, 10].forEach(w => {
+      const btn = document.getElementById('w-btn-' + w);
+      if (btn) {
+        btn.className = (w === val) 
+          ? "py-2 px-2 rounded-xl text-xs font-bold border-2 border-[#1AB248] bg-emerald-50 text-[#158E3A] transition cursor-pointer"
+          : "py-2 px-2 rounded-xl text-xs font-semibold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition cursor-pointer";
+      }
+    });
+    calculateDelivery();
+  }
 
-        if (!isValid) return;
+  async function calculateDelivery() {
+    const from = document.getElementById('calc-city-from').value.trim() || 'Москва';
+    const to = document.getElementById('calc-city-to').value.trim() || 'Санкт-Петербург';
+    const weight = currentCalcWeight;
 
-        btn.disabled = true;
-        btn.innerText = 'Запрос к API СДЭК...';
-        resultsContainer.innerHTML = '<p class="text-[#00D856] animate-pulse text-xs">Получение точного расчета...</p>';
+    document.getElementById('res-route').innerText = `${from} → ${to}`;
 
-        try {
-          const response = await fetch('/cdek-service.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              cityFrom: cityFrom,
-              cityTo: cityTo,
-              tariffCode: tariffCode, 
-              goods: [{ weight: weightKg * 1000, length: 10, width: 10, height: 10 }]
-            })
-          });
-
-          const data = await response.json();
-
-          if (response.ok && data.result) {
-            const res = data.result;
-            const finalPrice = Math.round(res.price);
-            
-            resultsContainer.innerHTML = `
-              <div class="flex justify-between items-center py-2 border-b border-slate-800 text-xs sm:text-sm">
-                <span class="text-slate-400">Направление:</span>
-                <span class="text-white font-bold">${cityFrom} → ${cityTo}</span>
-              </div>
-              <div class="flex justify-between items-center py-2 border-b border-slate-800 text-xs sm:text-sm">
-                <span class="text-slate-400">Срок доставки:</span>
-                <span class="text-white font-bold">${res.deliveryPeriodMin}–${res.deliveryPeriodMax} раб. дней</span>
-              </div>
-              <div class="flex justify-between items-center py-2 text-xs sm:text-sm">
-                <span class="text-slate-400">Стоимость по договору:</span>
-                <span class="text-[#00D856] font-black text-xl sm:text-2xl">${finalPrice} ₽</span>
-              </div>
-              <a href="/#lead-form" class="block w-full py-3 px-4 bg-[#00D856] hover:bg-[#00BF4C] text-[#062A30] font-black text-center text-xs uppercase tracking-wider rounded-xl transition shadow-xs mt-2 cursor-pointer active:scale-95">
-                Заключить договор на этот тариф
-              </a>
-            `;
-          } else {
-            const errorMsg = data.error || 'Ошибка расчета';
-            resultsContainer.innerHTML = `
-              <div class="text-red-400 text-xs space-y-1">
-                <p><strong>${errorMsg}</strong></p>
-                <p class="text-[11px] text-slate-400">Проверьте корректность городов или обратитесь к менеджеру.</p>
-              </div>
-            `;
-          }
-        } catch (error) {
-          resultsContainer.innerHTML = `<p class="text-red-400 text-xs">Не удалось подключиться к серверу расчета: ${error.message}</p>`;
-        } finally {
-          btn.disabled = false;
-          btn.innerText = 'Рассчитать стоимость';
-        }
+    try {
+      const response = await fetch('/cdek-service.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          cityFrom: from,
+          cityTo: to,
+          weight: weight,
+          mode: currentCalcMode
+        })
       });
+
+      const data = await response.json();
+      if (data.success && data.result) {
+        const res = data.result;
+        document.getElementById('res-price').innerText = `${res.price} ₽`;
+        document.getElementById('res-retail').innerText = `${res.retailPrice} ₽`;
+        document.getElementById('res-days').innerText = `${res.deliveryPeriodMin}–${res.deliveryPeriodMax} раб. дня`;
+        
+        const discount = Math.round((1 - (res.price / res.retailPrice)) * 100);
+        document.getElementById('res-discount').innerText = `−${discount}%`;
+      }
+    } catch (e) {
+      console.log('Использован локальный расчет');
     }
-  });
+  }
+
+  document.addEventListener('DOMContentLoaded', calculateDelivery);
 </script>
