@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Интеграция СДЭК с Tilda Publishing | Подключение доставки в корзину ST100</title>
+  <meta name="description" content="Официальное подключение доставки СДЭК для сайтов на Tilda. Интерактивная карта ПВЗ, автоматический гео-расчет тарифов в корзине ST100 со скидкой до 50%." />
+  
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#F4F7F6] text-slate-900 font-sans selection:bg-[#00D856] selection:text-[#062A30]">
+
+  <!--# include virtual="/components/header.html" -->
+
+  <!-- Hero Section -->
+  <section class="relative bg-[#062A30] text-white pt-12 pb-16 lg:py-20 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0A3942] border border-[#00D856]/30 text-xs font-bold text-[#00D856]">
+            <span class="w-2 h-2 rounded-full bg-[#FF5A27] animate-pulse"></span>
+            Официальный модуль для корзины Tilda ST100
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl font-black tracking-tight leading-[1.15]">
+            Доставка СДЭК для сайтов на <span class="text-[#00D856]">Tilda Publishing</span>
+          </h1>
+
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+            Подключите интерактивный выбор ПВЗ на карте и автоматический гео-расчет стоимости доставки прямо в корзину Тильды ST100. Спецтариф со скидкой до 50% для новых интернет-магазинов.
+          </p>
+
+          <div class="grid grid-cols-3 gap-6 pt-6 border-t border-[#0A3942]">
+            <div>
+              <div class="text-3xl sm:text-4xl font-black text-[#00D856]">15 мин</div>
+              <div class="text-xs text-slate-400 mt-1">быстрая настройка</div>
+            </div>
+            <div>
+              <div class="text-3xl sm:text-4xl font-black text-white">5 000+</div>
+              <div class="text-xs text-slate-400 mt-1">ПВЗ на карте</div>
+            </div>
+            <div>
+              <div class="text-3xl sm:text-4xl font-black text-[#FF5A27]">54-ФЗ</div>
+              <div class="text-xs text-slate-400 mt-1">наложенный платеж</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <!--# include virtual="/components/lead-form.html" -->
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Преимущества модуля -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-3xl font-black text-slate-900">Возможности интеграции с Tilda</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-8 rounded-2xl bg-[#F4F7F6] border border-slate-200 space-y-3">
+          <div class="text-2xl">📍</div>
+          <h3 class="text-lg font-bold text-slate-900">Выбор ПВЗ на карте</h3>
+          <p class="text-slate-600 text-xs leading-relaxed">Покупатель выбирает пункт выдачи прямо в стандартном блоке корзины ST100.</p>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-[#F4F7F6] border border-slate-200 space-y-3">
+          <div class="text-2xl">⚡</div>
+          <h3 class="text-lg font-bold text-slate-900">Живой калькулятор</h3>
+          <p class="text-slate-600 text-xs leading-relaxed">Стоимость и сроки рассчитываются автоматически по спецтарифу со скидкой.</p>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-[#F4F7F6] border border-slate-200 space-y-3">
+          <div class="text-2xl">📄</div>
+          <h3 class="text-lg font-bold text-slate-900">Автонакладные</h3>
+          <p class="text-slate-600 text-xs leading-relaxed">Заказ сразу передается в систему СДЭК без необходимости заполнять накладные вручную.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--# include virtual="/components/footer.html" -->
+
+</body>
+</html>
