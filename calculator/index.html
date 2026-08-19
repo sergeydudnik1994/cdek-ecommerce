@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Калькулятор стоимости доставки СДЭК для бизнеса и интернет-магазинов</title>
+  <meta name="description" content="Онлайн-калькулятор доставки СДЭК для e-commerce и юридических лиц. Расчет стоимости тарифа «Посылка», экспресс-доставки и сборных грузов со скидкой до 50%." />
+  <link rel="canonical" href="https://cdek-ecommerce.ru/calculator/" />
+  <meta name="theme-color" content="#062A30" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="СДЭК E-Commerce" />
+  <meta property="og:title" content="Калькулятор стоимости доставки СДЭК для B2B" />
+  <meta property="og:description" content="Рассчитайте выгоду на тарифах СДЭК при подключении B2B-договора для вашего интернет-магазина." />
+  <meta property="og:url" content="https://cdek-ecommerce.ru/calculator/" />
+
+  <!-- Фавиконки -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  <!-- Schema.org Microdata -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://cdek-ecommerce.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Калькулятор доставки B2B",
+        "item": "https://cdek-ecommerce.ru/calculator/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+  </style>
+</head>
+<body class="bg-[#F4F7F6] text-slate-900 antialiased min-h-screen flex flex-col selection:bg-[#00D856] selection:text-[#062A30]">
+
+  <!--# include virtual="/components/header.html" -->
+
+  <main class="flex-grow">
+    <!-- Хлебные крошки -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
+      <nav class="flex items-center gap-2 text-xs text-slate-400">
+        <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">Калькулятор доставки B2B</span>
+      </nav>
+    </div>
+
+    <!-- Компонент калькулятора -->
+    <!--# include virtual="/components/calculator.html" -->
+  </main>
+
+  <!--# include virtual="/components/footer.html" -->
+
+</body>
+</html>
