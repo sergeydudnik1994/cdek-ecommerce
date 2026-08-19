@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Настройка СДЭК DBS: пошаговая инструкция по интеграции через dbs.cdek.ru</title>
-  <meta name="description" content="Полное руководство по настройке интеграции dbs.cdek.ru для селлеров Ozon, Wildberries, Яндекс Маркета и Авито. Получение API-ключей, привязка складов, автоматическая передача трек-номеров и решение ошибок." />
+  <title>Настройка СДЭК DBS: пошаговая инструкция по интеграции с маркетплейсами</title>
+  <meta name="description" content="Полное руководство по настройке интеграции СДЭК DBS для селлеров Ozon, Wildberries, Яндекс Маркета и Авито. Получение API-ключей, сопоставление складов, автоматическая передача трек-номеров и решение ошибок." />
   <link rel="canonical" href="https://cdek-ecommerce.ru/integrations/dbs/" />
   <meta name="theme-color" content="#062A30" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="СДЭК E-Commerce" />
-  <meta property="og:title" content="Настройка СДЭК DBS: пошаговая инструкция по интеграции через dbs.cdek.ru" />
-  <meta property="og:description" content="Инструкция для селлеров маркетплейсов: подключение API СДЭК, настройка кабинета dbs.cdek.ru, сопоставление складов и печать маркировки." />
+  <meta property="og:title" content="Настройка СДЭК DBS: пошаговая инструкция по интеграции с маркетплейсами" />
+  <meta property="og:description" content="Инструкция для селлеров: подключение B2B API СДЭК, настройка схемы DBS, сопоставление складов и печать маркировки." />
   <meta property="og:url" content="https://cdek-ecommerce.ru/integrations/dbs/" />
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -42,40 +42,40 @@
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "Настройка СДЭК DBS",
+            "name": "СДЭК DBS для маркетплейсов",
             "item": "https://cdek-ecommerce.ru/integrations/dbs/"
           }
         ]
       },
       {
         "@type": "HowTo",
-        "name": "Как настроить интеграцию со СДЭК через сервис dbs.cdek.ru",
-        "description": "Пошаговое руководство по подключению схемы DBS (доставка силами продавца) через официальный шлюз СДЭК.",
+        "name": "Как настроить интеграцию по схеме СДЭК DBS",
+        "description": "Пошаговое руководство по подключению схемы доставки силами продавца (DBS) через шлюз СДЭК.",
         "step": [
           {
             "@type": "HowToStep",
-            "name": "Получение API-ключей СДЭК",
-            "text": "Авторизуйтесь в ЛК СДЭК (lk.cdek.ru), перейдите в раздел «Интеграция» и сгенерируйте пару Account (Client ID) и Secure password."
+            "name": "Получение API-ключей B2B договора",
+            "text": "В личном кабинете СДЭК в разделе «Интеграция» скопируйте пару Account (Client ID) и Secure password."
           },
           {
             "@type": "HowToStep",
-            "name": "Авторизация в dbs.cdek.ru",
-            "text": "Перейдите на портал dbs.cdek.ru, выполните вход под учетной записью договора B2B и подтвердите профиль компании."
+            "name": "Авторизация в шлюзе DBS",
+            "text": "Выполните вход в сервис интеграции под учетными данными договора и подтвердите реквизиты компании."
           },
           {
             "@type": "HowToStep",
-            "name": "Привязка ключей маркетплейса",
-            "text": "В настройках интеграции выберите маркетплейс (Ozon, WB, Яндекс Маркет или Авито) и введите API-токены витрины продавца."
+            "name": "Привязка витрины маркетплейса",
+            "text": "Выберите маркетплейс (Ozon, Wildberries, Яндекс Маркет или Авито) и введите API-токены кабинета селлера."
           },
           {
             "@type": "HowToStep",
-            "name": "Маппинг складов и методов доставки",
-            "text": "Сопоставьте созданный в маркетплейсе склад со складом отправки СДЭК и активируйте методы доставки (ПВЗ / Курьер)."
+            "name": "Сопоставление складов и методов доставки",
+            "text": "Свяжите склад маркетплейса с договором СДЭК и активируйте необходимые способы вручения (ПВЗ / Курьер)."
           },
           {
             "@type": "HowToStep",
-            "name": "Тестовая обработка и печать накладных",
-            "text": "Сформируйте первый заказ, проверьте генерацию трек-номера и распечатайте транспортную накладную со штрихкодом."
+            "name": "Тестовая обработка и печать маркировки",
+            "text": "Проверьте прием первого заказа, автоматическую передачу трек-номера и распечатайте транспортную накладную 120×75 мм."
           }
         ]
       },
@@ -84,10 +84,10 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Нужен ли отдельный договор для работы с dbs.cdek.ru?",
+            "name": "Нужен ли отдельный договор для работы со СДЭК DBS?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Нет, сервис dbs.cdek.ru работает в рамках единого корпоративного договора СДЭК для интернет-магазинов и юрлиц (ИП/ООО)."
+              "text": "Нет, доставка по схеме DBS осуществляется в рамках единого корпоративного B2B-договора СДЭК для юридических лиц и ИП."
             }
           },
           {
@@ -95,15 +95,15 @@
             "name": "Как передаются трек-номера в маркетплейс?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "После подтверждения сборки заказа сервис dbs.cdek.ru автоматически отправляет присвоенный трек-номер в API маркетплейса, переводя статус заказа в «Доставляется»."
+              "text": "При комплектации заказа система автоматически передает присвоенный трек-номер в API маркетплейса и переводит статус отправления в «Доставляется»."
             }
           },
           {
             "@type": "Question",
-            "name": "Можно ли сдавать DBS-заказы в любой пункт СДЭК?",
+            "name": "Куда передавать готовые DBS-заказы?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Да, заказы можно передавать в любой удобный ПВЗ СДЭК или вызывать курьера на свой склад в согласованное временное окно."
+              "text": "Посылки можно сдавать в любой удобный пункт выдачи СДЭК или вызывать регулярного курьера на свой склад."
             }
           }
         ]
@@ -131,24 +131,24 @@
         <span>/</span>
         <a href="/#integrations" class="hover:text-[#1AB248] transition">Интеграции</a>
         <span>/</span>
-        <span class="text-slate-700 font-semibold">СДЭК DBS (dbs.cdek.ru)</span>
+        <span class="text-slate-700 font-semibold">СДЭК DBS для маркетплейсов</span>
       </nav>
 
       <!-- Главный Hero-блок статьи -->
       <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-sm space-y-6">
         <div class="flex flex-wrap items-center gap-2">
           <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-50 text-[#158E3A] border border-emerald-200">
-            Официальный шлюз СДЭК
+            Официальное B2B-решение
           </span>
           <span class="text-xs font-semibold text-slate-400">Актуально для версий 2026 года</span>
         </div>
 
         <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight">
-          Инструкция по настройке СДЭК DBS через сервис dbs.cdek.ru
+          Инструкция по настройке СДЭК DBS для маркетплейсов
         </h1>
 
         <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-          Схема <strong>DBS (Delivery by Seller)</strong> позволяет селлерам продавать товары на маркетплейсах со своего склада, доставляя заказы через федеральную сеть СДЭК по прямым выгодным B2B-тарифам. Официальный портал <code class="bg-slate-100 px-2 py-0.5 rounded text-slate-800 font-mono text-xs">dbs.cdek.ru</code> полностью автоматизирует синхронизацию статусов, генерацию накладных и передачу трек-номеров в личные кабинеты маркетплейсов.
+          Схема <strong>DBS (Delivery by Seller)</strong> позволяет селлерам продавать товары на маркетплейсах со своего склада, доставляя заказы через федеральную сеть СДЭК по прямым выгодным B2B-тарифам. Официальный шлюз интеграции полностью автоматизирует синхронизацию статусов, генерацию накладных и передачу трек-номеров в личные кабинеты маркетплейсов без ручной рутины.
         </p>
 
         <!-- KPI плашки -->
@@ -159,7 +159,7 @@
           </div>
           <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
             <div class="text-xl font-black text-slate-900">0 ₽</div>
-            <div class="text-xs text-slate-500 mt-0.5">Комиссия за использование портала</div>
+            <div class="text-xs text-slate-500 mt-0.5">Бесплатное подключение</div>
           </div>
           <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
             <div class="text-xl font-black text-slate-900">100% Авто</div>
@@ -181,15 +181,15 @@
             <h3 class="text-lg font-bold text-slate-900">Получение B2B API-ключей СДЭК</h3>
           </div>
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Для работы с сервисом потребуется действующий договор СДЭК и пара боевых ключей авторизации.
+            Для работы с модулем требуется заключенный договор СДЭК и пара боевых ключей авторизации.
           </p>
           <ol class="list-decimal list-inside space-y-2 text-xs sm:text-sm text-slate-700 font-medium pl-1">
-            <li>Войдите в личный кабинет <a href="https://lk.cdek.ru" target="_blank" rel="noopener" class="text-[#1AB248] underline font-bold">lk.cdek.ru</a>.</li>
+            <li>Войдите в личный кабинет корпоративного клиента СДЭК.</li>
             <li>Откройте раздел <strong>«Интеграция»</strong> $\rightarrow$ <strong>«Ключи API»</strong>.</li>
             <li>Нажмите <strong>«Создать ключ»</strong> и скопируйте значения:
               <ul class="list-disc list-inside pl-5 mt-1 text-slate-600 font-normal space-y-1">
-                <li><strong>Account (Идентификатор клиента)</strong></li>
-                <li><strong>Secure password (Секретный пароль)</strong></li>
+                <li><strong>Account (Идентификатор клиента / Client ID)</strong></li>
+                <li><strong>Secure password (Секретный пароль / Client Secret)</strong></li>
               </ul>
             </li>
           </ol>
@@ -199,13 +199,13 @@
         <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-4">
           <div class="flex items-center gap-3">
             <span class="w-8 h-8 rounded-xl bg-[#1AB248] text-white font-black text-sm flex items-center justify-center shrink-0">2</span>
-            <h3 class="text-lg font-bold text-slate-900">Вход на портал dbs.cdek.ru</h3>
+            <h3 class="text-lg font-bold text-slate-900">Подключение личного кабинета к шлюзу DBS</h3>
           </div>
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Перейдите на официальный портал <a href="https://dbs.cdek.ru" target="_blank" rel="noopener" class="text-[#1AB248] font-bold underline">dbs.cdek.ru</a>. Авторизуйтесь, используя учетные данные от личного кабинета СДЭК.
+            В интерфейсе шлюза выполните вход, используя учетные данные от договора СДЭК, и подтвердите доступ к управлению накладными.
           </p>
           <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900">
-            <strong>Важно:</strong> Учетная запись должна иметь права администратора договора, чтобы сервис мог регистрировать накладные в вашей биллинговой системе.
+            <strong>Важно:</strong> Учетная запись должна иметь права администратора договора для автоматической регистрации заказов в биллинге.
           </div>
         </div>
 
@@ -223,7 +223,7 @@
                 <h4 class="font-black text-slate-900 text-sm">Ozon (realFBS)</h4>
                 <span class="text-[10px] font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded">Популярно</span>
               </div>
-              <p class="text-xs text-slate-600">В ЛК Ozon Seller перейдите в <em>Настройки $\rightarrow$ API ключи</em>.</p>
+              <p class="text-xs text-slate-600">В ЛК Ozon Seller откройте: <em>Настройки $\rightarrow$ API ключи</em>.</p>
               <ul class="text-xs text-slate-700 space-y-1 font-mono">
                 <li>• Client-ID: скопируйте числовой ID</li>
                 <li>• API-Key: сгенерируйте с типом «Администратор»</li>
@@ -236,7 +236,7 @@
                 <h4 class="font-black text-slate-900 text-sm">Wildberries (DBS)</h4>
                 <span class="text-[10px] font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded">DBS / WB GO</span>
               </div>
-              <p class="text-xs text-slate-600">В ЛК WB Партнеры перейдите в <em>Профиль $\rightarrow$ Настройки $\rightarrow$ Доступ к новому API</em>.</p>
+              <p class="text-xs text-slate-600">В ЛК WB Партнеры откройте: <em>Профиль $\rightarrow$ Настройки $\rightarrow$ Доступ к API</em>.</p>
               <ul class="text-xs text-slate-700 space-y-1 font-mono">
                 <li>• Отметьте категорию прав: «Доставка / Маркетплейс»</li>
                 <li>• Скопируйте сгенерированный токен</li>
@@ -278,7 +278,7 @@
             <h3 class="text-lg font-bold text-slate-900">Сопоставление складов (Маппинг) и способов сдачи</h3>
           </div>
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            В разделе <strong>«Склады и логистика»</strong> сервиса <code>dbs.cdek.ru</code> свяжите физический склад маркетплейса с договором СДЭК:
+            В разделе <strong>«Склады и логистика»</strong> свяжите физический склад маркетплейса с договором СДЭК:
           </p>
           <ul class="space-y-2 text-xs sm:text-sm text-slate-700 font-medium">
             <li class="flex items-start gap-2">
@@ -305,15 +305,15 @@
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
             <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
               <strong class="text-slate-900 block mb-1">1. Поступление заказа</strong>
-              <p class="text-slate-500">Заказ автоматически падает в dbs.cdek.ru из маркетплейса со всеми габаритами.</p>
+              <p class="text-slate-500">Заказ автоматически поступает из маркетплейса со всеми габаритами и адресом покупателя.</p>
             </div>
             <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
               <strong class="text-slate-900 block mb-1">2. Печать маркировки</strong>
-              <p class="text-slate-500">В один клик распечатывается транспортная этикетка со штрихкодом формата 120×75 мм.</p>
+              <p class="text-slate-500">В один клик формируется и распечатывается этикетка со штрихкодом формата 120×75 мм.</p>
             </div>
             <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
               <strong class="text-slate-900 block mb-1">3. Передача в СДЭК</strong>
-              <p class="text-slate-500">При сдаче посылки маркетплейс сразу видит приемку и меняет статус на «В пути».</p>
+              <p class="text-slate-500">При сдаче посылки маркетплейс сразу видит статус приемки и переводит заказ в «В пути».</p>
             </div>
           </div>
         </div>
@@ -334,7 +334,7 @@
 
           <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
             <h4 class="font-bold text-slate-900">2. Маркетплейс не видит методы доставки</h4>
-            <p class="text-slate-600">В личном кабинете маркетплейса проверьте привязку метода доставки «СДЭК (интегрированная служба)» именно к тому складу, чей ID указан в <code>dbs.cdek.ru</code>.</p>
+            <p class="text-slate-600">В личном кабинете маркетплейса проверьте привязку метода доставки «СДЭК (интегрированная служба)» именно к тому складу, чей ID указан в настройках интеграции.</p>
           </div>
 
           <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
@@ -349,8 +349,8 @@
         <h2 class="text-xl sm:text-2xl font-black text-slate-900">Часто задаваемые вопросы</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-            <h4 class="font-bold text-slate-900 text-sm">Нужен ли отдельный договор для dbs.cdek.ru?</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">Нет. Достаточно одного стандартного B2B-договора СДЭК для интернет-магазинов.</p>
+            <h4 class="font-bold text-slate-900 text-sm">Нужен ли отдельный договор для работы со СДЭК DBS?</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">Нет. Достаточно одного стандартного B2B-договора СДЭК для интернет-магазинов и юрлиц.</p>
           </div>
 
           <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
@@ -378,13 +378,13 @@
           Нужна помощь с интеграцией или договором СДЭК?
         </h3>
         <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto relative z-10 leading-relaxed">
-          Оставьте заявку — подключим льготные тарифы B2B со скидкой до 50% и поможем настроить передачу заказов через dbs.cdek.ru за 1 рабочий день.
+          Оставьте заявку — подключим льготные тарифы B2B со скидкой до 50% и поможем настроить передачу заказов по схеме DBS за 1 рабочий день.
         </p>
         
         <div class="pt-2 relative z-10">
           <a 
             href="/#lead-form" 
-            class="inline-flex items-center justify-center px-8 py-4 bg-[#00D856] hover:bg-[#00BF4C] text-[#062A30] font-black text-xs uppercase tracking-wider rounded-2xl transition shadow-lg shadow-[#00D856]/20 active:scale-95"
+            class="inline-flex items-center justify-center px-8 py-4 bg-[#00D856] hover:bg-[#00BF4C] text-[#062A30] font-black text-xs uppercase tracking-wider rounded-2xl transition shadow-lg shadow-[#00D856]/20 active:scale-95 cursor-pointer"
           >
             Заключить B2B договор и настроить DBS
           </a>
