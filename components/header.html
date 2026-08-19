@@ -12,10 +12,10 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/111763499" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+<header class="sticky top-0 z-50 bg-white border-b border-slate-200/80 shadow-xs">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between">
     
-    <!-- Логотип и дескриптор -->
+    <!-- Логотип -->
     <a href="/" class="flex items-center gap-3 group flex-shrink-0">
       <img 
         src="https://www.cdek.ru/storage/source/logo/1/U1ck-s9wX-Um8xJ0F3EU5SPwz5kf8Utu.svg" 
@@ -43,7 +43,7 @@
           <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </a>
         <div class="absolute left-0 top-full hidden group-hover:block w-64 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-50">
-          <a href="/integrations/dbs/" class="block px-3 py-2 text-xs font-bold text-emerald-800 bg-emerald-50/80 hover:bg-emerald-100 rounded-xl transition mb-1">🔥 СДЭК DBS (dbs.cdek.ru)</a>
+          <a href="/integrations/dbs/" class="block px-3 py-2 text-xs font-bold text-emerald-800 bg-emerald-50/80 hover:bg-emerald-100 rounded-xl transition mb-1">🔥 СДЭК DBS (Маркетплейсы)</a>
           <a href="/integrations/tilda/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#1AB248] rounded-xl transition">Tilda Publishing</a>
           <a href="/integrations/bitrix/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#1AB248] rounded-xl transition">1С-Битрикс</a>
           <a href="/integrations/moysklad/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#1AB248] rounded-xl transition">МойСклад</a>
@@ -67,129 +67,111 @@
         </div>
       </div>
 
-      <!-- Трекинг -->
+      <!-- Трекинг (Desktop) -->
       <a href="/tracking/" class="flex items-center gap-1.5 text-slate-700 hover:text-[#1AB248] transition-colors">
         <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         Отследить заказ
       </a>
     </nav>
 
-    <!-- Правый блок кнопок -->
-    <div class="flex items-center gap-2.5 sm:gap-3">
-      <!-- Мобильный быстрый трекинг -->
-      <a href="/tracking/" aria-label="Отследить посылку" class="lg:hidden flex items-center gap-1 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition">
-        <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-        <span>Трекинг</span>
-      </a>
-
-      <!-- Кнопка заявки -->
-      <a href="/#lead-form" class="inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-4 sm:px-5 py-2.5 rounded-xl transition-all shadow-sm active:scale-95">
+    <!-- Правая часть: Desktop кнопка + Чистый мобильный бургер как на cdek.ru -->
+    <div class="flex items-center gap-3">
+      <a href="/#lead-form" class="hidden lg:inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition-all shadow-sm active:scale-95">
         Подключиться
       </a>
       
-      <!-- Мобильный бургер -->
-      <button onclick="toggleMobileMenu()" aria-label="Открыть меню" class="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition cursor-pointer">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <!-- Мобильный бургер в фирменном зеленом цвете СДЭК -->
+      <button onclick="toggleMobileMenu()" aria-label="Открыть меню" class="lg:hidden p-2 -mr-2 text-[#1AB248] hover:bg-slate-50 rounded-xl transition cursor-pointer">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
       </button>
     </div>
 
   </div>
 
-  <!-- Мобильное выпадающее меню -->
-  <div id="mobileMenu" class="lg:hidden hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-xl">
-    <a href="/#calculator" onclick="toggleMobileMenu()" class="flex items-center gap-2 py-2 text-sm font-bold text-[#1AB248] border-b border-slate-100">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-      Калькулятор тарифов B2B
-    </a>
-    <a href="/tracking/" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-slate-800 border-b border-slate-100">
-      Отследить посылку онлайн
-    </a>
-    <a href="/#benefits" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-slate-800 border-b border-slate-100">
-      Преимущества для бизнеса
-    </a>
+  <!-- Мобильное выпадающее меню (Стиль cdek.ru) -->
+  <div id="mobileMenu" class="lg:hidden hidden bg-white border-b border-slate-200 divide-y divide-slate-100 shadow-2xl">
     
-    <div class="py-1">
-      <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Интеграции & CMS</div>
-      <a href="/integrations/dbs/" onclick="toggleMobileMenu()" class="block py-1.5 text-xs text-emerald-700 font-bold pl-2">🔥 СДЭК DBS (dbs.cdek.ru)</a>
-      <a href="/integrations/tilda/" onclick="toggleMobileMenu()" class="block py-1.5 text-xs text-slate-600 pl-2">Tilda Publishing</a>
-      <a href="/integrations/bitrix/" onclick="toggleMobileMenu()" class="block py-1.5 text-xs text-slate-600 pl-2">1С-Битрикс</a>
-      <a href="/integrations/moysklad/" onclick="toggleMobileMenu()" class="block py-1.5 text-xs text-slate-600 pl-2">МойСклад</a>
-      <a href="/integrations/api/" onclick="toggleMobileMenu()" class="block py-1.5 text-xs text-slate-600 pl-2">Rest API 2.0</a>
-    </div>
+    <!-- Быстрые действия -->
+    <div class="px-4 py-3 space-y-1 bg-slate-50/50">
+      <a href="/tracking/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-2.5 text-sm font-bold text-slate-900">
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          Отследить отправление
+        </span>
+        <span class="text-slate-400 text-xs">›</span>
+      </a>
 
-    <div class="py-1 border-t border-slate-100">
-      <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Услуги</div>
-      <a href="/services/dostavka-odezhdy/" onclick="toggleMobileMenu()" class="block py-1.5 text-xs text-slate-600 pl-2">Магазины одежды (примерка)</a>
-      <a href="/services/fulfillment/" onclick="toggleMobileMenu()" class="block py-1.5 text-xs text-slate-600 pl-2">Складской фулфилмент</a>
-    </div>
-
-    <div class="pt-2">
-      <a href="/#lead-form" onclick="toggleMobileMenu()" class="block w-full py-3 bg-slate-900 text-white font-bold text-center text-xs uppercase tracking-wider rounded-xl shadow-xs">
-        Заключить договор
+      <a href="/#calculator" onclick="toggleMobileMenu()" class="flex items-center justify-between py-2.5 text-sm font-bold text-slate-900">
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          Калькулятор тарифов B2B
+        </span>
+        <span class="text-slate-400 text-xs">›</span>
+      </a>
+      
+      <a href="/#benefits" onclick="toggleMobileMenu()" class="flex items-center justify-between py-2.5 text-sm font-semibold text-slate-700">
+        <span>Преимущества для бизнеса</span>
+        <span class="text-slate-400 text-xs">›</span>
       </a>
     </div>
+
+    <!-- Интеграции & CMS -->
+    <div class="px-4 py-3">
+      <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Интеграции & Маркетплейсы</div>
+      <div class="space-y-1">
+        <a href="/integrations/dbs/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs font-bold text-emerald-700">
+          <span>🔥 СДЭК DBS (Маркетплейсы)</span>
+          <span class="text-xs">›</span>
+        </a>
+        <a href="/integrations/tilda/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs text-slate-600">
+          <span>Tilda Publishing</span>
+          <span class="text-xs text-slate-300">›</span>
+        </a>
+        <a href="/integrations/bitrix/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs text-slate-600">
+          <span>1С-Битрикс</span>
+          <span class="text-xs text-slate-300">›</span>
+        </a>
+        <a href="/integrations/moysklad/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs text-slate-600">
+          <span>МойСклад</span>
+          <span class="text-xs text-slate-300">›</span>
+        </a>
+        <a href="/integrations/api/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs text-slate-600">
+          <span>Rest API v2.0 & SDK</span>
+          <span class="text-xs text-slate-300">›</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Услуги -->
+    <div class="px-4 py-3">
+      <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Услуги и логистика</div>
+      <div class="space-y-1">
+        <a href="/services/dostavka-odezhdy/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs text-slate-600">
+          <span>Магазины одежды (с примеркой)</span>
+          <span class="text-xs text-slate-300">›</span>
+        </a>
+        <a href="/services/fulfillment/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs text-slate-600">
+          <span>Фулфилмент под ключ</span>
+          <span class="text-xs text-slate-300">›</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Главное действие -->
+    <div class="p-4 bg-slate-50">
+      <a href="/#lead-form" onclick="toggleMobileMenu()" class="block w-full py-3.5 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-center text-xs uppercase tracking-wider rounded-xl shadow-md transition active:scale-95">
+        Заключить договор онлайн
+      </a>
+    </div>
+
   </div>
 </header>
-
-<!-- Модальное окно трекинга -->
-<div id="trackingModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm">
-  <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl relative border border-slate-100">
-    <button type="button" onclick="closeTrackingModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-1.5 rounded-full hover:bg-slate-100 transition cursor-pointer">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-    <div class="text-center mb-5">
-      <div class="w-12 h-12 rounded-2xl bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center mx-auto mb-3">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-      </div>
-      <h3 class="text-xl font-extrabold text-slate-900">Отследить отправление</h3>
-      <p class="text-xs text-slate-500 mt-1">Введите номер накладной или заказа СДЭК</p>
-    </div>
-    <form onsubmit="handleTrackSubmit(event)" class="space-y-3">
-      <input type="text" id="trackNumberInput" required placeholder="Например: 1234567890" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none text-sm text-slate-900 placeholder:text-slate-400 transition" />
-      <button type="submit" class="w-full py-3.5 px-6 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition shadow-xs cursor-pointer active:scale-95">
-        Найти посылку
-      </button>
-    </form>
-  </div>
-</div>
 
 <script>
   function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
     if (menu) menu.classList.toggle('hidden');
   }
-
-  function openTrackingModal() {
-    const modal = document.getElementById('trackingModal');
-    if (modal) {
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-      setTimeout(() => document.getElementById('trackNumberInput')?.focus(), 50);
-    }
-  }
-
-  function closeTrackingModal() {
-    const modal = document.getElementById('trackingModal');
-    if (modal) {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
-  }
-
-  function handleTrackSubmit(e) {
-    e.preventDefault();
-    const trackVal = document.getElementById('trackNumberInput')?.value.trim();
-    if (trackVal) {
-      window.location.href = `/tracking/?number=${encodeURIComponent(trackVal)}`;
-      closeTrackingModal();
-    }
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeTrackingModal();
-  });
-
-  document.getElementById('trackingModal')?.addEventListener('click', (e) => {
-    if (e.target.id === 'trackingModal') closeTrackingModal();
-  });
 </script>
