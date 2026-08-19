@@ -3,12 +3,15 @@ import json
 import requests
 from datetime import date
 
+# Автоматически определяем корень репозитория (на один уровень выше папки scripts/)
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
+
 DOMAIN = "https://cdek-ecommerce.ru"
 INDEXNOW_KEY = "cdek2026ecommercekey"
 TODAY = date.today().isoformat()
 
 def generate_html(p):
-    # Schema.org: Breadcrumbs
     breadcrumbs_schema = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -34,7 +37,6 @@ def generate_html(p):
         ]
     }
 
-    # Schema.org: FAQ
     faq_schema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -93,7 +95,7 @@ def generate_html(p):
 
   <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
     
-    <!-- Хлебные крошки в UI -->
+    <!-- Хлебные крошки -->
     <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400">
       <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
       <span>/</span>
@@ -102,7 +104,7 @@ def generate_html(p):
       <span class="text-slate-700 font-semibold">{p['page_name']}</span>
     </nav>
 
-    <!-- Главный баннер страницы -->
+    <!-- Основной баннер -->
     <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
       <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200">
         {p['badge']}
@@ -144,13 +146,18 @@ def generate_html(p):
 </html>"""
 
 def build_all():
-    with open("pages_data.json", "r", encoding="utf-8") as f:
+    data_path = os.path.join(SCRIPT_DIR, "pages_data.json")
+    if not os.path.exists(data_path):
+        print(f"Ошибка: Файл {data_path} не найден!")
+        return
+
+    with open(data_path, "r", encoding="utf-8") as f:
         pages = json.load(f)
 
     all_urls = [f"{DOMAIN}/", f"{DOMAIN}/tracking/"]
 
     for p in pages:
-        dir_path = p["slug"]
+        dir_path = os.path.join(ROOT_DIR, p["slug"])
         os.makedirs(dir_path, exist_ok=True)
         file_path = os.path.join(dir_path, "index.html")
         
@@ -161,7 +168,8 @@ def build_all():
         all_urls.append(page_url)
         print(f"✓ Generated: {file_path}")
 
-    # Пересборка sitemap.xml
+    # Пересборка sitemap.xml в корне проекта
+    sitemap_path = os.path.join(ROOT_DIR, "sitemap.xml")
     sitemap_content = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for url in all_urls:
         priority = "1.0" if url == f"{DOMAIN}/" else ("0.9" if "tracking" in url else "0.8")
@@ -173,11 +181,11 @@ def build_all():
   </url>""")
     sitemap_content.append('</urlset>')
 
-    with open("sitemap.xml", "w", encoding="utf-8") as sm:
+    with open(sitemap_path, "w", encoding="utf-8") as sm:
         sm.write("\n".join(sitemap_content))
-    print("✓ sitemap.xml updated successfully!")
+    print(f"✓ sitemap.xml updated at {sitemap_path}")
 
-    # Отправка в IndexNow (Яндекс и Bing)
+    # Отправка в IndexNow
     payload = {
         "host": "cdek-ecommerce.ru",
         "key": INDEXNOW_KEY,
