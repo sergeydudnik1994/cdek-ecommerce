@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
-  <!-- Яндекс Метрика (замени 00000000 на ID нового счетчика) -->
-  <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=00000000', 'ym');
-
-    ym(00000000, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/00000000" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -23,7 +10,7 @@
   <link rel="canonical" href="https://cdek-ecommerce.ru/" />
   <meta name="theme-color" content="#062A30" />
 
-  <!-- Верификация поисковиков (вставишь коды после добавления в панели) -->
+  <!-- Верификация поисковиков -->
   <meta name="yandex-verification" content="ТВОЙ_КОД_ЯНДЕКС" />
   <meta name="google-site-verification" content="ТВОЙ_КОД_ГУГЛ" />
   <meta name="msvalidate.01" content="ТВОЙ_КОД_BING" />
@@ -128,7 +115,7 @@
             "name": "С какими CMS и платформами работает сервис?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Готовые модули поддерживают Tilda, 1C-Битрикс, InSales, МойСклад, WordPress WooCommerce, а также прямое подключение через REST API 2.0."
+              "text": "Готовые модули поддерживают Tilda, 1C-Битрикс, InSales, МойСклад, WordPress WooCommerce, 1С, а также прямое подключение через REST API 2.0."
             }
           },
           {
@@ -191,7 +178,7 @@
             </div>
           </div>
 
-          <div class="lg:col-span-5">
+          <div class="lg:col-span-5" id="lead-form">
             <!--# include virtual="/components/lead-form.html" -->
           </div>
 
@@ -255,7 +242,7 @@
           </a>
 
           <a href="/integrations/moysklad/" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-[#00D856] hover:shadow-md transition group block">
-            <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">МойСклад / 1С →</div>
+            <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">МойСклад →</div>
             <p class="text-xs text-slate-500">Автоматизация отгрузок, накладные и складской учет.</p>
           </a>
 
@@ -264,17 +251,17 @@
             <p class="text-xs text-slate-500">Плагин для сайтов на WordPress с калькулятором.</p>
           </a>
 
+          <a href="/integrations/1c/" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-[#00D856] hover:shadow-md transition group block">
+            <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">1C:Предприятие →</div>
+            <p class="text-xs text-slate-500">Модули обмена для УТ, ERP, УНФ и КА.</p>
+          </a>
+
           <a href="/integrations/api/" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-[#00D856] hover:shadow-md transition group block">
             <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">REST API 2.0 →</div>
             <p class="text-xs text-slate-500">Прямое подключение к шлюзам СДЭК для кастомных CMS.</p>
           </a>
 
-          <a href="/nalozhennyj-platezh/" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-[#00D856] hover:shadow-md transition group block">
-            <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">Наложенный платеж →</div>
-            <p class="text-xs text-slate-500">Касса 54-ФЗ, прием карт и быстрые выплаты.</p>
-          </a>
-
-          <a href="/dostavka-odezhdy/" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-[#00D856] hover:shadow-md transition group block">
+          <a href="/services/dostavka-odezhdy/" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-[#00D856] hover:shadow-md transition group block">
             <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">Fashion / Примерка →</div>
             <p class="text-xs text-slate-500">Частичный выкуп и примерка в пунктах выдачи.</p>
           </a>
