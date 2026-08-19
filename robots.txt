@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /track.php
+Disallow: /send-lead.php
 
 Sitemap: https://cdek-ecommerce.ru/sitemap.xml
