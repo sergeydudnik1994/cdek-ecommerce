@@ -14,7 +14,7 @@ if (empty($track_number)) {
     exit;
 }
 
-// 1. Кэш токена авторизации
+// 1. Проверка кэша токена SimpleAuth
 $cache_file = sys_get_temp_dir() . '/cdek_simpleauth_token.json';
 $token = null;
 
@@ -60,7 +60,7 @@ if (!$token) {
     }
 }
 
-// 2. Запрос трекинга заказа
+// 2. Запрос отслеживания
 function fetchOrderTracing($tracing_url, $token, $track_number) {
     $ch = curl_init();
     curl_setopt_array($ch, [
@@ -98,7 +98,7 @@ if ($http_code === 401 || $http_code === 403) {
     }
 }
 
-// Извлечение города
+// Вспомогательные функции точного извлечения данных
 function extractCity($obj) {
     if (empty($obj)) return null;
     if (is_string($obj)) return trim($obj);
@@ -126,7 +126,7 @@ function extractCity($obj) {
             $keys = array_keys($obj);
             $hasPersonKeys = false;
             foreach ($keys as $k) {
-                if (in_array(strtolower($k), ['fio', 'surname', 'phone', 'email', 'recipient', 'sender', 'contragent'], true)) {
+                if (in_array(strtolower($k), ['fio', 'surname', 'phone', 'email', 'recipient', 'sender'], true)) {
                     $hasPersonKeys = true;
                     break;
                 }
@@ -137,7 +137,6 @@ function extractCity($obj) {
     return null;
 }
 
-// Извлечение реального адреса ПВЗ / доставки
 function extractPvzAddress($resData) {
     if (!empty($resData['warehouse']) && is_array($resData['warehouse'])) {
         foreach (['address', 'formatted', 'location', 'name'] as $k) {
@@ -190,14 +189,13 @@ function extractPvzAddress($resData) {
     return null;
 }
 
-// Извлечение ФИО получателя
 function extractRecipientName($resData) {
     $raw = null;
     if (!empty($resData['order']['recipient'])) {
         $rec = $resData['order']['recipient'];
         if (is_string($rec)) $raw = $rec;
         elseif (is_array($rec)) {
-            foreach (['name', 'fio', 'receiver', 'contragentName'] as $k) {
+            foreach (['name', 'fio', 'receiver'] as $k) {
                 if (!empty($rec[$k]) && is_string($rec[$k])) { $raw = $rec[$k]; break; }
             }
         }
@@ -214,7 +212,7 @@ function extractRecipientName($resData) {
     return $raw ? trim($raw) : null;
 }
 
-// 3. Формирование ответа
+// 3. Обработка и нормализация полей
 if ($http_code === 200 && !empty($response['result'])) {
     $resData = $response['result'];
     $order   = $resData['order'] ?? [];
@@ -241,12 +239,12 @@ if ($http_code === 200 && !empty($response['result'])) {
     }
     $city_to = $city_to ?: 'Пункт назначения';
 
-    // Адрес ПВЗ (null если не передан)
-    $pvz_address = extractPvzAddress($resData);
+    // Адрес ПВЗ / доставки
+    $pvz_address = extractPvzAddress($resData) ?: 'Пункт выдачи СДЭК';
 
-    // Получатель (null если не передан)
+    // Получатель
     $raw_recipient = extractRecipientName($resData);
-    $recipient_name = null;
+    $recipient_name = 'Данные защищены 152-ФЗ';
 
     if (!empty($raw_recipient)) {
         if (preg_match('/^[А-ЯЁA-Z]\.[А-ЯЁA-Z]\.[А-ЯЁA-Z]\.?$/u', str_replace(' ', '', $raw_recipient))) {
@@ -266,7 +264,7 @@ if ($http_code === 200 && !empty($response['result'])) {
         }
     }
 
-    // Этапы доставки
+    // Этапы доставки (statusGroups)
     $status_groups_raw = $resData['statusGroups'] ?? [];
     $active_status_name = 'В пути';
     $active_status_code = 'IN_PROGRESS';
@@ -294,13 +292,13 @@ if ($http_code === 200 && !empty($response['result'])) {
         ];
     }
 
-    // Прогресс
+    // Расчет прогресс-бара
     if ($active_status_code === 'CREATED') $progress_percent = 15;
     elseif ($active_status_code === 'IN_PROGRESS' || $active_status_code === 'COURIER_IN_PROGRESS') $progress_percent = 50;
     elseif ($active_status_code === 'READY_FOR_PICK_UP') $progress_percent = 85;
     elseif ($active_status_code === 'DELIVERED') $progress_percent = 100;
 
-    // Промежуточные статусы
+    // Промежуточные статусы для аккордеона
     $sub_statuses = [];
     if (!empty($resData['statuses']) && is_array($resData['statuses'])) {
         foreach ($resData['statuses'] as $st) {
@@ -317,7 +315,7 @@ if ($http_code === 200 && !empty($response['result'])) {
         }
     }
 
-    // Даты доставки
+    // Даты доставки и перенос сроков
     $months = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
     
     $delivery_date_raw = null;
