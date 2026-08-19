@@ -1,17 +1,14 @@
-name: Check & Validate Code
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
 jobs:
   validate:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup PHP
@@ -19,13 +16,25 @@ jobs:
         with:
           php-version: '8.3'
 
-      - name: Lint PHP scripts
-        run: |
-          find . -name "*.php" -exec php -l {} +
+      - name: Lint PHP syntax
+        run: find . -name "*.php" -exec php -l {} +
 
-      - name: Check required project files
+      - name: Check critical files
         run: |
-          test -f index.html || (echo "index.html missing!" && exit 1)
-          test -f send-lead.php || (echo "send-lead.php missing!" && exit 1)
-          test -f components/lead-form.html || (echo "lead-form.html missing!" && exit 1)
-          echo "All critical files present and syntax is valid."
+          test -f index.html || exit 1
+          test -f send-lead.php || exit 1
+          test -f components/lead-form.html || exit 1
+
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to VDS via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            cd /var/www/cdek-ecommerce.ru
+            git pull origin main
