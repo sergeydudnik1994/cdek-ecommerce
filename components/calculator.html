@@ -16,7 +16,7 @@
     </div>
 
     <!-- Основной блок -->
-    <div class="max-w-5xl mx-auto bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-9 shadow-sm">
+    <div class="max-w-5xl mx-auto bg-white border border-slate-200/80 rounded-3xl p-5 sm:p-9 shadow-sm">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
         
         <!-- Левая колонка: Параметры -->
@@ -43,7 +43,7 @@
                 <ul id="suggest-from" class="absolute z-50 w-full bg-white border border-slate-200 rounded-2xl mt-1.5 hidden max-h-52 overflow-y-auto shadow-2xl text-xs font-semibold py-1"></ul>
               </div>
 
-              <!-- Кнопка реверса (Справа на смартфонах, по центру на ПК) -->
+              <!-- Кнопка реверса -->
               <button 
                 type="button" 
                 onclick="swapCalcCities()" 
@@ -176,44 +176,49 @@
 
         </div>
 
-        <!-- Правая колонка: Результат (С оранжевым акцентом выгоды) -->
-        <div class="lg:col-span-5 bg-[#062A30] text-white rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-xl relative overflow-hidden">
+        <!-- Правая колонка: Результат -->
+        <div class="lg:col-span-5 bg-[#062A30] text-white rounded-3xl p-5 sm:p-7 flex flex-col justify-between shadow-xl relative overflow-hidden">
           
           <div class="absolute -right-12 -top-12 w-48 h-48 bg-[#1AB248]/15 rounded-full blur-3xl pointer-events-none"></div>
 
           <div class="space-y-5 relative z-10">
             
-            <div class="flex items-center justify-between border-b border-slate-700/60 pb-3.5">
-              <div>
+            <!-- Маршрут и срок (без разрывов строк) -->
+            <div class="flex items-center justify-between border-b border-slate-700/60 pb-3.5 gap-2">
+              <div class="min-w-0">
                 <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider block">Направление</span>
-                <span class="text-sm font-bold text-white mt-0.5 block" id="res-route">Москва → Санкт-Петербург</span>
+                <span class="text-sm font-bold text-white mt-0.5 block truncate" id="res-route">Москва → Санкт-Петербург</span>
               </div>
-              <div class="text-right">
+              <div class="text-right shrink-0">
                 <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider block">Срок</span>
-                <span class="text-sm font-bold text-emerald-400 mt-0.5 block" id="res-days">1–2 раб. дня</span>
+                <span class="text-sm font-bold text-emerald-400 mt-0.5 block whitespace-nowrap" id="res-days">1–2 раб. дня</span>
               </div>
             </div>
 
-            <!-- Карточка цен с оранжевым выделением скидки -->
+            <!-- Карточка цен: Зеленый бейдж + Оранжевая экономия -->
             <div class="bg-[#0A3942] rounded-2xl p-4 border border-[#1AB248]/20 space-y-3">
               
-              <div class="flex justify-between items-center text-xs">
+              <div class="flex justify-between items-center text-xs gap-2">
                 <span class="text-slate-300">Тариф без договора (розница):</span>
-                <span class="text-slate-400 line-through font-semibold" id="res-retail">496 ₽</span>
+                <span class="text-slate-400 line-through font-semibold whitespace-nowrap shrink-0" id="res-retail">496 ₽</span>
               </div>
 
-              <div class="border-t border-slate-700/60 pt-2 flex justify-between items-baseline">
+              <div class="border-t border-slate-700/60 pt-2.5 flex justify-between items-end gap-3">
                 <div>
-                  <span class="text-xs font-bold text-[#00D856] uppercase tracking-wide block">По договору B2B:</span>
-                  <div class="text-3xl sm:text-4xl font-black text-white mt-0.5" id="res-price">
+                  <span class="text-[11px] font-bold text-[#00D856] uppercase tracking-wide block">По договору B2B:</span>
+                  <div class="text-3xl sm:text-4xl font-black text-white mt-0.5 whitespace-nowrap" id="res-price">
                     320 ₽
                   </div>
                 </div>
-                <div class="text-right">
-                  <span class="inline-block px-3 py-1 rounded-full bg-[#FF7A00] text-white font-black text-xs shadow-sm shadow-[#FF7A00]/30" id="res-discount">
+                <div class="text-right shrink-0 flex flex-col items-end">
+                  <!-- Зеленый бейдж скидки -->
+                  <span class="inline-block px-2.5 py-0.5 rounded-full bg-[#00D856] text-[#062A30] font-black text-xs shadow-xs" id="res-discount">
                     −35%
                   </span>
-                  <span class="text-xs font-extrabold text-[#FFA24C] block mt-1" id="res-saved">Экономия 176 ₽</span>
+                  <!-- Выделенная оранжевая экономия без переносов -->
+                  <span class="text-xs font-extrabold text-[#FF7A00] whitespace-nowrap block mt-1.5" id="res-saved">
+                    Экономия 176 ₽
+                  </span>
                 </div>
               </div>
 
@@ -232,7 +237,7 @@
 
           </div>
 
-          <!-- Компактная B2B кнопка -->
+          <!-- Кнопка -->
           <div class="pt-6 relative z-10">
             <a 
               href="/#lead-form" 
