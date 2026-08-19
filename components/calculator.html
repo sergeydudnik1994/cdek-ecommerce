@@ -43,7 +43,7 @@
                 <ul id="suggest-from" class="absolute z-50 w-full bg-white border border-slate-200 rounded-2xl mt-1.5 hidden max-h-52 overflow-y-auto shadow-2xl text-xs font-semibold py-1"></ul>
               </div>
 
-              <!-- Кнопка реверса (Справа на смартфонах, по центру на ПК) -->
+              <!-- Кнопка реверса -->
               <button 
                 type="button" 
                 onclick="swapCalcCities()" 
@@ -75,13 +75,13 @@
 
             </div>
 
-            <!-- Быстрые маршруты -->
+            <!-- Популярные направления -->
             <div class="flex flex-wrap items-center gap-1.5 pt-1 text-xs">
               <span class="text-slate-400 text-[11px] mr-1">Популярные:</span>
               <button type="button" onclick="setQuickRoute('Москва', 'Санкт-Петербург')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → СПб</button>
               <button type="button" onclick="setQuickRoute('Москва', 'Краснодар')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → Краснодар</button>
               <button type="button" onclick="setQuickRoute('Москва', 'Новосибирск')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → Новосибирск</button>
-              <button type="button" onclick="setQuickRoute('Москва', 'Владивосток')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → Владивосток</button>
+              <button type="button" onclick="setQuickRoute('Москва', 'Екатеринбург')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → Екатеринбург</button>
             </div>
           </div>
 
@@ -254,7 +254,6 @@
   let currentCalcWeight = 1;
   let debounceTimer = null;
 
-  // Базовый список 150+ ключевых городов РФ для моментального автокомплита
   let russianCities = [
     "Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Казань", "Нижний Новгород", 
     "Челябинск", "Красноярск", "Самара", "Уфа", "Ростов-на-Дону", "Омск", "Краснодар", 
@@ -263,23 +262,9 @@
     "Ставрополь", "Томск", "Кемерово", "Набережные Челны", "Оренбург", "Новокузнецк", "Балашиха", 
     "Рязань", "Чебоксары", "Пенза", "Липецк", "Калининград", "Астрахань", "Тула", "Киров", 
     "Сочи", "Курск", "Улан-Удэ", "Тверь", "Магнитогорск", "Сургут", "Брянск", "Иваново", 
-    "Якутск", "Владимир", "Симферополь", "Белгород", "Калуга", "Чита", "Грозный", "Волжский", 
-    "Смоленск", "Подольск", "Саранск", "Вологда", "Курган", "Череповец", "Орёл", "Архангельск", 
-    "Владикавказ", "Нижневартовск", "Йошкар-Ола", "Кострома", "Новороссийск", "Стерлитамак", 
-    "Химки", "Мытищи", "Таганрог", "Сыктывкар", "Комсомольск-на-Амуре", "Нижнекамск", "Нальчик", 
-    "Шахты", "Дзержинск", "Энгельс", "Орск", "Братск", "Ангарск", "Королёв", "Благовещенск", 
-    "Старый Оскол", "Великий Новгород", "Люберцы", "Псков", "Бийск", "Прокопьевск", "Абакан", 
-    "Армавир", "Балаково", "Южно-Сахалинск", "Рыбинск", "Северодвинск", "Петропавловск-Камчатский", 
-    "Красногорск", "Норильск", "Уссурийск", "Волгодонск", "Сызрань", "Каменск-Уральский", 
-    "Златоуст", "Альметьевск", "Электросталь", "Керчь", "Миасс", "Салават", "Хасавюрт", 
-    "Пятигорск", "Копейск", "Находка", "Рубцовск", "Майкоп", "Коломна", "Березники", "Домодедово", 
-    "Ковров", "Одинцово", "Нефтекамск", "Кисловодск", "Батайск", "Нефтеюганск", "Новочебоксарск", 
-    "Серпухов", "Щёлково", "Дербент", "Каспийск", "Черкесск", "Новомосковск", "Первоуральск", 
-    "Назрань", "Раменское", "Димитровград", "Орехово-Зуево", "Невинномысск", "Новый Уренгой", 
-    "Муром", "Октябрьский", "Видное", "Северск", "Ессентуки", "Долгопрудный", "Артём", "Жуковский"
+    "Якутск", "Владимир", "Симферополь", "Белгород", "Калуга", "Чита", "Грозный", "Волжский"
   ];
 
-  // Фоновая подгрузка полной базы городов России (1 100+ населенных пунктов)
   fetch('https://raw.githubusercontent.com/pensnarik/russian-cities/master/russian-cities.json')
     .then(res => res.json())
     .then(data => {
@@ -290,7 +275,6 @@
     })
     .catch(() => {});
 
-  // Настройка автокомплита городов
   function setupCityAutocomplete(inputId, listId) {
     const input = document.getElementById(inputId);
     const list = document.getElementById(listId);
@@ -391,7 +375,6 @@
     });
   }
 
-  // Расчет: сначала запрос к cdek-service.php, при задержке — моментальный расчет по поясам СДЭК
   function runDynamicCalc() {
     const from = (document.getElementById('calc-city-from').value || '').trim() || 'Москва';
     const to = (document.getElementById('calc-city-to').value || '').trim() || 'Санкт-Петербург';
@@ -415,7 +398,6 @@
         }
       } catch (e) {}
 
-      // Зональный расчет для любых городов РФ
       fallbackZoneCalc(from, to, weight, mode);
     }, 150);
   }
@@ -425,7 +407,6 @@
     const t = to.toLowerCase();
     const isLocal = (f === t);
 
-    // Определение тарифного пояса (1–6)
     let basePrice = isLocal ? 205 : 320;
     let stepPrice = isLocal ? 31.5 : 50;
     let days = isLocal ? '1 раб. день' : '2–3 раб. дня';
