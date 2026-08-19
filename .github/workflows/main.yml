@@ -1,0 +1,31 @@
+name: Check & Validate Code
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Lint PHP scripts
+        run: |
+          find . -name "*.php" -exec php -l {} +
+
+      - name: Check required project files
+        run: |
+          test -f index.html || (echo "index.html missing!" && exit 1)
+          test -f send-lead.php || (echo "send-lead.php missing!" && exit 1)
+          test -f components/lead-form.html || (echo "lead-form.html missing!" && exit 1)
+          echo "All critical files present and syntax is valid."
