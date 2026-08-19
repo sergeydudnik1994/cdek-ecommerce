@@ -1,14 +1,12 @@
 import os
 import json
-import requests
+import sys
 from datetime import date
 
-# Автоматически определяем корень репозитория (на один уровень выше папки scripts/)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
 
 DOMAIN = "https://cdek-ecommerce.ru"
-INDEXNOW_KEY = "cdek2026ecommercekey"
 TODAY = date.today().isoformat()
 
 def generate_html(p):
@@ -95,7 +93,7 @@ def generate_html(p):
 
   <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
     
-    <!-- Хлебные крошки -->
+    <!-- Хлебные крошки в UI -->
     <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400">
       <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
       <span>/</span>
@@ -104,7 +102,7 @@ def generate_html(p):
       <span class="text-slate-700 font-semibold">{p['page_name']}</span>
     </nav>
 
-    <!-- Основной баннер -->
+    <!-- Главный блок -->
     <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
       <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200">
         {p['badge']}
@@ -130,7 +128,7 @@ def generate_html(p):
       </div>
     </div>
 
-    <!-- Вопросы и ответы (FAQ) -->
+    <!-- Вопросы и ответы -->
     <div class="space-y-4">
       <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Часто задаваемые вопросы</h2>
       <div class="space-y-3">
@@ -148,8 +146,8 @@ def generate_html(p):
 def build_all():
     data_path = os.path.join(SCRIPT_DIR, "pages_data.json")
     if not os.path.exists(data_path):
-        print(f"Ошибка: Файл {data_path} не найден!")
-        return
+        print(f"Error: {data_path} not found")
+        sys.exit(1)
 
     with open(data_path, "r", encoding="utf-8") as f:
         pages = json.load(f)
@@ -164,11 +162,10 @@ def build_all():
         with open(file_path, "w", encoding="utf-8") as out:
             out.write(generate_html(p))
             
-        page_url = f"{DOMAIN}/{p['slug']}/"
-        all_urls.append(page_url)
+        all_urls.append(f"{DOMAIN}/{p['slug']}/")
         print(f"✓ Generated: {file_path}")
 
-    # Пересборка sitemap.xml в корне проекта
+    # Обновление sitemap.xml
     sitemap_path = os.path.join(ROOT_DIR, "sitemap.xml")
     sitemap_content = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for url in all_urls:
@@ -183,20 +180,7 @@ def build_all():
 
     with open(sitemap_path, "w", encoding="utf-8") as sm:
         sm.write("\n".join(sitemap_content))
-    print(f"✓ sitemap.xml updated at {sitemap_path}")
-
-    # Отправка в IndexNow
-    payload = {
-        "host": "cdek-ecommerce.ru",
-        "key": INDEXNOW_KEY,
-        "keyLocation": f"{DOMAIN}/{INDEXNOW_KEY}.txt",
-        "urlList": all_urls
-    }
-    try:
-        r = requests.post("https://api.indexnow.org/indexnow", json=payload, timeout=5)
-        print(f"✓ IndexNow push status: {r.status_code}")
-    except Exception as e:
-        print(f"IndexNow error: {e}")
+    print(f"✓ sitemap.xml updated with {len(all_urls)} URLs")
 
 if __name__ == "__main__":
     build_all()
