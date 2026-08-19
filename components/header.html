@@ -28,9 +28,9 @@
     </a>
 
     <!-- Навигация (Desktop) -->
-    <nav class="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-medium text-slate-700">
-      <a href="/#calculator" class="flex items-center gap-1.5 text-[#1AB248] font-bold hover:text-[#158E3A] transition">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+    <nav class="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-semibold text-slate-700">
+      <a href="/#calculator" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors">
+        <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
         Калькулятор B2B
       </a>
 
@@ -66,24 +66,24 @@
         </div>
       </div>
 
-      <!-- Трекинг (Desktop) -->
-      <button onclick="openTrackingModal()" class="flex items-center gap-1.5 text-slate-700 hover:text-[#1AB248] transition cursor-pointer">
+      <!-- Трекинг (Прямой переход на локальную страницу) -->
+      <a href="/tracking/" class="flex items-center gap-1.5 text-slate-700 hover:text-[#1AB248] transition-colors">
         <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         Отследить заказ
-      </button>
+      </a>
     </nav>
 
-    <!-- Правый блок кнопок (Desktop + Mobile) -->
-    <div class="flex items-center gap-2 sm:gap-3">
-      <!-- Мобильная кнопка быстрого трекинга (всегда видна на телефонах) -->
-      <button onclick="openTrackingModal()" aria-label="Отследить посылку" class="lg:hidden flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold transition cursor-pointer">
+    <!-- Правый блок кнопок -->
+    <div class="flex items-center gap-2.5 sm:gap-3">
+      <!-- Мобильный быстрый трекинг -->
+      <a href="/tracking/" aria-label="Отследить посылку" class="lg:hidden flex items-center gap-1 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition">
         <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         <span>Трекинг</span>
-      </button>
+      </a>
 
-      <!-- Главная кнопка договора -->
-      <a href="/#lead-form" class="inline-flex items-center justify-center bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-xs uppercase tracking-wider px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl transition-all shadow-xs cursor-pointer active:scale-95">
-        Договор
+      <!-- Премиальная B2B кнопка заявки -->
+      <a href="/#lead-form" class="inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-4 sm:px-5 py-2.5 rounded-xl transition-all shadow-sm active:scale-95">
+        Подключиться
       </a>
       
       <!-- Мобильный бургер -->
@@ -94,16 +94,18 @@
 
   </div>
 
-  <!-- Мобильное меню -->
+  <!-- Мобильное выпадающее меню -->
   <div id="mobileMenu" class="lg:hidden hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-xl">
     <a href="/#calculator" onclick="toggleMobileMenu()" class="flex items-center gap-2 py-2 text-sm font-bold text-[#1AB248] border-b border-slate-100">
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-      Калькулятор B2B тарифов
+      Калькулятор тарифов B2B
     </a>
     <a href="/tracking/" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-slate-800 border-b border-slate-100">
-      Страница отслеживания грузов
+      Отследить посылку онлайн
     </a>
-    <a href="/#benefits" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-slate-800 border-b border-slate-100">Преимущества для бизнеса</a>
+    <a href="/#benefits" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-slate-800 border-b border-slate-100">
+      Преимущества для бизнеса
+    </a>
     
     <div class="py-1">
       <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Интеграции & CMS</div>
@@ -118,10 +120,16 @@
       <a href="/services/dostavka-odezhdy/" onclick="toggleMobileMenu()" class="block py-1.5 text-xs text-slate-600 pl-2">Магазины одежды (примерка)</a>
       <a href="/services/fulfillment/" onclick="toggleMobileMenu()" class="block py-1.5 text-xs text-slate-600 pl-2">Складской фулфилмент</a>
     </div>
+
+    <div class="pt-2">
+      <a href="/#lead-form" onclick="toggleMobileMenu()" class="block w-full py-3 bg-slate-900 text-white font-bold text-center text-xs uppercase tracking-wider rounded-xl shadow-xs">
+        Заключить договор
+      </a>
+    </div>
   </div>
 </header>
 
-<!-- Модальное окно трекинга посылки -->
+<!-- Модальное окно трекинга (с редиректом на локальный трекинг) -->
 <div id="trackingModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm">
   <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl relative border border-slate-100">
     <button type="button" onclick="closeTrackingModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-1.5 rounded-full hover:bg-slate-100 transition cursor-pointer">
@@ -131,8 +139,8 @@
       <div class="w-12 h-12 rounded-2xl bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center mx-auto mb-3">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
       </div>
-      <h3 class="text-xl font-extrabold text-slate-900">Отследить заказ СДЭК</h3>
-      <p class="text-xs text-slate-500 mt-1">Введите номер накладной (10 цифр) или трек-номер заказа</p>
+      <h3 class="text-xl font-extrabold text-slate-900">Отследить отправление</h3>
+      <p class="text-xs text-slate-500 mt-1">Введите номер накладной или заказа СДЭК</p>
     </div>
     <form onsubmit="handleTrackSubmit(event)" class="space-y-3">
       <input type="text" id="trackNumberInput" required placeholder="Например: 1234567890" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none text-sm text-slate-900 placeholder:text-slate-400 transition" />
@@ -170,7 +178,8 @@
     e.preventDefault();
     const trackVal = document.getElementById('trackNumberInput')?.value.trim();
     if (trackVal) {
-      window.open(`https://www.cdek.ru/ru/tracking?order_id=${encodeURIComponent(trackVal)}`, '_blank');
+      // Переход на внутреннюю страницу трекинга сайта
+      window.location.href = `/tracking/?number=${encodeURIComponent(trackVal)}`;
       closeTrackingModal();
     }
   }
