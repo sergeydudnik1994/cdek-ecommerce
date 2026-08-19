@@ -13,31 +13,75 @@ on:
 permissions:
   contents: write
 
+# Защита от параллельных запусков: если быстро запушено несколько коммитов,
+# старый пайплайн отменяется, а новый выполняется последовательно
+concurrency:
+  group: seo-matrix-build
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy-seo:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
 
-      - name: Setup Python
+    steps:
+      - name: 1. Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 2. Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: Install Dependencies
+      - name: 3. Install Dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install requests
 
-      - name: Run SEO Generator & Push IndexNow
+      - name: 4. Validate JSON Data
         run: |
-          python scripts/build_seo.py
+          python -c "import json; json.load(open('scripts/pages_data.json', 'r', encoding='utf-8')); print('✓ JSON syntax valid')"
 
-      - name: Commit and Push Generated Pages
+      - name: 5. Generate SEO Pages and Sitemap
+        run: |
+          python scripts/build_seo.py --no-indexnow
+
+      - name: 6. Commit and Push Generated Pages
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add sitemap.xml integrations/ services/
-          git commit -m "Auto-generate SEO pages, breadcrumbs and sitemap [skip ci]" || echo "No changes to commit"
-          git push origin main
+          
+          # Добавляем сгенерированные файлы и sitemap
+          git add sitemap.xml
+          git add -A integrations/ services/ || true
+          
+          # Проверяем наличие реальных изменений
+          if git diff-index --quiet HEAD --; then
+            echo "No changes detected. Skipping commit."
+          else
+            git commit -m "Auto-generate SEO pages, breadcrumbs and sitemap [skip ci]"
+            git push origin main
+            echo "✓ Changes successfully pushed to main branch"
+          fi
+
+      - name: 7. Push to IndexNow (Only After Successful Deployment)
+        run: |
+          python -c "
+          import requests, json
+          urls = []
+          with open('sitemap.xml', 'r', encoding='utf-8') as f:
+              for line in f:
+                  if '<loc>' in line:
+                      urls.append(line.split('<loc>')[1].split('</loc>')[0].strip())
+          
+          payload = {
+              'host': 'cdek-ecommerce.ru',
+              'key': 'cdek2026ecommercekey',
+              'keyLocation': 'https://cdek-ecommerce.ru/cdek2026ecommercekey.txt',
+              'urlList': urls
+          }
+          r = requests.post('https://api.indexnow.org/indexnow', json=payload, timeout=10)
+          print(f'✓ IndexNow push status: {r.status_code}')
+          "
