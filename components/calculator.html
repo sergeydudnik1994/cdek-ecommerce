@@ -38,18 +38,18 @@
                     autocomplete="off"
                     placeholder="Город отправки" 
                     oninput="runDynamicCalc()"
-                    class="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-8 pr-12 sm:pr-3.5 py-3 text-sm font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none transition shadow-2xs"
+                    class="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-8 pr-3.5 py-3 text-sm font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none transition shadow-2xs"
                   />
                 </div>
               </div>
 
-              <!-- Кнопка реверса (Адаптивная: ⇅ на мобильных, ⇄ на десктопе) -->
+              <!-- Кнопка реверса (Идеальный центр по осям X и Y на мобильных и ПК) -->
               <button 
                 type="button" 
                 onclick="swapCalcCities()" 
                 title="Поменять города местами"
                 aria-label="Поменять города местами"
-                class="flex absolute right-3 top-[70px] sm:top-[34px] sm:left-1/2 sm:right-auto -translate-y-1/2 sm:-translate-x-1/2 z-10 w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-[#1AB248] hover:border-[#1AB248] items-center justify-center shadow-md transition transform rotate-90 sm:rotate-0 hover:scale-110 active:scale-90 cursor-pointer"
+                class="flex absolute left-1/2 top-[84px] sm:top-[45px] -translate-x-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-[#1AB248] hover:border-[#1AB248] items-center justify-center shadow-md transition transform rotate-90 sm:rotate-0 hover:scale-110 active:scale-90 cursor-pointer"
               >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
