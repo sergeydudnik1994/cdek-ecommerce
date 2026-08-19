@@ -1,144 +1,246 @@
-<section id="calculator" class="py-14 sm:py-20 bg-slate-50 border-b border-slate-200">
+<section id="calculator" class="py-16 sm:py-20 bg-[#F4F7F6] border-b border-slate-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Заголовок -->
     <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-      <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-[#158E3A] mb-2.5">
-        Тарифный калькулятор
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-[#158E3A] mb-3">
+        <span class="w-2 h-2 rounded-full bg-[#1AB248] animate-pulse"></span>
+        Калькулятор тарифов для бизнеса
       </span>
-      <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-        Рассчитать стоимость доставки
+      <h2 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+        Рассчитайте стоимость и выгоду доставки
       </h2>
       <p class="text-slate-500 text-xs sm:text-sm mt-2">
-        Сравните тарифы для бизнеса с розничными ценами и оцените выгоду корпоративного договора
+        Официальные тарифы «Посылка» со скидками до 50% при заключении B2B-договора
       </p>
     </div>
 
-    <!-- Основная карточка калькулятора -->
-    <div class="max-w-4xl mx-auto bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <!-- Основной блок -->
+    <div class="max-w-5xl mx-auto bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-9 shadow-sm">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
         
-        <!-- Левая колонка: параметры -->
-        <div class="lg:col-span-7 space-y-5">
+        <!-- Левая часть: Форма параметров -->
+        <div class="lg:col-span-7 space-y-6">
           
-          <!-- Города отправки и доставки -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 relative">
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1.5">Откуда</label>
-              <input 
-                type="text" 
-                id="calc-city-from" 
-                value="Москва" 
-                placeholder="Город отправки" 
-                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none transition"
-              />
+          <!-- Направление (Откуда — Куда) -->
+          <div class="space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 relative">
+              
+              <!-- Откуда -->
+              <div class="relative">
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Откуда</label>
+                <div class="relative flex items-center">
+                  <span class="absolute left-3.5 w-2.5 h-2.5 rounded-full bg-[#1AB248]"></span>
+                  <input 
+                    type="text" 
+                    id="calc-city-from" 
+                    value="Москва" 
+                    autocomplete="off"
+                    placeholder="Город отправки" 
+                    oninput="debounceCalc()"
+                    class="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-8 pr-3.5 py-3 text-sm font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none transition shadow-2xs"
+                  />
+                </div>
+              </div>
+
+              <!-- Кнопка реверса -->
+              <button 
+                type="button" 
+                onclick="swapCalcCities()" 
+                title="Поменять города местами"
+                class="hidden sm:flex absolute left-1/2 top-[34px] -translate-x-1/2 z-10 w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-[#1AB248] hover:border-[#1AB248] items-center justify-center shadow-sm transition transform hover:rotate-180 cursor-pointer"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+              </button>
+
+              <!-- Куда -->
+              <div class="relative">
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Куда</label>
+                <div class="relative flex items-center">
+                  <span class="absolute left-3.5 w-2.5 h-2.5 rounded-full bg-[#FF5A27]"></span>
+                  <input 
+                    type="text" 
+                    id="calc-city-to" 
+                    value="Санкт-Петербург" 
+                    autocomplete="off"
+                    placeholder="Город получения" 
+                    oninput="debounceCalc()"
+                    class="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-8 pr-3.5 py-3 text-sm font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none transition shadow-2xs"
+                  />
+                </div>
+              </div>
+
             </div>
 
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1.5">Куда</label>
-              <input 
-                type="text" 
-                id="calc-city-to" 
-                value="Санкт-Петербург" 
-                placeholder="Город получения" 
-                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none transition"
-              />
+            <!-- Быстрый выбор популярных направлений -->
+            <div class="flex flex-wrap items-center gap-1.5 pt-1 text-xs">
+              <span class="text-slate-400 text-[11px] mr-1">Популярные:</span>
+              <button type="button" onclick="setQuickRoute('Москва', 'Санкт-Петербург')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → СПб</button>
+              <button type="button" onclick="setQuickRoute('Москва', 'Краснодар')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → Краснодар</button>
+              <button type="button" onclick="setQuickRoute('Москва', 'Новосибирск')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → Новосибирск</button>
+              <button type="button" onclick="setQuickRoute('Москва', 'Екатеринбург')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → Екатеринбург</button>
             </div>
           </div>
 
-          <!-- Способ доставки -->
+          <!-- Способ доставки (Сегментный переключатель) -->
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1.5">Способ вручения</label>
-            <div class="grid grid-cols-2 gap-2 bg-slate-100 p-1 rounded-xl text-xs font-bold">
+            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Способ вручения</label>
+            <div class="grid grid-cols-2 gap-2 bg-slate-100 p-1.5 rounded-2xl">
               <button 
                 type="button" 
                 id="mode-pvz-btn" 
                 onclick="setCalcMode('pvz')" 
-                class="py-2 px-3 rounded-lg bg-white text-slate-900 shadow-xs transition cursor-pointer"
+                class="py-2.5 px-3 rounded-xl bg-white text-slate-900 font-bold text-xs sm:text-sm shadow-xs flex items-center justify-center gap-2 transition cursor-pointer"
               >
+                <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
                 В пункт выдачи (ПВЗ)
               </button>
               <button 
                 type="button" 
                 id="mode-door-btn" 
                 onclick="setCalcMode('door')" 
-                class="py-2 px-3 rounded-lg text-slate-600 hover:text-slate-900 transition cursor-pointer"
+                class="py-2.5 px-3 rounded-xl text-slate-600 font-semibold text-xs sm:text-sm hover:text-slate-900 flex items-center justify-center gap-2 transition cursor-pointer"
               >
+                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                 Курьером до двери
               </button>
             </div>
           </div>
 
-          <!-- Вес отправления -->
+          <!-- Пресеты веса и габаритов -->
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1.5">Вес посылки</label>
-            <div class="flex items-center gap-2">
-              <div class="grid grid-cols-4 gap-2 flex-grow">
-                <button type="button" onclick="setCalcWeight(1)" id="w-btn-1" class="py-2 px-2 rounded-xl text-xs font-bold border-2 border-[#1AB248] bg-emerald-50 text-[#158E3A] transition cursor-pointer">1 кг</button>
-                <button type="button" onclick="setCalcWeight(3)" id="w-btn-3" class="py-2 px-2 rounded-xl text-xs font-semibold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition cursor-pointer">3 кг</button>
-                <button type="button" onclick="setCalcWeight(5)" id="w-btn-5" class="py-2 px-2 rounded-xl text-xs font-semibold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition cursor-pointer">5 кг</button>
-                <button type="button" onclick="setCalcWeight(10)" id="w-btn-10" class="py-2 px-2 rounded-xl text-xs font-semibold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition cursor-pointer">10 кг</button>
-              </div>
-              <div class="w-24 flex-shrink-0">
-                <input 
-                  type="number" 
-                  id="calc-weight-input" 
-                  value="1" 
-                  min="0.1" 
-                  max="100" 
-                  step="0.5" 
-                  oninput="onManualWeightChange()" 
-                  class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-center text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248] outline-none" 
-                />
+            <div class="flex justify-between items-center mb-1.5">
+              <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500">Габариты и вес</label>
+              <span class="text-[11px] text-slate-400">Тариф «Посылка» до 50 кг</span>
+            </div>
+            
+            <div class="grid grid-cols-3 sm:grid-cols-4 gap-2.5">
+              <!-- S -->
+              <button 
+                type="button" 
+                onclick="setCalcWeight(1)" 
+                id="w-btn-1" 
+                class="p-3 rounded-2xl border-2 border-[#1AB248] bg-emerald-50/60 text-left transition cursor-pointer"
+              >
+                <div class="text-xs font-black text-slate-900">Компакт (S)</div>
+                <div class="text-[11px] text-[#158E3A] font-bold mt-0.5">до 1 кг</div>
+                <div class="text-[10px] text-slate-400 mt-1 hidden sm:block">Одежда, чехлы</div>
+              </button>
+
+              <!-- M -->
+              <button 
+                type="button" 
+                onclick="setCalcWeight(3)" 
+                id="w-btn-3" 
+                class="p-3 rounded-2xl border border-slate-200 bg-slate-50 text-left hover:border-slate-300 transition cursor-pointer"
+              >
+                <div class="text-xs font-bold text-slate-800">Стандарт (M)</div>
+                <div class="text-[11px] text-slate-600 font-bold mt-0.5">до 3 кг</div>
+                <div class="text-[10px] text-slate-400 mt-1 hidden sm:block">Обувь, косметика</div>
+              </button>
+
+              <!-- L -->
+              <button 
+                type="button" 
+                onclick="setCalcWeight(5)" 
+                id="w-btn-5" 
+                class="p-3 rounded-2xl border border-slate-200 bg-slate-50 text-left hover:border-slate-300 transition cursor-pointer"
+              >
+                <div class="text-xs font-bold text-slate-800">Объемный (L)</div>
+                <div class="text-[11px] text-slate-600 font-bold mt-0.5">до 5 кг</div>
+                <div class="text-[10px] text-slate-400 mt-1 hidden sm:block">Техника, куртки</div>
+              </button>
+
+              <!-- Кастомный вес -->
+              <div class="p-2.5 rounded-2xl border border-slate-200 bg-slate-50 flex flex-col justify-center">
+                <label class="text-[10px] font-bold text-slate-500 uppercase">Свой вес</label>
+                <div class="flex items-center gap-1 mt-1">
+                  <input 
+                    type="number" 
+                    id="calc-weight-input" 
+                    value="1" 
+                    min="0.1" 
+                    max="100" 
+                    step="0.5" 
+                    oninput="onManualWeightChange()" 
+                    class="w-full bg-white border border-slate-200 rounded-lg px-2 py-1 text-xs font-black text-slate-900 outline-none text-center" 
+                  />
+                  <span class="text-xs font-bold text-slate-500">кг</span>
+                </div>
               </div>
             </div>
           </div>
-
-          <button 
-            type="button" 
-            onclick="calculateDelivery()" 
-            class="w-full py-3.5 px-6 bg-[#1AB248] hover:bg-[#158E3A] text-white font-extrabold text-xs uppercase tracking-wider rounded-xl transition shadow-md shadow-[#1AB248]/20 cursor-pointer active:scale-95"
-          >
-            Рассчитать доставку
-          </button>
 
         </div>
 
-        <!-- Правая колонка: результаты расчета -->
-        <div class="lg:col-span-5 bg-slate-50 border border-slate-200/80 rounded-2xl p-6 flex flex-col justify-between">
-          <div class="space-y-4">
+        <!-- Правая часть: Карточка результата (B2B Value Card) -->
+        <div class="lg:col-span-5 bg-[#062A30] text-white rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-xl relative overflow-hidden">
+          
+          <!-- Декоративное фоновое свечение -->
+          <div class="absolute -right-12 -top-12 w-48 h-48 bg-[#1AB248]/15 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="space-y-5 relative z-10">
             
-            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
-              <span class="text-xs font-semibold text-slate-500">Направление</span>
-              <span class="text-xs font-bold text-slate-900" id="res-route">Москва → Санкт-Петербург</span>
-            </div>
-
-            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
-              <span class="text-xs font-semibold text-slate-500">Срок доставки</span>
-              <span class="text-xs font-bold text-slate-900" id="res-days">1–2 раб. дня</span>
-            </div>
-
-            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
-              <span class="text-xs font-semibold text-slate-500">Без договора (розница)</span>
-              <span class="text-xs font-medium text-slate-400 line-through" id="res-retail">410 ₽</span>
-            </div>
-
-            <div class="pt-1">
-              <span class="text-xs font-bold text-slate-700 block">По B2B-договору:</span>
-              <div class="flex items-baseline gap-2 mt-1">
-                <span class="text-3xl font-black text-[#1AB248]" id="res-price">263 ₽</span>
-                <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full" id="res-discount">−36%</span>
+            <div class="flex items-center justify-between border-b border-slate-700/60 pb-3.5">
+              <div>
+                <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider block">Направление</span>
+                <span class="text-sm font-bold text-white mt-0.5 block" id="res-route">Москва → Санкт-Петербург</span>
+              </div>
+              <div class="text-right">
+                <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider block">Срок</span>
+                <span class="text-sm font-bold text-emerald-400 mt-0.5 block" id="res-days">1–2 раб. дня</span>
               </div>
             </div>
 
+            <!-- Блок сравнения цен -->
+            <div class="bg-[#0A3942] rounded-2xl p-4 border border-[#1AB248]/20 space-y-3">
+              
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-slate-300">Тариф без договора (розница):</span>
+                <span class="text-slate-400 line-through font-semibold" id="res-retail">410 ₽</span>
+              </div>
+
+              <div class="border-t border-slate-700/60 pt-2 flex justify-between items-baseline">
+                <div>
+                  <span class="text-xs font-bold text-[#00D856] uppercase tracking-wide block">По договору B2B:</span>
+                  <div class="text-3xl sm:text-4xl font-black text-white mt-0.5" id="res-price">
+                    263 ₽
+                  </div>
+                </div>
+                <div class="text-right">
+                  <span class="inline-block px-2.5 py-1 rounded-full bg-[#00D856] text-[#062A30] font-black text-xs" id="res-discount">
+                    −36%
+                  </span>
+                  <span class="text-[10px] text-slate-300 block mt-1" id="res-saved">Экономия 147 ₽</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Микро-преимущества -->
+            <ul class="space-y-2 text-xs text-slate-300 pt-1">
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#00D856] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Бесплатное подключение и боевые API-ключи</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#00D856] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Прием наложенного платежа и касса по 54-ФЗ</span>
+              </li>
+            </ul>
+
           </div>
 
-          <a 
-            href="/#lead-form" 
-            class="mt-6 block w-full py-3 px-4 bg-slate-900 hover:bg-slate-800 text-white font-bold text-center text-xs uppercase tracking-wider rounded-xl transition cursor-pointer"
-          >
-            Заключить договор
-          </a>
+          <!-- Кнопка перехода к договору -->
+          <div class="pt-6 relative z-10">
+            <a 
+              href="/#lead-form" 
+              class="block w-full py-4 px-6 bg-[#00D856] hover:bg-[#00BF4C] text-[#062A30] font-black text-center text-xs uppercase tracking-wider rounded-2xl transition shadow-lg shadow-[#00D856]/20 cursor-pointer active:scale-95"
+            >
+              Заключить договор на этот тариф
+            </a>
+          </div>
+
         </div>
 
       </div>
@@ -150,17 +252,38 @@
 <script>
   let currentCalcMode = 'pvz';
   let currentCalcWeight = 1;
+  let calcDebounceTimer = null;
+
+  function setQuickRoute(from, to) {
+    document.getElementById('calc-city-from').value = from;
+    document.getElementById('calc-city-to').value = to;
+    calculateDelivery();
+  }
+
+  function swapCalcCities() {
+    const fromEl = document.getElementById('calc-city-from');
+    const toEl = document.getElementById('calc-city-to');
+    const tmp = fromEl.value;
+    fromEl.value = toEl.value;
+    toEl.value = tmp;
+    calculateDelivery();
+  }
 
   function setCalcMode(mode) {
     currentCalcMode = mode;
     const pvzBtn = document.getElementById('mode-pvz-btn');
     const doorBtn = document.getElementById('mode-door-btn');
+    
     if (mode === 'pvz') {
-      pvzBtn.className = "py-2 px-3 rounded-lg bg-white text-slate-900 shadow-xs transition cursor-pointer";
-      doorBtn.className = "py-2 px-3 rounded-lg text-slate-600 hover:text-slate-900 transition cursor-pointer";
+      pvzBtn.className = "py-2.5 px-3 rounded-xl bg-white text-slate-900 font-bold text-xs sm:text-sm shadow-xs flex items-center justify-center gap-2 transition cursor-pointer";
+      doorBtn.className = "py-2.5 px-3 rounded-xl text-slate-600 font-semibold text-xs sm:text-sm hover:text-slate-900 flex items-center justify-center gap-2 transition cursor-pointer";
+      pvzBtn.querySelector('svg').className = "w-4 h-4 text-[#1AB248]";
+      doorBtn.querySelector('svg').className = "w-4 h-4 text-slate-400";
     } else {
-      doorBtn.className = "py-2 px-3 rounded-lg bg-white text-slate-900 shadow-xs transition cursor-pointer";
-      pvzBtn.className = "py-2 px-3 rounded-lg text-slate-600 hover:text-slate-900 transition cursor-pointer";
+      doorBtn.className = "py-2.5 px-3 rounded-xl bg-white text-slate-900 font-bold text-xs sm:text-sm shadow-xs flex items-center justify-center gap-2 transition cursor-pointer";
+      pvzBtn.className = "py-2.5 px-3 rounded-xl text-slate-600 font-semibold text-xs sm:text-sm hover:text-slate-900 flex items-center justify-center gap-2 transition cursor-pointer";
+      doorBtn.querySelector('svg').className = "w-4 h-4 text-[#1AB248]";
+      pvzBtn.querySelector('svg').className = "w-4 h-4 text-slate-400";
     }
     calculateDelivery();
   }
@@ -168,13 +291,18 @@
   function setCalcWeight(w) {
     currentCalcWeight = w;
     document.getElementById('calc-weight-input').value = w;
-    [1, 3, 5, 10].forEach(val => {
+    
+    [1, 3, 5].forEach(val => {
       const btn = document.getElementById('w-btn-' + val);
       if (btn) {
         if (val === w) {
-          btn.className = "py-2 px-2 rounded-xl text-xs font-bold border-2 border-[#1AB248] bg-emerald-50 text-[#158E3A] transition cursor-pointer";
+          btn.className = "p-3 rounded-2xl border-2 border-[#1AB248] bg-emerald-50/60 text-left transition cursor-pointer";
+          btn.querySelector('div:first-child').className = "text-xs font-black text-slate-900";
+          btn.querySelector('div:nth-child(2)').className = "text-[11px] text-[#158E3A] font-bold mt-0.5";
         } else {
-          btn.className = "py-2 px-2 rounded-xl text-xs font-semibold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition cursor-pointer";
+          btn.className = "p-3 rounded-2xl border border-slate-200 bg-slate-50 text-left hover:border-slate-300 transition cursor-pointer";
+          btn.querySelector('div:first-child').className = "text-xs font-bold text-slate-800";
+          btn.querySelector('div:nth-child(2)').className = "text-[11px] text-slate-600 font-bold mt-0.5";
         }
       }
     });
@@ -184,15 +312,27 @@
   function onManualWeightChange() {
     const val = parseFloat(document.getElementById('calc-weight-input').value) || 1;
     currentCalcWeight = val;
-    [1, 3, 5, 10].forEach(w => {
+    
+    [1, 3, 5].forEach(w => {
       const btn = document.getElementById('w-btn-' + w);
       if (btn) {
-        btn.className = (w === val) 
-          ? "py-2 px-2 rounded-xl text-xs font-bold border-2 border-[#1AB248] bg-emerald-50 text-[#158E3A] transition cursor-pointer"
-          : "py-2 px-2 rounded-xl text-xs font-semibold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition cursor-pointer";
+        if (w === val) {
+          btn.className = "p-3 rounded-2xl border-2 border-[#1AB248] bg-emerald-50/60 text-left transition cursor-pointer";
+          btn.querySelector('div:first-child').className = "text-xs font-black text-slate-900";
+          btn.querySelector('div:nth-child(2)').className = "text-[11px] text-[#158E3A] font-bold mt-0.5";
+        } else {
+          btn.className = "p-3 rounded-2xl border border-slate-200 bg-slate-50 text-left hover:border-slate-300 transition cursor-pointer";
+          btn.querySelector('div:first-child').className = "text-xs font-bold text-slate-800";
+          btn.querySelector('div:nth-child(2)').className = "text-[11px] text-slate-600 font-bold mt-0.5";
+        }
       }
     });
-    calculateDelivery();
+    debounceCalc();
+  }
+
+  function debounceCalc() {
+    clearTimeout(calcDebounceTimer);
+    calcDebounceTimer = setTimeout(calculateDelivery, 300);
   }
 
   async function calculateDelivery() {
@@ -222,10 +362,13 @@
         document.getElementById('res-days').innerText = `${res.deliveryPeriodMin}–${res.deliveryPeriodMax} раб. дня`;
         
         const discount = Math.round((1 - (res.price / res.retailPrice)) * 100);
+        const saved = res.retailPrice - res.price;
+        
         document.getElementById('res-discount').innerText = `−${discount}%`;
+        document.getElementById('res-saved').innerText = `Экономия ${saved} ₽`;
       }
     } catch (e) {
-      console.log('Использован локальный расчет');
+      console.log('Расчет выполнен по локальной сетке');
     }
   }
 
