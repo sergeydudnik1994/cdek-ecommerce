@@ -15,7 +15,7 @@
 <header class="sticky top-0 z-50 bg-white border-b border-slate-200/80 shadow-xs">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between">
     
-    <!-- Логотип -->
+    <!-- Логотип и дескриптор -->
     <a href="/" class="flex items-center gap-3 group flex-shrink-0">
       <img 
         src="https://www.cdek.ru/storage/source/logo/1/U1ck-s9wX-Um8xJ0F3EU5SPwz5kf8Utu.svg" 
@@ -74,14 +74,14 @@
       </a>
     </nav>
 
-    <!-- Правая часть: Desktop кнопка + Чистый мобильный бургер как на cdek.ru -->
-    <div class="flex items-center gap-3">
-      <a href="/#lead-form" class="hidden lg:inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition-all shadow-sm active:scale-95">
+    <!-- Правый блок: B2B-кнопка + Зеленый бургер -->
+    <div class="flex items-center gap-2.5 sm:gap-3">
+      <a href="/#lead-form" class="inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl transition-all shadow-xs active:scale-95">
         Подключиться
       </a>
       
-      <!-- Мобильный бургер в фирменном зеленом цвете СДЭК -->
-      <button onclick="toggleMobileMenu()" aria-label="Открыть меню" class="lg:hidden p-2 -mr-2 text-[#1AB248] hover:bg-slate-50 rounded-xl transition cursor-pointer">
+      <!-- Мобильный бургер -->
+      <button onclick="toggleMobileMenu()" aria-label="Открыть меню" class="lg:hidden p-1.5 -mr-1.5 text-[#1AB248] hover:bg-slate-50 rounded-xl transition cursor-pointer">
         <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -90,7 +90,7 @@
 
   </div>
 
-  <!-- Мобильное выпадающее меню (Стиль cdek.ru) -->
+  <!-- Мобильное выпадающее меню -->
   <div id="mobileMenu" class="lg:hidden hidden bg-white border-b border-slate-200 divide-y divide-slate-100 shadow-2xl">
     
     <!-- Быстрые действия -->
@@ -159,7 +159,7 @@
       </div>
     </div>
 
-    <!-- Главное действие -->
+    <!-- Кнопка внутри шторки -->
     <div class="p-4 bg-slate-50">
       <a href="/#lead-form" onclick="toggleMobileMenu()" class="block w-full py-3.5 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-center text-xs uppercase tracking-wider rounded-xl shadow-md transition active:scale-95">
         Заключить договор онлайн
