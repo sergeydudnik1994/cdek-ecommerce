@@ -3,134 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>СДЭК для интернет-магазинов и селлеров | Официальное подключение доставки и API</title>
-  <meta name="description" content="Официальный сервис подключения доставки СДЭК для интернет-магазинов и селлеров маркетплейсов. Скидки до 50% на тариф «Посылка», модули CMS, наложенный платеж по 54-ФЗ." />
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="СДЭК для интернет-магазинов и селлеров — Подключение со скидкой до 50%" />
-  <meta property="og:description" content="Корпоративный договор со СДЭК за 1 день. Скидки до 50%, готовые плагины для Tilda, 1C-Битрикс, InSales, FBS-маркетплейсы и кассовое обслуживание." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://cdek-ecommerce.ru/" />
-  <meta property="og:image" content="https://cdek-ecommerce.ru/assets/cdek-logo-green.svg" />
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "СДЭК E-Commerce",
-    "url": "https://cdek-ecommerce.ru",
-    "logo": "https://cdek-ecommerce.ru/assets/cdek-logo-green.svg",
-    "description": "Сервис подключения интернет-магазинов и селлеров к логистической сети СДЭК",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "sales",
-      "availableLanguage": "Russian"
-    }
-  }
-  </script>
-
+  <title>СДЭК для интернет-магазинов и селлеров | Официальное подключение</title>
+  <meta name="description" content="Официальный сервис подключения доставки СДЭК для интернет-магазинов и селлеров. Скидки до 50% на тариф «Посылка», модули CMS, наложенный платеж по 54-ФЗ." />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              green: '#00D856',
-              'green-hover': '#00BF4C',
-              dark: '#062A30',
-              darker: '#041C20',
-              darkCard: '#0A3942',
-              orange: '#FF5A27',
-              orangeHover: '#E54919',
-              light: '#F4F7F6'
-            }
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-  </style>
 </head>
-<body class="bg-brand-light text-slate-900 antialiased selection:bg-brand-green selection:text-brand-dark">
+<body class="bg-[#F4F7F6] text-slate-900 antialiased selection:bg-[#00D856] selection:text-[#062A30]">
 
-  <!-- Верхняя инфо-плашка -->
-  <div class="bg-brand-darker text-slate-300 text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-[#0A3942]">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <span class="flex items-center gap-1.5 font-semibold text-white">
-          <span class="w-2 h-2 rounded-full bg-brand-green"></span>
-          Официальный сервис подключения СДЭК
-        </span>
-        <span class="text-slate-600 hidden sm:inline">|</span>
-        <span class="text-slate-400 hidden sm:inline">Тарифы для юрлиц, ИП, самозанятых и селлеров</span>
-      </div>
-      <div class="text-slate-400 text-[11px]">
-        Быстрое оформление онлайн за 1 день
-      </div>
-    </div>
-  </div>
-
-  <!-- Шапка -->
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <a href="./index.html" class="flex items-center gap-3">
-        <img src="./assets/cdek-logo-green.svg" alt="CDEK" class="h-8 sm:h-9 w-auto" />
-        <span class="hidden md:inline-block pl-3 border-l border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-500">
-          E-Commerce & Селлеры
-        </span>
-      </a>
-
-      <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
-        <a href="#benefits" class="hover:text-brand-green transition">Преимущества</a>
-        <a href="#integrations" class="hover:text-brand-green transition">Интеграции & Маркетплейсы</a>
-        <a href="#steps" class="hover:text-brand-green transition">Подключение</a>
-      </nav>
-
-      <div class="flex items-center gap-4">
-        <a href="#lead-form" class="bg-brand-green hover:bg-brand-green-hover text-brand-dark font-extrabold px-5 py-2.5 rounded-xl transition duration-200 shadow-sm text-sm">
-          Заключить договор
-        </a>
-      </div>
-    </div>
-  </header>
+  <!-- Подключение единой шапки -->
+  <!--# include virtual="/components/header.html" -->
 
   <!-- Hero Section -->
-  <section class="relative bg-brand-dark text-white overflow-hidden pt-12 pb-16 lg:py-20">
+  <section class="relative bg-[#062A30] text-white overflow-hidden pt-12 pb-16 lg:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
         
-        <!-- Оффер -->
         <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-darkCard border border-brand-green/30 text-xs font-bold text-brand-green tracking-wide">
-            <span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0A3942] border border-[#00D856]/30 text-xs font-bold text-[#00D856] tracking-wide">
+            <span class="w-2 h-2 rounded-full bg-[#FF5A27] animate-pulse"></span>
             Специальная программа поддержки интернет-магазинов и селлеров
           </div>
 
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
-            Доставка для интернет-магазинов <span class="text-brand-green">со скидкой до 50%</span>
+            Доставка для интернет-магазинов <span class="text-[#00D856]">со скидкой до 50%</span>
           </h1>
 
           <p class="text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed">
             Подключите официальный договор со СДЭК за 1 рабочий день. Автоматический расчет в корзине сайта, интеграция с маркетплейсами, наложенный платеж по 54-ФЗ и доставка в более чем 5 000 пунктов выдачи.
           </p>
 
-          <!-- Метрики в разных цветах -->
           <div class="grid grid-cols-3 gap-6 pt-6 border-t border-[#0A3942]">
             <div>
-              <div class="text-3xl sm:text-4xl font-black text-brand-green">5 000+</div>
+              <div class="text-3xl sm:text-4xl font-black text-[#00D856]">5 000+</div>
               <div class="text-xs text-slate-400 mt-1">ПВЗ и постаматов</div>
             </div>
             <div>
@@ -138,203 +45,105 @@
               <div class="text-xs text-slate-400 mt-1">Страны назначения</div>
             </div>
             <div>
-              <div class="text-3xl sm:text-4xl font-black text-brand-orange">−50%</div>
+              <div class="text-3xl sm:text-4xl font-black text-[#FF5A27]">−50%</div>
               <div class="text-xs text-slate-400 mt-1">Тарифы дешевле</div>
             </div>
           </div>
         </div>
 
-        <!-- Форма заявки с оранжевой окантовкой -->
-        <div id="lead-form" class="lg:col-span-5 bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl border-t-[6px] border-brand-orange relative">
-          <div class="text-center mb-6">
-            <h2 class="text-2xl font-black text-slate-900 tracking-tight">Подключить доставку</h2>
-            <p class="text-slate-500 text-xs mt-1">Оставьте заявку и получите персональный расчет тарифов для вашего бизнеса</p>
-          </div>
-
-          <form id="orderForm" onsubmit="handleFormSubmit(event)" class="space-y-3.5">
-            <div>
-              <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Имя / Компания *</label>
-              <input type="text" id="companyInput" required placeholder="ООО / ИП или ваше имя" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm transition" />
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Телефон *</label>
-              <input type="tel" id="phoneInput" required placeholder="+7 (999) 000-00-00" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm transition" />
-            </div>
-
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Способ связи</label>
-                <select id="channelSelect" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm bg-white transition">
-                  <option value="Telegram">Telegram</option>
-                  <option value="WhatsApp">WhatsApp</option>
-                  <option value="MAX">MAX</option>
-                  <option value="Звонок">Звонок</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Договор СДЭК *</label>
-                <select id="contractSelect" onchange="handleContractChange(this.value)" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm bg-white transition">
-                  <option value="no_contract">Нет договора</option>
-                  <option value="no_shipments_6m">Есть договор (нет отправок 6+ мес.)</option>
-                  <option value="has_active_contract">Есть действующий договор (отправляю)</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- Плашка-предупреждение при наличии договора -->
-            <div id="contractWarning" class="hidden p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-[11px] leading-snug space-y-1">
-              <div class="font-bold flex items-center gap-1.5 text-amber-900">
-                <span>⚠️</span> Внимание по действующим договорам
-              </div>
-              <p>
-                Мы подключаем только новых клиентов или при отсутствии отправок от 6 месяцев. Если у вас есть действующий договор с регулярными отправками — пожалуйста, обратитесь к закрепленному за вами менеджеру СДЭК.
-              </p>
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Платформа / CMS / Маркетплейс</label>
-              <select id="cmsSelect" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green focus:border-brand-green outline-none text-sm bg-white transition">
-                <optgroup label="Конструкторы и CMS">
-                  <option value="Tilda">Tilda Publishing</option>
-                  <option value="1C-Bitrix">1С-Битрикс</option>
-                  <option value="InSales">InSales</option>
-                  <option value="MoySklad">МойСклад / 1С</option>
-                  <option value="WooCommerce">WordPress / WooCommerce</option>
-                  <option value="OpenCart">OpenCart / CS-Cart</option>
-                </optgroup>
-                <optgroup label="Маркетплейсы">
-                  <option value="WB">Wildberries (FBS / DBS)</option>
-                  <option value="Ozon">Ozon (FBS / RealFBS)</option>
-                  <option value="YandexMarket">Яндекс Маркет / Мегамаркет</option>
-                  <option value="Avito">Авито Доставка</option>
-                </optgroup>
-                <optgroup label="Другое">
-                  <option value="API">Кастомный сайт / REST API</option>
-                  <option value="Other">Другая платформа</option>
-                </optgroup>
-              </select>
-            </div>
-
-            <button type="submit" class="w-full mt-1 bg-brand-green hover:bg-brand-green-hover text-brand-dark font-black text-sm py-3.5 px-6 rounded-xl transition duration-200 shadow-md cursor-pointer">
-              Получить расчет и доступ
-            </button>
-
-            <p class="text-[11px] text-slate-400 text-center leading-normal">
-              Нажимая кнопку, вы соглашаетесь с <a href="./privacy.html" class="underline hover:text-slate-600 transition">Политикой конфиденциальности</a>.
-            </p>
-
-            <!-- Прямые мессенджеры -->
-            <div class="pt-3 border-t border-slate-100 text-center space-y-2">
-              <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Или напишите нам напрямую:</div>
-              <div class="grid grid-cols-3 gap-2">
-                <a href="https://t.me/cdek_marketplace" target="_blank" rel="noopener noreferrer" class="py-2 px-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold flex items-center justify-center gap-1.5 transition">
-                  <svg class="w-3.5 h-3.5 fill-sky-500" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.25.38-.51 1.05-.78 4.12-1.79 6.87-2.97 8.25-3.54 3.93-1.63 4.74-1.92 5.27-1.93.12 0 .39.03.56.17.15.12.19.28.21.4-.02.08-.02.26-.04.43z"/></svg>
-                  Telegram
-                </a>
-                <a href="https://wa.me/79933221520" target="_blank" rel="noopener noreferrer" class="py-2 px-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold flex items-center justify-center gap-1.5 transition">
-                  <svg class="w-3.5 h-3.5 fill-emerald-500" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.124-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
-                  WhatsApp
-                </a>
-                <a href="https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo" target="_blank" rel="noopener noreferrer" class="py-2 px-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold flex items-center justify-center gap-1.5 transition">
-                  <svg class="w-3.5 h-3.5 fill-purple-600" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
-                  MAX
-                </a>
-              </div>
-            </div>
-          </form>
+        <!-- Подключение единой формы заявки -->
+        <div class="lg:col-span-5">
+          <!--# include virtual="/components/lead-form.html" -->
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- Преимущества -->
+  <!-- Блок преимуществ -->
   <section id="benefits" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs font-extrabold text-brand-orange uppercase tracking-wider">Возможности для e-commerce</span>
+        <span class="text-xs font-extrabold text-[#FF5A27] uppercase tracking-wider">Возможности для e-commerce</span>
         <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-2">Все инструменты логистики в одном договоре</h2>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="p-8 rounded-2xl bg-brand-light border border-slate-200/80 hover:shadow-lg transition">
-          <div class="w-12 h-12 rounded-xl bg-brand-green/20 text-brand-dark flex items-center justify-center font-bold text-xl mb-6">
-            %
-          </div>
+        <div class="p-8 rounded-2xl bg-[#F4F7F6] border border-slate-200/80 hover:shadow-lg transition">
+          <div class="w-12 h-12 rounded-xl bg-[#00D856]/20 text-[#062A30] flex items-center justify-center font-bold text-xl mb-6">%</div>
           <h3 class="text-xl font-bold text-slate-900 mb-2">Тариф «Посылка» со скидкой</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">
-            Специальные фиксированные ставки для интернет-магазинов и селлеров. Экономия до 50% по сравнению с отправкой физлицом.
-          </p>
+          <p class="text-slate-600 text-sm leading-relaxed">Специальные фиксированные ставки для интернет-магазинов и селлеров. Экономия до 50% по сравнению с отправкой физлицом.</p>
         </div>
 
-        <div class="p-8 rounded-2xl bg-brand-light border border-slate-200/80 hover:shadow-lg transition">
-          <div class="w-12 h-12 rounded-xl bg-brand-orange/20 text-brand-orange flex items-center justify-center font-bold text-xl mb-6">
-            ₽
-          </div>
+        <div class="p-8 rounded-2xl bg-[#F4F7F6] border border-slate-200/80 hover:shadow-lg transition">
+          <div class="w-12 h-12 rounded-xl bg-[#FF5A27]/20 text-[#FF5A27] flex items-center justify-center font-bold text-xl mb-6">₽</div>
           <h3 class="text-xl font-bold text-slate-900 mb-2">Наложенный платеж 54-ФЗ</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">
-            Прием оплаты картой и наличными при вручении в ПВЗ. Кассовые чеки формирует СДЭК, а выручка перечисляется на ваш расчетный счет.
-          </p>
+          <p class="text-slate-600 text-sm leading-relaxed">Прием оплаты картой и наличными при вручении в ПВЗ. Кассовые чеки формирует СДЭК, а выручка перечисляется на ваш счет.</p>
         </div>
 
-        <div class="p-8 rounded-2xl bg-brand-light border border-slate-200/80 hover:shadow-lg transition">
-          <div class="w-12 h-12 rounded-xl bg-brand-dark/10 text-brand-dark flex items-center justify-center font-bold text-xl mb-6">
-            ⚡
-          </div>
+        <div class="p-8 rounded-2xl bg-[#F4F7F6] border border-slate-200/80 hover:shadow-lg transition">
+          <div class="w-12 h-12 rounded-xl bg-[#062A30]/10 text-[#062A30] flex items-center justify-center font-bold text-xl mb-6">⚡</div>
           <h3 class="text-xl font-bold text-slate-900 mb-2">Готовые модули корзины</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">
-            Интерактивная карта ПВЗ, автоматический гео-расчет стоимости доставки и печать транспортных накладных в 1 клик.
-          </p>
+          <p class="text-slate-600 text-sm leading-relaxed">Интерактивная карта ПВЗ, автоматический гео-расчет стоимости доставки и печать транспортных накладных в 1 клик.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Интеграции & Маркетплейсы -->
-  <section id="integrations" class="py-20 bg-brand-light border-y border-slate-200">
+  <!-- Сетка всех 8 решений -->
+  <section id="integrations" class="py-20 bg-[#F4F7F6] border-y border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-14">
-        <span class="text-xs font-extrabold text-brand-orange uppercase tracking-wider">Интеграции & Селлеры</span>
+        <span class="text-xs font-extrabold text-[#FF5A27] uppercase tracking-wider">Интеграции & Решения</span>
         <h2 class="text-3xl font-black text-slate-900 mt-2">Подключение к вашей платформе</h2>
         <p class="text-slate-600 text-sm mt-2">Выберите систему управления сайтом или маркетплейс для быстрой настройки</p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="./integraciya-tilda.html" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition group block">
-          <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">Tilda Publishing →</div>
-          <p class="text-xs text-slate-500 leading-relaxed">Модуль доставки для корзины ST100, интерактивная карта ПВЗ и автоматические накладные.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="/integrations/tilda/" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-[#00D856] hover:shadow-md transition group block">
+          <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">Tilda →</div>
+          <p class="text-xs text-slate-500">Модуль доставки для корзины ST100 и карта ПВЗ.</p>
         </a>
 
-        <a href="./integraciya-bitrix.html" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition group block">
-          <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">1С-Битрикс / Управление →</div>
-          <p class="text-xs text-slate-500 leading-relaxed">Официальный модуль обмена, синхронизация статусов заказов и печать штрихкодов.</p>
+        <a href="/integrations/bitrix/" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-[#00D856] hover:shadow-md transition group block">
+          <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">1С-Битрикс →</div>
+          <p class="text-xs text-slate-500">Обмен заказами, печать квитанций и штрихкодов.</p>
         </a>
 
-        <a href="./integraciya-insales.html" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition group block">
-          <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">InSales Platform →</div>
-          <p class="text-xs text-slate-500 leading-relaxed">Быстрое подключение службы доставки в корзину интернет-магазина за 10 минут.</p>
+        <a href="/integrations/insales/" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-[#00D856] hover:shadow-md transition group block">
+          <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">InSales →</div>
+          <p class="text-xs text-slate-500">Быстрое подключение доставки в корзину за 10 минут.</p>
         </a>
 
-        <a href="./integraciya-moysklad.html" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition group block">
-          <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">МойСклад & 1С →</div>
-          <p class="text-xs text-slate-500 leading-relaxed">Автоматизация отгрузок, печать транспортных накладных и контроль остатков.</p>
+        <a href="/integrations/moysklad/" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-[#00D856] hover:shadow-md transition group block">
+          <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">МойСклад / 1С →</div>
+          <p class="text-xs text-slate-500">Автоматизация отгрузок, накладные и складской учет.</p>
         </a>
 
-        <a href="./nalozhennyj-platezh.html" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition group block">
+        <a href="/integrations/woocommerce/" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-[#00D856] hover:shadow-md transition group block">
+          <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">WooCommerce →</div>
+          <p class="text-xs text-slate-500">Плагин для сайтов на WordPress с калькулятором.</p>
+        </a>
+
+        <a href="/integrations/api/" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-[#00D856] hover:shadow-md transition group block">
+          <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">REST API 2.0 →</div>
+          <p class="text-xs text-slate-500">Прямое подключение к шлюзам СДЭК для кастомных CMS.</p>
+        </a>
+
+        <a href="/nalozhennyj-platezh/" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-[#00D856] hover:shadow-md transition group block">
           <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">Наложенный платеж →</div>
-          <p class="text-xs text-slate-500 leading-relaxed">Кассовое обслуживание по 54-ФЗ, прием карт и наличных, быстрые выплаты.</p>
+          <p class="text-xs text-slate-500">Касса 54-ФЗ, прием карт и быстрые выплаты.</p>
         </a>
 
-        <a href="./api-integraciya.html" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-brand-green hover:shadow-md transition group block">
-          <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">REST API v2.0 →</div>
-          <p class="text-xs text-slate-500 leading-relaxed">Прямое подключение к шлюзам СДЭК для самописных сайтов и ERP-систем.</p>
+        <a href="/dostavka-odezhdy/" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-[#00D856] hover:shadow-md transition group block">
+          <div class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1">Fashion / Примерка →</div>
+          <p class="text-xs text-slate-500">Частичный выкуп и примерка в пунктах выдачи.</p>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Шаги подключения -->
+  <!-- 3 шага подключения -->
   <section id="steps" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16">
@@ -343,25 +152,19 @@
 
       <div class="grid md:grid-cols-3 gap-8 text-center">
         <div class="space-y-4">
-          <div class="w-16 h-16 rounded-full bg-brand-green text-brand-dark font-black text-2xl flex items-center justify-center mx-auto shadow-md">
-            1
-          </div>
+          <div class="w-16 h-16 rounded-full bg-[#00D856] text-[#062A30] font-black text-2xl flex items-center justify-center mx-auto shadow-md">1</div>
           <h3 class="text-lg font-bold text-slate-900">Заявка на договор</h3>
           <p class="text-slate-600 text-sm">Заполните форму на сайте. Менеджер свяжется для подтверждения реквизитов и активации спецтарифа.</p>
         </div>
 
         <div class="space-y-4">
-          <div class="w-16 h-16 rounded-full bg-brand-dark text-white font-black text-2xl flex items-center justify-center mx-auto shadow-md">
-            2
-          </div>
+          <div class="w-16 h-16 rounded-full bg-[#062A30] text-white font-black text-2xl flex items-center justify-center mx-auto shadow-md">2</div>
           <h3 class="text-lg font-bold text-slate-900">Электронное подписание</h3>
           <p class="text-slate-600 text-sm">Заключение договора онлайн без визита в офис за 15 минут.</p>
         </div>
 
         <div class="space-y-4">
-          <div class="w-16 h-16 rounded-full bg-brand-orange text-white font-black text-2xl flex items-center justify-center mx-auto shadow-md">
-            3
-          </div>
+          <div class="w-16 h-16 rounded-full bg-[#FF5A27] text-white font-black text-2xl flex items-center justify-center mx-auto shadow-md">3</div>
           <h3 class="text-lg font-bold text-slate-900">Старт отгрузок</h3>
           <p class="text-slate-600 text-sm">Получите ключи интеграции API и отправляйте заказы со скидкой.</p>
         </div>
@@ -369,41 +172,8 @@
     </div>
   </section>
 
-  <!-- Футер -->
-  <footer class="bg-brand-dark text-slate-400 py-12 border-t border-[#0A3942] text-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-      <div class="flex items-center gap-3">
-        <img src="./assets/cdek-logo-white.svg" alt="CDEK" class="h-7 w-auto" />
-        <span class="text-xs pl-3 border-l border-slate-700">Официальный сервис подключения e-commerce партнеров</span>
-      </div>
-      <div class="flex flex-col sm:flex-row items-center gap-4 text-xs text-slate-500">
-        <a href="./privacy.html" class="hover:text-slate-300 transition underline">Политика конфиденциальности</a>
-        <span>© 2026 cdek-ecommerce.ru</span>
-      </div>
-    </div>
-  </footer>
+  <!-- Подключение единого подвала -->
+  <!--# include virtual="/components/footer.html" -->
 
-  <script>
-    function handleContractChange(val) {
-      const warning = document.getElementById('contractWarning');
-      if (val === 'has_active_contract') {
-        warning.classList.remove('hidden');
-      } else {
-        warning.classList.add('hidden');
-      }
-    }
-
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      const contract = document.getElementById('contractSelect').value;
-      if (contract === 'has_active_contract') {
-        alert('Мы подключаем только новых клиентов или при отсутствии отправок более 6 месяцев. Если у вас есть действующий договор с регулярными отправками — пожалуйста, обратитесь к вашему закрепленному менеджеру СДЭК.');
-        return;
-      }
-      alert('Спасибо за заявку! Мы свяжемся с вами в течение 15 минут для оформления договора.');
-      e.target.reset();
-      document.getElementById('contractWarning').classList.add('hidden');
-    }
-  </script>
 </body>
 </html>
