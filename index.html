@@ -23,109 +23,78 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 
   <!-- Единая микроразметка Schema.org (@graph) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://cdek-ecommerce.ru/#organization",
-        "name": "СДЭК E-Commerce",
-        "url": "https://cdek-ecommerce.ru/",
-        "logo": "https://cdek-ecommerce.ru/favicon.ico",
-        "priceRange": "₽₽",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+7-993-322-15-20",
-          "contactType": "customer service",
-          "availableLanguage": "Russian"
-        },
-        "sameAs": [
-          "https://t.me/cdek_marketplace",
-          "https://wa.me/79933221520"
-        ]
-      },
-      {
-        "@type": "Service",
-        "@id": "https://cdek-ecommerce.ru/#service",
-        "name": "Подключение интернет-магазинов и селлеров к СДЭК",
-        "provider": {
-          "@id": "https://cdek-ecommerce.ru/#organization"
-        },
-        "areaServed": "RU",
-        "description": "Бесплатное заключение корпоративного договора СДЭК со скидками до 50% на логистику для CMS-систем и маркетплейсов.",
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Тарифы СДЭК для E-Commerce",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Корпоративный договор СДЭК"
-              },
-              "price": "0",
-              "priceCurrency": "RUB",
-              "availability": "https://schema.org/InStock"
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Тариф «Посылка» со скидкой"
-              },
-              "price": "150.00",
-              "priceCurrency": "RUB",
-              "availability": "https://schema.org/InStock"
-            }
-          ]
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://cdek-ecommerce.ru/#breadcrumb",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Главная",
-            "item": "https://cdek-ecommerce.ru/"
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cdek-ecommerce.ru/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Сколько времени занимает подключение к СДЭК?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Электронное заключение договора и выдача боевых API-ключей занимает 1 рабочий день. Подключение бесплатное."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "С какими CMS и платформами работает сервис?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Готовые модули поддерживают Tilda, 1C-Битрикс, InSales, МойСклад, WordPress WooCommerce, 1С, а также прямое подключение через REST API 2.0."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как работает наложенный платеж?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "СДЭК принимает оплату картой или наличными при вручении, пробивает кассовый чек по 54-ФЗ и перечисляет деньги на ваш расчетный счет."
-            }
-          }
-        ]
+ <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cdek-ecommerce.ru/#website",
+      "url": "https://cdek-ecommerce.ru/",
+      "name": "СДЭК E-Commerce",
+      "inLanguage": "ru-RU",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cdek-ecommerce.ru/tracking/?cdek_number={search_term_string}",
+        "query-input": "required name=search_term_string"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce — Доставка для интернет-магазинов",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://www.cdek.ru/storage/source/logo/1/U1ck-s9wX-Um8xJ0F3EU5SPwz5kf8Utu.svg",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7-993-322-15-20",
+        "contactType": "sales",
+        "areaServed": "RU",
+        "availableLanguage": "Russian"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/#service",
+      "name": "Подключение интернет-магазинов к логистике СДЭК",
+      "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "description": "Бесплатное заключение B2B-договора со СДЭК, скидка до 50% на тариф «Посылка», интеграция с CMS и маркетплейсами DBS.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cdek-ecommerce.ru/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Сколько стоит заключение B2B договора со СДЭК?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Заключение договора абсолютно бесплатное. Нет минимальных объемов отгрузок и абонентской платы."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как подключить интеграцию СДЭК для сайта?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "После подписания договора вы получаете боевые API-ключи (Account и Secure password) для подключения готовых модулей Tilda, Bitrix, InSales, МойСклад или WP WooCommerce."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
