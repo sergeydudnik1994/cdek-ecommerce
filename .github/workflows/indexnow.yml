@@ -1,0 +1,27 @@
+name: IndexNow Fast Indexing
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'sitemap.xml'
+      - 'scripts/indexnow.py'
+      - 'index.html'
+      - '**/*.html'
+  workflow_dispatch: # Позволяет запускать вручную одной кнопкой из интерфейса GitHub
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run IndexNow Script
+        run: python scripts/indexnow.py
