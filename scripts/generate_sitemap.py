@@ -27,7 +27,7 @@ for root, dirs, files in os.walk(ROOT_DIR):
             loc = f"{BASE_URL}/"
             priority = "1.0"
         elif rel_path.endswith("/index.html"):
-            slug = rel_path[:-10]
+            slug = os.path.dirname(rel_path)
             loc = f"{BASE_URL}/{slug}/"
             priority = "0.9" if slug == "dogovor" else "0.8"
         else:
