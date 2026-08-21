@@ -4,39 +4,98 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Калькулятор стоимости доставки СДЭК для бизнеса и интернет-магазинов</title>
-  <meta name="description" content="Онлайн-калькулятор доставки СДЭК для e-commerce и юридических лиц. Расчет стоимости тарифа «Посылка», экспресс-доставки и сборных грузов со скидкой до 50%." />
+  <title>СДЭК калькулятор доставки | Рассчитать стоимость и сроки посылки онлайн</title>
+  <meta name="description" content="Онлайн-калькулятор доставки СДЭК: точный расчет стоимости и сроков отправки посылок и грузов по России. Тарифы «Посылка» и «Экспресс» со скидкой до 50% для бизнеса." />
+  <meta name="keywords" content="сдэк калькулятор, рассчитать стоимость сдэк, сдэк доставка рассчитать, тарифы сдэк, калькулятор посылки сдэк, стоимость отправки сдэк" />
   <link rel="canonical" href="https://cdek-ecommerce.ru/calculator/" />
-  <meta name="theme-color" content="#062A30" />
+  <meta name="theme-color" content="#08221F" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="СДЭК E-Commerce" />
-  <meta property="og:title" content="Калькулятор стоимости доставки СДЭК для B2B" />
-  <meta property="og:description" content="Рассчитайте выгоду на тарифах СДЭК при подключении B2B-договора для вашего интернет-магазина." />
+  <meta property="og:title" content="СДЭК калькулятор стоимости доставки онлайн" />
+  <meta property="og:description" content="Рассчитайте стоимость и сроки доставки посылки или груза по тарифам СДЭК со скидкой до 50%." />
   <meta property="og:url" content="https://cdek-ecommerce.ru/calculator/" />
+  <meta property="og:image" content="https://cdek-ecommerce.ru/favicon.png" />
 
   <!-- Фавиконки -->
-<link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
-  <!-- Schema.org Microdata -->
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Яндекс Карты API -->
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+  <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+    "@graph": [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Главная",
-        "item": "https://cdek-ecommerce.ru/"
+        "@type": "WebApplication",
+        "@id": "https://cdek-ecommerce.ru/calculator/#app",
+        "name": "Калькулятор доставки СДЭК онлайн",
+        "url": "https://cdek-ecommerce.ru/calculator/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "RUB"
+        }
       },
       {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Калькулятор доставки B2B",
-        "item": "https://cdek-ecommerce.ru/calculator/"
+        "@type": "BreadcrumbList",
+        "@id": "https://cdek-ecommerce.ru/calculator/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "https://cdek-ecommerce.ru/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Калькулятор СДЭК",
+            "item": "https://cdek-ecommerce.ru/calculator/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://cdek-ecommerce.ru/calculator/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Как рассчитывается объемный вес в СДЭК?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Объемный вес вычисляется по формуле: (Длина см × Ширина см × Высота см) / 5000. Стоимость рассчитывается по большему значению между физическим и объемным весом отправления."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Чем тариф «Посылка» отличается от розничного тарифа?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Тариф «Посылка» доступен юридическим лицам и ИП с договором СДЭК. Он предоставляет скидку до 50% от базовой розничной стоимости, бесплатный забор от объема и фиксированные сроки перевозки."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Входит ли страхование и наложенный платеж в расчет?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Калькулятор рассчитывает базовую стоимость перевозки. При заключении B2B-договора комиссия за перечисление наложенного платежа составляет от 0.75%, а страхование груза — от 0.75% объявленной стоимости."
+            }
+          }
+        ]
       }
     ]
   }
@@ -45,28 +104,774 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    body { font-family: 'Roboto', sans-serif; }
+    .ymaps-2-1-79-balloon__content { padding: 10px !important; font-family: 'Roboto', sans-serif !important; }
   </style>
 </head>
-<body class="bg-[#F4F7F6] text-slate-900 antialiased min-h-screen flex flex-col selection:bg-[#00D856] selection:text-[#062A30]">
+<body class="bg-[#F5F8FE] text-slate-900 min-h-screen flex flex-col antialiased">
 
   <!--# include virtual="/components/header.html" -->
 
-  <main class="flex-grow">
-    <!-- Хлебные крошки -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
-      <nav class="flex items-center gap-2 text-xs text-slate-400">
-        <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
-        <span>/</span>
-        <span class="text-slate-700 font-semibold">Калькулятор доставки B2B</span>
-      </nav>
+  <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12">
+    
+    <!-- Заголовок страницы -->
+    <div>
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 mb-3 rounded-full text-xs font-bold uppercase tracking-wider bg-[#E8F8ED] text-[#1AB248]">
+        Официальные тарифы СДЭК
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+        Калькулятор стоимости доставки СДЭК
+      </h1>
+      <p class="text-sm sm:text-base text-slate-500 mt-2 max-w-3xl">
+        Онлайн-расчет тарифов «Посылка», «Экспресс» и сборных грузов по всей России. Узнайте точную стоимость доставки до пункта выдачи (ПВЗ) и курьером до двери.
+      </p>
     </div>
 
-    <!-- Компонент калькулятора -->
-    <!--# include virtual="/components/calculator.html" -->
+    <!-- Интерактивный калькулятор -->
+    <div class="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-9 shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+        
+        <!-- Левая колонка: Параметры -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Направление -->
+          <div class="space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 relative">
+              
+              <!-- Откуда -->
+              <div class="relative">
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Откуда</label>
+                <div class="relative flex items-center">
+                  <span class="absolute left-3.5 w-2.5 h-2.5 rounded-full bg-[#1AB248]"></span>
+                  <input 
+                    type="text" 
+                    id="calc-city-from" 
+                    value="Москва" 
+                    autocomplete="off"
+                    placeholder="Город отправки" 
+                    class="w-full bg-[#F6F7F9] border border-slate-200 rounded-2xl pl-8 pr-10 py-3.5 text-sm font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248]/20 focus:border-[#1AB248] outline-none transition"
+                  />
+                </div>
+                <ul id="suggest-from" class="absolute z-50 w-full bg-white border border-slate-200 rounded-2xl mt-1.5 hidden max-h-52 overflow-y-auto shadow-2xl text-xs font-semibold py-1"></ul>
+              </div>
+
+              <!-- Кнопка реверса -->
+              <button 
+                type="button" 
+                onclick="swapCalcCities()" 
+                title="Поменять города местами"
+                aria-label="Поменять города местами"
+                class="flex absolute right-3 sm:right-auto sm:left-1/2 top-[78px] sm:top-[42px] -translate-y-1/2 sm:-translate-x-1/2 z-10 w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-[#1AB248] hover:border-[#1AB248] items-center justify-center shadow-md transition transform rotate-90 sm:rotate-0 hover:scale-110 active:scale-90 cursor-pointer"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+                </svg>
+              </button>
+
+              <!-- Куда -->
+              <div class="relative">
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Куда</label>
+                <div class="relative flex items-center">
+                  <span class="absolute left-3.5 w-2.5 h-2.5 rounded-full bg-[#FF7A00]"></span>
+                  <input 
+                    type="text" 
+                    id="calc-city-to" 
+                    value="Санкт-Петербург" 
+                    autocomplete="off"
+                    placeholder="Город получения" 
+                    class="w-full bg-[#F6F7F9] border border-slate-200 rounded-2xl pl-8 pr-10 py-3.5 text-sm font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#1AB248]/20 focus:border-[#1AB248] outline-none transition"
+                  />
+                </div>
+                <ul id="suggest-to" class="absolute z-50 w-full bg-white border border-slate-200 rounded-2xl mt-1.5 hidden max-h-52 overflow-y-auto shadow-2xl text-xs font-semibold py-1"></ul>
+              </div>
+
+            </div>
+
+            <!-- Быстрый выбор маршрутов -->
+            <div class="flex flex-wrap items-center gap-1.5 pt-1 text-xs">
+              <span class="text-slate-400 text-[11px] mr-1">Быстрый выбор:</span>
+              <button type="button" onclick="setQuickRoute('Москва', 'Санкт-Петербург')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-[#E8F8ED] hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → СПб</button>
+              <button type="button" onclick="setQuickRoute('Москва', 'Краснодар')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-[#E8F8ED] hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → Краснодар</button>
+              <button type="button" onclick="setQuickRoute('Москва', 'Екатеринбург')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-[#E8F8ED] hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → Екатеринбург</button>
+              <button type="button" onclick="setQuickRoute('Москва', 'Новосибирск')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-[#E8F8ED] hover:text-[#1AB248] text-slate-600 transition font-medium cursor-pointer">Мск → Новосибирск</button>
+            </div>
+          </div>
+
+          <!-- Способ доставки -->
+          <div>
+            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Способ вручения</label>
+            <div class="grid grid-cols-2 gap-2 bg-[#F6F7F9] p-1.5 rounded-2xl border border-slate-200/60">
+              <button 
+                type="button" 
+                id="mode-pvz-btn" 
+                onclick="setCalcMode('pvz')" 
+                class="py-2.5 px-3 rounded-xl bg-white text-slate-900 font-bold text-xs sm:text-sm shadow-xs flex items-center justify-center gap-2 transition cursor-pointer"
+              >
+                <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                В пункт выдачи (ПВЗ)
+              </button>
+              <button 
+                type="button" 
+                id="mode-door-btn" 
+                onclick="setCalcMode('door')" 
+                class="py-2.5 px-3 rounded-xl text-slate-600 font-semibold text-xs sm:text-sm hover:text-slate-900 flex items-center justify-center gap-2 transition cursor-pointer"
+              >
+                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                Курьером до двери
+              </button>
+            </div>
+          </div>
+
+          <!-- Вес отправления -->
+          <div>
+            <div class="flex justify-between items-center mb-1.5">
+              <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500">Габариты и вес</label>
+              <span class="text-[11px] text-slate-400">Тариф «Посылка» до 50 кг</span>
+            </div>
+            
+            <div class="grid grid-cols-3 sm:grid-cols-4 gap-2.5">
+              <button 
+                type="button" 
+                onclick="setCalcWeight(1)" 
+                id="w-btn-1" 
+                class="p-3 rounded-2xl border-2 border-[#1AB248] bg-[#E8F8ED]/60 text-left transition cursor-pointer"
+              >
+                <div class="text-xs font-black text-slate-900">Компакт (S)</div>
+                <div class="text-[11px] text-[#158E3A] font-bold mt-0.5">до 1 кг</div>
+                <div class="text-[10px] text-slate-400 mt-1 hidden sm:block">Одежда, чехлы</div>
+              </button>
+
+              <button 
+                type="button" 
+                onclick="setCalcWeight(3)" 
+                id="w-btn-3" 
+                class="p-3 rounded-2xl border border-slate-200 bg-[#F6F7F9] text-left hover:border-slate-300 transition cursor-pointer"
+              >
+                <div class="text-xs font-bold text-slate-800">Стандарт (M)</div>
+                <div class="text-[11px] text-slate-600 font-bold mt-0.5">до 3 кг</div>
+                <div class="text-[10px] text-slate-400 mt-1 hidden sm:block">Обувь, косметика</div>
+              </button>
+
+              <button 
+                type="button" 
+                onclick="setCalcWeight(5)" 
+                id="w-btn-5" 
+                class="p-3 rounded-2xl border border-slate-200 bg-[#F6F7F9] text-left hover:border-slate-300 transition cursor-pointer"
+              >
+                <div class="text-xs font-bold text-slate-800">Объемный (L)</div>
+                <div class="text-[11px] text-slate-600 font-bold mt-0.5">до 5 кг</div>
+                <div class="text-[10px] text-slate-400 mt-1 hidden sm:block">Техника, куртки</div>
+              </button>
+
+              <div class="p-2.5 rounded-2xl border border-slate-200 bg-[#F6F7F9] flex flex-col justify-center">
+                <label class="text-[10px] font-bold text-slate-500 uppercase">Свой вес</label>
+                <div class="flex items-center gap-1 mt-1">
+                  <input 
+                    type="number" 
+                    id="calc-weight-input" 
+                    value="1" 
+                    min="0.1" 
+                    max="100" 
+                    step="0.5" 
+                    oninput="onManualWeightChange()" 
+                    class="w-full bg-white border border-slate-200 rounded-lg px-2 py-1 text-xs font-black text-slate-900 outline-none text-center" 
+                  />
+                  <span class="text-xs font-bold text-slate-500">кг</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Правая колонка: Фирменная карточка результата в темно-изумрудном стиле -->
+        <div class="lg:col-span-5 bg-[#08221F] border border-[#133E38] text-white rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-xl relative overflow-hidden">
+          
+          <div class="absolute -right-12 -top-12 w-48 h-48 bg-[#1AB248]/15 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="space-y-5 relative z-10">
+            
+            <div class="flex items-center justify-between border-b border-[#133E38] pb-3.5 gap-2">
+              <div class="min-w-0">
+                <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider block">Направление</span>
+                <span class="text-sm font-bold text-white mt-0.5 block truncate" id="res-route">Москва → Санкт-Петербург</span>
+              </div>
+              <div class="text-right shrink-0">
+                <span class="text-[11px] font-medium text-slate-400 uppercase tracking-wider block">Срок</span>
+                <span class="text-sm font-bold text-emerald-400 mt-0.5 block whitespace-nowrap" id="res-days">1–2 раб. дня</span>
+              </div>
+            </div>
+
+            <!-- Карточка цен -->
+            <div class="bg-[#051715] rounded-2xl p-4 border border-[#1AB248]/20 space-y-3">
+              
+              <div class="flex justify-between items-center text-xs gap-2">
+                <span class="text-slate-400">Розничный тариф (без договора):</span>
+                <span class="text-slate-400 line-through font-semibold whitespace-nowrap shrink-0" id="res-retail">496 ₽</span>
+              </div>
+
+              <div class="border-t border-[#133E38] pt-2.5 flex justify-between items-end gap-3">
+                <div>
+                  <span class="text-[11px] font-bold text-[#1AB248] uppercase tracking-wide block">По договору B2B:</span>
+                  <div class="text-3xl sm:text-4xl font-black text-white mt-0.5 whitespace-nowrap" id="res-price">
+                    320 ₽
+                  </div>
+                </div>
+                <div class="text-right shrink-0 flex flex-col items-end">
+                  <span class="inline-block px-2.5 py-0.5 rounded-full bg-[#1AB248] text-white font-black text-xs shadow-xs" id="res-discount">
+                    −35%
+                  </span>
+                  <span class="text-xs font-extrabold text-[#FF7A00] whitespace-nowrap block mt-1.5" id="res-saved">
+                    Экономия 176 ₽
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+            <ul class="space-y-2 text-xs text-slate-300 pt-1">
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#1AB248] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Бесплатное подключение и боевые API-ключи</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#1AB248] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Прием наложенного платежа и касса 54-ФЗ</span>
+              </li>
+            </ul>
+
+          </div>
+
+          <!-- Кнопка -->
+          <div class="pt-6 relative z-10">
+            <a 
+              href="/#lead-form" 
+              class="block w-full py-4 px-6 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-center text-xs uppercase tracking-wider rounded-2xl transition shadow-lg shadow-[#1AB248]/20 cursor-pointer active:scale-95"
+            >
+              Подключить договор со скидкой
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ИНТЕРАКТИВНЫЙ МИНИ-КАЛЬКУЛЯТОР ОБЪЕМНОГО ВЕСА -->
+    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Калькулятор объемного веса</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Рассчитайте плотность вашей коробки по международной формуле IATA</p>
+        </div>
+        <div class="px-3.5 py-1.5 bg-[#E8F8ED] border border-[#1AB248]/30 rounded-xl text-xs font-bold text-[#158E3A] self-start sm:self-auto">
+          Формула: (Д × Ш × В, см) / 5000
+        </div>
+      </div>
+
+      <!-- Поля ввода габаритов -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-[#F6F7F9] p-4 sm:p-5 rounded-2xl border border-slate-200/60">
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-slate-500 mb-1">Длина (см)</label>
+          <input 
+            type="number" 
+            id="vol-l" 
+            value="20" 
+            min="1" 
+            oninput="calcVolumetricWeight()" 
+            class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm font-bold text-slate-900 outline-none focus:border-[#1AB248]" 
+          />
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-slate-500 mb-1">Ширина (см)</label>
+          <input 
+            type="number" 
+            id="vol-w" 
+            value="20" 
+            min="1" 
+            oninput="calcVolumetricWeight()" 
+            class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm font-bold text-slate-900 outline-none focus:border-[#1AB248]" 
+          />
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-slate-500 mb-1">Высота (см)</label>
+          <input 
+            type="number" 
+            id="vol-h" 
+            value="25" 
+            min="1" 
+            oninput="calcVolumetricWeight()" 
+            class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm font-bold text-slate-900 outline-none focus:border-[#1AB248]" 
+          />
+        </div>
+        <div class="flex flex-col justify-end">
+          <div class="bg-white border border-slate-200 rounded-xl px-3 py-2 text-center">
+            <span class="block text-[10px] text-slate-400 font-bold uppercase">Объемный вес</span>
+            <span class="text-sm font-black text-[#1AB248]" id="vol-result">2.00 кг</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-1">
+        <p class="text-xs text-slate-500 leading-relaxed max-w-xl">
+          СДЭК производит тарификацию по <b>большему значению</b> между физическим весом на весах и вычисленным объемным весом.
+        </p>
+        <button 
+          type="button" 
+          onclick="applyVolWeight()" 
+          class="w-full sm:w-auto px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition cursor-pointer whitespace-nowrap active:scale-95"
+        >
+          Применить этот вес в расчет ↑
+        </button>
+      </div>
+    </div>
+
+    <!-- ДВЕ СЕРВИСНЫЕ КАРТОЧКИ: КАРТА ПВЗ И ТРЕКИНГ (В ЕДИНОМ СТИЛЕ) -->
+    <div class="grid md:grid-cols-2 gap-6">
+      
+      <!-- Карточка 1: Интерактивная карта ПВЗ -->
+      <div class="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900">Пункты выдачи на карте</h3>
+          <p class="text-sm text-slate-500 mt-2 leading-relaxed">
+            Более 5 000 отделений СДЭК и постаматов по всей РФ: график работы, адреса, примерка и оплата при получении.
+          </p>
+        </div>
+        <button type="button" onclick="openMapModal()" class="mt-6 inline-flex items-center text-sm font-bold text-[#1AB248] hover:text-[#158E3A] gap-1 group text-left cursor-pointer">
+          Найти ближайший ПВЗ <span class="transition-transform group-hover:translate-x-1">→</span>
+        </button>
+      </div>
+
+      <!-- Карточка 2: Отслеживание заказа -->
+      <div class="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900">Отслеживание посылки</h3>
+          <p class="text-sm text-slate-500 mt-2 leading-relaxed">
+            Проверьте актуальный статус отправки, историю движения между городами и дату готовности к выдаче по трек-номеру.
+          </p>
+        </div>
+        <a href="/tracking/" class="mt-6 inline-flex items-center text-sm font-bold text-[#1AB248] hover:text-[#158E3A] gap-1 group">
+          Перейти к отслеживанию <span class="transition-transform group-hover:translate-x-1">→</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- SEO БЛОК: Сравнение официальных тарифов (БЕЗ СИНИХ ЦВЕТОВ) -->
+    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900">Сравнение основных тарифов СДЭК для отправки</h2>
+      <div class="grid sm:grid-cols-3 gap-4 text-sm">
+        <div class="p-5 rounded-2xl bg-[#F8FAFC] border border-slate-200/60 flex flex-col justify-between">
+          <div>
+            <span class="inline-block px-2.5 py-0.5 rounded-md bg-[#E8F8ED] text-[#1AB248] text-xs font-bold mb-2">Хит продаж</span>
+            <h3 class="font-bold text-slate-900 text-base">Тариф «Посылка»</h3>
+            <p class="text-slate-500 text-xs mt-1 leading-relaxed">
+              Оптимальный тариф для интернет-магазинов и селлеров. Доставка между 5 000+ ПВЗ по всей РФ по минимальной фиксированной цене.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200 text-xs text-slate-600 font-semibold">
+            Срок: 1–4 дня • Скидка до 50%
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#F8FAFC] border border-slate-200/60 flex flex-col justify-between">
+          <div>
+            <span class="inline-block px-2.5 py-0.5 rounded-md bg-amber-50 text-[#FF7A00] text-xs font-bold mb-2">Срочный</span>
+            <h3 class="font-bold text-slate-900 text-base">Экспресс-лайт</h3>
+            <p class="text-slate-500 text-xs mt-1 leading-relaxed">
+              Срочная доставка документов, коммерческой корреспонденции и малогабаритных грузов авиатранспортом на следующий рабочий день.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200 text-xs text-slate-600 font-semibold">
+            Срок: 1–2 дня • Курьер до двери
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#F8FAFC] border border-slate-200/60 flex flex-col justify-between">
+          <div>
+            <span class="inline-block px-2.5 py-0.5 rounded-md bg-[#08221F] text-[#1AB248] border border-[#133E38] text-xs font-bold mb-2 shadow-2xs">
+          Крупногабарит
+        </span>
+            <h3 class="font-bold text-slate-900 text-base">Магистральный экспресс</h3>
+            <p class="text-slate-500 text-xs mt-1 leading-relaxed">
+              Экономичная транспортировка партий товаров, коробок и сборных грузов наземным магистральным транспортом между хабами СДЭК.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200 text-xs text-slate-600 font-semibold">
+            Срок: 3–7 дней • Грузы от 30 кг
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO БЛОК: FAQ -->
+    <div id="faq" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900">Часто задаваемые вопросы по расчету доставки</h2>
+      <div class="space-y-4 text-sm">
+        <details class="group border border-slate-200/80 rounded-2xl p-5 open:bg-[#F9FBFA] transition">
+          <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+            <span>Как рассчитывается объемный вес в СДЭК?</span>
+            <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+          </summary>
+          <p class="text-slate-600 mt-3 text-xs sm:text-sm leading-relaxed">
+            Объемный вес вычисляется по формуле: <code>(Длина × Ширина × Высота в см) / 5000</code>. Тарификация производится по большему значению между физическим весом и объемным.
+          </p>
+        </details>
+
+        <details class="group border border-slate-200/80 rounded-2xl p-5 open:bg-[#F9FBFA] transition">
+          <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+            <span>Чем тариф «Посылка» отличается от розничного тарифа?</span>
+            <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+          </summary>
+          <p class="text-slate-600 mt-3 text-xs sm:text-sm leading-relaxed">
+            Тариф «Посылка» доступен для интернет-магазинов и юрлиц при заключении официального договора. Он дает экономию до 50% по сравнению со стандартными розничными тарифами физических лиц.
+          </p>
+        </details>
+
+        <details class="group border border-slate-200/80 rounded-2xl p-5 open:bg-[#F9FBFA] transition">
+          <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+            <span>Входит ли страхование и наложенный платеж в расчет?</span>
+            <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+          </summary>
+          <p class="text-slate-600 mt-3 text-xs sm:text-sm leading-relaxed">
+            Калькулятор показывает базовую стоимость доставки. При подключении B2B-договора комиссия за перевод наложенного платежа составляет от 0.75%, а страхование — от 0.75% объявленной стоимости.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <!-- B2B Лид-магнит в темно-изумрудном стиле -->
+    <div class="bg-[#08221F] border border-[#133E38] rounded-3xl p-8 sm:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="space-y-3 max-w-xl">
+        <span class="inline-block px-3.5 py-1 bg-[#1AB248]/20 border border-[#1AB248]/40 rounded-full text-[#1AB248] text-xs font-bold uppercase tracking-wider">
+          Для интернет-магазинов и селлеров
+        </span>
+        <h3 class="text-2xl sm:text-3xl font-black tracking-tight">Хотите отправлять по минимальным тарифам?</h3>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          Заключите официальный договор со СДЭК онлайн за 15 минут: доступ к личному кабинету, персональный менеджер и скидка до 50% на все направления по РФ.
+        </p>
+      </div>
+      <a href="/#lead-form" class="px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold rounded-2xl transition shadow-lg shadow-[#1AB248]/30 flex-shrink-0 text-center whitespace-nowrap active:scale-95">
+        Заключить договор онлайн
+      </a>
+    </div>
+
   </main>
 
   <!--# include virtual="/components/footer.html" -->
 
+  <!-- Модальное окно Яндекс.Карт -->
+  <div id="mapModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl border border-slate-200 flex flex-col max-h-[90vh]">
+      <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+        <div>
+          <h3 class="text-lg font-bold text-slate-900">Пункты выдачи СДЭК на карте</h3>
+          <p class="text-xs text-slate-400">Найдите ближайшее отделение с примерочными и безналичной оплатой</p>
+        </div>
+        <button type="button" onclick="closeMapModal()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition cursor-pointer">✕</button>
+      </div>
+      
+      <!-- Города быстрого выбора -->
+      <div class="px-5 py-2.5 bg-slate-50 border-b border-slate-100 flex flex-wrap gap-2">
+        <button type="button" onclick="modalSetCity([55.7558, 37.6173])" class="px-3 py-1 bg-white hover:bg-[#E8F8ED] hover:text-[#1AB248] border border-slate-200 rounded-lg text-xs font-semibold transition">Москва</button>
+        <button type="button" onclick="modalSetCity([59.9343, 30.3351])" class="px-3 py-1 bg-white hover:bg-[#E8F8ED] hover:text-[#1AB248] border border-slate-200 rounded-lg text-xs font-semibold transition">СПб</button>
+        <button type="button" onclick="modalSetCity([45.0355, 38.9753])" class="px-3 py-1 bg-white hover:bg-[#E8F8ED] hover:text-[#1AB248] border border-slate-200 rounded-lg text-xs font-semibold transition">Краснодар</button>
+        <button type="button" onclick="modalSetCity([56.8389, 60.6057])" class="px-3 py-1 bg-white hover:bg-[#E8F8ED] hover:text-[#1AB248] border border-slate-200 rounded-lg text-xs font-semibold transition">Екатеринбург</button>
+        <button type="button" onclick="modalSetCity([55.0084, 82.9357])" class="px-3 py-1 bg-white hover:bg-[#E8F8ED] hover:text-[#1AB248] border border-slate-200 rounded-lg text-xs font-semibold transition">Новосибирск</button>
+      </div>
+
+      <div class="relative flex-grow h-[460px] bg-slate-50">
+        <div id="modalYandexMap" class="w-full h-full"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Скрипты: Калькулятор, объемный вес и карта -->
+  <script>
+    let currentCalcMode = 'pvz';
+    let currentCalcWeight = 1;
+    let debounceTimer = null;
+    let modalMap = null;
+
+    let russianCities = [
+      "Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Казань", "Нижний Новгород", 
+      "Челябинск", "Красноярск", "Самара", "Уфа", "Ростов-на-Дону", "Омск", "Краснодар", 
+      "Воронеж", "Пермь", "Волгоград", "Саратов", "Тюмень", "Тольятти", "Барнаул", "Ижевск", 
+      "Махачкала", "Хабаровск", "Ульяновск", "Иркутск", "Владивосток", "Ярославль", "Севастополь", 
+      "Ставрополь", "Томск", "Кемерово", "Набережные Челны", "Оренбург", "Новокузнецк", "Балашиха"
+    ];
+
+    fetch('https://raw.githubusercontent.com/pensnarik/russian-cities/master/russian-cities.json')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          const fullList = data.map(item => item.name);
+          russianCities = [...new Set([...russianCities, ...fullList])];
+        }
+      })
+      .catch(() => {});
+
+    function setupCityAutocomplete(inputId, listId) {
+      const input = document.getElementById(inputId);
+      const list = document.getElementById(listId);
+
+      input.addEventListener('input', function() {
+        const val = this.value.trim().toLowerCase();
+        list.innerHTML = '';
+        if (!val) { list.classList.add('hidden'); runDynamicCalc(); return; }
+
+        const matches = russianCities.filter(c => c.toLowerCase().includes(val)).slice(0, 10);
+        if (matches.length === 0) { list.classList.add('hidden'); runDynamicCalc(); return; }
+
+        matches.forEach(city => {
+          const li = document.createElement('li');
+          li.className = 'px-4 py-2 cursor-pointer hover:bg-[#E8F8ED] hover:text-[#1AB248] text-slate-800 border-b border-slate-100 last:border-0 transition';
+          const regex = new RegExp(`(${val})`, 'gi');
+          li.innerHTML = city.replace(regex, '<span class="text-[#1AB248] font-bold">$1</span>');
+          
+          li.addEventListener('click', () => {
+            input.value = city;
+            list.classList.add('hidden');
+            runDynamicCalc();
+          });
+          list.appendChild(li);
+        });
+        list.classList.remove('hidden');
+        runDynamicCalc();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (e.target !== input && e.target !== list) list.classList.add('hidden');
+      });
+    }
+
+    function setQuickRoute(from, to) {
+      document.getElementById('calc-city-from').value = from;
+      document.getElementById('calc-city-to').value = to;
+      runDynamicCalc();
+    }
+
+    function swapCalcCities() {
+      const fromEl = document.getElementById('calc-city-from');
+      const toEl = document.getElementById('calc-city-to');
+      const tmp = fromEl.value;
+      fromEl.value = toEl.value;
+      toEl.value = tmp;
+      runDynamicCalc();
+    }
+
+    function setCalcMode(mode) {
+      currentCalcMode = mode;
+      const pvzBtn = document.getElementById('mode-pvz-btn');
+      const doorBtn = document.getElementById('mode-door-btn');
+      
+      if (mode === 'pvz') {
+        pvzBtn.className = "py-2.5 px-3 rounded-xl bg-white text-slate-900 font-bold text-xs sm:text-sm shadow-xs flex items-center justify-center gap-2 transition cursor-pointer";
+        doorBtn.className = "py-2.5 px-3 rounded-xl text-slate-600 font-semibold text-xs sm:text-sm hover:text-slate-900 flex items-center justify-center gap-2 transition cursor-pointer";
+        pvzBtn.querySelector('svg').className = "w-4 h-4 text-[#1AB248]";
+        doorBtn.querySelector('svg').className = "w-4 h-4 text-slate-400";
+      } else {
+        doorBtn.className = "py-2.5 px-3 rounded-xl bg-white text-slate-900 font-bold text-xs sm:text-sm shadow-xs flex items-center justify-center gap-2 transition cursor-pointer";
+        pvzBtn.className = "py-2.5 px-3 rounded-xl text-slate-600 font-semibold text-xs sm:text-sm hover:text-slate-900 flex items-center justify-center gap-2 transition cursor-pointer";
+        doorBtn.querySelector('svg').className = "w-4 h-4 text-[#1AB248]";
+        pvzBtn.querySelector('svg').className = "w-4 h-4 text-slate-400";
+      }
+      runDynamicCalc();
+    }
+
+    function setCalcWeight(w) {
+      currentCalcWeight = w;
+      document.getElementById('calc-weight-input').value = w;
+      updateWeightButtons(w);
+      runDynamicCalc();
+    }
+
+    function onManualWeightChange() {
+      let val = parseFloat(document.getElementById('calc-weight-input').value);
+      if (isNaN(val) || val <= 0) val = 1;
+      currentCalcWeight = val;
+      updateWeightButtons(val);
+      runDynamicCalc();
+    }
+
+    function updateWeightButtons(w) {
+      [1, 3, 5].forEach(val => {
+        const btn = document.getElementById('w-btn-' + val);
+        if (btn) {
+          if (val === w) {
+            btn.className = "p-3 rounded-2xl border-2 border-[#1AB248] bg-[#E8F8ED]/60 text-left transition cursor-pointer";
+            btn.querySelector('div:first-child').className = "text-xs font-black text-slate-900";
+            btn.querySelector('div:nth-child(2)').className = "text-[11px] text-[#158E3A] font-bold mt-0.5";
+          } else {
+            btn.className = "p-3 rounded-2xl border border-slate-200 bg-[#F6F7F9] text-left hover:border-slate-300 transition cursor-pointer";
+            btn.querySelector('div:first-child').className = "text-xs font-bold text-slate-800";
+            btn.querySelector('div:nth-child(2)').className = "text-[11px] text-slate-600 font-bold mt-0.5";
+          }
+        }
+      });
+    }
+
+    function runDynamicCalc() {
+      const from = (document.getElementById('calc-city-from').value || '').trim() || 'Москва';
+      const to = (document.getElementById('calc-city-to').value || '').trim() || 'Санкт-Петербург';
+      const weight = currentCalcWeight || 1;
+      const mode = currentCalcMode;
+
+      document.getElementById('res-route').innerText = `${from} → ${to}`;
+
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(async () => {
+        try {
+          const resp = await fetch('/cdek-service.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ cityFrom: from, cityTo: to, weight: weight, mode: mode })
+          });
+          const data = await resp.json();
+          if (data.success && data.result) {
+            renderCalcResult(data.result.price, data.result.retailPrice, `${data.result.deliveryPeriodMin}–${data.result.deliveryPeriodMax} раб. дня`);
+            return;
+          }
+        } catch (e) {}
+
+        fallbackZoneCalc(from, to, weight, mode);
+      }, 150);
+    }
+
+    function fallbackZoneCalc(from, to, weight, mode) {
+      const f = from.toLowerCase();
+      const t = to.toLowerCase();
+      const isLocal = (f === t);
+
+      let basePrice = isLocal ? 205 : 320;
+      let stepPrice = isLocal ? 31.5 : 50;
+      let days = isLocal ? '1 раб. день' : '2–3 раб. дня';
+
+      const farEast = ["владивосток", "хабаровск", "якутск", "петропавловск-камчатский", "южно-сахалинск", "магадан", "чита", "благовещенск"];
+      const siberia = ["новосибирск", "красноярск", "омск", "томск", "иркутск", "барнаул", "кемерово", "новокузнецк"];
+      const ural = ["екатеринбург", "челябинск", "тюмень", "пермь", "уфа", "курган", "магнитогорск", "сургут"];
+
+      if (farEast.some(c => f.includes(c) || t.includes(c))) {
+        basePrice = 580; stepPrice = 95; days = '4–7 раб. дней';
+      } else if (siberia.some(c => f.includes(c) || t.includes(c))) {
+        basePrice = 450; stepPrice = 75; days = '3–5 раб. дней';
+      } else if (ural.some(c => f.includes(c) || t.includes(c))) {
+        basePrice = 360; stepPrice = 58; days = '2–4 раб. дня';
+      }
+
+      if (mode === 'door') {
+        basePrice += 260;
+        stepPrice += 10;
+      }
+
+      let b2bPrice = (weight <= 1) ? basePrice : (basePrice + (weight - 1) * stepPrice);
+      const finalB2B = Math.round(b2bPrice);
+      const finalRetail = Math.round(b2bPrice * 1.55);
+
+      renderCalcResult(finalB2B, finalRetail, days);
+    }
+
+    function renderCalcResult(b2b, retail, days) {
+      const saved = retail - b2b;
+      const discount = Math.round((saved / retail) * 100);
+
+      document.getElementById('res-price').innerText = `${b2b} ₽`;
+      document.getElementById('res-retail').innerText = `${retail} ₽`;
+      document.getElementById('res-days').innerText = days;
+      document.getElementById('res-discount').innerText = `−${discount}%`;
+      document.getElementById('res-saved').innerText = `Экономия ${saved} ₽`;
+    }
+
+    // 2. Логика мини-калькулятора объемного веса
+    function calcVolumetricWeight() {
+      const l = parseFloat(document.getElementById('vol-l').value) || 0;
+      const w = parseFloat(document.getElementById('vol-w').value) || 0;
+      const h = parseFloat(document.getElementById('vol-h').value) || 0;
+      const volWeight = (l * w * h) / 5000;
+      document.getElementById('vol-result').innerText = volWeight > 0 ? volWeight.toFixed(2) + ' кг' : '0.00 кг';
+    }
+
+    function applyVolWeight() {
+      const l = parseFloat(document.getElementById('vol-l').value) || 0;
+      const w = parseFloat(document.getElementById('vol-w').value) || 0;
+      const h = parseFloat(document.getElementById('vol-h').value) || 0;
+      const volWeight = Math.max(0.1, parseFloat(((l * w * h) / 5000).toFixed(1)));
+      if (volWeight > 0) {
+        setCalcWeight(volWeight);
+        window.scrollTo({ top: 100, behavior: 'smooth' });
+      }
+    }
+
+    // 3. Управление модальным окном Яндекс.Карт
+    function openMapModal() {
+      const modal = document.getElementById('mapModal');
+      modal.classList.remove('hidden');
+
+      if (!modalMap) {
+        ymaps.ready(() => {
+          modalMap = new ymaps.Map('modalYandexMap', {
+            center: [55.7558, 37.6173],
+            zoom: 11,
+            controls: ['zoomControl', 'geolocationControl', 'searchControl']
+          });
+
+          const pvzList = [
+            { lat: 55.751244, lon: 37.618423, name: 'СДЭК: ул. Никольская, 10' },
+            { lat: 55.764512, lon: 37.605231, name: 'СДЭК: Тверская ул., 18' },
+            { lat: 55.731231, lon: 37.632145, name: 'СДЭК: Павелецкая пл., 2' },
+            { lat: 45.0355, lon: 38.9753, name: 'СДЭК: ул. Красная, 124 (Краснодар)' },
+            { lat: 59.9343, lon: 30.3351, name: 'СДЭК: Невский пр-т, 48 (СПб)' },
+            { lat: 56.8389, lon: 60.6057, name: 'СДЭК: пр. Ленина, 25 (Екатеринбург)' }
+          ];
+
+          pvzList.forEach(p => {
+            const placemark = new ymaps.Placemark([p.lat, p.lon], {
+              balloonContentHeader: `<b style="color:#1AB248;font-size:13px;">${p.name}</b>`,
+              balloonContentBody: `<div style="font-size:12px;color:#475569;margin-top:4px;">Режим работы: Пн-Вс 09:00-21:00<br>Примерка: Есть<br>Оплата: Картой и наличными</div>`,
+              balloonContentFooter: `<div style="font-size:11px;color:#94a3b8;margin-top:4px;">Пункт выдачи заказов СДЭК</div>`,
+              hintContent: p.name
+            }, {
+              preset: 'islands#darkGreenDotIcon'
+            });
+            modalMap.geoObjects.add(placemark);
+          });
+        });
+      } else {
+        modalMap.container.fitToViewport();
+      }
+    }
+
+    function closeMapModal() {
+      document.getElementById('mapModal').classList.add('hidden');
+    }
+
+    function modalSetCity(coords) {
+      if (modalMap) {
+        modalMap.setCenter(coords, 11, { duration: 400 });
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMapModal();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setupCityAutocomplete('calc-city-from', 'suggest-from');
+      setupCityAutocomplete('calc-city-to', 'suggest-to');
+      runDynamicCalc();
+      calcVolumetricWeight();
+    });
+  </script>
 </body>
 </html>
