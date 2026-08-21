@@ -38,4 +38,7 @@ jobs:
           script: |
             git config --global --add safe.directory /var/www/cdek-ecommerce.ru
             cd /var/www/cdek-ecommerce.ru
-            git pull origin main
+            git fetch origin main
+            git reset --hard origin/main
+            chown -R www-data:www-data /var/www/cdek-ecommerce.ru
+            chmod -R 755 /var/www/cdek-ecommerce.ru
