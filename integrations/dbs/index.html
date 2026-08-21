@@ -4,17 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Настройка СДЭК DBS: пошаговая инструкция по интеграции с маркетплейсами</title>
-  <meta name="description" content="Полное руководство по настройке интеграции СДЭК DBS для селлеров Ozon, Wildberries, Яндекс Маркета и Авито. Получение API-ключей, сопоставление складов, автоматическая передача трек-номеров и решение ошибок." />
+  <!-- SEO Метатеги под стандарты Bing, Google и Яндекса -->
+  <title>СДЭК DBS для маркетплейсов: пошаговая настройка интеграции</title>
+  <meta name="description" content="Инструкция по настройке СДЭК DBS для Ozon, WB, Яндекс Маркета и Авито. Подключение B2B API, маппинг складов и печать маркировки со скидкой 50%." />
+  <meta name="keywords" content="сдэк dbs, настройка сдэк dbs, сдэк интеграция маркетплейсы, сдэк realfbs ozon, сдэк dbs wildberries, api сдэк dbs" />
   <link rel="canonical" href="https://cdek-ecommerce.ru/integrations/dbs/" />
   <meta name="theme-color" content="#062A30" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="СДЭК E-Commerce" />
-  <meta property="og:title" content="Настройка СДЭК DBS: пошаговая инструкция по интеграции с маркетплейсами" />
-  <meta property="og:description" content="Инструкция для селлеров: подключение B2B API СДЭК, настройка схемы DBS, сопоставление складов и печать маркировки." />
+  <meta property="og:title" content="СДЭК DBS для маркетплейсов: настройка интеграции" />
+  <meta property="og:description" content="Пошаговая инструкция по подключению схемы DBS в СДЭК для селлеров Ozon, WB, Яндекс Маркета и Авито." />
   <meta property="og:url" content="https://cdek-ecommerce.ru/integrations/dbs/" />
+  <meta property="og:image" content="https://cdek-ecommerce.ru/favicon.png" />
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
@@ -184,7 +187,7 @@
           </p>
           <ol class="list-decimal list-inside space-y-2 text-xs sm:text-sm text-slate-700 font-medium pl-1">
             <li>Войдите в личный кабинет корпоративного клиента СДЭК.</li>
-            <li>Откройте раздел <strong>«Интеграция»</strong> $\rightarrow$ <strong>«Ключи API»</strong>.</li>
+            <li>Откройте раздел <strong>«Интеграция»</strong> → <strong>«Ключи API»</strong>.</li>
             <li>Нажмите <strong>«Создать ключ»</strong> и скопируйте значения:
               <ul class="list-disc list-inside pl-5 mt-1 text-slate-600 font-normal space-y-1">
                 <li><strong>Account (Идентификатор клиента / Client ID)</strong></li>
@@ -222,7 +225,7 @@
                 <h4 class="font-black text-slate-900 text-sm">Ozon (realFBS)</h4>
                 <span class="text-[10px] font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded">Популярно</span>
               </div>
-              <p class="text-xs text-slate-600">В ЛК Ozon Seller откройте: <em>Настройки $\rightarrow$ API ключи</em>.</p>
+              <p class="text-xs text-slate-600">В ЛК Ozon Seller откройте: <em>Настройки → API ключи</em>.</p>
               <ul class="text-xs text-slate-700 space-y-1 font-mono">
                 <li>• Client-ID: скопируйте числовой ID</li>
                 <li>• API-Key: сгенерируйте с типом «Администратор»</li>
@@ -235,7 +238,7 @@
                 <h4 class="font-black text-slate-900 text-sm">Wildberries (DBS)</h4>
                 <span class="text-[10px] font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded">DBS / WB GO</span>
               </div>
-              <p class="text-xs text-slate-600">В ЛК WB Партнеры откройте: <em>Профиль $\rightarrow$ Настройки $\rightarrow$ Доступ к API</em>.</p>
+              <p class="text-xs text-slate-600">В ЛК WB Партнеры откройте: <em>Профиль → Настройки → Доступ к API</em>.</p>
               <ul class="text-xs text-slate-700 space-y-1 font-mono">
                 <li>• Отметьте категорию прав: «Доставка / Маркетплейс»</li>
                 <li>• Скопируйте сгенерированный токен</li>
@@ -248,7 +251,7 @@
                 <h4 class="font-black text-slate-900 text-sm">Яндекс Маркет (DBS)</h4>
                 <span class="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">DBS СДЭК</span>
               </div>
-              <p class="text-xs text-slate-600">В кабинете Яндекс Маркета: <em>Настройки $\rightarrow$ Настройки API</em>.</p>
+              <p class="text-xs text-slate-600">В кабинете Яндекс Маркета: <em>Настройки → Настройки API</em>.</p>
               <ul class="text-xs text-slate-700 space-y-1 font-mono">
                 <li>• Номер кампании (Campaign ID)</li>
                 <li>• Авторизационный OAuth-токен</li>
@@ -261,7 +264,7 @@
                 <h4 class="font-black text-slate-900 text-sm">Авито Доставка</h4>
                 <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Авито Pro</span>
               </div>
-              <p class="text-xs text-slate-600">В кабинете Авито Pro: <em>Для бизнеса $\rightarrow$ Интеграции $\rightarrow$ API</em>.</p>
+              <p class="text-xs text-slate-600">В кабинете Авито Pro: <em>Для бизнеса → Интеграции → API</em>.</p>
               <ul class="text-xs text-slate-700 space-y-1 font-mono">
                 <li>• Client ID</li>
                 <li>• Client Secret</li>
