@@ -21,7 +21,7 @@ for root, dirs, files in os.walk(ROOT_DIR):
 
         rel_path = os.path.relpath(os.path.join(root, file), ROOT_DIR).replace("\\", "/")
         
-        # Формирование чистых URL без двойных слэшей
+        # Формирование чистых URL
         if rel_path == "index.html":
             loc = f"{BASE_URL}/"
             priority = "1.0"
@@ -33,6 +33,13 @@ for root, dirs, files in os.walk(ROOT_DIR):
             slug = rel_path[:-5].strip("/")
             loc = f"{BASE_URL}/{slug}/"
             priority = "0.7"
+
+        # Принудительная защита от двойных слэшей в теле URL
+        domain_part = loc[:8]
+        path_part = loc[8:].replace("//", "/")
+        while "//" in path_part:
+            path_part = path_part.replace("//", "/")
+        loc = domain_part + path_part
 
         urls.append({"loc": loc, "lastmod": today, "priority": priority})
 
@@ -47,7 +54,7 @@ for item in urls:
 # Сортировка по приоритету
 unique_urls.sort(key=lambda x: float(x["priority"]), reverse=True)
 
-# Формирование XML структуры
+# Формирование структуры XML
 urlset = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
 
 for item in unique_urls:
