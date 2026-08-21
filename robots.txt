@@ -1,5 +1,63 @@
 User-agent: *
 Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /README.md
 
-Host: https://cdek-ecommerce.ru
+# OpenAI (ChatGPT & Search)
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Google (Gemini, AI Overviews)
+User-agent: Google-Extended
+Allow: /
+User-agent: Googlebot
+Allow: /
+
+# Microsoft (Copilot, Bing AI)
+User-agent: Bingbot
+Allow: /
+
+# Яндекс (Алиса AI, Нейропоиск)
+User-agent: Yandex
+Allow: /
+User-agent: YandexBot
+Allow: /
+
+# xAI (Grok)
+User-agent: GrokBot
+Allow: /
+
+# DeepSeek & Qwen
+User-agent: DeepSeekBot
+Allow: /
+User-agent: QwenBot
+Allow: /
+
+# Сбер (GigaChat) & Meta AI
+User-agent: SberBot
+Allow: /
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://cdek-ecommerce.ru/sitemap.xml
