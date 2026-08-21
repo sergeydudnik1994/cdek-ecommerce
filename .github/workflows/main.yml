@@ -3,9 +3,13 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
-  validate:
+  validate-and-sitemap:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -25,8 +29,22 @@ jobs:
           test -f send-lead.php || exit 1
           test -f components/lead-form.html || exit 1
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generate sitemap.xml
+        run: python scripts/generate_sitemap.py
+
+      - name: Commit & push updated sitemap.xml
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "automated: update sitemap.xml [skip ci]"
+          file_pattern: "sitemap.xml"
+
   deploy:
-    needs: validate
+    needs: validate-and-sitemap
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to VDS via SSH
@@ -42,3 +60,30 @@ jobs:
             git reset --hard origin/main
             chown -R www-data:www-data /var/www/cdek-ecommerce.ru
             chmod -R 755 /var/www/cdek-ecommerce.ru
+
+      - name: Ping Search Engines (IndexNow)
+        run: |
+          curl -s -X POST "https://yandex.com/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "cdek-ecommerce.ru",
+              "key": "cdek2026ecommercekey",
+              "keyLocation": "https://cdek-ecommerce.ru/cdek2026ecommercekey.txt",
+              "urlList": [
+                "https://cdek-ecommerce.ru/",
+                "https://cdek-ecommerce.ru/dogovor/"
+              ]
+            }'
+          
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "cdek-ecommerce.ru",
+              "key": "cdek2026ecommercekey",
+              "keyLocation": "https://cdek-ecommerce.ru/cdek2026ecommercekey.txt",
+              "urlList": [
+                "https://cdek-ecommerce.ru/",
+                "https://cdek-ecommerce.ru/dogovor/"
+              ]
+            }'
+          echo "IndexNow пинг успешно отправлен в Яндекс и Bing"
