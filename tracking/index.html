@@ -59,7 +59,7 @@
             "name": "Как отследить посылку СДЭК без номера накладной?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Для отслеживания обязателен трек-номер накладной (обычно состоит из 10 или 13 цифр). Если вы получатель, запросите номер отправления у продавца или проверьте СМС/уведомление в мессенджере от CDEK."
+              "text": "Для отслеживания обязателен номер заказа (накладной). Если вы получатель, запросите номер отправления у продавца или проверьте СМС/уведомление в мессенджере от CDEK."
             }
           },
           {
@@ -93,7 +93,7 @@
     <!-- Заголовок страницы -->
     <div>
       <h1 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">Отслеживание заказа СДЭК</h1>
-      <p class="text-sm sm:text-base text-slate-500 mt-2">Введите номер накладной для просмотра детального статуса, маршрута и сроков доставки</p>
+      <p class="text-sm sm:text-base text-slate-500 mt-2">Введите номер заказа для просмотра статуса и маршрута доставки</p>
     </div>
 
     <!-- Поисковое поле -->
@@ -103,7 +103,7 @@
           type="text" 
           id="trackNumber" 
           required 
-          placeholder="Введите 10 или 13 цифр номера накладной" 
+          placeholder="Номер заказа" 
           class="flex-grow px-5 py-4 bg-[#F6F7F9] border border-slate-200 rounded-2xl text-base outline-none focus:bg-white focus:border-[#1AB248] focus:ring-2 focus:ring-[#1AB248]/20 transition font-medium"
         />
         <button 
@@ -204,11 +204,11 @@
       </div>
     </div>
 
-    <!-- Информационный блок: Популярные сервисы (Калькулятор и ПВЗ) -->
+    <!-- Информационный блок: Популярные сервисы (Калькулятор и ПВЗ в единой зеленой стилистике) -->
     <div class="grid md:grid-cols-2 gap-6">
       <div class="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm flex flex-col justify-between">
         <div>
-          <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-[#1AB248] flex items-center justify-center mb-4">
+          <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center mb-4">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
             </svg>
@@ -225,7 +225,7 @@
 
       <div class="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm flex flex-col justify-between">
         <div>
-          <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
+          <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center mb-4">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -236,7 +236,7 @@
             Более 5 000 пунктов выдачи СДЭК и постаматов с примерочными, оплатой картой и возможностью частичного выкупа.
           </p>
         </div>
-        <a href="/integrations/api/" class="mt-6 inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-700 gap-1 group">
+        <a href="/integrations/api/" class="mt-6 inline-flex items-center text-sm font-bold text-[#1AB248] hover:text-[#158E3A] gap-1 group">
           Интегрировать карту ПВЗ <span class="transition-transform group-hover:translate-x-1">→</span>
         </a>
       </div>
@@ -265,28 +265,27 @@
       </div>
     </div>
 
-    <!-- SEO Блок: FAQ (Часто задаваемые вопросы) -->
+    <!-- SEO Блок: FAQ (Исправленная структура раскрывающихся списков) -->
     <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6">
       <h2 class="text-2xl font-bold text-slate-900">Часто задаваемые вопросы по отслеживанию</h2>
       <div class="space-y-4 text-sm">
         <details class="group border border-slate-200/80 rounded-2xl p-5 open:bg-[#F9FBFA] transition">
           <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
-            <span>Как узнать номер накладной СДЭК?</span>
+            <span>Как узнать номер заказа СДЭК?</span>
             <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
           </summary>
           <p class="text-slate-600 mt-3 text-xs sm:text-sm leading-relaxed">
-            Номер накладной (трек-код) предоставляет отправитель (интернет-магазин) после оформления доставки. Также трек-номер автоматически поступает в SMS или мессенджер от СДЭК, если ваш телефон был указан в заказе.
+            Номер заказа предоставляет отправитель (интернет-магазин) сразу после оформления покупки. Также трек-номер автоматически поступает в SMS или мессенджер от СДЭК, если телефон был указан в заказе.
           </p>
         </details>
 
         <details class="group border border-slate-200/80 rounded-2xl p-5 open:bg-[#F9FBFA] transition">
           <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
             <span>Сколько хранится заказ в пункте выдачи?</span>
-            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
             <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
           </summary>
           <p class="text-slate-600 mt-3 text-xs sm:text-sm leading-relaxed">
-            Бесплатный срок хранения составляет от 7 до 14 дней в зависимости от договора с интернет-магазином. Продлить срок хранения можно через отправителя посылки.
+            Бесплатный срок хранения составляет от 7 до 14 дней в зависимости от договора интернет-магазина. Продлить срок хранения можно через отправителя посылки.
           </p>
         </details>
 
@@ -302,10 +301,10 @@
       </div>
     </div>
 
-    <!-- B2B Лид-магнит для интернет-магазинов -->
-    <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+    <!-- B2B Лид-магнит в темно-изумрудном стиле -->
+    <div class="bg-[#08221F] border border-[#133E38] rounded-3xl p-8 sm:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="space-y-3 max-w-xl">
-        <span class="inline-block px-3 py-1 bg-[#1AB248]/20 border border-[#1AB248]/40 rounded-full text-[#1AB248] text-xs font-bold uppercase tracking-wider">
+        <span class="inline-block px-3.5 py-1 bg-[#1AB248]/20 border border-[#1AB248]/40 rounded-full text-[#1AB248] text-xs font-bold uppercase tracking-wider">
           Для интернет-магазинов и селлеров
         </span>
         <h3 class="text-2xl sm:text-3xl font-black tracking-tight">Отправляете товары клиентам через СДЭК?</h3>
