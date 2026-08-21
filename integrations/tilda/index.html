@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Интеграция СДЭК с Tilda Publishing — модуль доставки для интернет-магазина</title>
-  <meta name="description" content="Официальное подключение СДЭК к Tilda. Интерактивная карта ПВЗ в корзине ST100, расчет стоимости, скидки до 50% по B2B-договору." />
+  <title>Интеграция СДЭК с Tilda Publishing — подключение модуля доставки для интернет-магазина</title>
+  <meta name="description" content="Официальное подключение СДЭК к Tilda. Пошаговая инструкция по настройке Rest API v2.0, карта ПВЗ в корзине ST100, авторасчет тарифов и скидки до 50% по B2B-договору." />
   <link rel="canonical" href="https://cdek-ecommerce.ru/integrations/tilda/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,12 +13,104 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>body { font-family: 'Roboto', sans-serif; }</style>
 
-  <!-- Schema.org Microdata -->
+  <!-- Schema.org: Breadcrumbs -->
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"}, {"@type": "ListItem", "position": 2, "name": "Интеграции", "item": "https://cdek-ecommerce.ru/integrations/"}, {"@type": "ListItem", "position": 3, "name": "Tilda", "item": "https://cdek-ecommerce.ru/integrations/tilda/"}]}
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
+      {"@type": "ListItem", "position": 2, "name": "Интеграции", "item": "https://cdek-ecommerce.ru/integrations/"},
+      {"@type": "ListItem", "position": 3, "name": "Tilda", "item": "https://cdek-ecommerce.ru/integrations/tilda/"}
+    ]
+  }
   </script>
+
+  <!-- Schema.org: FAQPage -->
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Как подключить СДЭК к интернет-магазину на Tilda?", "acceptedAnswer": {"@type": "Answer", "text": "Заключите B2B-договор, получите ключи Rest API в личном кабинете СДЭК и добавьте службу доставки CDEK в настройках корзины Tilda."}}, {"@type": "Question", "name": "Работает ли выбор пунктов выдачи на карте в Tilda?", "acceptedAnswer": {"@type": "Answer", "text": "Да, виджет СДЭК нативно встроен в корзину Tilda и дает покупателю возможность выбрать ПВЗ с автоматическим расчетом цены."}}]}
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Как подключить СДЭК к интернет-магазину на Tilda?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Заключите B2B-договор со СДЭК, сгенерируйте ключи Rest API (Account и Secure password) в личном кабинете и добавьте службу доставки CDEK в панели управления Tilda в разделе «Настройки сайта → Доставка»."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Где взять Account и Secure password для Tilda?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "API-ключи создаются в личном кабинете СДЭК для юридических лиц, ИП и самозанятых в разделе «Интеграция → Ключи API». Для работы модуля требуются боевые ключи протокола API v2.0."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Работает ли выбор пунктов выдачи на карте в Tilda?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, официальный виджет СДЭК нативно встроен в корзину ST100 и позволяет клиентам выбирать ПВЗ и постаматы на карте с автоматическим расчетом стоимости доставки."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Почему виджет СДЭК не рассчитывает стоимость доставки в корзине?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Основные причины: не заполнен город отправления по умолчанию в настройках доставки Tilda, в карточках товаров не указан вес/габариты, либо в интеграцию введены недействительные ключи API."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Поддерживается ли автоматическое создание накладных СДЭК из Tilda?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, данные о заказах и выбранных ПВЗ сохраняются в Tilda CRM и могут автоматически передаваться в СДЭК для генерации накладных и штрихкодов без ручного ввода."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org: HowTo для AI-ответов (Яндекс Алиса / Google Overview) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Как подключить доставку СДЭК к Tilda Publishing",
+    "description": "Пошаговое руководство по настройке модуля доставки СДЭК, интеграции Rest API v2.0 и подключению карты ПВЗ в корзине ST100 на платформе Tilda.",
+    "totalTime": "PT5M",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Получение API-ключей в ЛК СДЭК",
+        "text": "Заключите B2B-договор и создайте боевую пару ключей Account и Secure password в разделе «Интеграция» личного кабинета СДЭК."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Добавление службы доставки в панели Tilda",
+        "text": "Перейдите в «Настройки сайта → Доставка → Добавить сервис доставки» и выберите модуль CDEK."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Настройка тарифов и города отправки",
+        "text": "Введите полученные API-ключи, укажите город отгрузки и активируйте необходимые тарифы доставки (до ПВЗ, постаматов или курьером до двери)."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Активация сервиса в корзине ST100",
+        "text": "В настройках блока корзины ST100 на сайте включите службу доставки СДЭК для отображения интерактивной карты выбора ПВЗ."
+      }
+    ]
+  }
   </script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 min-h-screen flex flex-col antialiased">
@@ -31,72 +123,212 @@
     <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400">
       <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
       <span>/</span>
-      <span>Интеграции</span>
+      <a href="/integrations/" class="hover:text-[#1AB248] transition">Интеграции</a>
       <span>/</span>
       <span class="text-slate-700 font-semibold">Tilda</span>
     </nav>
 
     <!-- Главный блок -->
     <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
-      <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200">
-        CMS & Конструкторы
-      </span>
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200">
+          CMS & Конструкторы
+        </span>
+        <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600">
+          Rest API v2.0 Ready
+        </span>
+      </div>
+
       <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
         Подключение и настройка доставки СДЭК на Tilda
       </h1>
       <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
-        Официальное подключение СДЭК к Tilda. Интерактивная карта ПВЗ в корзине ST100, расчет стоимости, скидки до 50% по B2B-договору.
+        Официальное подключение СДЭК к интернет-магазину на Tilda Publishing. Интерактивная карта ПВЗ в корзине ST100, точный авторасчет стоимости и сроков, скидки до 50% на логистику по B2B-договору.
       </p>
 
       <div class="pt-4 border-t border-slate-100">
-        <h3 class="text-lg font-bold text-slate-900 mb-4">Возможности и преимущества решения:</h3>
+        <h3 class="text-lg font-bold text-slate-900 mb-4">Возможности и преимущества интеграции:</h3>
         <ul class="space-y-3">
-          
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Выбор ПВЗ и постаматов СДЭК на интерактивной карте прямо в корзине ST100</span>
-      </li>
-    
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Автоматический расчет тарифов «Посылка» склад-склад и дверь-дверь</span>
-      </li>
-    
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Синхронизация заказов и создание накладных без ручного ввода</span>
-      </li>
-    
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Поддержка наложенного платежа и онлайн-оплаты через подключенные эквайринги</span>
-      </li>
-    
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+            <span class="text-slate-700 text-sm sm:text-base leading-relaxed"><strong>Интерактивная карта ПВЗ и постаматов:</strong> покупатель выбирает удобный пункт самовывоза прямо в корзине ST100.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+            <span class="text-slate-700 text-sm sm:text-base leading-relaxed"><strong>Автоматический расчет тарифов:</strong> мгновенный расчет для тарифов «Посылка» (Склад-Склад, Дверь-Склад, Дверь-Дверь, Экономичная посылка).</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+            <span class="text-slate-700 text-sm sm:text-base leading-relaxed"><strong>Синхронизация с Tilda CRM:</strong> автоматическая передача адреса, выбранного ПВЗ и контактов клиента для формирования накладных.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+            <span class="text-slate-700 text-sm sm:text-base leading-relaxed"><strong>Наложенный платеж и онлайн-оплата:</strong> полная совместимость с платежными модулями Tilda и безопасная передача чеков.</span>
+          </li>
         </ul>
       </div>
 
-      <div class="pt-6">
-        <a href="/#lead-form" class="inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg shadow-[#1AB248]/25 transition transform active:scale-95">
-          Подключить со скидкой до 50%
+      <div class="pt-4 flex flex-col sm:flex-row gap-4 items-center">
+        <a href="/#lead-form" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg shadow-[#1AB248]/25 transition transform active:scale-95 text-center">
+          Подключить СДЭК со скидкой до 50%
+        </a>
+        <a href="#how-to" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-base rounded-2xl transition text-center">
+          Инструкция по настройке ↓
         </a>
       </div>
     </div>
 
-    <!-- FAQ -->
+    <!-- Пошаговая инструкция (Блок AEO для быстрого ответа Яндекса и Алисы) -->
+    <div id="how-to" class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
+      <div class="space-y-2">
+        <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          Пошаговая инструкция: как подключить СДЭК к Tilda за 5 минут
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Официальная интеграция осуществляется через встроенный модуль доставки Tilda и ключи Rest API СДЭК.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 pt-2">
+        
+        <!-- Шаг 1 -->
+        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
+            1
+          </div>
+          <div class="space-y-1.5">
+            <h3 class="text-base sm:text-lg font-bold text-slate-900">
+              Получите API-ключи в личном кабинете СДЭК
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Авторизуйтесь в личном кабинете СДЭК (доступно для юрлиц, ИП и самозанятых с договором). Откройте раздел <strong>«Интеграция»</strong> → создайте пару ключей API v2.0: <strong>Account</strong> (идентификатор) и <strong>Secure password</strong> (секретный пароль).
+            </p>
+          </div>
+        </div>
+
+        <!-- Шаг 2 -->
+        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
+            2
+          </div>
+          <div class="space-y-1.5">
+            <h3 class="text-base sm:text-lg font-bold text-slate-900">
+              Добавьте службу доставки CDEK в панели Tilda
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              В панели управления вашим сайтом на Tilda перейдите в <strong>«Настройки сайта» → «Доставка»</strong>. Нажмите кнопку <strong>«Добавить сервис доставки»</strong> и выберите в списке официальный модуль <strong>CDEK</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Шаг 3 -->
+        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
+            3
+          </div>
+          <div class="space-y-1.5">
+            <h3 class="text-base sm:text-lg font-bold text-slate-900">
+              Заполните параметры, тарифы и город отгрузки
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Вставьте значения <code class="bg-slate-200 px-1.5 py-0.5 rounded text-xs text-slate-800">Account</code> и <code class="bg-slate-200 px-1.5 py-0.5 rounded text-xs text-slate-800">Secure password</code>. Укажите ваш город отправки по умолчанию, задайте дефолтный вес отправления и активируйте необходимые тарифы доставки (до пунктов выдачи, постаматов или курьером).
+            </p>
+          </div>
+        </div>
+
+        <!-- Шаг 4 -->
+        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
+            4
+          </div>
+          <div class="space-y-1.5">
+            <h3 class="text-base sm:text-lg font-bold text-slate-900">
+              Активируйте СДЭК в блоке корзины ST100
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Откройте редактор страниц интернет-магазина, перейдите в свойства блока корзины <strong>ST100</strong> (или всплывающей корзины), откройте вкладку способов доставки и включите СДЭК. Опубликуйте все страницы сайта.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FAQ + Troubleshooting -->
     <div class="space-y-4">
-      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Часто задаваемые вопросы</h2>
+      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">
+        Часто задаваемые вопросы и решение проблем
+      </h2>
       <div class="space-y-3">
         
-      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
-        <h4 class="text-base font-bold text-slate-900 mb-2">Как подключить СДЭК к интернет-магазину на Tilda?</h4>
-        <p class="text-sm text-slate-600 leading-relaxed">Заключите B2B-договор, получите ключи Rest API в личном кабинете СДЭК и добавьте службу доставки CDEK в настройках корзины Tilda.</p>
-      </div>
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
+          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
+            Как подключить СДЭК к интернет-магазину на Tilda?
+          </h4>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Для подключения оформите B2B-договор со СДЭК, сгенерируйте пару ключей API v2.0 (Account и Secure password) в личном кабинете и добавьте модуль CDEK в разделе «Настройки сайта → Доставка» в панели Tilda.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
+          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
+            Где взять Account и Secure password для интеграции с Tilda?
+          </h4>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            API-ключи генерируются автоматически в личном кабинете СДЭК в разделе <strong>«Интеграция → Ключи API»</strong>. Они доступны только для клиентов с действующим договором (Юрлица, ИП, Самозанятые).
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
+          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
+            Работает ли выбор пунктов выдачи на интерактивной карте в Tilda?
+          </h4>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Да. При выборе доставки СДЭК в корзине ST100 покупатель может кликнуть «Выбрать на карте», открыть интерактивную карту с актуальными ПВЗ и постаматами своего города и сразу увидеть рассчитанную стоимость.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
+          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
+            Почему виджет СДЭК не рассчитывает стоимость доставки в корзине?
+          </h4>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Распространенные причины:
+            <br>1. Не указан базовый город отправления в настройках модуля Tilda.
+            <br>2. В каталоге у товаров не задан вес (если вес 0 г, расчет может блокироваться).
+            <br>3. Использованы неверные или тестовые API-ключи вместо боевых параметров Rest API v2.0.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
+          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
+            Как передавать заказы из Tilda в накладные СДЭК автоматически?
+          </h4>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Все реквизиты заказа (город, адрес ПВЗ, ФИО, телефон) фиксируются в заявке Tilda CRM. Для создания накладных в 1 клик без ручного переноса можно использовать прямую связку по API или готовые вебхуки интеграции.
+          </p>
+        </div>
     
-      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
-        <h4 class="text-base font-bold text-slate-900 mb-2">Работает ли выбор пунктов выдачи на карте в Tilda?</h4>
-        <p class="text-sm text-slate-600 leading-relaxed">Да, виджет СДЭК нативно встроен в корзину Tilda и дает покупателю возможность выбрать ПВЗ с автоматическим расчетом цены.</p>
       </div>
-    
+    </div>
+
+    <!-- Дополнительный конверсионный баннер -->
+    <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-6 sm:p-10 text-white shadow-xl space-y-6">
+      <div class="max-w-2xl space-y-3">
+        <span class="inline-block px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider bg-[#1AB248] text-white">
+          Помощь с подключением
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+          Нужен договор со СДЭК и скидки на доставку до 50%?
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          Заключите официальный B2B-договор за 1 день. Предоставим персонального менеджера, поможем сгенерировать боевые API-ключи и настроить корзину Tilda под ключ.
+        </p>
+      </div>
+      <div>
+        <a href="/#lead-form" class="inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg transition transform active:scale-95">
+          Оформить договор со скидкой
+        </a>
       </div>
     </div>
 
