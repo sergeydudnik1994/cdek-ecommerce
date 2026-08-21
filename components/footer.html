@@ -1,61 +1,80 @@
-<footer class="bg-[#062A30] text-slate-400 py-12 sm:py-16 border-t border-[#0A3942] text-sm">
+<footer class="bg-[#08221F] text-slate-400 py-12 sm:py-16 border-t border-[#133E38] text-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Основная сетка перелинковки -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 pb-12 border-b border-[#0A3942]">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 pb-12 border-b border-[#133E38]">
       
-      <!-- Бренд и информация -->
+      <!-- Колонка 1: Бренд, статус и контакты -->
       <div class="space-y-4">
         <div class="flex items-center gap-3">
-          <svg class="h-7 w-auto" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <text x="0" y="31" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-weight="900" font-style="italic" font-size="34" letter-spacing="-0.06em">CDEK</text>
-          </svg>
+          <img 
+            src="https://www.cdek.ru/storage/source/logo/1/U1ck-s9wX-Um8xJ0F3EU5SPwz5kf8Utu.svg" 
+            alt="СДЭК" 
+            class="h-6 sm:h-7 w-auto" 
+          />
+          <span class="pl-3 border-l border-slate-700 text-[11px] font-black uppercase tracking-wider text-slate-300">
+            E-Commerce
+          </span>
         </div>
         <p class="text-xs text-slate-400 leading-relaxed">
-          Официальный сервис подключения e-commerce партнеров. Доставка для интернет-магазинов и селлеров со скидками до 50%.
+          Официальный сервис подключения e-commerce партнеров. Доставка для интернет-магазинов, юрлиц, ИП и самозанятых со скидками до 50%.
         </p>
+        <div class="pt-2 space-y-1.5 text-xs text-slate-300">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#1AB248]"></span>
+            <a href="tel:+79933221520" class="font-bold text-white hover:text-[#1AB248] transition">+7 (993) 322-15-20</a>
+          </div>
+          <div class="text-[11px] text-slate-400">Пн–Пт: 09:00–18:00 (МСК)</div>
+        </div>
       </div>
 
-      <!-- Интеграции и CMS -->
+      <!-- Колонка 2: Модули интеграции и CMS -->
       <div>
         <h4 class="text-white font-bold text-sm mb-3">Интеграции и CMS</h4>
         <ul class="space-y-2 text-xs">
+          <li>
+            <a href="/integrations/dbs/" class="text-[#1AB248] font-bold hover:underline transition">
+              🔥 СДЭК DBS (Маркетплейсы)
+            </a>
+          </li>
           <li><a href="/integrations/tilda/" class="hover:text-white transition">Tilda Publishing</a></li>
           <li><a href="/integrations/bitrix/" class="hover:text-white transition">1С-Битрикс</a></li>
           <li><a href="/integrations/moysklad/" class="hover:text-white transition">МойСклад</a></li>
-          <li><a href="/integrations/opencart/" class="hover:text-white transition">OpenCart / ocStore</a></li>
           <li><a href="/integrations/insales/" class="hover:text-white transition">InSales</a></li>
           <li><a href="/integrations/woocommerce/" class="hover:text-white transition">WooCommerce (WP)</a></li>
           <li><a href="/integrations/1c/" class="hover:text-white transition">1C:Предприятие</a></li>
-          <li><a href="/integrations/api/" class="hover:text-white transition">Rest API 2.0 & SDK</a></li>
+          <li><a href="/integrations/api/" class="hover:text-white transition">REST API 2.0 & SDK</a></li>
         </ul>
       </div>
 
-      <!-- Услуги и сервисы -->
+      <!-- Колонка 3: Сервисы и инструменты -->
       <div>
-        <h4 class="text-white font-bold text-sm mb-3">Логистика и сервисы</h4>
+        <h4 class="text-white font-bold text-sm mb-3">Сервисы и логистика</h4>
         <ul class="space-y-2 text-xs">
-          <li><a href="/services/dostavka-odezhdy/" class="hover:text-white transition">Доставка с примеркой</a></li>
+          <li><a href="/calculator/" class="hover:text-white transition">Калькулятор тарифов онлайн</a></li>
+          <li><a href="/tracking/" class="hover:text-white transition">Отследить отправление (ПВЗ)</a></li>
+          <li><a href="/services/dostavka-odezhdy/" class="hover:text-white transition">Доставка с примеркой (Fashion)</a></li>
           <li><a href="/services/fulfillment/" class="hover:text-white transition">Складской фулфилмент</a></li>
-          <li><a href="/tracking/" class="hover:text-white transition">Отследить отправление</a></li>
-          <li><a href="/#benefits" class="hover:text-white transition">Тарифы для бизнеса</a></li>
+          <li><a href="/#benefits" class="hover:text-white transition">Преимущества договора B2B</a></li>
         </ul>
       </div>
 
-      <!-- Подключение -->
+      <!-- Колонка 4: Быстрый старт -->
       <div class="space-y-3">
         <h4 class="text-white font-bold text-sm mb-1">Быстрый старт</h4>
-        <p class="text-xs text-slate-400">Заключение договора онлайн за 15 минут с доступом в личный кабинет.</p>
-        <a href="/#lead-form" class="inline-block px-4 py-2.5 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-xs rounded-xl shadow-md transition">
-          Оформить договор
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Заключение официального договора онлайн за 15 минут с доступом в личный кабинет и боевым API.
+        </p>
+        <a href="/#lead-form" class="inline-flex items-center justify-center w-full py-3 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md shadow-[#1AB248]/20 transition active:scale-95">
+          Заключить договор
         </a>
       </div>
 
     </div>
 
-    <!-- Нижняя плашка копирайта -->
+    <!-- Нижняя строка копирайта и юридических документов -->
     <div class="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-      <div>© 2026 cdek-ecommerce.ru — Не является публичной офертой</div>
+      <div>© 2026 cdek-ecommerce.ru — Официальный партнер СДЭК. Не является публичной офертой</div>
       <div class="flex items-center gap-4">
         <a href="/policy/" class="hover:text-slate-300 transition underline">Политика конфиденциальности</a>
       </div>
