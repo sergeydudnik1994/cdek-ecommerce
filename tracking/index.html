@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>СДЭК отслеживание по трек-номеру | Отследить заказ и посылку онлайн</title>
-  <meta name="description" content="Отслеживание заказа и посылки СДЭК по трек-номеру накладной онлайн. Узнайте точный статус доставки, маршрут по городам, дату прибытия и адрес ПВЗ." />
+  <meta name="description" content="Отслеживание заказа и посылки СДЭК по трек-номеру накладной онлайн. Узнайте точный статус доставки, маршрут по городам, дату прибытия и адреса пунктов выдачи ПВЗ." />
   <link rel="canonical" href="https://cdek-ecommerce.ru/tracking/" />
   
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="СДЭК отслеживание заказа и посылки онлайн" />
-  <meta property="og:description" content="Точный статус, маршрут доставки и сроки прибытия заказа в пункт выдачи СДЭК." />
+  <meta property="og:description" content="Точный статус, маршрут доставки и карта пунктов выдачи СДЭК по всей России." />
   <meta property="og:url" content="https://cdek-ecommerce.ru/tracking/" />
   <meta property="og:image" content="https://cdek-ecommerce.ru/favicon.png" />
 
@@ -21,13 +21,17 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { font-family: 'Roboto', sans-serif; }
+    .ymaps-2-1-79-balloon__content { padding: 10px !important; font-family: 'Roboto', sans-serif !important; }
   </style>
 
   <!-- Фавиконки -->
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
-  <!-- Расширенная разметка Schema.org JSON-LD -->
+  <!-- Яндекс Карты API -->
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+  <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -81,7 +85,7 @@
             "name": "Как узнать номер заказа СДЭК для отслеживания?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Номер заказа (трек-номер из 10 или 13 цифр) отправляет продавец после оформления доставки. Также трек-номер приходит в SMS или сообщении в мессенджере от СДЭК."
+              "text": "Номер заказа (трек-номер из 10 или 13 цифр) отправляет продавец после оформления покупки. Также трек-номер приходит в SMS или сообщении в мессенджере от СДЭК."
             }
           },
           {
@@ -89,7 +93,7 @@
             "name": "Сколько дней посылка хранится в пункте выдачи?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Срок бесплатного хранения заказа в пункте выдачи СДЭК составляет от 7 до 14 дней в зависимости от условий договора интернет-магазина."
+              "text": "Срок хранения заказа в пункте выдачи СДЭК составляет от 7 до 14 дней в зависимости от условий договора интернет-магазина."
             }
           },
           {
@@ -97,7 +101,7 @@
             "name": "Как получить посылку СДЭК без паспорта?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Для получения посылки без паспорта подключите бесплатный сервис CDEK ID — выдача заказов осуществляется по разовому проверочному коду из SMS или push-уведомления."
+              "text": "Для получения посылки без паспорта подключите сервис CDEK ID — выдача заказов осуществляется по разовому проверочному SMS-коду."
             }
           }
         ]
@@ -189,7 +193,6 @@
 
       <!-- Основная сетка -->
       <div class="grid lg:grid-cols-12 gap-8 pt-4">
-        
         <div class="lg:col-span-7 space-y-6" id="resMilestones"></div>
 
         <div class="lg:col-span-5 space-y-4">
@@ -230,12 +233,13 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
 
-    <!-- Информационный блок: Популярные сервисы (Калькулятор и ПВЗ) -->
+    <!-- Сетка из 2 карточек (Калькулятор + Интерактивная карта) -->
     <div class="grid md:grid-cols-2 gap-6">
+      
+      <!-- Карточка 1: Калькулятор -->
       <div class="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm flex flex-col justify-between">
         <div>
           <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center mb-4">
@@ -253,6 +257,7 @@
         </a>
       </div>
 
+      <!-- Карточка 2: Пункты выдачи на карте -->
       <div class="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm flex flex-col justify-between">
         <div>
           <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center mb-4">
@@ -266,10 +271,11 @@
             Более 5 000 пунктов выдачи СДЭК и постаматов с примерочными, оплатой картой и возможностью частичного выкупа.
           </p>
         </div>
-        <a href="/integrations/api/" class="mt-6 inline-flex items-center text-sm font-bold text-[#1AB248] hover:text-[#158E3A] gap-1 group">
-          Интегрировать карту ПВЗ <span class="transition-transform group-hover:translate-x-1">→</span>
-        </a>
+        <button type="button" onclick="openMapModal()" class="mt-6 inline-flex items-center text-sm font-bold text-[#1AB248] hover:text-[#158E3A] gap-1 group text-left cursor-pointer">
+          Найти на карте <span class="transition-transform group-hover:translate-x-1">→</span>
+        </button>
       </div>
+
     </div>
 
     <!-- SEO Блок: Расшифровка статусов СДЭК -->
@@ -351,7 +357,89 @@
 
   <!--# include virtual="/components/footer.html" -->
 
+  <!-- Модальное окно Яндекс.Карт -->
+  <div id="mapModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl border border-slate-200 flex flex-col max-h-[90vh]">
+      <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+        <div>
+          <h3 class="text-lg font-bold text-slate-900">Пункты выдачи СДЭК на карте</h3>
+          <p class="text-xs text-slate-400">Найдите ближайшее отделение с примерочными и безналичной оплатой</p>
+        </div>
+        <button type="button" onclick="closeMapModal()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition cursor-pointer">✕</button>
+      </div>
+      
+      <!-- Города быстрого выбора внутри модалки -->
+      <div class="px-5 py-2.5 bg-slate-50 border-b border-slate-100 flex flex-wrap gap-2">
+        <button type="button" onclick="modalSetCity([55.7558, 37.6173])" class="px-3 py-1 bg-white hover:bg-[#E8F8ED] hover:text-[#1AB248] border border-slate-200 rounded-lg text-xs font-semibold transition">Москва</button>
+        <button type="button" onclick="modalSetCity([59.9343, 30.3351])" class="px-3 py-1 bg-white hover:bg-[#E8F8ED] hover:text-[#1AB248] border border-slate-200 rounded-lg text-xs font-semibold transition">СПб</button>
+        <button type="button" onclick="modalSetCity([45.0355, 38.9753])" class="px-3 py-1 bg-white hover:bg-[#E8F8ED] hover:text-[#1AB248] border border-slate-200 rounded-lg text-xs font-semibold transition">Краснодар</button>
+        <button type="button" onclick="modalSetCity([56.8389, 60.6057])" class="px-3 py-1 bg-white hover:bg-[#E8F8ED] hover:text-[#1AB248] border border-slate-200 rounded-lg text-xs font-semibold transition">Екатеринбург</button>
+        <button type="button" onclick="modalSetCity([55.0084, 82.9357])" class="px-3 py-1 bg-white hover:bg-[#E8F8ED] hover:text-[#1AB248] border border-slate-200 rounded-lg text-xs font-semibold transition">Новосибирск</button>
+      </div>
+
+      <div class="relative flex-grow h-[460px] bg-slate-50">
+        <div id="modalYandexMap" class="w-full h-full"></div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // 1. Инициализация и управление Яндекс.Картой в модальном окне
+    let modalMap = null;
+
+    function openMapModal() {
+      const modal = document.getElementById('mapModal');
+      modal.classList.remove('hidden');
+
+      if (!modalMap) {
+        ymaps.ready(() => {
+          modalMap = new ymaps.Map('modalYandexMap', {
+            center: [55.7558, 37.6173],
+            zoom: 11,
+            controls: ['zoomControl', 'geolocationControl', 'searchControl']
+          });
+
+          const pvzList = [
+            { lat: 55.751244, lon: 37.618423, name: 'СДЭК: ул. Никольская, 10' },
+            { lat: 55.764512, lon: 37.605231, name: 'СДЭК: Тверская ул., 18' },
+            { lat: 55.731231, lon: 37.632145, name: 'СДЭК: Павелецкая пл., 2' },
+            { lat: 45.0355, lon: 38.9753, name: 'СДЭК: ул. Красная, 124 (Краснодар)' },
+            { lat: 59.9343, lon: 30.3351, name: 'СДЭК: Невский пр-т, 48 (СПб)' },
+            { lat: 56.8389, lon: 60.6057, name: 'СДЭК: пр. Ленина, 25 (Екатеринбург)' }
+          ];
+
+          pvzList.forEach(p => {
+            const placemark = new ymaps.Placemark([p.lat, p.lon], {
+              balloonContentHeader: `<b style="color:#1AB248;font-size:13px;">${p.name}</b>`,
+              balloonContentBody: `<div style="font-size:12px;color:#475569;margin-top:4px;">Режим работы: Пн-Вс 09:00-21:00<br>Примерка: Есть<br>Оплата: Картой и наличными</div>`,
+              balloonContentFooter: `<div style="font-size:11px;color:#94a3b8;margin-top:4px;">Пункт выдачи заказов СДЭК</div>`,
+              hintContent: p.name
+            }, {
+              preset: 'islands#darkGreenDotIcon'
+            });
+            modalMap.geoObjects.add(placemark);
+          });
+        });
+      } else {
+        modalMap.container.fitToViewport();
+      }
+    }
+
+    function closeMapModal() {
+      document.getElementById('mapModal').classList.add('hidden');
+    }
+
+    function modalSetCity(coords) {
+      if (modalMap) {
+        modalMap.setCenter(coords, 11, { duration: 400 });
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMapModal();
+    });
+
+    // 2. Трекинг отправлений
     async function executeTracking(e) {
       if (e) e.preventDefault();
       
