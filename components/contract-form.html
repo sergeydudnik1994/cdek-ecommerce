@@ -115,9 +115,19 @@
           <input type="text" name="legal_address" placeholder="Индекс, город, улица, дом, офис" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs outline-none focus:ring-1 focus:ring-[#1AB248]" />
         </div>
         <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1">Офис для возратов</label>
-          <input type="text" name="fact_address" placeholder="Пункты выдачи заказов СДЭК" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs outline-none focus:ring-1 focus:ring-[#1AB248]" />
-        </div>
+  <label class="block text-xs font-semibold text-slate-600 mb-1">
+    Удобный ПВЗ для сдачи и возвратов
+  </label>
+  <input 
+    type="text" 
+    name="fact_address" 
+    placeholder="Например: Краснодар, ул. Красная, 120 (или код ПВЗ: KRD1)" 
+    class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs outline-none focus:ring-1 focus:ring-[#1AB248] transition placeholder:text-slate-400" 
+  />
+  <p class="text-[10px] text-slate-400 mt-1">
+    Укажите адрес любого пункта СДЭК, где вам удобнее получать возвраты и отправлять посылки.
+  </p>
+</div>
         <div>
           <label id="account-label" class="block text-xs font-semibold text-slate-600 mb-1">Расчетный счет ИП (20 знаков: 40802...)</label>
           <input type="text" name="rs" id="account-input" placeholder="40802810..." maxlength="20" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs outline-none focus:ring-1 focus:ring-[#1AB248]" />
