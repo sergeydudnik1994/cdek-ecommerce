@@ -1,0 +1,62 @@
+name: Auto Rebuild Sitemap & Ping Search Engines
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.html'
+      - '!components/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sitemap-and-ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout репозитория
+        uses: actions/checkout@v4
+
+      - name: Настройка Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Генерация актуального sitemap.xml
+        run: python scripts/generate_sitemap.py
+
+      - name: Коммит и пуш обновленного sitemap.xml
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "automated: rebuild sitemap.xml with new pages [skip ci]"
+          file_pattern: "sitemap.xml"
+
+      - name: Уведомление Яндекс и Bing (IndexNow)
+        run: |
+          curl -s -X POST "https://yandex.com/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "cdek-ecommerce.ru",
+              "key": "cdek2026ecommercekey",
+              "keyLocation": "https://cdek-ecommerce.ru/cdek2026ecommercekey.txt",
+              "urlList": [
+                "https://cdek-ecommerce.ru/",
+                "https://cdek-ecommerce.ru/dogovor/"
+              ]
+            }'
+          
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "cdek-ecommerce.ru",
+              "key": "cdek2026ecommercekey",
+              "keyLocation": "https://cdek-ecommerce.ru/cdek2026ecommercekey.txt",
+              "urlList": [
+                "https://cdek-ecommerce.ru/",
+                "https://cdek-ecommerce.ru/dogovor/"
+              ]
+            }'
+          echo "IndexNow пинг успешно отправлен в Яндекс и Bing"
