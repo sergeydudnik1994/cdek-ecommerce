@@ -1,92 +1,104 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://cdek-ecommerce.ru/</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/tracking/</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/calculator/</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/integrations/dbs/</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/policy/</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/integrations/tilda/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://cdek-ecommerce.ru/tracking//</loc>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/bitrix/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://cdek-ecommerce.ru/services/fulfillment//</loc>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/moysklad/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://cdek-ecommerce.ru/services/dostavka-odezhdy//</loc>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/opencart/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://cdek-ecommerce.ru/dogovor//</loc>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/insales/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://cdek-ecommerce.ru/policy//</loc>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/woocommerce/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://cdek-ecommerce.ru/calculator//</loc>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/1c/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://cdek-ecommerce.ru/integrations//</loc>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/api/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://cdek-ecommerce.ru/integrations/opencart//</loc>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/services/dostavka-odezhdy/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://cdek-ecommerce.ru/integrations/woocommerce//</loc>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/services/fulfillment/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://cdek-ecommerce.ru/integrations/tilda//</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/integrations/insales//</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/integrations/dbs//</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/integrations/api//</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/integrations/moysklad//</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/integrations/bitrix//</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/integrations/1c//</loc>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
