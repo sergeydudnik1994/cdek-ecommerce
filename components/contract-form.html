@@ -1,10 +1,10 @@
-<div id="contract-form-container" class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-md space-y-6">
+<div id="contract-form-container" class="scroll-mt-24 bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-md space-y-6">
   <!-- Шапка анкеты -->
   <div class="js-contract-header border-b border-slate-200 pb-5">
     <span class="text-xs font-black uppercase tracking-wider text-[#1AB248]">Экспресс-подключение</span>
     <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">Онлайн-анкета на заключение договора</h2>
     <p class="text-xs sm:text-sm text-slate-500 mt-1">
-      Выберите форму собственности — форма автоматически настроит необходимые поля и условия.
+      Выберите форму собственности — форма автоматически настроит необходимые поля и условия договора.
     </p>
   </div>
 
@@ -35,10 +35,10 @@
       </div>
     </div>
 
-    <!-- Информационный бейдж условий -->
+    <!-- Информационный бейдж условий (динамический) -->
     <div id="entity-info-badge" class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-700 leading-relaxed space-y-1">
       <strong class="text-slate-900 block font-bold">Условия для ИП:</strong>
-      <p>Доступны наложенный платеж по 54-ФЗ с перечислением на р/с, постоплата раз в месяц и выбор тарифа (УСН без НДС или ОСНО).</p>
+      <p>Тарифная сетка УСН без переплаты за НДС 22%. Доступны наложенный платеж по 54-ФЗ с выплатой на р/с, постоплата раз в месяц и интеграция по API.</p>
     </div>
 
     <!-- Базовые поля -->
@@ -127,13 +127,10 @@
           <input type="text" name="bik" placeholder="044525..." maxlength="9" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs outline-none focus:ring-1 focus:ring-[#1AB248]" />
         </div>
         <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1">Система налогообложения</label>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">Тарифный план договора</label>
           <select name="tax_system" id="tax-select" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs outline-none focus:ring-1 focus:ring-[#1AB248]">
-            <option value="УСН Доходы 6%">УСН (Доходы 6% / Без НДС)</option>
-            <option value="УСН Доходы-Расходы 15%">УСН (Доходы − Расходы 15%)</option>
-            <option value="ОСНО">ОСНО (с НДС 22%)</option>
-            <option value="Патент">Патент (ПСН)</option>
-            <option value="НПД">НПД (Самозанятый)</option>
+            <option value="УСН (без НДС)">Сетка УСН (без НДС) — для ИП, Патента, УСН и Самозанятых</option>
+            <option value="ОСНО (с НДС 22%)">Сетка ОСНО (с НДС 22%) — для плательщиков НДС</option>
           </select>
         </div>
         <div>
@@ -209,7 +206,6 @@
     const container = document.getElementById('contract-form-container');
     if (!container) return;
 
-    // Маска телефона
     container.querySelectorAll('.js-phone-input').forEach((input) => {
       input.addEventListener('input', (e) => {
         e.target.value = formatRussianPhoneNumber(e.target.value);
@@ -222,7 +218,6 @@
       });
     });
 
-    // Переключение полей под форму собственности
     const entityLabels = container.querySelectorAll('.js-entity-label');
     const innLabel = container.querySelector('#inn-label');
     const innInput = container.querySelector('#inn-input');
@@ -244,8 +239,8 @@
         accountLabel: 'Расчетный счет ИП (20 знаков: 40802...)',
         accountPlaceholder: '40802810...',
         legalAddressLabel: 'Адрес регистрации (по паспорту / ЕГРИП)',
-        defaultTax: 'УСН Доходы 6%',
-        infoHtml: '<strong class="text-slate-900 block font-bold">Условия для ИП:</strong><p>Доступны наложенный платеж по 54-ФЗ с перечислением на р/с, постоплата раз в месяц и выбор тарифа (УСН без НДС или ОСНО).</p>'
+        defaultTax: 'УСН (без НДС)',
+        infoHtml: '<strong class="text-slate-900 block font-bold">Условия для ИП:</strong><p>Тарифная сетка УСН без переплаты за НДС 22%. Доступны наложенный платеж по 54-ФЗ с выплатой на р/с, постоплата раз в месяц и интеграция по API.</p>'
       },
       'ООО': {
         innLabel: 'ИНН организации (10 цифр) <span class="text-red-500">*</span>',
@@ -256,8 +251,8 @@
         accountLabel: 'Расчетный счет юрлица (20 знаков: 40702...)',
         accountPlaceholder: '40702810...',
         legalAddressLabel: 'Юридический адрес (по ЕГРЮЛ)',
-        defaultTax: 'ОСНО',
-        infoHtml: '<strong class="text-slate-900 block font-bold">Условия для ООО (Юрлиц):</strong><p>Полный документооборот через ЭДО (Диадок / СБИС), наложенный платеж, постоплата и возможность выбора договора с НДС 22% или без НДС.</p>'
+        defaultTax: 'ОСНО (с НДС 22%)',
+        infoHtml: '<strong class="text-slate-900 block font-bold">Условия для ООО (Юрлиц):</strong><p>Полный документооборот через ЭДО (Диадок / СБИС), наложенный платеж, постоплата и возможность выбора договора по ОСНО (с НДС 22%) или УСН.</p>'
       },
       'Самозанятый': {
         innLabel: 'ИНН физлица (12 цифр) <span class="text-red-500">*</span>',
@@ -265,11 +260,11 @@
         innMax: 12,
         companyLabel: 'ФИО самозанятого гражданина <span class="text-red-500">*</span>',
         companyPlaceholder: 'Иванов Иван Иванович',
-        accountLabel: 'Лицевой счет физлица / карты (40817...)',
+        accountLabel: 'Лицевой счет карты физлица (40817...)',
         accountPlaceholder: '40817810...',
         legalAddressLabel: 'Адрес постоянной регистрации (по паспорту)',
-        defaultTax: 'НПД',
-        infoHtml: '<strong class="text-slate-900 block font-bold">Условия для Самозанятых (НПД):</strong><p>Льготные тарифы «Посылка» без НДС. Отправка только предоплаченных товаров (наложенный платеж недоступен). Оплата доставки картой в ЛК.</p>'
+        defaultTax: 'УСН (без НДС)',
+        infoHtml: '<strong class="text-slate-900 block font-bold">Условия для Самозанятых (НПД):</strong><p>Единая льготная тарифная сетка УСН без НДС. Отправка только предоплаченных заказов (наложенный платеж недоступен). Оплата доставки картой в ЛК.</p>'
       }
     };
 
@@ -299,7 +294,6 @@
       });
     });
 
-    // Обработчик отправки формы
     const dogovorForm = container.querySelector('.js-contract-form');
     const headerBlock = container.querySelector('.js-contract-header');
     const successScreen = container.querySelector('.js-success-screen');
