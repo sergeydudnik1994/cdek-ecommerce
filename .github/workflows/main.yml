@@ -25,7 +25,7 @@ jobs:
           test -f send-lead.php || exit 1
           test -f components/lead-form.html || exit 1
 
-deploy:
+  deploy:
     needs: validate
     runs-on: ubuntu-latest
     steps:
