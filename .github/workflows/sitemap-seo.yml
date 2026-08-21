@@ -31,7 +31,7 @@ jobs:
       - name: Коммит и пуш обновленного sitemap.xml
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "automated: rebuild sitemap.xml with new pages [skip ci]"
+          commit_message: "automated: rebuild sitemap.xml with new pages"
           file_pattern: "sitemap.xml"
 
       - name: Уведомление Яндекс и Bing (IndexNow)
