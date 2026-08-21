@@ -7,7 +7,7 @@
   <!-- SEO Метатеги под стандарты Bing, Google и Яндекса -->
   <title>СДЭК DBS для маркетплейсов: пошаговая настройка интеграции</title>
   <meta name="description" content="Инструкция по настройке СДЭК DBS для Ozon, WB, Яндекс Маркета и Авито. Подключение B2B API, маппинг складов и печать маркировки со скидкой 50%." />
-  <meta name="keywords" content="сдэк dbs, настройка сдэк dbs, сдэк интеграция маркетплейсы, сдэк realfbs ozon, сдэк dbs wildberries, api сдэк dbs" />
+  <meta name="keywords" content="сдэк dbs, сдэк дбс, дбс сдэк, настройка сдэк dbs, сдэк интеграция маркетплейсы, сдэк realfbs ozon, сдэк dbs wildberries, тарифы dbs сдэк" />
   <link rel="canonical" href="https://cdek-ecommerce.ru/integrations/dbs/" />
   <meta name="theme-color" content="#062A30" />
 
@@ -22,7 +22,7 @@
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
-  <!-- Schema.org Microdata (Breadcrumbs + HowTo + FAQPage) -->
+  <!-- Schema.org Microdata (Breadcrumbs + HowTo + FAQPage под поисковые подсказки) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -87,26 +87,34 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Нужен ли отдельный договор для работы со СДЭК DBS?",
+            "name": "Какой максимальный расчетный вес отправления возможен по тарифу DBS СДЭК?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Нет, доставка по схеме DBS осуществляется в рамках единого корпоративного B2B-договора СДЭК для юридических лиц и ИП."
+              "text": "По стандартному тарифу СДЭК DBS максимальный вес отправления составляет до 30 кг на одно место. Для негабаритных и легковесных товаров действует льготный спецтариф DBS до 1 кг."
             }
           },
           {
             "@type": "Question",
-            "name": "Как передаются трек-номера в маркетплейс?",
+            "name": "Какой режим доставки может использовать селлер при создании заказа по интеграции DBS СДЭК?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "При комплектации заказа система автоматически передает присвоенный трек-номер в API маркетплейса и переводит статус отправления в «Доставляется»."
+              "text": "Доступны режимы «Склад-Склад» (сдача в ПВЗ — выдача в ПВЗ/постамате покупателю) и «Склад-Дверь» (курьерская доставка до двери покупателя по всей РФ)."
             }
           },
           {
             "@type": "Question",
-            "name": "Куда передавать готовые DBS-заказы?",
+            "name": "Где можно выгрузить тарифы по направлениям для DBS СДЭК?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Посылки можно сдавать в любой удобный пункт выдачи СДЭК или вызывать регулярного курьера на свой склад."
+              "text": "Тарифную сетку по всем городам России можно рассчитать в онлайн-калькуляторе на сайте cdek-ecommerce.ru или получить полную выгрузку тарифов через персонального менеджера после заключения B2B-договора."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Что такое схема доставки DBS (дбс) на маркетплейсах Wildberries, Ozon и WB?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "DBS (Delivery by Seller / Доставка продавца) — формат работы, при котором селлер хранит остатки на своем складе, а транспортировку покупателю выполняет СДЭК по прямым корпоративным тарифам."
             }
           }
         ]
@@ -150,7 +158,7 @@
         </h1>
 
         <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-          Схема <strong>DBS (Delivery by Seller)</strong> позволяет селлерам продавать товары на маркетплейсах со своего склада, доставляя заказы через федеральную сеть СДЭК по прямым выгодным B2B-тарифам. Официальный шлюз интеграции полностью автоматизирует синхронизацию статусов, генерацию накладных и передачу трек-номеров в личные кабинеты маркетплейсов без ручной рутины.
+          Схема <strong>DBS (Delivery by Seller / ДБС)</strong> позволяет селлерам продавать товары на маркетплейсах со своего склада, доставляя заказы через федеральную сеть СДЭК по прямым выгодным B2B-тарифам. Официальный шлюз интеграции полностью автоматизирует синхронизацию статусов, генерацию накладных и передачу трек-номеров в личные кабинеты маркетплейсов без ручной рутины.
         </p>
 
         <!-- KPI плашки -->
@@ -346,28 +354,28 @@
         </div>
       </div>
 
-      <!-- FAQ -->
+      <!-- FAQ по подсказкам Яндекса -->
       <div class="space-y-4">
-        <h2 class="text-xl sm:text-2xl font-black text-slate-900">Часто задаваемые вопросы</h2>
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900">Ответы на частые вопросы по СДЭК DBS (ДБС)</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-            <h4 class="font-bold text-slate-900 text-sm">Нужен ли отдельный договор для работы со СДЭК DBS?</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">Нет. Достаточно одного стандартного B2B-договора СДЭК для интернет-магазинов и юрлиц.</p>
+            <h4 class="font-bold text-slate-900 text-sm">Какой максимальный вес заказа по тарифу DBS СДЭК?</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">Максимальный расчетный вес одного места составляет <strong>до 30 кг</strong>. Для негабаритных или легковесных заказов доступен льготный спецтариф DBS до 1 кг.</p>
           </div>
 
           <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-            <h4 class="font-bold text-slate-900 text-sm">Какая стоимость доставки по схеме DBS?</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">Действуют базовые корпоративные тарифы СДЭК со скидками до 50% от розничных цен физлиц, включая спецтариф для посылок до 1 кг.</p>
+            <h4 class="font-bold text-slate-900 text-sm">Какие режимы доставки доступны селлеру?</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">Вы можете отправлять заказы в <strong>ПВЗ и постаматы</strong> (режим Склад-Склад), а также оформлять <strong>курьерскую доставку до двери</strong> (режим Склад-Дверь).</p>
           </div>
 
           <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-            <h4 class="font-bold text-slate-900 text-sm">Кто несет ответственность за сохранность груза?</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">Все отправления застрахованы в СДЭК (объявленная ценность от 0.75%), материальная ответственность фиксируется договором.</p>
+            <h4 class="font-bold text-slate-900 text-sm">Где выгрузить тарифы по направлениям DBS СДЭК?</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">Актуальные тарифы рассчитываются в <a href="/calculator/" class="text-[#158E3A] underline font-medium">калькуляторе</a>, а полную матрицу цен по городам предоставляет персональный менеджер.</p>
           </div>
 
           <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-            <h4 class="font-bold text-slate-900 text-sm">Помогает ли менеджер с настройкой?</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">Да, при заключении договора персональный менеджер бесплатно сопровождает интеграцию и проверяет связку API.</p>
+            <h4 class="font-bold text-slate-900 text-sm">Как работает схема DBS на WB, Ozon и Яндекс Маркете?</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">Вы храните остатки у себя, а при получении заказа модуль автоматически формирует накладную СДЭК и передает трек-код покупателю.</p>
           </div>
         </div>
       </div>
