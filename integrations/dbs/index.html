@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- SEO Метатеги под стандарты Bing, Google и Яндекса -->
-  <title>СДЭК DBS для маркетплейсов: пошаговая настройка интеграции</title>
-  <meta name="description" content="Инструкция по настройке СДЭК DBS для Ozon, WB, Яндекс Маркета и Авито. Подключение B2B API, маппинг складов и печать маркировки со скидкой 50%." />
+  <title>СДЭК DBS для маркетплейсов: пошаговая настройка интеграции (Ozon, WB, Яндекс Маркет, Авито)</title>
+  <meta name="description" content="Инструкция по настройке СДЭК DBS для Ozon realFBS, WB DBS, Яндекс Маркета и Авито. Подключение B2B API v2.0, маппинг складов, печать маркировки и скидки до 50%." />
   <meta name="keywords" content="сдэк dbs, сдэк дбс, дбс сдэк, настройка сдэк dbs, сдэк интеграция маркетплейсы, сдэк realfbs ozon, сдэк dbs wildberries, тарифы dbs сдэк" />
   <link rel="canonical" href="https://cdek-ecommerce.ru/integrations/dbs/" />
   <meta name="theme-color" content="#062A30" />
@@ -22,7 +21,13 @@
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
-  <!-- Schema.org Microdata (Breadcrumbs + HowTo + FAQPage под поисковые подсказки) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>body { font-family: 'Roboto', sans-serif; }</style>
+
+  <!-- Schema.org Microdata -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -30,53 +35,44 @@
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Главная",
-            "item": "https://cdek-ecommerce.ru/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Интеграции",
-            "item": "https://cdek-ecommerce.ru/#integrations"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "СДЭК DBS для маркетплейсов",
-            "item": "https://cdek-ecommerce.ru/integrations/dbs/"
-          }
+          {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
+          {"@type": "ListItem", "position": 2, "name": "Интеграции", "item": "https://cdek-ecommerce.ru/integrations/"},
+          {"@type": "ListItem", "position": 3, "name": "СДЭК DBS для маркетплейсов", "item": "https://cdek-ecommerce.ru/integrations/dbs/"}
         ]
       },
       {
         "@type": "HowTo",
         "name": "Как настроить интеграцию по схеме СДЭК DBS",
         "description": "Пошаговое руководство по подключению схемы доставки силами продавца (DBS) через шлюз СДЭК.",
+        "totalTime": "PT15M",
         "step": [
           {
             "@type": "HowToStep",
+            "position": 1,
             "name": "Получение API-ключей B2B договора",
             "text": "В личном кабинете СДЭК в разделе «Интеграция» скопируйте пару Account (Client ID) и Secure password."
           },
           {
             "@type": "HowToStep",
+            "position": 2,
             "name": "Авторизация в шлюзе DBS",
             "text": "Выполните вход в сервис интеграции под учетными данными договора и подтвердите реквизиты компании."
           },
           {
             "@type": "HowToStep",
+            "position": 3,
             "name": "Привязка витрины маркетплейса",
             "text": "Выберите маркетплейс (Ozon, Wildberries, Яндекс Маркет или Авито) и введите API-токены кабинета селлера."
           },
           {
             "@type": "HowToStep",
+            "position": 4,
             "name": "Сопоставление складов и методов доставки",
             "text": "Свяжите склад маркетплейса с договором СДЭК и активируйте необходимые способы вручения (ПВЗ / Курьер)."
           },
           {
             "@type": "HowToStep",
+            "position": 5,
             "name": "Тестовая обработка и печать маркировки",
             "text": "Проверьте прием первого заказа, автоматическую передачу трек-номера и распечатайте транспортную накладную 120×75 мм."
           }
@@ -90,7 +86,7 @@
             "name": "Какой максимальный расчетный вес отправления возможен по тарифу DBS СДЭК?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "По стандартному тарифу СДЭК DBS максимальный вес отправления составляет до 50 кг на одно место. Для негабаритных и легковесных товаров действует льготный спецтариф DBS до 1 кг."
+              "text": "По стандартному тарифу СДЭК DBS максимальный вес отправления составляет до 30 кг на одно место. Для негабаритных и легковесных товаров действует льготный спецтариф DBS до 1 кг."
             }
           },
           {
@@ -106,7 +102,7 @@
             "name": "Где можно выгрузить тарифы по направлениям для DBS СДЭК?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Тарифную сетку по всем городам России можно рассчитать в онлайн-калькуляторе на сайте cdek-ecommerce.ru или получить полную выгрузку тарифов через персонального менеджера после заключения B2B-договора."
+              "text": "Тарифную сетку по всем городам России можно рассчитать в онлайн-калькуляторе на сайте cdek-ecommerce.ru или получить полную матрицу тарифов через персонального менеджера после заключения B2B-договора."
             }
           },
           {
@@ -122,286 +118,289 @@
     ]
   }
   </script>
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-  </style>
 </head>
-<body class="bg-[#F4F7F6] text-slate-900 antialiased min-h-screen flex flex-col selection:bg-[#00D856] selection:text-[#062A30]">
+<body class="bg-[#F5F8FE] text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#1AB248] selection:text-white">
 
   <!--# include virtual="/components/header.html" -->
 
-  <main class="flex-grow py-8 sm:py-12">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-      
-      <!-- Хлебные крошки -->
-      <nav class="flex items-center gap-2 text-xs text-slate-400">
-        <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
-        <span>/</span>
-        <a href="/#integrations" class="hover:text-[#1AB248] transition">Интеграции</a>
-        <span>/</span>
-        <span class="text-slate-700 font-semibold">СДЭК DBS для маркетплейсов</span>
-      </nav>
+  <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
+    
+    <!-- Хлебные крошки -->
+    <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400">
+      <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
+      <span>/</span>
+      <a href="/integrations/" class="hover:text-[#1AB248] transition">Интеграции</a>
+      <span>/</span>
+      <span class="text-slate-700 font-semibold">СДЭК DBS для маркетплейсов</span>
+    </nav>
 
-      <!-- Главный Hero-блок статьи -->
-      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-sm space-y-6">
-        <div class="flex flex-wrap items-center gap-2">
-          <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-50 text-[#158E3A] border border-emerald-200">
-            Официальное B2B-решение
-          </span>
+    <!-- Главный Hero-блок -->
+    <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200">
+          🔥 Спецрешение для селлеров
+        </span>
+        <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600">
+          Ozon realFBS • WB DBS • Яндекс Маркет • Авито
+        </span>
+      </div>
+
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+        Инструкция по настройке СДЭК DBS для маркетплейсов
+      </h1>
+
+      <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+        Схема <strong>DBS (Delivery by Seller / ДБС)</strong> позволяет селлерам продавать товары со своего склада, доставляя заказы через федеральную сеть СДЭК по прямым выгодным B2B-тарифам. Интеграция полностью автоматизирует синхронизацию статусов, генерацию накладных и передачу трек-номеров в кабинеты маркетплейсов.
+      </p>
+
+      <!-- KPI плашки -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+          <div class="text-xl font-extrabold text-[#1AB248]">15 минут</div>
+          <div class="text-xs text-slate-500 mt-0.5 font-medium">Время полной настройки</div>
         </div>
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+          <div class="text-xl font-extrabold text-slate-900">0 ₽</div>
+          <div class="text-xs text-slate-500 mt-0.5 font-medium">Бесплатное подключение</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+          <div class="text-xl font-extrabold text-[#1AB248]">100% Авто</div>
+          <div class="text-xs text-slate-500 mt-0.5 font-medium">Передача треков и статусов</div>
+        </div>
+      </div>
 
-        <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight">
-          Инструкция по настройке СДЭК DBS для маркетплейсов
-        </h1>
+      <div class="pt-4 flex flex-col sm:flex-row gap-4 items-center">
+        <a href="/dogovor/#contract-form-container" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg shadow-[#1AB248]/25 transition transform active:scale-95 text-center">
+          Подключить СДЭК DBS со скидкой до 50%
+        </a>
+        <a href="#how-to" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-base rounded-2xl transition text-center">
+          Инструкция по настройке ↓
+        </a>
+      </div>
+    </div>
 
-        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-          Схема <strong>DBS (Delivery by Seller / ДБС)</strong> позволяет селлерам продавать товары на маркетплейсах со своего склада, доставляя заказы через федеральную сеть СДЭК по прямым выгодным B2B-тарифам. Официальный шлюз интеграции полностью автоматизирует синхронизацию статусов, генерацию накладных и передачу трек-номеров в личные кабинеты маркетплейсов без ручной рутины.
+    <!-- Пошаговый план (HowTo) -->
+    <div id="how-to" class="space-y-6">
+      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">
+        Пошаговый план подключения
+      </h2>
+
+      <!-- Шаг 1 -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-3">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-xl bg-[#1AB248] text-white font-bold text-sm flex items-center justify-center shrink-0">1</span>
+          <h3 class="text-lg font-bold text-slate-900">Получение B2B API-ключей СДЭК</h3>
+        </div>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Для работы требуется действующий договор СДЭК и пара боевых ключей авторизации по протоколу API v2.0:
         </p>
+        <ol class="list-decimal list-inside space-y-1.5 text-sm text-slate-700 font-medium pl-1">
+          <li>Войдите в личный кабинет корпоративного клиента СДЭК.</li>
+          <li>Откройте раздел <strong>«Интеграция»</strong> → <strong>«Ключи API»</strong>.</li>
+          <li>Скопируйте значения: <strong>Account</strong> (Идентификатор клиента) и <strong>Secure password</strong> (Секрет клиента).</li>
+        </ol>
+      </div>
 
-        <!-- KPI плашки -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
-            <div class="text-xl font-black text-[#1AB248]">15 минут</div>
-            <div class="text-xs text-slate-500 mt-0.5">Время полной настройки</div>
-          </div>
-          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
-            <div class="text-xl font-black text-slate-900">0 ₽</div>
-            <div class="text-xs text-slate-500 mt-0.5">Бесплатное подключение</div>
-          </div>
-          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
-            <div class="text-xl font-black text-slate-900">100% Авто</div>
-            <div class="text-xs text-slate-500 mt-0.5">Передача трек-кодов и статусов</div>
-          </div>
+      <!-- Шаг 2 -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-3">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-xl bg-[#1AB248] text-white font-bold text-sm flex items-center justify-center shrink-0">2</span>
+          <h3 class="text-lg font-bold text-slate-900">Подключение личного кабинета к шлюзу DBS</h3>
+        </div>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          В интерфейсе сервиса интеграции выполните вход, указав ключи договора СДЭК, и подтвердите доступ к автоматическому управлению накладными.
+        </p>
+        <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900">
+          <strong>Обратите внимание:</strong> учетная запись должна иметь права администратора договора для автоматической регистрации заказов в биллинге.
         </div>
       </div>
 
-      <!-- Пошаговые шаги настройки (HowTo) -->
-      <div class="space-y-6">
-        <h2 class="text-xl sm:text-2xl font-black text-slate-900">
-          Пошаговый план подключения
-        </h2>
-
-        <!-- Шаг 1 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-4">
-          <div class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-xl bg-[#1AB248] text-white font-black text-sm flex items-center justify-center shrink-0">1</span>
-            <h3 class="text-lg font-bold text-slate-900">Получение B2B API-ключей СДЭК</h3>
-          </div>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Для работы с модулем требуется заключенный договор СДЭК и пара боевых ключей авторизации.
-          </p>
-          <ol class="list-decimal list-inside space-y-2 text-xs sm:text-sm text-slate-700 font-medium pl-1">
-            <li>Войдите в личный кабинет корпоративного клиента СДЭК.</li>
-            <li>Откройте раздел <strong>«Интеграция»</strong> → <strong>«Ключи API»</strong>.</li>
-            <li>Нажмите <strong>«Создать ключ»</strong> и скопируйте значения:
-              <ul class="list-disc list-inside pl-5 mt-1 text-slate-600 font-normal space-y-1">
-                <li><strong>Account (Идентификатор клиента / Client ID)</strong></li>
-                <li><strong>Secure password (Секретный пароль / Client Secret)</strong></li>
-              </ul>
-            </li>
-          </ol>
+      <!-- Шаг 3: Маркетплейсы -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-5">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-xl bg-[#1AB248] text-white font-bold text-sm flex items-center justify-center shrink-0">3</span>
+          <h3 class="text-lg font-bold text-slate-900">Привязка витрины маркетплейса</h3>
         </div>
-
-        <!-- Шаг 2 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-4">
-          <div class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-xl bg-[#1AB248] text-white font-black text-sm flex items-center justify-center shrink-0">2</span>
-            <h3 class="text-lg font-bold text-slate-900">Подключение личного кабинета к шлюзу DBS</h3>
-          </div>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            В интерфейсе шлюза выполните вход, используя учетные данные от договора СДЭК, и подтвердите доступ к управлению накладными.
-          </p>
-          <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900">
-            <strong>Важно:</strong> Учетная запись должна иметь права администратора договора для автоматической регистрации заказов в биллинге.
-          </div>
-        </div>
-
-        <!-- Шаг 3: Настройка под конкретный маркетплейс -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-6">
-          <div class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-xl bg-[#1AB248] text-white font-black text-sm flex items-center justify-center shrink-0">3</span>
-            <h3 class="text-lg font-bold text-slate-900">Привязка витрины маркетплейса</h3>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <!-- Ozon -->
-            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
-              <div class="flex items-center justify-between">
-                <h4 class="font-black text-slate-900 text-sm">Ozon (realFBS)</h4>
-                <span class="text-[10px] font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded">Популярно</span>
-              </div>
-              <p class="text-xs text-slate-600">В ЛК Ozon Seller откройте: <em>Настройки → API ключи</em>.</p>
-              <ul class="text-xs text-slate-700 space-y-1 font-mono">
-                <li>• Client-ID: скопируйте числовой ID</li>
-                <li>• API-Key: сгенерируйте с типом «Администратор»</li>
-              </ul>
-            </div>
-
-            <!-- WB -->
-            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
-              <div class="flex items-center justify-between">
-                <h4 class="font-black text-slate-900 text-sm">Wildberries (DBS)</h4>
-                <span class="text-[10px] font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded">DBS / WB GO</span>
-              </div>
-              <p class="text-xs text-slate-600">В ЛК WB Партнеры откройте: <em>Профиль → Настройки → Доступ к API</em>.</p>
-              <ul class="text-xs text-slate-700 space-y-1 font-mono">
-                <li>• Отметьте категорию прав: «Доставка / Маркетплейс»</li>
-                <li>• Скопируйте сгенерированный токен</li>
-              </ul>
-            </div>
-
-            <!-- Яндекс Маркет -->
-            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
-              <div class="flex items-center justify-between">
-                <h4 class="font-black text-slate-900 text-sm">Яндекс Маркет (DBS)</h4>
-                <span class="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">DBS СДЭК</span>
-              </div>
-              <p class="text-xs text-slate-600">В кабинете Яндекс Маркета: <em>Настройки → Настройки API</em>.</p>
-              <ul class="text-xs text-slate-700 space-y-1 font-mono">
-                <li>• Номер кампании (Campaign ID)</li>
-                <li>• Авторизационный OAuth-токен</li>
-              </ul>
-            </div>
-
-            <!-- Авито -->
-            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
-              <div class="flex items-center justify-between">
-                <h4 class="font-black text-slate-900 text-sm">Авито Доставка</h4>
-                <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Авито Pro</span>
-              </div>
-              <p class="text-xs text-slate-600">В кабинете Авито Pro: <em>Для бизнеса → Интеграции → API</em>.</p>
-              <ul class="text-xs text-slate-700 space-y-1 font-mono">
-                <li>• Client ID</li>
-                <li>• Client Secret</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Шаг 4: Маппинг складов -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-4">
-          <div class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-xl bg-[#1AB248] text-white font-black text-sm flex items-center justify-center shrink-0">4</span>
-            <h3 class="text-lg font-bold text-slate-900">Сопоставление складов (Маппинг) и способов сдачи</h3>
-          </div>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            В разделе <strong>«Склады и логистика»</strong> свяжите физический склад маркетплейса с договором СДЭК:
-          </p>
-          <ul class="space-y-2 text-xs sm:text-sm text-slate-700 font-medium">
-            <li class="flex items-start gap-2">
-              <span class="text-[#1AB248] font-bold">✓</span>
-              <span><strong>Способ передачи отправлений:</strong> сдача в выбранный ПВЗ СДЭК или вызов регулярного курьера на ваш склад.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-[#1AB248] font-bold">✓</span>
-              <span><strong>Тайм-слоты сборки:</strong> укажите время на комплектацию заказа (стандартно от 1 до 24 часов).</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-[#1AB248] font-bold">✓</span>
-              <span><strong>География вручения:</strong> активируйте доставку до ПВЗ СДЭК и курьерскую доставку до двери покупателя.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Шаг 5: Процесс обработки заказов -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-4">
-          <div class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-xl bg-[#1AB248] text-white font-black text-sm flex items-center justify-center shrink-0">5</span>
-            <h3 class="text-lg font-bold text-slate-900">Как выглядит ежедневная работа с заказами</h3>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-              <strong class="text-slate-900 block mb-1">1. Поступление заказа</strong>
-              <p class="text-slate-500">Заказ автоматически поступает из маркетплейса со всеми габаритами и адресом покупателя.</p>
-            </div>
-            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-              <strong class="text-slate-900 block mb-1">2. Печать маркировки</strong>
-              <p class="text-slate-500">В один клик формируется и распечатывается этикетка со штрихкодом формата 120×75 мм.</p>
-            </div>
-            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-              <strong class="text-slate-900 block mb-1">3. Передача в СДЭК</strong>
-              <p class="text-slate-500">При сдаче посылки маркетплейс сразу видит статус приемки и переводит заказ в «В пути».</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Блок частых ошибок (Troubleshooting) -->
-      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-5">
-        <h2 class="text-xl sm:text-2xl font-black text-slate-900">
-          Частые ошибки при настройке и их решение
-        </h2>
-
-        <div class="space-y-3 text-xs sm:text-sm">
-          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
-            <h4 class="font-bold text-slate-900">1. Ошибка 401 Unauthorized при вводе ключей</h4>
-            <p class="text-slate-600">Убедитесь, что вы используете боевые ключи из ЛК СДЭК, а не тестовые данные песочницы. Проверьте отсутствие лишних пробелов в начале и конце строк.</p>
-          </div>
-
-          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
-            <h4 class="font-bold text-slate-900">2. Маркетплейс не видит методы доставки</h4>
-            <p class="text-slate-600">В личном кабинете маркетплейса проверьте привязку метода доставки «СДЭК (интегрированная служба)» именно к тому складу, чей ID указан в настройках интеграции.</p>
-          </div>
-
-          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
-            <h4 class="font-bold text-slate-900">3. Не печатается штрихкод отправления</h4>
-            <p class="text-slate-600">Накладная формируется только после перевода заказа в статус «Скомплектован / Готов к отправке». Проверьте заполнение физического веса товара.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- FAQ по подсказкам Яндекса -->
-      <div class="space-y-4">
-        <h2 class="text-xl sm:text-2xl font-black text-slate-900">Ответы на частые вопросы по СДЭК DBS (ДБС)</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-            <h4 class="font-bold text-slate-900 text-sm">Какой максимальный вес заказа по тарифу DBS СДЭК?</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">Максимальный расчетный вес одного места составляет <strong>до 30 кг</strong>. Для негабаритных или легковесных заказов доступен льготный спецтариф DBS до 1 кг.</p>
-          </div>
-
-          <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-            <h4 class="font-bold text-slate-900 text-sm">Какие режимы доставки доступны селлеру?</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">Вы можете отправлять заказы в <strong>ПВЗ и постаматы</strong> (режим Склад-Склад), а также оформлять <strong>курьерскую доставку до двери</strong> (режим Склад-Дверь).</p>
-          </div>
-
-          <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-            <h4 class="font-bold text-slate-900 text-sm">Где выгрузить тарифы по направлениям DBS СДЭК?</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">Актуальные тарифы рассчитываются в <a href="/calculator/" class="text-[#158E3A] underline font-medium">калькуляторе</a>, а полную матрицу цен по городам предоставляет персональный менеджер.</p>
-          </div>
-
-          <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-            <h4 class="font-bold text-slate-900 text-sm">Как работает схема DBS на WB, Ozon и Яндекс Маркете?</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">Вы храните остатки у себя, а при получении заказа модуль автоматически формирует накладную СДЭК и передает трек-код покупателю.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- CTA Блок -->
-      <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-10 text-center space-y-5 shadow-xl relative overflow-hidden">
-        <div class="absolute -right-10 -top-10 w-40 h-40 bg-[#1AB248]/20 rounded-full blur-3xl pointer-events-none"></div>
         
-        <h3 class="text-xl sm:text-3xl font-black relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Ozon -->
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-slate-900 text-sm">Ozon (realFBS)</h4>
+              <span class="text-[10px] font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded">Популярно</span>
+            </div>
+            <p class="text-xs text-slate-600">В ЛК Ozon Seller: <em>Настройки → API ключи</em>.</p>
+            <ul class="text-xs text-slate-700 space-y-1 font-mono">
+              <li>• Client-ID: числовой ID кабинета</li>
+              <li>• API-Key: токен с типом «Администратор»</li>
+            </ul>
+          </div>
+
+          <!-- WB -->
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-slate-900 text-sm">Wildberries (DBS)</h4>
+              <span class="text-[10px] font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded">DBS / WB GO</span>
+            </div>
+            <p class="text-xs text-slate-600">В ЛК WB Партнеры: <em>Профиль → Настройки → Доступ к API</em>.</p>
+            <ul class="text-xs text-slate-700 space-y-1 font-mono">
+              <li>• Категория прав: «Доставка / Маркетплейс»</li>
+              <li>• Сгенерируйте и скопируйте токен</li>
+            </ul>
+          </div>
+
+          <!-- Яндекс Маркет -->
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-slate-900 text-sm">Яндекс Маркет (DBS)</h4>
+              <span class="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">DBS СДЭК</span>
+            </div>
+            <p class="text-xs text-slate-600">В кабинете Яндекс Маркета: <em>Настройки → Настройки API</em>.</p>
+            <ul class="text-xs text-slate-700 space-y-1 font-mono">
+              <li>• Номер кампании (Campaign ID)</li>
+              <li>• Авторизационный OAuth-токен</li>
+            </ul>
+          </div>
+
+          <!-- Авито -->
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-slate-900 text-sm">Авито Доставка</h4>
+              <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Авито Pro</span>
+            </div>
+            <p class="text-xs text-slate-600">В кабинете Авито Pro: <em>Для бизнеса → Интеграции → API</em>.</p>
+            <ul class="text-xs text-slate-700 space-y-1 font-mono">
+              <li>• Client ID</li>
+              <li>• Client Secret</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Шаг 4: Маппинг складов -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-3">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-xl bg-[#1AB248] text-white font-bold text-sm flex items-center justify-center shrink-0">4</span>
+          <h3 class="text-lg font-bold text-slate-900">Сопоставление складов (Маппинг) и способов сдачи</h3>
+        </div>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          В разделе <strong>«Склады и логистика»</strong> свяжите созданный склад маркетплейса с договором СДЭК:
+        </p>
+        <ul class="space-y-2 text-sm text-slate-700 font-medium">
+          <li class="flex items-start gap-2">
+            <span class="text-[#1AB248] font-bold">✓</span>
+            <span><strong>Способ сдачи отправлений:</strong> самостоятельная сдача в ПВЗ СДЭК или вызов забора курьером.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[#1AB248] font-bold">✓</span>
+            <span><strong>Время сборки:</strong> регламентное время на комплектацию заказа (от 1 до 24 часов).</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[#1AB248] font-bold">✓</span>
+            <span><strong>География:</strong> доставка до ПВЗ/постаматов СДЭК и курьером до двери покупателя.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Шаг 5: Процесс обработки заказов -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-4">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-xl bg-[#1AB248] text-white font-bold text-sm flex items-center justify-center shrink-0">5</span>
+          <h3 class="text-lg font-bold text-slate-900">Ежедневная работа с заказами</h3>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs sm:text-sm">
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+            <strong class="text-slate-900 block mb-1">1. Прием заказа</strong>
+            <p class="text-slate-500">Заказ подтягивается из маркетплейса с адресом и габаритами.</p>
+          </div>
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+            <strong class="text-slate-900 block mb-1">2. Печать этикетки</strong>
+            <p class="text-slate-500">В 1 клик генерируется термоэтикетка со штрихкодом 120×75 мм.</p>
+          </div>
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+            <strong class="text-slate-900 block mb-1">3. Передача в СДЭК</strong>
+            <p class="text-slate-500">Маркетплейс мгновенно получает трек-номер и меняет статус на «В пути».</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Решение ошибок (Troubleshooting) -->
+    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">
+        Частые ошибки при настройке и их решение
+      </h2>
+
+      <div class="space-y-3 text-sm">
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
+          <h4 class="font-bold text-slate-900">1. Ошибка 401 Unauthorized при вводе ключей</h4>
+          <p class="text-slate-600">Убедитесь, что используются боевые ключи из ЛК СДЭК (API v2.0), а не логин от входа. Проверьте отсутствие лишних пробелов.</p>
+        </div>
+
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
+          <h4 class="font-bold text-slate-900">2. Маркетплейс не отображает метод доставки СДЭК</h4>
+          <p class="text-slate-600">В кабинете продавца проверьте привязку метода доставки «СДЭК» именно к тому складу, ID которого указан в интеграции.</p>
+        </div>
+
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
+          <h4 class="font-bold text-slate-900">3. Не печатается штрихкод отправления</h4>
+          <p class="text-slate-600">Накладная формируется после перевода заказа в статус «Скомплектован». Убедитесь, что в карточке товара заполнен вес.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Ответы на частые вопросы по СДЭК DBS (ДБС)</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+          <h4 class="font-bold text-slate-900 text-sm">Какой максимальный вес заказа по тарифу DBS СДЭК?</h4>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Максимальный расчетный вес одного места составляет <strong>до 30 кг</strong>. Для негабаритных и легковесных товаров действует льготный спецтариф DBS до 1 кг.</p>
+        </div>
+
+        <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+          <h4 class="font-bold text-slate-900 text-sm">Какие режимы доставки доступны селлеру?</h4>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Доступны отправка в <strong>ПВЗ и постаматы</strong> (режим Склад-Склад), а также <strong>курьерская доставка до двери</strong> покупателя (Склад-Дверь).</p>
+        </div>
+
+        <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+          <h4 class="font-bold text-slate-900 text-sm">Где выгрузить тарифы по направлениям DBS СДЭК?</h4>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Актуальные тарифы рассчитываются в онлайн-калькуляторе, а полную сетку цен по городам РФ предоставляет личный менеджер при заключении договора.</p>
+        </div>
+
+        <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+          <h4 class="font-bold text-slate-900 text-sm">Как работает схема DBS на маркетплейсах?</h4>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Вы храните остатки на собственном складе, а при заказе система формирует накладную СДЭК и автоматически отправляет трек покупателю.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Фирменный темно-зеленый CTA-блок (#062A30) -->
+    <div class="bg-gradient-to-br from-[#062A30] to-[#0A3840] text-white rounded-3xl p-6 sm:p-10 text-center space-y-5 shadow-xl relative overflow-hidden">
+      <div class="absolute -right-10 -top-10 w-40 h-40 bg-[#1AB248]/20 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div class="max-w-2xl mx-auto space-y-2 relative z-10">
+        <span class="inline-block px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider bg-[#1AB248] text-white">
+          Официальный B2B-договор
+        </span>
+        <h3 class="text-xl sm:text-3xl font-extrabold tracking-tight">
           Нужна помощь с интеграцией или договором СДЭК?
         </h3>
-        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto relative z-10 leading-relaxed">
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
           Оставьте заявку — подключим льготные тарифы B2B со скидкой до 50% и поможем настроить передачу заказов по схеме DBS за 1 рабочий день.
         </p>
-        
-        <div class="pt-2 relative z-10">
-          <a 
-            href="/#lead-form" 
-            class="inline-flex items-center justify-center px-8 py-4 bg-[#00D856] hover:bg-[#00BF4C] text-[#062A30] font-black text-xs uppercase tracking-wider rounded-2xl transition shadow-lg shadow-[#00D856]/20 active:scale-95 cursor-pointer"
-          >
-            Заключить B2B договор и настроить DBS
-          </a>
-        </div>
       </div>
-
+      
+      <div class="pt-2 relative z-10">
+        <a 
+          href="/dogovor/#contract-form-container" 
+          class="inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg shadow-[#1AB248]/25 transition transform active:scale-95 cursor-pointer"
+        >
+          Заключить B2B договор и настроить DBS
+        </a>
+      </div>
     </div>
+
   </main>
 
   <!--# include virtual="/components/footer.html" -->
