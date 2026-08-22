@@ -4,7 +4,7 @@
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.pareфntNode.insertBefore(k,a)
     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111763499', 'ym');
 
     ym(111763499, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
@@ -29,14 +29,13 @@
 
     <!-- Навигация (Desktop) -->
     <nav class="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-semibold text-slate-700">
+      <!-- 1. Калькулятор B2B -->
       <a href="/calculator/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors">
         <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
         Калькулятор B2B
       </a>
 
-      <a href="/#benefits" class="hover:text-[#1AB248] transition-colors">Преимущества</a>
-      
-      <!-- Интеграции -->
+      <!-- 2. Интеграции -->
       <div class="relative group py-2">
         <a href="/#integrations" class="hover:text-[#1AB248] transition-colors flex items-center gap-1">
           Интеграции и CMS
@@ -55,7 +54,7 @@
         </div>
       </div>
 
-      <!-- Услуги -->
+      <!-- 3. Услуги -->
       <div class="relative group py-2">
         <span class="cursor-pointer hover:text-[#1AB248] transition-colors flex items-center gap-1">
           Услуги
@@ -67,21 +66,17 @@
         </div>
       </div>
 
-      <!-- Трекинг (Desktop) -->
-      <a href="/tracking/" class="flex items-center gap-1.5 text-slate-700 hover:text-[#1AB248] transition-colors">
+      <!-- 4. О компании -->
+      <a href="/about/" class="hover:text-[#1AB248] transition-colors">
+        О компании
+      </a>
+
+      <!-- 5. Трекинг -->
+      <a href="/tracking/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors">
         <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         Отследить заказ
       </a>
     </nav>
-
-    <!-- Правый блок: кнопка и бургер всегда вместе -->
-    <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-      <a 
-        href="/dogovor/#contract-form-container" 
-        class="px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-[#08221F] hover:bg-[#062A30] text-white font-bold text-xs uppercase tracking-wider transition shadow-sm"
-      >
-        Подключиться
-      </a>
       
       <!-- Черный бургер -->
       <button 
