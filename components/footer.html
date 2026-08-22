@@ -4,7 +4,7 @@
     <!-- Основная сетка перелинковки -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 pb-12 border-b border-[#133E38]">
       
-      <!-- Колонка 1: Логотип, контакты, почта и цветные мессенджеры -->
+      <!-- Колонка 1: Логотип, контакты и мессенджеры -->
       <div class="space-y-4">
         <div class="flex items-center gap-3">
           <img 
@@ -17,7 +17,7 @@
           </span>
         </div>
         <p class="text-xs text-slate-400 leading-relaxed">
-          Официальный сервис подключения e-commerce партнеров. Доставка для интернет-магазинов, юрлиц, ИП и самозанятых со скидками до 50%.
+          Официальный B2B-сервис подключения доставки СДЭК. Выгодные тарифы для интернет-магазинов, юрлиц, ИП и самозанятых со скидками до 50%.
         </p>
         
         <div class="pt-1 space-y-2">
@@ -31,10 +31,10 @@
             <div class="text-[11px] text-slate-400 mt-1">Пн–Пт: 09:00–18:00 (МСК)</div>
           </div>
 
-          <!-- Яркие фирменные иконки мессенджеров -->
+          <!-- Фирменные иконки мессенджеров -->
           <div class="flex items-center gap-2.5 pt-1">
             
-            <!-- Telegram (Официальный яркий круг с самолетиком) -->
+            <!-- Telegram -->
             <a 
               href="https://t.me/cdek_marketplace" 
               target="_blank" 
@@ -49,7 +49,7 @@
               </svg>
             </a>
 
-            <!-- WhatsApp (Фирменный ярко-зеленый бабл) -->
+            <!-- WhatsApp -->
             <a 
               href="https://wa.me/79933221520" 
               target="_blank" 
@@ -63,7 +63,7 @@
               </svg>
             </a>
 
-            <!-- MAX (Фирменный неоновый градиент) -->
+            <!-- MAX -->
             <a 
               href="https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo" 
               target="_blank" 
@@ -86,7 +86,8 @@
           </div>
         </div>
       </div>
-      <!-- Колонка 2: Модули интеграции и CMS (без эмодзи) -->
+
+      <!-- Колонка 2: Модули интеграции и CMS -->
       <div>
         <h4 class="text-white font-bold text-sm mb-3">Интеграции и CMS</h4>
         <ul class="space-y-2 text-xs">
@@ -103,36 +104,68 @@
 
       <!-- Колонка 3: Сервисы и логистика -->
       <div>
-        <h4 class="text-white font-bold text-sm mb-3">Сервисы и логистика</h4>
+        <h4 class="text-white font-bold text-sm mb-3">Услуги логистики</h4>
         <ul class="space-y-2 text-xs">
-          <li><a href="/calculator/" class="hover:text-white transition">Калькулятор тарифов онлайн</a></li>
-          <li><a href="/tracking/" class="hover:text-white transition">Отследить отправление (ПВЗ)</a></li>
-          <li><a href="/services/dostavka-odezhdy/" class="hover:text-white transition">Доставка с примеркой (Fashion)</a></li>
-          <li><a href="/services/fulfillment/" class="hover:text-white transition">Складской фулфилмент</a></li>
-          <li><a href="/#benefits" class="hover:text-white transition">Преимущества договора B2B</a></li>
+          <li><a href="/services/dostavka-odezhdy/" class="hover:text-white transition">Магазины одежды (примерка)</a></li>
+          <li><a href="/services/fulfillment/" class="hover:text-white transition">Фулфилмент под ключ</a></li>
+          <li><a href="/services/sbornyj-gruz/" class="hover:text-white transition">Сборный груз LTL (от 60 кг)</a></li>
+          <li><a href="/services/dostavka-dokumentov/" class="hover:text-white transition">СДЭК Документы (экспресс)</a></li>
+          <li><a href="/services/mezhdunarodnaya-dostavka/" class="hover:text-white transition">Международная доставка</a></li>
+          <li><a href="/services/nalozhennyj-platezh/" class="hover:text-white transition">Наложенный платеж 54-ФЗ</a></li>
+          <li><a href="/calculator/" class="hover:text-white transition">Калькулятор B2B тарифов</a></li>
+          <li><a href="/tracking/" class="hover:text-white transition">Трекинг отправлений</a></li>
         </ul>
       </div>
 
-      <!-- Колонка 4: Быстрый старт -->
-<div class="space-y-3">
-  <h4 class="text-white font-bold text-sm mb-1">Быстрый старт</h4>
-  <p class="text-xs text-slate-400 leading-relaxed">
-    Заключение официального договора онлайн за 15 минут с доступом в личный кабинет и боевым API.
-  </p>
-  <a href="/dogovor/#contract-form-container" class="inline-flex items-center justify-center w-full py-3 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md shadow-[#1AB248]/20 transition active:scale-95">
-    Заключить договор
-  </a>
-</div>
+      <!-- Колонка 4: Договор СДЭК (с SEO-перелинковкой на формы) -->
+      <div class="space-y-3">
+        <h4 class="text-white font-bold text-sm mb-1">Заключение договора</h4>
+        
+        <ul class="space-y-2 text-xs text-slate-400 pb-1">
+          <li>
+            <a href="/dogovor/ip/" class="hover:text-[#1AB248] transition flex items-center gap-1.5">
+              <span class="text-[#1AB248]">›</span> Договор для ИП (УСН)
+            </a>
+          </li>
+          <li>
+            <a href="/dogovor/yur-lica/" class="hover:text-[#1AB248] transition flex items-center gap-1.5">
+              <span class="text-[#1AB248]">›</span> Договор для ООО (с НДС)
+            </a>
+          </li>
+          <li>
+            <a href="/dogovor/samozanyatye/" class="hover:text-[#1AB248] transition flex items-center gap-1.5">
+              <span class="text-[#1AB248]">›</span> Договор для самозанятых (НПД)
+            </a>
+          </li>
+          <li>
+            <a href="/about/" class="hover:text-[#1AB248] transition flex items-center gap-1.5">
+              <span class="text-[#1AB248]">›</span> О компании и филиале
+            </a>
+          </li>
+        </ul>
+
+        <a href="/dogovor/#contract-form-container" class="inline-flex items-center justify-center w-full py-3 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md shadow-[#1AB248]/20 transition transform active:scale-95 text-center">
+          Заключить договор онлайн
+        </a>
+      </div>
 
     </div>
 
-    <!-- Нижняя строка копирайта и юридических документов -->
+   <!-- Нижняя строка копирайта и документов -->
     <div class="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-      <div>© 2026 cdek-ecommerce.ru — Официальный партнер СДЭК. Не является публичной офертой</div>
+      <div>
+        © <span id="current-year">2026</span> cdek-ecommerce.ru — Официальный партнер СДЭК.
+      </div>
       <div class="flex items-center gap-4">
         <a href="/policy/" class="hover:text-slate-300 transition underline">Политика конфиденциальности</a>
       </div>
     </div>
 
-  </div>
-</footer>
+    <script>
+      (function() {
+        var el = document.getElementById('current-year');
+        if (el) {
+          el.textContent = new Date().getFullYear();
+        }
+      })();
+    </script>
