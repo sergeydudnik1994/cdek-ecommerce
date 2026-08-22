@@ -531,5 +531,47 @@
 
   <!--# include virtual="/components/footer.html" -->
 
+  <!-- Скрипт мгновенной гео-подстановки без моргания -->
+  <script>
+    (async function() {
+      const declensions = {
+        "москва": "в Москве",
+        "санкт-петербург": "в Санкт-Петербурге",
+        "краснодар": "в Краснодаре",
+        "екатеринбург": "в Екатеринбурге",
+        "новосибирск": "в Новосибирске",
+        "казань": "в Казани"
+      };
+
+      function applyCity(text) {
+        document.querySelectorAll('.dynamic-city-prep').forEach(el => {
+          el.textContent = text;
+        });
+      }
+
+      // 1. Мгновенно берем из кэша браузера (0 задержки)
+      let cached = localStorage.getItem('user_city_prep');
+      if (cached) {
+        applyCity(cached);
+        return;
+      }
+
+      // 2. Если зашли первый раз — запрашиваем в фоне
+      try {
+        let res = await fetch('https://ipwho.is/?lang=ru');
+        if (!res.ok) return;
+        let data = await res.json();
+        let cityName = (data.city || "").trim().toLowerCase();
+        
+        let targetPrep = declensions[cityName] || (cityName ? `в г. ${cityName}` : "в вашем городе");
+
+        localStorage.setItem('user_city_prep', targetPrep);
+        applyCity(targetPrep);
+      } catch (e) {
+        // Ошибка сети — оставляем текст по умолчанию
+      }
+    })();
+  </script>
+
 </body>
 </html>
