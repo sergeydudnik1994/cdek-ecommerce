@@ -3,9 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Модуль доставки СДЭК для OpenCart 2.x и 3.x — скачать и настроить</title>
-  <meta name="description" content="Модуль СДЭК для OpenCart и ocStore. Выбор пунктов выдачи, гибкая наценка, печать накладных и авторасчет тарифов доставки." />
+  <title>Интеграция СДЭК с OpenCart и ocStore — официальный модуль доставки для интернет-магазина</title>
+  <meta name="description" content="Пошаговая инструкция по настройке официального модуля СДЭК для OpenCart 2.3, 3.0 и ocStore: Rest API v2.0, интеграция с Simple Checkout и UniShop2, карта ПВЗ, печать накладных и скидки до 50%." />
+  <meta name="keywords" content="сдэк opencart, модуль сдэк opencart 3, сдэк ocstore 2.3, сдэк simple opencart, интеграция сдэк opencart, скачать модуль сдэк opencart, настройка сдэк unishop2" />
   <link rel="canonical" href="https://cdek-ecommerce.ru/integrations/opencart/" />
+  <meta name="theme-color" content="#062A30" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="СДЭК E-Commerce" />
+  <meta property="og:title" content="Интеграция СДЭК с OpenCart и ocStore: модуль доставки" />
+  <meta property="og:description" content="Официальный модуль СДЭК для OpenCart и ocStore. Авторасчет стоимости, карта ПВЗ в Simple Checkout и выгрузка накладных." />
+  <meta property="og:url" content="https://cdek-ecommerce.ru/integrations/opencart/" />
+  <meta property="og:image" content="https://cdek-ecommerce.ru/favicon.png" />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +26,113 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>body { font-family: 'Roboto', sans-serif; }</style>
 
-  <!-- Schema.org Microdata -->
+  <!-- Schema.org: Breadcrumbs -->
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"}, {"@type": "ListItem", "position": 2, "name": "Интеграции", "item": "https://cdek-ecommerce.ru/integrations/"}, {"@type": "ListItem", "position": 3, "name": "OpenCart", "item": "https://cdek-ecommerce.ru/integrations/opencart/"}]}
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
+      {"@type": "ListItem", "position": 2, "name": "Интеграции", "item": "https://cdek-ecommerce.ru/integrations/"},
+      {"@type": "ListItem", "position": 3, "name": "OpenCart", "item": "https://cdek-ecommerce.ru/integrations/opencart/"}
+    ]
+  }
   </script>
+
+  <!-- Schema.org: FAQPage -->
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Совместим ли модуль с модулем Simple (упрощенный заказ)?", "acceptedAnswer": {"@type": "Answer", "text": "Да, модуль доставки СДЭК полностью адаптирован под Checkout Simple и стандартный чекаут OpenCart."}}]}
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Совместим ли модуль доставки СДЭК с модулем Simple (упрощенный заказ)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, официальный модуль СДЭК полностью совместим с Simple Checkout. В настройках модуля Simple достаточно сопоставить блок выбора способа доставки и поля адреса/ПВЗ для автоматической отрисовки интерактивной карты пунктов выдачи."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Какие версии OpenCart и ocStore поддерживает официальный модуль?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Модуль поддерживает ветки OpenCart 2.3.x, 3.0.x, сборки ocStore 2.3 / 3.0, а также популярные коммерческие шаблоны (UniShop2, CyberStore, UltraStore, Journal3)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Как исправить ошибку «Не удалось рассчитать стоимость доставки» в корзине OpenCart?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ошибка возникает, если в OpenCart у товара не заполнен вес (равен 0), в настройках локализации не настроены единицы веса/длины (кг и см), либо не сопоставлен город получателя в базе местоположений СДЭК."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Где получить боевые ключи авторизации для OpenCart?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ключи Rest API v2.0 (Account и Secure password) выдаются в личном кабинете СДЭК для юридических лиц, ИП и самозанятых в разделе «Интеграция → Ключи API»."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Поддерживается ли печать квитанций и ШК-этикеток из админки OpenCart?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, прямо из карточки заказа OpenCart или общего списка заказов можно в 1 клик выгрузить заказ в СДЭК, распечатать транспортную накладную А4 и термоэтикетки со штрихкодами формата 120х75 мм."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org: HowTo для AI-сниппетов -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Как подключить доставку СДЭК к OpenCart и ocStore",
+    "description": "Пошаговое руководство по установке OCMOD-архива, настройке протокола API v2.0 и карты ПВЗ в чекауте OpenCart.",
+    "totalTime": "PT8M",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Получение API-ключей в кабинете СДЭК",
+        "text": "В корпоративном кабинете СДЭК перейдите в «Интеграция → Ключи API» и скопируйте пару Account и Secure password."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Установка модуля через установщик расширений",
+        "text": "В админке OpenCart откройте «Расширения → Установка расширений», загрузите архив cdek.ocmod.zip и обновите модификаторы в разделе «Модификаторы»."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Активация и базовая настройка службы доставки",
+        "text": "Перейдите в «Расширения → Доставка → СДЭК», введите API-ключи, укажите город отгрузки и импортируйте базу городов СДЭК."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Интеграция с чекаутом Simple и шаблоном магазина",
+        "text": "В настройках чекаута включите вывод карты ПВЗ, привяжите поля адреса и укажите API-ключ Яндекс Карт."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Проверка авторасчета и отправка тестового заказа",
+        "text": "Оформите заказ на витрине магазина, проверьте корректность расчета тарифов «Посылка» и сформируйте накладную в админке."
+      }
+    ]
+  }
   </script>
 </head>
-<body class="bg-[#F5F8FE] text-slate-900 min-h-screen flex flex-col antialiased">
+<body class="bg-[#F4F7F6] text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#1AB248] selection:text-white">
 
   <!--# include virtual="/components/header.html" -->
 
@@ -31,67 +142,267 @@
     <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400">
       <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
       <span>/</span>
-      <span>Интеграции</span>
+      <a href="/integrations/" class="hover:text-[#1AB248] transition">Интеграции</a>
       <span>/</span>
       <span class="text-slate-700 font-semibold">OpenCart</span>
     </nav>
 
     <!-- Главный блок -->
     <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
-      <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200">
-        CMS & Платформы
-      </span>
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200">
+          CMS & E-Commerce
+        </span>
+        <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600">
+          OpenCart 2.3 / 3.0 • ocStore • Simple Checkout • UniShop2
+        </span>
+      </div>
+
       <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-        Интеграция СДЭК для OpenCart и ocStore
+        Подключение и настройка модуля доставки СДЭК для OpenCart и ocStore
       </h1>
       <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
-        Модуль СДЭК для OpenCart и ocStore. Выбор пунктов выдачи, гибкая наценка, печать накладных и авторасчет тарифов доставки.
+        Официальный модуль интеграции СДЭК для интернет-магазинов на OpenCart 2.x, 3.x и сборках ocStore. Интерактивная карта ПВЗ и постаматов в чекауте Simple, автоматический расчет тарифов по Rest API v2.0, печать термоэтикеток из админки и скидки до 50% по B2B-договору.
       </p>
 
       <div class="pt-4 border-t border-slate-100">
-        <h3 class="text-lg font-bold text-slate-900 mb-4">Возможности и преимущества решения:</h3>
-        <ul class="space-y-3">
-          
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Поддержка всех версий OpenCart 2.3, 3.0 и веток ocStore</span>
-      </li>
-    
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Интерактивная карта ПВЗ с поиском по адресу и времени работы</span>
-      </li>
-    
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Кастомизация тарифов: добавление наценки или скидки на доставку</span>
-      </li>
-    
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Экспорт заказов в личный кабинет СДЭК в один клик</span>
-      </li>
-    
+        <h3 class="text-lg font-bold text-slate-900 mb-4">Возможности и преимущества интеграции:</h3>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+            <span class="text-slate-700 text-sm leading-relaxed"><strong>Совместимость с Simple Checkout:</strong> бесшовная встройка карты ПВЗ и постаматов в одностраничное оформление заказа.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+            <span class="text-slate-700 text-sm leading-relaxed"><strong>Поддержка шаблонов:</strong> корректная работа с UniShop2, CyberStore, UltraStore, Journal3 и дефолтной темой.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+            <span class="text-slate-700 text-sm leading-relaxed"><strong>Выгрузка накладных в 1 клик:</strong> создание отправлений СДЭК и печать стикеров ШК 120х75 мм прямо из панели управления.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+            <span class="text-slate-700 text-sm leading-relaxed"><strong>Гибкая тарификация:</strong> настройка фиксированных наценок, скидок, бесплатной доставки от суммы и учет габаритов.</span>
+          </li>
         </ul>
       </div>
 
-      <div class="pt-6">
-        <a href="/#lead-form" class="inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg shadow-[#1AB248]/25 transition transform active:scale-95">
-          Подключить со скидкой до 50%
+      <div class="pt-4 flex flex-col sm:flex-row gap-4 items-center">
+        <a href="/dogovor/#contract-form-container" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg shadow-[#1AB248]/25 transition transform active:scale-95 text-center">
+          Подключить СДЭК со скидкой до 50%
+        </a>
+        <a href="#how-to" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-base rounded-2xl transition text-center">
+          Инструкция по настройке ↓
         </a>
       </div>
     </div>
 
-    <!-- FAQ -->
+    <!-- Пошаговая инструкция (Блок AEO для быстрого ответа Яндекса и Алисы) -->
+    <div id="how-to" class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
+      <div class="space-y-2">
+        <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          Пошаговая инструкция: как подключить СДЭК к OpenCart / ocStore
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Официальный модуль работает через модификатор OCMOD и протокол Rest API v2.0.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 pt-2">
+        
+        <!-- Шаг 1 -->
+        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
+            1
+          </div>
+          <div class="space-y-1.5">
+            <h3 class="text-base sm:text-lg font-bold text-slate-900">
+              Получите API-ключи в личном кабинете СДЭК
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              В личном кабинете СДЭК для бизнеса перейдите в <strong>«Интеграция → Ключи API»</strong> и скопируйте значения <strong>Account</strong> (Идентификатор клиента) и <strong>Secure password</strong> (Секрет клиента).
+            </p>
+          </div>
+        </div>
+
+        <!-- Шаг 2 -->
+        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
+            2
+          </div>
+          <div class="space-y-1.5">
+            <h3 class="text-base sm:text-lg font-bold text-slate-900">
+              Установите модуль через установщик расширений OpenCart
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              В панели администрирования перейдите в <em>Модули / Расширения → Установка расширений</em>. Загрузите архив модуля <code>cdek.ocmod.zip</code>. После успешной загрузки откройте раздел <strong>«Модификаторы»</strong> и нажмите кнопку <strong>«Обновить»</strong> (синяя кнопка вверху справа).
+            </p>
+          </div>
+        </div>
+
+        <!-- Шаг 3 -->
+        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
+            3
+          </div>
+          <div class="space-y-1.5">
+            <h3 class="text-base sm:text-lg font-bold text-slate-900">
+              Активируйте доставку и введите параметры договора
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Перейдите в <em>Расширения → Доставка → СДЭК (CDEK Official) → Редактировать</em>. Вставьте Account и Secure password, укажите ваш город отправления, задайте базовые габариты/вес и выполните <strong>импорт городов и ПВЗ</strong> в базу сайта.
+            </p>
+          </div>
+        </div>
+
+        <!-- Шаг 4 -->
+        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
+            4
+          </div>
+          <div class="space-y-1.5">
+            <h3 class="text-base sm:text-lg font-bold text-slate-900">
+              Настройте чекаут Simple (или шаблон UniShop2)
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              В настройках модуля Simple откройте вкладку <em>«Страница заказа» → «Доставка»</em>. Убедитесь, что для службы СДЭК включено отображение карты пунктов выдачи, сопоставлены поля адреса и указан JavaScript API-ключ Яндекс Карт.
+            </p>
+          </div>
+        </div>
+
+        <!-- Шаг 5 -->
+        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
+            5
+          </div>
+          <div class="space-y-1.5">
+            <h3 class="text-base sm:text-lg font-bold text-slate-900">
+              Проверьте работу корзины и создание накладных
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Оформите тестовый заказ на сайте: выберите ПВЗ на интерактивной карте, проверьте сумму расчета. В админке OpenCart откройте созданный заказ и нажмите <strong>«Сформировать заказ в СДЭК»</strong> для получения накладной и трек-номера.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Справочник опций модуля OpenCart -->
+    <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
+      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">
+        Справочник настроек модуля СДЭК в OpenCart
+      </h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm text-slate-600 border-collapse">
+          <thead>
+            <tr class="border-b border-slate-200 text-slate-900 font-bold bg-slate-50">
+              <th class="p-3.5 rounded-l-xl">Параметр настройки</th>
+              <th class="p-3.5">Значение / Тип</th>
+              <th class="p-3.5 rounded-r-xl">Назначение</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr>
+              <td class="p-3.5 font-semibold text-slate-800">Account / Secure password</td>
+              <td class="p-3.5 font-mono text-xs text-emerald-600">Rest API v2.0</td>
+              <td class="p-3.5">Ключи авторизации из раздела «Интеграция» личного кабинета СДЭК.</td>
+            </tr>
+            <tr>
+              <td class="p-3.5 font-semibold text-slate-800">Город отправителя</td>
+              <td class="p-3.5">Выбор из базы городов</td>
+              <td class="p-3.5">Базовый город склада интернет-магазина для расчета стоимости.</td>
+            </tr>
+            <tr>
+              <td class="p-3.5 font-semibold text-slate-800">Единицы веса и длины</td>
+              <td class="p-3.5 font-semibold text-slate-900">Килограммы (кг) и Сантиметры (см)</td>
+              <td class="p-3.5">Стандартные единицы измерения каталога OpenCart для передачи в калькулятор.</td>
+            </tr>
+            <tr>
+              <td class="p-3.5 font-semibold text-slate-800">Активные тарифы</td>
+              <td class="p-3.5">Посылка (ПВЗ, Курьер, Постамат)</td>
+              <td class="p-3.5">Список тарифов СДЭК, доступных покупателю при оформлении заказа.</td>
+            </tr>
+            <tr>
+              <td class="p-3.5 font-semibold text-slate-800">Режим совместимости с Simple</td>
+              <td class="p-3.5">Включен</td>
+              <td class="p-3.5">Обеспечивает AJAX-обновление карты и фиксацию выбранного кода ПВЗ в заказе.</td>
+            </tr>
+            <tr>
+              <td class="p-3.5 font-semibold text-slate-800">API-ключ Яндекс Карт</td>
+              <td class="p-3.5 font-mono text-xs text-slate-500">JavaScript API Key</td>
+              <td class="p-3.5">Необходим для стабильной загрузки интерактивной карты пунктов выдачи.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Troubleshooting (Частые вопросы и решение ошибок) -->
     <div class="space-y-4">
-      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Часто задаваемые вопросы</h2>
+      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">
+        Частые вопросы и решение ошибок в OpenCart
+      </h2>
       <div class="space-y-3">
         
-      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
-        <h4 class="text-base font-bold text-slate-900 mb-2">Совместим ли модуль с модулем Simple (упрощенный заказ)?</h4>
-        <p class="text-sm text-slate-600 leading-relaxed">Да, модуль доставки СДЭК полностью адаптирован под Checkout Simple и стандартный чекаут OpenCart.</p>
-      </div>
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
+          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
+            Ошибка «Не удалось рассчитать стоимость доставки» при оформлении заказа
+          </h4>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            1. В товарах корзины задан нулевой вес. Укажите вес в карточках товаров или задайте дефолтный вес в настройках модуля СДЭК.<br>
+            2. Проверьте настройки единиц измерения: в <em>Система → Локализация → Единицы веса</em> должен быть выбран килограмм (коэффициент 1.0000).<br>
+            3. Запустите повторную синхронизацию базы городов в модуле доставки.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
+          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
+            Карта выбора ПВЗ не открывается в модуле Simple Checkout или шаблоне UniShop2
+          </h4>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Частая причина — конфликт скриптов или отсутствие API-ключа Яндекс Карт. Убедитесь, что в настройках модуля СДЭК прописан валидный ключ JavaScript API карт, а в настройках Simple включено отображение карты в контейнере метода доставки. После правок обязательно обновите кэш модификаторов.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
+          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
+            Ошибка авторизации: «CDEK error: 401 Unauthorized»
+          </h4>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Убедитесь, что скопированы ключи Rest API v2.0 из раздела «Интеграция» личного кабинета СДЭК (Account и Secure password), а не логин и пароль от входа. Проверьте отсутствие случайных пробелов.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
+          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
+            Как настроить регулярное обновление статусов заказов по Cron?
+          </h4>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            В панели хостинга добавьте задачу планировщика (Cron) для вызова контроллера синхронизации статусов модуля СДЭК с интервалом раз в 30–60 минут. Статусы заказов в OpenCart будут меняться автоматически при вручении посылки клиенту.
+          </p>
+        </div>
     
+      </div>
+    </div>
+
+    <!-- Фирменный темно-зеленый CTA-блок (#062A30) -->
+    <div class="bg-gradient-to-br from-[#062A30] to-[#0A3840] rounded-3xl p-6 sm:p-10 text-white shadow-xl space-y-6">
+      <div class="max-w-2xl space-y-3">
+        <span class="inline-block px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider bg-[#1AB248] text-white">
+          Официальный B2B-договор
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+          Подключите доставку СДЭК для магазина на OpenCart со скидкой до 50%
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          Заключите официальный B2B-договор за 1 рабочий день. Предоставим боевые ключи API v2.0, поможем с настройкой модуля под Simple Checkout / UniShop2 и выделим персонального куратора поддержки.
+        </p>
+      </div>
+      <div>
+        <a href="/dogovor/#contract-form-container" class="inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg transition transform active:scale-95">
+          Заключить договор со скидкой
+        </a>
       </div>
     </div>
 
