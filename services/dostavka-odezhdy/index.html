@@ -3,9 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Доставка одежды и обуви СДЭК для интернет-магазинов с примеркой</title>
-  <meta name="description" content="Специальный тариф СДЭК для магазинов одежды: примерка в ПВЗ, частичный выкуп и возвратная логистика." />
+  <title>Доставка одежды с примеркой СДЭК | Частичный выкуп</title>
+  <meta name="description" content="Доставка для интернет-магазинов одежды и обуви: примерка в 5 000+ ПВЗ и на дому, частичный выкуп, льготный возврат невыкупленного и скидки до 50% по договору." />
+  <meta name="keywords" content="доставка одежды сдэк, примерка сдэк, частичный выкуп сдэк, сдэк для магазинов одежды, примерка в пвз сдэк, доставка обуви с примеркой" />
   <link rel="canonical" href="https://cdek-ecommerce.ru/services/dostavka-odezhdy/" />
+  <meta name="theme-color" content="#062A30" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="СДЭК E-Commerce" />
+  <meta property="og:title" content="Доставка одежды и обуви с примеркой — СДЭК Fashion" />
+  <meta property="og:description" content="Примерка в 5 000+ ПВЗ с кабинками и зеркалами, курьерское ожидание до 15 минут, частичный выкуп и моментальный возврат." />
+  <meta property="og:url" content="https://cdek-ecommerce.ru/services/dostavka-odezhdy/" />
+  <meta property="og:image" content="https://cdek-ecommerce.ru/favicon.png" />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +26,72 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>body { font-family: 'Roboto', sans-serif; }</style>
 
-  <!-- Schema.org Microdata -->
+  <!-- Schema.org: Service + BreadcrumbList + FAQPage -->
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"}, {"@type": "ListItem", "position": 2, "name": "Услуги", "item": "https://cdek-ecommerce.ru/services/"}, {"@type": "ListItem", "position": 3, "name": "Магазины одежды", "item": "https://cdek-ecommerce.ru/services/dostavka-odezhdy/"}]}
-  </script>
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Как работает частичный выкуп при доставке одежды?", "acceptedAnswer": {"@type": "Answer", "text": "Покупатель примеряет вещи в ПВЗ, оплачивает только то, что подошло, а оператор упаковывает остальное и отправляет обратно."}}]}
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": "Доставка одежды и обуви с примеркой и частичным выкупом",
+        "serviceType": "Логистика для Fashion e-commerce",
+        "provider": {
+          "@type": "Organization",
+          "name": "СДЭК E-Commerce",
+          "url": "https://cdek-ecommerce.ru/"
+        },
+        "description": "Специализированный логистический сервис для магазинов одежды, обуви и аксессуаров с примеркой в ПВЗ и частичным выкупом позиций."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
+          {"@type": "ListItem", "position": 2, "name": "Услуги", "item": "https://cdek-ecommerce.ru/#services"},
+          {"@type": "ListItem", "position": 3, "name": "Магазины одежды (примерка)", "item": "https://cdek-ecommerce.ru/services/dostavka-odezhdy/"}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Как работает услуга частичного выкупа в СДЭК?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Покупатель заказывает несколько размеров или моделей. При получении в ПВЗ или у курьера клиент примеряет вещи, выбирает подходящие и оплачивает только их. Неподошедшие товары сотрудник СДЭК сразу упаковывает и отправляет обратно продавцу по льготному возвратному тарифу."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Оборудованы ли пункты выдачи СДЭК примерочными?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Да, более 5 000 отделений СДЭК оснащены удобными примерочными кабинами с зеркалами, ковриками и пуфами, что обеспечивает покупателям сервис уровня флагманских маркетплейсов."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Сколько времени дается на примерку при курьерской доставке?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "При курьерской доставке до двери услуга «Примерка на дому» включает бесплатное время ожидания курьера до 15 минут, пока покупатель проверяет размеры и качество вещей."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Как тарифицируется обратная доставка невыкупленных позиций?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Возврат невыкупленной части заказа или полный отказ тарифицируются по специальному льготному тарифу «Реверс / Клиентский возврат», который значительно дешевле прямой отправки."
+            }
+          }
+        ]
+      }
+    ]
+  }
   </script>
 </head>
-<body class="bg-[#F5F8FE] text-slate-900 min-h-screen flex flex-col antialiased">
+<body class="bg-[#F4F7F6] text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#1AB248] selection:text-white">
 
   <!--# include virtual="/components/header.html" -->
 
@@ -33,65 +103,216 @@
       <span>/</span>
       <span>Услуги</span>
       <span>/</span>
-      <span class="text-slate-700 font-semibold">Магазины одежды</span>
+      <span class="text-slate-700 font-semibold">Магазины одежды (примерка)</span>
     </nav>
 
-    <!-- Главный блок -->
+    <!-- Главный Hero-блок -->
     <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
-      <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200">
-        Отраслевые решения
-      </span>
-      <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-        Логистика и доставка одежды с примеркой и частичным выкупом
-      </h1>
-      <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
-        Специальный тариф СДЭК для магазинов одежды: примерка в ПВЗ, частичный выкуп и возвратная логистика.
-      </p>
-
-      <div class="pt-4 border-t border-slate-100">
-        <h3 class="text-lg font-bold text-slate-900 mb-4">Возможности и преимущества решения:</h3>
-        <ul class="space-y-3">
-          
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Примерка в 4500+ оборудованных ПВЗ с кабинками и зеркалами</span>
-      </li>
-    
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Частичный выкуп: покупатель забирает только подошедшие позиции</span>
-      </li>
-    
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Упрощенный возврат невыкупленного товара на склад продавца</span>
-      </li>
-    
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Кассовое обслуживание и перевод наложенного платежа на следующий день</span>
-      </li>
-    
-        </ul>
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200">
+          Fashion E-Commerce
+        </span>
+        <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600">
+          Примерочные в 5 000+ ПВЗ • Частичный выкуп
+        </span>
       </div>
 
-      <div class="pt-6">
-        <a href="/#lead-form" class="inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg shadow-[#1AB248]/25 transition transform active:scale-95">
-          Подключить со скидкой до 50%
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+        Доставка для магазинов одежды и обуви: примерка и частичный выкуп
+      </h1>
+      <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+        Увеличьте конверсию вашего интернет-магазина одежды, обуви и аксессуаров до +35%. Дайте клиентам возможность заказывать смежные размеры, примерять вещи в кабинках ПВЗ или на дому и выкупать только то, что идеально подошло.
+      </p>
+
+      <!-- Метрики сервиса -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+          <div class="text-2xl font-black text-[#1AB248]">5 000+</div>
+          <div class="text-xs text-slate-500 mt-1 font-medium">ПВЗ с примерочными</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+          <div class="text-2xl font-black text-slate-900">15 минут</div>
+          <div class="text-xs text-slate-500 mt-1 font-medium">Ожидание курьера</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+          <div class="text-2xl font-black text-[#1AB248]">+35%</div>
+          <div class="text-xs text-slate-500 mt-1 font-medium">Рост среднего чека</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+          <div class="text-2xl font-black text-slate-900">Льготный</div>
+          <div class="text-xs text-slate-500 mt-1 font-medium">Возвратный тариф</div>
+        </div>
+      </div>
+
+      <div class="pt-4 flex flex-col sm:flex-row gap-4 items-center">
+        <a href="/dogovor/#contract-form-container" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg shadow-[#1AB248]/25 transition transform active:scale-95 text-center">
+          Подключить тариф со скидкой до 50%
         </a>
+        <a href="#features" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-base rounded-2xl transition text-center">
+          Как это работает ↓
+        </a>
+      </div>
+    </div>
+
+    <!-- Преимущества для fashion-сегмента -->
+    <div id="features" class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
+      <div class="space-y-2">
+        <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          Инструменты продаж для брендов и магазинов одежды
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Полноценный клиентский сервис уровня лидеров e-commerce для вашего независимого магазина или бренда.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
+        
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#1AB248]">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+          </div>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900">
+            Частичный выкуп и оплата на месте
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Позволяет клиенту заказать 3 размера обуви или платья, примерить их и выкупить только 1 подходящий. Чек автоматически пересчитывается в момент оплаты картой или наличными сотруднику СДЭК.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#1AB248]">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+          </div>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900">
+            Примерочные кабины в каждом ПВЗ
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Все пункты выдачи СДЭК оборудованы зеркалами в полный рост, ковриками и комфортным освещением. Покупатель примеряет заказ в спокойной обстановке без спешки.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#1AB248]">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900">
+            Примерка на дому с курьером (15 минут)
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            При выборе курьерской доставки покупатель получает 15 минут бесплатного ожидания курьера. Неподошедшие вещи курьер забирает сразу, экономя время клиента на оформление возвратов.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#1AB248]">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+          </div>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900">
+            Льготный тариф обратной логистики (Реверс)
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Невыкупленные товары возвращаются на ваш склад по специальной сниженной ставке возврата для интернет-магазинов, что защищает маржинальность бизнеса при высоком проценте отказов.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Пошаговый сценарий -->
+    <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
+      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">
+        Как устроен процесс примерки и выкупа
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-2">
+          <div class="w-8 h-8 rounded-xl bg-[#1AB248] text-white font-bold text-sm flex items-center justify-center shadow-sm">1</div>
+          <h4 class="font-bold text-slate-900 text-base">Оформление заказа</h4>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Покупатель выбирает несколько моделей или размеров. В накладной СДЭК автоматически активируются опции «Примерка» (TRYING_ON) и «Частичный выкуп» (PART_DELIV).
+          </p>
+        </div>
+
+        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-2">
+          <div class="w-8 h-8 rounded-xl bg-[#1AB248] text-white font-bold text-sm flex items-center justify-center shadow-sm">2</div>
+          <h4 class="font-bold text-slate-900 text-base">Примерка в ПВЗ / дома</h4>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Клиент примеряет одежду и принимает решение о покупке. Неподошедшие вещи передаются оператору ПВЗ или курьеру.
+          </p>
+        </div>
+
+        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-2">
+          <div class="w-8 h-8 rounded-xl bg-[#1AB248] text-white font-bold text-sm flex items-center justify-center shadow-sm">3</div>
+          <h4 class="font-bold text-slate-900 text-base">Оплата и возврат</h4>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Покупатель оплачивает только выкупленные позиции. Выручка поступает на ваш расчетный счет, а остатки возвращаются на склад.
+          </p>
+        </div>
       </div>
     </div>
 
     <!-- FAQ -->
     <div class="space-y-4">
-      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Часто задаваемые вопросы</h2>
+      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">
+        Частые вопросы по доставке с примеркой
+      </h2>
       <div class="space-y-3">
         
-      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
-        <h4 class="text-base font-bold text-slate-900 mb-2">Как работает частичный выкуп при доставке одежды?</h4>
-        <p class="text-sm text-slate-600 leading-relaxed">Покупатель примеряет вещи в ПВЗ, оплачивает только то, что подошло, а оператор упаковывает остальное и отправляет обратно.</p>
-      </div>
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
+          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
+            Как подключить услугу «Примерка» в моем интернет-магазине?
+          </h4>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Услуга доступна всем клиентам с договором типа «Интернет-магазин» (ИМ). В готовых модулях CMS (Тильда, 1С-Битрикс, InSales и др.) достаточно включить галочку «Разрешить частичный выкуп и примерку» в настройках модуля СДЭК.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
+          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
+            Как рассчитывается комиссия за наложенный платеж при частичном выкупе?
+          </h4>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Агентское вознаграждение СДЭК за кассовое обслуживание рассчитывается только от суммы фактически выкупленных покупателем товаров.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
+          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
+            Совместима ли примерка с доставкой в постаматы?
+          </h4>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Нет, в постаматах примерка и частичный выкуп технически невозможны. Для заказов с примеркой используются доставка до ПВЗ СДЭК и курьерская доставка до двери.
+          </p>
+        </div>
     
+      </div>
+    </div>
+
+    <!-- Фирменный темно-зеленый CTA-блок (#062A30) -->
+    <div class="bg-gradient-to-br from-[#062A30] to-[#0A3840] rounded-3xl p-6 sm:p-10 text-white shadow-xl space-y-6 text-center">
+      <div class="max-w-2xl mx-auto space-y-3">
+        <span class="inline-block px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider bg-[#1AB248] text-white">
+          Официальный B2B-договор
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+          Подключите доставку одежды с примеркой со скидкой до 50%
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          Оставьте заявку на заключение договора. Предоставим льготные тарифы «Посылка» с примеркой и частичным выкупом, поможем настроить модуль CMS и выделим персонального куратора.
+        </p>
+      </div>
+      <div>
+        <a href="/dogovor/#contract-form-container" class="inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg transition transform active:scale-95">
+          Подключить СДЭК Fashion
+        </a>
       </div>
     </div>
 
