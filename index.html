@@ -538,7 +538,7 @@
 
   <!--# include virtual="/components/footer.html" -->
 
-  <!-- Скрипт мгновенной гео-подстановки без моргания -->
+  <!-- Скрипт мгновенной гео-подстановки без моргания и с заглавной буквой -->
   <script>
     (async function() {
       const declensions = {
@@ -568,9 +568,12 @@
         let res = await fetch('https://ipwho.is/?lang=ru');
         if (!res.ok) return;
         let data = await res.json();
-        let cityName = (data.city || "").trim().toLowerCase();
         
-        let targetPrep = declensions[cityName] || (cityName ? `в г. ${cityName}` : "в вашем городе");
+        let rawCity = (data.city || "").trim();
+        // Делаем первую букву заглавной (исправляем проблему с маленькой буквой)
+        let cityName = rawCity ? rawCity.charAt(0).toUpperCase() + rawCity.slice(1) : "";
+        
+        let targetPrep = declensions[cityName.toLowerCase()] || (cityName ? `в г. ${cityName}` : "в вашем городе");
 
         localStorage.setItem('user_city_prep', targetPrep);
         applyCity(targetPrep);
