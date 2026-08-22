@@ -136,3 +136,37 @@
 
   </div>
 </footer>
+
+<!-- Скрипт динамической гео-подстановки -->
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const cityData = {
+      "Москва": { genitive: "Москвы", prep: "в Москве", pvz: "600+" },
+      "Санкт-Петербург": { genitive: "Санкт-Петербурга", prep: "в Санкт-Петербурге", pvz: "420+" },
+      "Краснодар": { genitive: "Краснодара", prep: "в Краснодаре", pvz: "180+" },
+      "Екатеринбург": { genitive: "Екатеринбурга", prep: "в Екатеринбурге", pvz: "150+" },
+      "Новосибирск": { genitive: "Новосибирска", prep: "в Новосибирске", pvz: "140+" },
+      "Казань": { genitive: "Казани", prep: "в Казани", pvz: "120+" },
+      "Нижний Новгород": { genitive: "Нижнего Новгорода", prep: "в Нижнем Новгороде", pvz: "110+" },
+      "Ростов-на-Дону": { genitive: "Ростова-на-Дону", prep: "в Ростове-на-Дону", pvz: "100+" }
+    };
+
+    try {
+      let response = await fetch('https://ipapi.co/json/');
+      if (!response.ok) return;
+      let data = await response.json();
+      let detectedCity = data.city;
+
+      if (cityData[detectedCity]) {
+        let target = cityData[detectedCity];
+        requestAnimationFrame(() => {
+          document.querySelectorAll('.dynamic-city-prep').forEach(el => el.textContent = target.prep);
+          document.querySelectorAll('.dynamic-city-gen').forEach(el => el.textContent = target.genitive);
+          document.querySelectorAll('.dynamic-pvz').forEach(el => el.textContent = target.pvz);
+        });
+      }
+    } catch (e) {
+      console.warn("Гео-скрипт: не удалось определить город.");
+    }
+  });
+</script>
