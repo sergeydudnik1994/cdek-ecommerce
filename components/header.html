@@ -4,7 +4,7 @@
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.pareфntNode.insertBefore(k,a)
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111763499', 'ym');
 
     ym(111763499, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
@@ -77,6 +77,15 @@
         О компании
       </a>
     </nav>
+
+    <!-- Правый блок: кнопка "Подключиться" + бургер меню -->
+    <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+      <a 
+        href="/dogovor/#contract-form-container" 
+        class="px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-[#08221F] hover:bg-[#062A30] text-white font-bold text-xs uppercase tracking-wider transition shadow-sm whitespace-nowrap"
+      >
+        Подключиться
+      </a>
       
       <!-- Черный бургер -->
       <button 
@@ -113,8 +122,8 @@
         <span class="text-slate-400 text-xs">›</span>
       </a>
       
-      <a href="/#benefits" onclick="toggleMobileMenu()" class="flex items-center justify-between py-2.5 text-sm font-semibold text-slate-700">
-        <span>Преимущества для бизнеса</span>
+      <a href="/about/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-2.5 text-sm font-semibold text-slate-700">
+        <span>О компании</span>
         <span class="text-slate-400 text-xs">›</span>
       </a>
     </div>
