@@ -138,6 +138,13 @@
     ]
   }
   </script>
+
+  <style>
+  /* Скрываем текст города до момента определения, чтобы не было мерцания */
+  .dynamic-city-prep:empty::before {
+    content: "в вашем городе";
+  }
+</style>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white">
 
@@ -164,7 +171,7 @@
             </h1>
 
             <p class="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
-  Официальный B2B-договор со СДЭК для интернет-магазинов, ООО, ИП и самозанятых <span class="dynamic-city-prep">в вашем городе</span>. Подключение онлайн за 15 минут с доступом к специальным тарифам.
+  Официальный B2B-договор со СДЭК для интернет-магазинов, ООО, ИП и самозанятых <span class="dynamic-city-prep"></span>. Подключение онлайн за 15 минут с доступом к специальным тарифам.
 </p>
 
             <!-- Теги преимуществ -->
