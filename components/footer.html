@@ -141,32 +141,43 @@
 <script>
   document.addEventListener("DOMContentLoaded", async () => {
     const cityData = {
-      "Москва": { genitive: "Москвы", prep: "в Москве", pvz: "600+" },
-      "Санкт-Петербург": { genitive: "Санкт-Петербурга", prep: "в Санкт-Петербурге", pvz: "420+" },
-      "Краснодар": { genitive: "Краснодара", prep: "в Краснодаре", pvz: "180+" },
-      "Екатеринбург": { genitive: "Екатеринбурга", prep: "в Екатеринбурге", pvz: "150+" },
-      "Новосибирск": { genitive: "Новосибирска", prep: "в Новосибирске", pvz: "140+" },
-      "Казань": { genitive: "Казани", prep: "в Казани", pvz: "120+" },
-      "Нижний Новгород": { genitive: "Нижнего Новгорода", prep: "в Нижнем Новгороде", pvz: "110+" },
-      "Ростов-на-Дону": { genitive: "Ростова-на-Дону", prep: "в Ростове-на-Дону", pvz: "100+" }
+      "moscow": { genitive: "Москвы", prep: "в Москве" },
+      "москва": { genitive: "Москвы", prep: "в Москве" },
+      "saint petersburg": { genitive: "Санкт-Петербурга", prep: "в Санкт-Петербурге" },
+      "санкт-петербург": { genitive: "Санкт-Петербурга", prep: "в Санкт-Петербурге" },
+      "krasnodar": { genitive: "Краснодара", prep: "в Краснодаре" },
+      "краснодар": { genitive: "Краснодара", prep: "в Краснодаре" },
+      "yekaterinburg": { genitive: "Екатеринбурга", prep: "в Екатеринбурге" },
+      "екатеринбург": { genitive: "Екатеринбурга", prep: "в Екатеринбурге" },
+      "novosibirsk": { genitive: "Новосибирска", prep: "в Новосибирске" },
+      "новосибирск": { genitive: "Новосибирска", prep: "в Новосибирске" },
+      "kazan": { genitive: "Казани", prep: "в Казани" },
+      "казань": { genitive: "Казани", prep: "в Казани" }
     };
 
     try {
-      let response = await fetch('https://ipapi.co/json/');
+      // Используем другой надежный эндпоинт
+      let response = await fetch('https://ipwho.is/');
       if (!response.ok) return;
       let data = await response.json();
-      let detectedCity = data.city;
+      
+      // Проверяем город на английском и русском (если доступно)
+      let cityKey = (data.city || "").toLowerCase();
+      let target = cityData[cityKey];
 
-      if (cityData[detectedCity]) {
-        let target = cityData[detectedCity];
+      // Если определился город, которого нет в словаре, подставим его с предлогом "в [Городе]" автоматически
+      if (!target && data.city) {
+        target = { prep: `в г. ${data.city}`, genitive: data.city };
+      }
+
+      if (target) {
         requestAnimationFrame(() => {
           document.querySelectorAll('.dynamic-city-prep').forEach(el => el.textContent = target.prep);
           document.querySelectorAll('.dynamic-city-gen').forEach(el => el.textContent = target.genitive);
-          document.querySelectorAll('.dynamic-pvz').forEach(el => el.textContent = target.pvz);
         });
       }
     } catch (e) {
-      console.warn("Гео-скрипт: не удалось определить город.");
+      console.warn("Гео-скрипт ошибка:", e);
     }
   });
 </script>
