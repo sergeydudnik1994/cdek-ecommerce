@@ -139,45 +139,52 @@
 
 <!-- Скрипт динамической гео-подстановки -->
 <script>
-  document.addEventListener("DOMContentLoaded", async () => {
+  (async function() {
     const cityData = {
-      "moscow": { genitive: "Москвы", prep: "в Москве" },
       "москва": { genitive: "Москвы", prep: "в Москве" },
-      "saint petersburg": { genitive: "Санкт-Петербурга", prep: "в Санкт-Петербурге" },
       "санкт-петербург": { genitive: "Санкт-Петербурга", prep: "в Санкт-Петербурге" },
-      "krasnodar": { genitive: "Краснодара", prep: "в Краснодаре" },
       "краснодар": { genitive: "Краснодара", prep: "в Краснодаре" },
-      "yekaterinburg": { genitive: "Екатеринбурга", prep: "в Екатеринбурге" },
       "екатеринбург": { genitive: "Екатеринбурга", prep: "в Екатеринбурге" },
-      "novosibirsk": { genitive: "Новосибирска", prep: "в Новосибирске" },
       "новосибирск": { genitive: "Новосибирска", prep: "в Новосибирске" },
-      "kazan": { genitive: "Казани", prep: "в Казани" },
-      "казань": { genitive: "Казани", prep: "в Казани" }
+      "казань": { genitive: "Казани", prep: "в Казани" },
+      "нижний новгород": { genitive: "Нижнего Новгорода", prep: "в Нижнем Новгороде" },
+      "ростов-на-дону": { genitive: "Ростова-на-Дону", prep: "в Ростове-на-Дону" }
     };
 
+    function applyCity(target) {
+      document.querySelectorAll('.dynamic-city-prep').forEach(el => el.textContent = target.prep);
+      document.querySelectorAll('.dynamic-city-gen').forEach(el => el.textContent = target.genitive);
+    }
+
+    let cachedCity = localStorage.getItem('user_city_prep');
+    let cachedGen = localStorage.getItem('user_city_gen');
+    if (cachedCity && cachedGen) {
+      applyCity({ prep: cachedCity, genitive: cachedGen });
+      return;
+    }
+
     try {
-      // Используем другой надежный эндпоинт
-      let response = await fetch('https://ipwho.is/');
+      // Добавили параметр ?lang=ru, чтобы API возвращал название на русском
+      let response = await fetch('https://ipwho.is/?lang=ru');
       if (!response.ok) return;
       let data = await response.json();
       
-      // Проверяем город на английском и русском (если доступно)
-      let cityKey = (data.city || "").toLowerCase();
+      let cityName = (data.city || "").trim();
+      let cityKey = cityName.toLowerCase();
       let target = cityData[cityKey];
 
-      // Если определился город, которого нет в словаре, подставим его с предлогом "в [Городе]" автоматически
-      if (!target && data.city) {
-        target = { prep: `в г. ${data.city}`, genitive: data.city };
+      // Если города нет в словаре, подставим его название на русском из API
+      if (!target && cityName) {
+        target = { prep: `в г. ${cityName}`, genitive: cityName };
       }
 
       if (target) {
-        requestAnimationFrame(() => {
-          document.querySelectorAll('.dynamic-city-prep').forEach(el => el.textContent = target.prep);
-          document.querySelectorAll('.dynamic-city-gen').forEach(el => el.textContent = target.genitive);
-        });
+        localStorage.setItem('user_city_prep', target.prep);
+        localStorage.setItem('user_city_gen', target.genitive);
+        applyCity(target);
       }
     } catch (e) {
       console.warn("Гео-скрипт ошибка:", e);
     }
-  });
+  })();
 </script>
