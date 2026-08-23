@@ -1,5 +1,15 @@
 <?php
+// Разрешаем кросс-доменные запросы
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
 header('Content-Type: application/json; charset=utf-8');
+
+// Обработка предварительного preflight-запроса от браузера
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
 
 // Параметры авторизации CDEK API
 // Для тестовых ключей используется api.edu.cdek.ru, для боевых — api.cdek.ru
