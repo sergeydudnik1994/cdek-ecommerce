@@ -38,120 +38,116 @@
 
   <!-- Schema.org Microdata (@graph) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://cdek-ecommerce.ru/logo.png",
+      "parentOrganization": {
         "@type": "Organization",
-        "@id": "https://cdek-ecommerce.ru/#organization",
-        "name": "СДЭК E-Commerce",
-        "url": "https://cdek-ecommerce.ru/",
-        "logo": "https://cdek-ecommerce.ru/favicon.png",
-        "parentOrganization": {
-          "@type": "Organization",
-          "name": "СДЭК",
-          "url": "https://www.cdek.ru"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "b2b sales",
-          "areaServed": "RU",
-          "availableLanguage": "Russian"
-        }
+        "name": "СДЭК",
+        "url": "https://www.cdek.ru"
       },
-      {
-        "@type": "Service",
-        "@id": "https://cdek-ecommerce.ru/dogovor/avtozapchasti/#service",
-        "name": "Заключение B2B-договора СДЭК для доставки автозапчастей",
-        "serviceType": "Логистика для автомагазинов, авторазборок и СТО",
-        "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
-        "areaServed": {
-          "@type": "Country",
-          "name": "Россия"
-        },
-        "description": "Официальный B2B-договор СДЭК для продавцов автозапчастей: доставка бамперов, дверей, оптики, шин, дисков и агрегатов (ДВС, КПП без ГСМ), жесткая обрешетка, наложенный платеж 54-ФЗ и скидки до 50%.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "RUB",
-          "availability": "https://schema.org/InStock"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
-          {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
-          {"@type": "ListItem", "position": 3, "name": "Автозапчасти", "item": "https://cdek-ecommerce.ru/dogovor/avtozapchasti/"}
-        ]
-      },
-      {
-        "@type": "HowTo",
-        "name": "Как подключить доставку автозапчастей через СДЭК",
-        "description": "Пошаговая инструкция по заключению B2B-договора и отправке автомобильных запчастей.",
-        "totalTime": "PT15M",
-        "step": [
-          {
-            "@type": "HowToStep",
-            "position": 1,
-            "name": "Оформление официального B2B-договора",
-            "text": "Заполните онлайн-заявку с ИНН ИП или юрлица и подпишите договор по СМС или через ЭДО за 15 минут."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 2,
-            "name": "Подготовка деталей и соблюдение требований к ГСМ",
-            "text": "Убедитесь, что из агрегатов (ДВС, редукторы, коробки передач) полностью слиты технические жидкости и масло, а детали очищены от следов ГСМ."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 3,
-            "name": "Упаковка в деревянную обрешетку и отправка",
-            "text": "Закажите забор со склада или сдайте детали в ПВЗ. Для хрупкой оптики и кузовных элементов на терминале изготавливается жесткая обрешетка."
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cdek-ecommerce.ru/dogovor/avtozapchasti/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Можно ли отправлять двигатели (ДВС) и коробки передач (КПП) через СДЭК?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Да, агрегаты (ДВС, КПП, раздаточные коробки, мосты) принимаются к перевозке при обязательном условии полного слива всех технических жидкостей (масел, антифриза). Деталь должна быть сухой, упакованной в стретч-пленку и закрепленной на паллете или в деревянной обрешетке."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как упаковываются кузовные элементы (бамперы, капоты, крылья, двери)?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Крупные кузовные элементы упаковываются в воздушно-пузырьковую пленку, гофрокартон и помещаются в жесткую деревянную обрешетку или паллетный борт на терминале СДЭК, что исключает появление царапин, сколов и вмятин при транспортировке."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как выгодно отправлять комплекты автомобильных шин и дисков?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Комплекты шин и дисков связываются попарно (по 2 штуки в одно грузовое место) и маркируются штрихкодами. По B2B-договору действует специальный сниженный тариф на перевозку автошин, экономящий до 50% от стандартной стоимости."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Доступен ли осмотр запчасти покупателем перед оплатой наложенного платежа?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Да. При оформлении отправления с наложенным платежом можно включить опцию «Осмотр вложения». Покупатель проверяет целостность детали и соответствие артикула на кассе ПВЗ или при курьере перед внесением оплаты."
-            }
-          }
-        ]
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7-993-322-15-20",
+        "contactType": "sales",
+        "areaServed": "RU",
+        "availableLanguage": "Russian"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
+        {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
+        {"@type": "ListItem", "position": 3, "name": "Автозапчасти", "item": "https://cdek-ecommerce.ru/dogovor/avtozapchasti/"}
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/dogovor/avtozapchasti/#service",
+      "name": "Заключение B2B-договора СДЭК для доставки автозапчастей",
+      "serviceType": "Логистика для автомагазинов, авторазборок и СТО",
+      "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
+      "areaServed": { "@type": "Country", "name": "Россия" },
+      "description": "Официальный B2B-договор СДЭК для продавцов автозапчастей: перевозка кузовных элементов, фар, двигателей и КПП (без ГСМ), колес и шин с деревянной обрешеткой, наложенный платеж и скидки до 50%.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "name": "Как подключить доставку автозапчастей через СДЭК",
+      "description": "Пошаговый процесс заключения договора и отправки агрегатов и автокомпонентов.",
+      "totalTime": "PT15M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Оформление договора по ИНН",
+          "text": "Заполните заявку и подпишите официальный договор кодом из СМС или по ЭДО."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Подготовка агрегатов (слив жидкостей)",
+          "text": "Убедитесь в полном отсутствии ГСМ в блоках цилиндров, коробках передач и редукторах."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Обрешетка и отправка",
+          "text": "Для кузовных деталей и оптики заказывайте жесткую деревянную обрешетку на терминале СДЭК."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cdek-ecommerce.ru/dogovor/avtozapchasti/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Можно ли отправлять двигатели и коробки передач через СДЭК?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да. Агрегаты принимаются к доставке при условии полного слива всех технических масел и жидкостей в сухом виде на паллете."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как защитить кузовные детали от повреждений?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "На терминалах СДЭК для бамперов, капотов, дверей и фар изготавливается жесткая деревянная обрешетка под индивидуальные размеры."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Доступен ли осмотр запчасти покупателем перед оплатой?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, при отправке с наложенным платежом можно включить опцию осмотра вложения для проверки OEM-номера и целостности детали клиентом."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white">
 
