@@ -38,94 +38,116 @@
 
   <!-- Schema.org Microdata (@graph) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://cdek-ecommerce.ru/logo.png",
+      "parentOrganization": {
         "@type": "Organization",
-        "@id": "https://cdek-ecommerce.ru/#organization",
-        "name": "СДЭК E-Commerce",
-        "url": "https://cdek-ecommerce.ru/",
-        "logo": "https://cdek-ecommerce.ru/favicon.png",
-        "parentOrganization": {
-          "@type": "Organization",
-          "name": "СДЭК",
-          "url": "https://www.cdek.ru"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "b2b sales",
-          "areaServed": "RU",
-          "availableLanguage": "Russian"
-        }
+        "name": "СДЭК",
+        "url": "https://www.cdek.ru"
       },
-      {
-        "@type": "Service",
-        "@id": "https://cdek-ecommerce.ru/dogovor/tarify/#service",
-        "name": "Корпоративная тарификация и тарифная сетка СДЭК для бизнеса",
-        "serviceType": "Логистическое обслуживание по льготной B2B-сетке «Посылка»",
-        "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
-        "areaServed": {
-          "@type": "Country",
-          "name": "Россия"
-        },
-        "description": "Официальная тарифная сетка СДЭК для юридических лиц, ИП и самозанятых: закрытые тарифы «Посылка» (склад-склад и склад-дверь), скидки до 50%, льготный возвратный тариф и постоплата.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "RUB",
-          "availability": "https://schema.org/InStock"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
-          {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
-          {"@type": "ListItem", "position": 3, "name": "Тарифная сетка", "item": "https://cdek-ecommerce.ru/dogovor/tarify/"}
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cdek-ecommerce.ru/dogovor/tarify/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Чем тариф «Посылка» отличается от розничных тарифов СДЭК для физических лиц?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Тариф «Посылка» доступен только клиентам с заключенным B2B-договором. Он на 30–50% дешевле базового розничного тарифа «Экспресс», включает бесплатное хранение в ПВЗ до 7–14 дней, возможность примерки и частичного выкупа, а также льготную ставку на возврат невыкупленных товаров."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как рассчитывается объемный вес при определении тарифа?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Объемный вес вычисляется по формуле: Длина (см) × Ширина (см) × Высота (см) / 5000. Тарификация рассчитывается по наибольшему показателю между фактической и объемной массой отправления."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Зависит ли размер скидки от объема ежемесячных отправок?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Базовая скидка до 50% по тарифу «Посылка» подключается сразу в день подписания договора без стартовых требований к объему. При росте среднемесячного количества отправок свыше 100–300 посылок персональный куратор согласует дополнительный дисконт на ключевые направления."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Сколько стоит обратная доставка (возврат) невыкупленного заказа?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Для клиентов с B2B-договором действует льготный реверсивный тариф: обратная доставка невыкупленных отправлений стоит до 50% дешевле прямой доставки, что минимизирует убытки при отказах покупателей."
-            }
-          }
-        ]
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7-993-322-15-20",
+        "contactType": "sales",
+        "areaServed": "RU",
+        "availableLanguage": "Russian"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
+        {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
+        {"@type": "ListItem", "position": 3, "name": "Тарифная сетка", "item": "https://cdek-ecommerce.ru/dogovor/tarify/"}
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/dogovor/tarify/#service",
+      "name": "Корпоративная тарификация и тарифная сетка СДЭК для бизнеса",
+      "serviceType": "Логистическое обслуживание по льготной B2B-сетке «Посылка»",
+      "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
+      "areaServed": { "@type": "Country", "name": "Россия" },
+      "description": "Официальная тарифная сетка СДЭК для юридических лиц, ИП и самозанятых: закрытые тарифы «Посылка» (до ПВЗ и до двери), скидки до 50%, льготный возвратный тариф и постоплата.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "name": "Как получить скидку 50% на доставку по тарифной сетке СДЭК",
+      "description": "Пошаговое руководство по онлайн-подключению к B2B-тарифам.",
+      "totalTime": "PT15M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Подача онлайн-заявки",
+          "text": "Укажите ИНН организации, ИП или самозанятого для регистрации в системе."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "СМС-подписание договора",
+          "text": "Подпишите договор проверочным кодом из СМС или через ЭДО без визита в офис."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Старт отгрузок по льготным ставкам",
+          "text": "Получите доступ в личный кабинет со спецтарифами «Посылка» со скидкой до 50%."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cdek-ecommerce.ru/dogovor/tarify/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Чем тариф «Посылка» отличается от розничных тарифов физлиц?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Тариф «Посылка» доступен только по B2B-договору, он на 30–50% дешевле базового прайса, включает бесплатное хранение в ПВЗ до 7–14 дней, примерку и льготный возврат."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как рассчитывается объемный вес отправления?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Объемный вес рассчитывается по формуле (Длина × Ширина × Высота в см) / 5000. Тарификация идет по большему значению между реальным и объемным весом."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько стоит обратная доставка невыкупленного заказа?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "По договору действует льготный реверсивный тариф: возврат невыкупленных товаров стоит до 50% дешевле прямой доставки."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white">
 
