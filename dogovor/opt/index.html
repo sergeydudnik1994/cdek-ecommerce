@@ -34,124 +34,117 @@
   <style>
     body { font-family: 'Roboto', sans-serif; }
     .dynamic-city-prep:empty::before { content: "в вашем городе"; }
-  </style>
-
-  <!-- Schema.org Microdata (@graph) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://cdek-ecommerce.ru/logo.png",
+      "parentOrganization": {
         "@type": "Organization",
-        "@id": "https://cdek-ecommerce.ru/#organization",
-        "name": "СДЭК E-Commerce",
-        "url": "https://cdek-ecommerce.ru/",
-        "logo": "https://cdek-ecommerce.ru/favicon.png",
-        "parentOrganization": {
-          "@type": "Organization",
-          "name": "СДЭК",
-          "url": "https://www.cdek.ru"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "b2b sales",
-          "areaServed": "RU",
-          "availableLanguage": "Russian"
-        }
+        "name": "СДЭК",
+        "url": "https://www.cdek.ru"
       },
-      {
-        "@type": "Service",
-        "@id": "https://cdek-ecommerce.ru/dogovor/opt/#service",
-        "name": "Заключение B2B-договора СДЭК для оптовых компаний и производств",
-        "serviceType": "Оптовая и магистральная логистика коммерческих партий (LTL/FTL)",
-        "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
-        "areaServed": {
-          "@type": "Country",
-          "name": "Россия"
-        },
-        "description": "Официальный B2B-договор СДЭК для оптовиков, дистрибьюторов и фабрик: тариф «Магистральный экспресс», перевозка паллет и партий от 50 кг до фуры, забор гидробортом, постоплата и скидки до 50%.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "RUB",
-          "availability": "https://schema.org/InStock"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
-          {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
-          {"@type": "ListItem", "position": 3, "name": "Для оптовиков и производств", "item": "https://cdek-ecommerce.ru/dogovor/opt/"}
-        ]
-      },
-      {
-        "@type": "HowTo",
-        "name": "Как подключить оптовую и паллетную доставку СДЭК для бизнеса",
-        "description": "Пошаговый процесс оформления B2B-договора СДЭК для перевозки коммерческих партий грузов.",
-        "totalTime": "PT15M",
-        "step": [
-          {
-            "@type": "HowToStep",
-            "position": 1,
-            "name": "Подача заявки и расчет индивидуального тарифа",
-            "text": "Заполните форму с указанием ИНН компании, примерных направлений отгрузок и характера перевозимых грузов."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 2,
-            "name": "Открытие кредитного лимита и подписание по ЭДО",
-            "text": "Менеджер закрепляет за компанией персональный прайс по тарифу «Магистральный экспресс» и направляет договор в Диадок/СБИС."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 3,
-            "name": "Заказ забора партии и экспедирование",
-            "text": "Оформляйте заявки на подачу транспорта (включая гидроборт) на фабрику или склад через личный кабинет или 1С."
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cdek-ecommerce.ru/dogovor/opt/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Что такое тариф СДЭК «Магистральный экспресс»?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "«Магистральный экспресс» — это специализированный экономичный B2B-тариф для регулярной межтерминальной транспортировки тяжелых сборных партий и коммерческих грузов весом от 30 кг до нескольких тонн между городами России."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Возможен ли забор паллетного груза автомобилем с гидробортом?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Да. При оформлении заявки на забор груза со склада отправителя или фабрики можно заказать подачу грузового транспорта с гидробортом и гидравлической тележкой (рохлей) для быстрой погрузки без эстакады."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Предоставляет ли СДЭК изготовление жесткой упаковки (обрешетки)?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Да. Для хрупких, ценных или технически сложных грузов на терминале СДЭК изготавливается деревянная обрешетка, паллетный борт, пломбирование и запаллечивание стретч-пленкой."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как оформляется страхование коммерческих партий груза?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Все отправления страхуются по фиксированной ставке 0.75% от объявленной стоимости груза, что гарантирует 100% возмещение ущерба при повреждении или утрате в процессе транспортировки."
-            }
-          }
-        ]
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7-993-322-15-20",
+        "contactType": "sales",
+        "areaServed": "RU",
+        "availableLanguage": "Russian"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
+        {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
+        {"@type": "ListItem", "position": 3, "name": "Для оптовиков и производств", "item": "https://cdek-ecommerce.ru/dogovor/opt/"}
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/dogovor/opt/#service",
+      "name": "Заключение B2B-договора СДЭК для оптовых компаний и производств",
+      "serviceType": "Оптовая и магистральная логистика коммерческих партий (LTL/FTL)",
+      "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
+      "areaServed": { "@type": "Country", "name": "Россия" },
+      "description": "Официальный B2B-договор СДЭК для оптовиков, фабрик и дистрибьюторов: тариф «Магистральный экспресс», перевозка паллет и сборных грузов от 50 кг до фуры, забор гидробортом, постоплата и скидки до 50%.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "name": "Как подключить оптовую и паллетную доставку СДЭК",
+      "description": "Пошаговый процесс организации магистральных отгрузок коммерческих партий.",
+      "totalTime": "PT15M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Заявка на расчет магистрали",
+          "text": "Укажите ИНН, ключевые маршруты поставок и среднемесячный тоннаж."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Фиксация спецтарифа и договор по ЭДО",
+          "text": "Менеджер закрепляет за компанией персональные ставки по тарифу «Магистральный экспресс»."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Подача транспорта и старт отгрузок",
+          "text": "Заказывайте забор партий со склада машинами с гидробортом и отслеживайте грузы онлайн."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cdek-ecommerce.ru/dogovor/opt/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Что такое тариф СДЭК «Магистральный экспресс»?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Это сниженный B2B-тариф для регулярной межтерминальной доставки тяжелых сборных партий и коммерческих грузов весом от 30–50 кг до нескольких тонн."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Возможен ли забор паллет транспортом с гидробортом?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, при вызове курьера на склад подается грузовой автомобиль с гидравлическим лифтом и рохлей для быстрой погрузки без эстакады."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как оформляется страхование коммерческих партий?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Все отправления страхуются по ставке 0.75% от объявленной стоимости груза с гарантией 100% возмещения."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white">
 
