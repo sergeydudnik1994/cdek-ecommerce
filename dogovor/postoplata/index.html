@@ -38,120 +38,116 @@
 
   <!-- Schema.org Microdata (@graph) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://cdek-ecommerce.ru/logo.png",
+      "parentOrganization": {
         "@type": "Organization",
-        "@id": "https://cdek-ecommerce.ru/#organization",
-        "name": "СДЭК E-Commerce",
-        "url": "https://cdek-ecommerce.ru/",
-        "logo": "https://cdek-ecommerce.ru/favicon.png",
-        "parentOrganization": {
-          "@type": "Organization",
-          "name": "СДЭК",
-          "url": "https://www.cdek.ru"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "b2b sales",
-          "areaServed": "RU",
-          "availableLanguage": "Russian"
-        }
+        "name": "СДЭК",
+        "url": "https://www.cdek.ru"
       },
-      {
-        "@type": "Service",
-        "@id": "https://cdek-ecommerce.ru/dogovor/postoplata/#service",
-        "name": "Заключение B2B-договора СДЭК на условиях постоплаты",
-        "serviceType": "Логистическое обслуживание с отсрочкой платежа и кредитным лимитом",
-        "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
-        "areaServed": {
-          "@type": "Country",
-          "name": "Россия"
-        },
-        "description": "Официальный B2B-договор СДЭК с постоплатной системой расчетов: отправка без авансов, оплата единым безналичным счетом раз в месяц, закрывающие документы через ЭДО и скидки до 50%.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "RUB",
-          "availability": "https://schema.org/InStock"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
-          {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
-          {"@type": "ListItem", "position": 3, "name": "Постоплата", "item": "https://cdek-ecommerce.ru/dogovor/postoplata/"}
-        ]
-      },
-      {
-        "@type": "HowTo",
-        "name": "Как подключить доставку СДЭК на условиях постоплаты",
-        "description": "Пошаговая инструкция по открытию кредитного лимита и постоплатной схемы расчетов в СДЭК.",
-        "totalTime": "PT15M",
-        "step": [
-          {
-            "@type": "HowToStep",
-            "position": 1,
-            "name": "Подача онлайн-заявки по реквизитам компании",
-            "text": "Укажите ИНН юридического лица или ИП и контактные данные ответственного лица."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 2,
-            "name": "Согласование кредитного лимита и подписание договора",
-            "text": "Менеджер регистрирует договор с опцией постоплаты и направляет его на подпись через ЭДО или проверочным кодом из СМС."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 3,
-            "name": "Отправка заказов и оплата по итогам месяца",
-            "text": "Отправляйте грузы без предварительной оплаты. До 5-го числа следующего месяца получайте единый счет и закрывающие документы в личном кабинете или ЭДО."
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cdek-ecommerce.ru/dogovor/postoplata/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Как работает система постоплаты в СДЭК?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "В течение календарного месяца вы оформляете отправления в личном кабинете или через модуль CMS без внесения денежных средств. В начале следующего месяца (до 5-го числа) формируется единый реестр оказанных услуг, акт выполненных работ и счет на оплату с отсрочкой платежа."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Кому доступна постоплатная форма расчетов?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Постоплата доступна юридическим лицам (ООО, АО) и индивидуальным предпринимателям (ИП) с расчетным счетом в банке РФ при заключении официального B2B-договора."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как рассчитывается и увеличивается кредитный лимит?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Базовый кредитный лимит открывается при заключении договора. При росте объемов отправок лимит автоматически пересматривается и увеличивается вашим персональным куратором без необходимости перезаключения договора."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как передаются закрывающие документы по постоплате?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Все документы (УПД/акты, детализированные реестры и счета) направляются в электронном виде через системы ЭДО (Диадок, СБИС) или выгружаются в формате PDF и Excel напрямую из личного кабинета СДЭК."
-            }
-          }
-        ]
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7-993-322-15-20",
+        "contactType": "sales",
+        "areaServed": "RU",
+        "availableLanguage": "Russian"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
+        {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
+        {"@type": "ListItem", "position": 3, "name": "Постоплата", "item": "https://cdek-ecommerce.ru/dogovor/postoplata/"}
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/dogovor/postoplata/#service",
+      "name": "Заключение B2B-договора СДЭК на условиях постоплаты",
+      "serviceType": "Логистическое обслуживание с отсрочкой платежа и кредитным лимитом",
+      "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
+      "areaServed": { "@type": "Country", "name": "Россия" },
+      "description": "Официальный B2B-договор СДЭК с постоплатной системой расчетов: отправка посылок без авансов, оплата единым безналичным счетом раз в месяц, закрывающие документы по ЭДО и скидки до 50%.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "name": "Как подключить доставку СДЭК на условиях постоплаты",
+      "description": "Пошаговая инструкция по открытию кредитного лимита и постоплатной схемы расчетов.",
+      "totalTime": "PT15M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Подача заявки по ИНН компании",
+          "text": "Укажите реквизиты юридического лица (ООО) или ИП для финансовой проверки."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Открытие кредитного лимита",
+          "text": "Менеджер регистрирует договор с опцией постоплаты и направляет его на подпись по ЭДО или СМС."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Отправка без авансов и единый счет",
+          "text": "Отправляйте заказы в течение месяца и оплачивайте единый сводный счет до 5–10 числа следующего месяца."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cdek-ecommerce.ru/dogovor/postoplata/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Как работает система постоплаты в СДЭК?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "В течение месяца вы оформляете отправления без внесения денег. В начале следующего месяца формируется единый реестр оказанных услуг, акт и счет на оплату."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Кому доступна постоплатная форма расчетов?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Постоплата доступна юридическим лицам (ООО, АО) и индивидуальным предпринимателям (ИП) с расчетным счетом в банке РФ."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как передаются закрывающие документы?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Акты, реестры и УПД направляются автоматически через системы ЭДО (Диадок, СБИС) или выгружаются в PDF/Excel из личного кабинета."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white">
 
