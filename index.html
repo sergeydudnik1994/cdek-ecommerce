@@ -35,9 +35,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { font-family: 'Roboto', sans-serif; }
+    .dynamic-city-prep:empty::before {
+      content: "в вашем городе";
+    }
   </style>
 
-  <!-- Единая микроразметка Schema.org (@graph) -->
+  <!-- Единая микроразметка Schema.org (@graph) без ошибок для Яндекса -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -47,39 +50,34 @@
         "@id": "https://cdek-ecommerce.ru/#website",
         "url": "https://cdek-ecommerce.ru/",
         "name": "СДЭК E-Commerce",
-        "inLanguage": "ru-RU",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://cdek-ecommerce.ru/tracking/?cdek_number={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
+        "inLanguage": "ru-RU"
       },
       {
-      "@type": "Organization",
-      "@id": "https://cdek-ecommerce.ru/#organization",
-      "name": "СДЭК для Интернет-магазинов",
-      "url": "https://cdek-ecommerce.ru/",
-      "logo": "https://cdek-ecommerce.ru/logo.png",
-      "parentOrganization": {
         "@type": "Organization",
-        "name": "СДЭК",
-        "url": "https://www.cdek.ru"
-      },
-      "email": "sv.dudnik@cdek.ru",
-      "telephone": "+7-993-322-15-20",
-      "sameAs": [
-        "https://t.me/cdek_marketplace",
-        "https://wa.me/79933221520",
-        "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
+        "@id": "https://cdek-ecommerce.ru/#organization",
+        "name": "СДЭК для Интернет-магазинов",
+        "url": "https://cdek-ecommerce.ru/",
+        "logo": "https://cdek-ecommerce.ru/logo.png",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "СДЭК",
+          "url": "https://www.cdek.ru"
+        },
+        "email": "sv.dudik@cdek.ru",
         "telephone": "+7-993-322-15-20",
-        "contactType": "sales",
-        "areaServed": "RU",
-        "availableLanguage": "Russian"
-      }
-    },
+        "sameAs": [
+          "https://t.me/cdek_marketplace",
+          "https://wa.me/79933221520",
+          "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+7-993-322-15-20",
+          "contactType": "sales",
+          "areaServed": "RU",
+          "availableLanguage": "Russian"
+        }
+      },
       {
         "@type": "Service",
         "@id": "https://cdek-ecommerce.ru/#service",
@@ -138,13 +136,6 @@
     ]
   }
   </script>
-
-  <style>
-  /* Скрываем текст города до момента определения, чтобы не было мерцания */
-  .dynamic-city-prep:empty::before {
-    content: "в вашем городе";
-  }
-</style>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white">
 
@@ -171,8 +162,8 @@
             </h1>
 
             <p class="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
-  Официальный B2B-договор со СДЭК для интернет-магазинов, ООО, ИП и самозанятых. Подключение онлайн за 15 минут с доступом к специальным тарифам <span class="dynamic-city-prep"></span>.
-</p>
+              Официальный B2B-договор со СДЭК для интернет-магазинов, ООО, ИП и самозанятых. Подключение онлайн за 15 минут с доступом к специальным тарифам <span class="dynamic-city-prep"></span>.
+            </p>
 
             <!-- Теги преимуществ -->
             <div class="flex flex-wrap gap-2.5 pt-1">
@@ -556,30 +547,24 @@
         });
       }
 
-      // 1. Мгновенно берем из кэша браузера (0 задержки)
       let cached = localStorage.getItem('user_city_prep');
       if (cached) {
         applyCity(cached);
         return;
       }
 
-      // 2. Если зашли первый раз — запрашиваем в фоне
       try {
         let res = await fetch('https://ipwho.is/?lang=ru');
         if (!res.ok) return;
         let data = await res.json();
         
         let rawCity = (data.city || "").trim();
-        // Делаем первую букву заглавной (исправляем проблему с маленькой буквой)
         let cityName = rawCity ? rawCity.charAt(0).toUpperCase() + rawCity.slice(1) : "";
-        
         let targetPrep = declensions[cityName.toLowerCase()] || (cityName ? `в г. ${cityName}` : "в вашем городе");
 
         localStorage.setItem('user_city_prep', targetPrep);
         applyCity(targetPrep);
-      } catch (e) {
-        // Ошибка сети — оставляем текст по умолчанию
-      }
+      } catch (e) {}
     })();
   </script>
 
