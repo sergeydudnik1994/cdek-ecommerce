@@ -299,21 +299,18 @@ if ($http_code === 200 && !empty($response['result'])) {
     $recipient_name = 'Данные защищены 152-ФЗ';
 
     if (!empty($raw_recipient)) {
-        if (preg_match('/^[А-ЯЁA-Z]\.[А-ЯЁA-Z]\.[А-ЯЁA-Z]\.?$/u', str_replace(' ', '', $raw_recipient))) {
-            $recipient_name = $raw_recipient;
+        $parts = preg_split('/\s+/u', trim($raw_recipient));
+        if (count($parts) >= 3) {
+            $recipient_name = $parts[0] . ' ' . 
+                              mb_substr($parts[1], 0, 1, 'UTF-8') . '.' . 
+                              mb_substr($parts[2], 0, 1, 'UTF-8') . '.';
+        } elseif (count($parts) === 2) {
+            $recipient_name = $parts[0] . ' ' . 
+                              mb_substr($parts[1], 0, 1, 'UTF-8') . '.';
         } else {
-            $parts = preg_split('/\s+/u', trim($raw_recipient));
-            if (count($parts) >= 3) {
-                $recipient_name = $parts[0] . ' ' . 
-                                  mb_substr($parts[1], 0, 1, 'UTF-8') . '.' . 
-                                  mb_substr($parts[2], 0, 1, 'UTF-8') . '.';
-            } elseif (count($parts) === 2) {
-                $recipient_name = $parts[0] . ' ' . 
-                                  mb_substr($parts[1], 0, 1, 'UTF-8') . '.';
-            } else {
-                $recipient_name = $raw_recipient;
-            }
+            $recipient_name = $raw_recipient;
         }
+    }
     }
 
     $status_groups_raw = $resData['statusGroups'] ?? [];
