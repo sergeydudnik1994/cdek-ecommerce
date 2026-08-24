@@ -117,41 +117,29 @@
         </ul>
       </div>
 
-      <!-- Колонка 4: Договор СДЭК (с SEO-перелинковкой на формы) -->
+      <!-- Колонка 4: Договор СДЭК и тарифы (Симметрично 8 пунктов) -->
       <div class="space-y-3">
-        <h4 class="text-white font-bold text-sm mb-1">Заключение договора</h4>
+        <h4 class="text-white font-bold text-sm mb-3">Договор и тарифы</h4>
         
         <ul class="space-y-2 text-xs text-slate-400 pb-1">
-          <li>
-            <a href="/dogovor/ip/" class="hover:text-[#1AB248] transition flex items-center gap-1.5">
-              <span class="text-[#1AB248]">›</span> Договор для ИП (УСН)
-            </a>
-          </li>
-          <li>
-            <a href="/dogovor/yur-lica/" class="hover:text-[#1AB248] transition flex items-center gap-1.5">
-              <span class="text-[#1AB248]">›</span> Договор для ООО (с НДС)
-            </a>
-          </li>
-          <li>
-            <a href="/dogovor/samozanyatye/" class="hover:text-[#1AB248] transition flex items-center gap-1.5">
-              <span class="text-[#1AB248]">›</span> Договор для самозанятых (НПД)
-            </a>
-          </li>
-          <li>
-            <a href="/about/" class="hover:text-[#1AB248] transition flex items-center gap-1.5">
-              <span class="text-[#1AB248]">›</span> О компании и филиале
-            </a>
-          </li>
+          <li><a href="/dogovor/ip/" class="hover:text-[#1AB248] transition flex items-center gap-1.5"><span class="text-[#1AB248]">›</span> Для ИП (Сетка УСН)</a></li>
+          <li><a href="/dogovor/yur-lica/" class="hover:text-[#1AB248] transition flex items-center gap-1.5"><span class="text-[#1AB248]">›</span> Для ООО (с НДС)</a></li>
+          <li><a href="/dogovor/samozanyatye/" class="hover:text-[#1AB248] transition flex items-center gap-1.5"><span class="text-[#1AB248]">›</span> Для самозанятых (НПД)</a></li>
+          <li><a href="/dogovor/internet-magazin/" class="hover:text-[#1AB248] transition flex items-center gap-1.5"><span class="text-[#1AB248]">›</span> Для интернет-магазинов</a></li>
+          <li><a href="/dogovor/marketplace/" class="hover:text-[#1AB248] transition flex items-center gap-1.5"><span class="text-[#1AB248]">›</span> Для маркетплейсов (DBS)</a></li>
+          <li><a href="/dogovor/tarify/" class="hover:text-[#1AB248] transition flex items-center gap-1.5"><span class="text-[#1AB248]">›</span> Тарифная сетка «Посылка»</a></li>
+          <li><a href="/dogovor/nalozhennyy-platezh/" class="hover:text-[#1AB248] transition flex items-center gap-1.5"><span class="text-[#1AB248]">›</span> Наложенный платеж 54-ФЗ</a></li>
+          <li><a href="/dogovor/" class="text-white font-bold hover:text-[#1AB248] transition flex items-center gap-1.5"><span class="text-[#1AB248]">›</span> Все виды договоров (15+) →</a></li>
         </ul>
 
-        <a href="/dogovor/#contract-form-container" class="inline-flex items-center justify-center w-full py-3 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md shadow-[#1AB248]/20 transition transform active:scale-95 text-center">
-          Заключить договор онлайн
+        <a href="/dogovor/#contract-form-container" class="inline-flex items-center justify-center w-full py-2.5 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md shadow-[#1AB248]/20 transition transform active:scale-95 text-center">
+          Заключить договор
         </a>
       </div>
 
     </div>
 
-   <!-- Нижняя строка копирайта и документов -->
+    <!-- Нижняя строка копирайта и документов -->
     <div class="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
       <div>
         © <span id="current-year">2026</span> cdek-ecommerce.ru — Официальный партнер СДЭК.
@@ -161,11 +149,14 @@
       </div>
     </div>
 
-    <script>
-      (function() {
-        var el = document.getElementById('current-year');
-        if (el) {
-          el.textContent = new Date().getFullYear();
-        }
-      })();
-    </script>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    var el = document.getElementById('current-year');
+    if (el) {
+      el.textContent = new Date().getFullYear();
+    }
+  })();
+</script>
