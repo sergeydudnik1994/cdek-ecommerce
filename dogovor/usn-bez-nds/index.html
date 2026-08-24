@@ -38,120 +38,116 @@
 
   <!-- Schema.org Microdata (@graph) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://cdek-ecommerce.ru/logo.png",
+      "parentOrganization": {
         "@type": "Organization",
-        "@id": "https://cdek-ecommerce.ru/#organization",
-        "name": "СДЭК E-Commerce",
-        "url": "https://cdek-ecommerce.ru/",
-        "logo": "https://cdek-ecommerce.ru/favicon.png",
-        "parentOrganization": {
-          "@type": "Organization",
-          "name": "СДЭК",
-          "url": "https://www.cdek.ru"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "b2b sales",
-          "areaServed": "RU",
-          "availableLanguage": "Russian"
-        }
+        "name": "СДЭК",
+        "url": "https://www.cdek.ru"
       },
-      {
-        "@type": "Service",
-        "@id": "https://cdek-ecommerce.ru/dogovor/usn-bez-nds/#service",
-        "name": "Оформление B2B-договора СДЭК по льготной тарифной сетке УСН",
-        "serviceType": "Логистическое обслуживание бизнеса на спецрежимах налогообложения",
-        "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
-        "areaServed": {
-          "@type": "Country",
-          "name": "Россия"
-        },
-        "description": "Официальное дистанционное заключение корпоративного договора СДЭК по сетке УСН без начисления невозвратного НДС 22%: скидки на доставку до 50%, наложенный платеж и постоплата.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "RUB",
-          "availability": "https://schema.org/InStock"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
-          {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
-          {"@type": "ListItem", "position": 3, "name": "Тарифная сетка УСН", "item": "https://cdek-ecommerce.ru/dogovor/usn-bez-nds/"}
-        ]
-      },
-      {
-        "@type": "HowTo",
-        "name": "Как оформить договор СДЭК по тарифной сетке УСН без НДС",
-        "description": "Пошаговая инструкция по онлайн-регистрации договора СДЭК без переплаты за НДС 22%.",
-        "totalTime": "PT15M",
-        "step": [
-          {
-            "@type": "HowToStep",
-            "position": 1,
-            "name": "Заполнение заявки с указанием формы налогообложения",
-            "text": "Укажите ИНН ИП, юрлица или самозанятого и выберите систему налогообложения УСН или Патент."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 2,
-            "name": "Регистрация в биллинге по сетке УСН",
-            "text": "Менеджер регистрирует B2B-договор через филиал на УСН, исключая начисление налога 22% к тарифам доставки."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 3,
-            "name": "СМС-подписание и выдача личного кабинета",
-            "text": "Подпишите договор проверочным кодом из СМС или через ЭДО и отправляйте заказы по чистой себестоимости."
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cdek-ecommerce.ru/dogovor/usn-bez-nds/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Почему прямой договор через центральный офис СДЭК невыгоден для ИП на УСН?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Центральный офис СДЭК (ООО «СДЭК-Глобал») работает на общей системе налогообложения (ОСНО) и всегда начисляет сверху НДС 22%. Если вы работаете на УСН «Доходы», Патенте (ПСН) или как самозанятый, вы не являетесь плательщиком НДС и не можете принять этот налог к вычету, поэтому 22% становятся чистой переплатой из вашего бюджета."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Чем отличается функционал договора по сетке УСН от договора на ОСНО?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Функционал абсолютно идентичен: вам доступны те же 5 000+ ПВЗ, корпоративный личный кабинет, Rest API v2.0, модули для CMS, наложенный платеж по 54-ФЗ и тариф «Посылка» со скидками до 50%. Разница заключается исключительно в отсутствии наценки 22% НДС в счетах."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Какие закрывающие документы выдаются по договору УСН?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ежемесячно предоставляются акт оказанных услуг (без НДС), детализированный реестр отправлений и акт сверки взаиморасчетов. Документы передаются через ЭДО (Диадок, СБИС) или личный кабинет СДЭК."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Может ли ООО на УСН «Доходы минус расходы» заключить такой договор?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Да. Организации на УСН «Доходы минус расходы» могут учесть полную стоимость доставки СДЭК без НДС в составе расходов, уменьшающих налогооблагаемую базу, на основании актов выполненных услуг."
-            }
-          }
-        ]
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7-993-322-15-20",
+        "contactType": "sales",
+        "areaServed": "RU",
+        "availableLanguage": "Russian"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
+        {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
+        {"@type": "ListItem", "position": 3, "name": "Сетка УСН без НДС", "item": "https://cdek-ecommerce.ru/dogovor/usn-bez-nds/"}
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/dogovor/usn-bez-nds/#service",
+      "name": "Заключение B2B-договора СДЭК по тарифной сетке УСН (без НДС 22%)",
+      "serviceType": "Логистическое обслуживание бизнеса на спецрежимах налогообложения",
+      "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
+      "areaServed": { "@type": "Country", "name": "Россия" },
+      "description": "Официальный B2B-договор СДЭК по тарифной сетке УСН для ИП, ООО и самозанятых: прямая экономия до 22% за счет отсутствия невозвратного налога НДС, скидки до 50% и постоплата.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "name": "Как оформить договор СДЭК по тарифной сетке УСН",
+      "description": "Инструкция по подключению тарифов СДЭК без переплаты за НДС 22% для спецрежимов.",
+      "totalTime": "PT15M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Подача заявки с указанием режима УСН / Патент",
+          "text": "Укажите ИНН организации или ИП и выберите льготную систему налогообложения."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Фиксация тарифов без НДС",
+          "text": "Менеджер регистрирует договор через филиал СДЭК на УСН без начисления 22% НДС."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "СМС-подписание договора",
+          "text": "Подпишите договор за 15 минут онлайн и получите минимальную себестоимость отправлений."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cdek-ecommerce.ru/dogovor/usn-bez-nds/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Почему бизнесу на УСН и Патенте невыгодно работать с договором на ОСНО?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "При договоре на ОСНО начисляется НДС 22%. Предприниматели на УСН «Доходы» и Патенте не могут принять этот налог к вычету, из-за чего он становится прямой переплатой к каждому заказу."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Отличается ли функционал личного кабинета и скорость доставки на УСН?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. Личный кабинет, API 2.0, 5 000+ ПВЗ, курьеры и сроки доставки абсолютно идентичны — отличается только отсутствие лишней наценки НДС в счетах."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какие закрывающие документы предоставляются по договору УСН?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ежемесячно предоставляются акты оказанных услуг и финансовые отчеты через ЭДО (Диадок / СБИС) или в личном кабинете СДЭК."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white">
 
