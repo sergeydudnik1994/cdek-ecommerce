@@ -38,120 +38,116 @@
 
   <!-- Schema.org Microdata (@graph) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://cdek-ecommerce.ru/logo.png",
+      "parentOrganization": {
         "@type": "Organization",
-        "@id": "https://cdek-ecommerce.ru/#organization",
-        "name": "СДЭК E-Commerce",
-        "url": "https://cdek-ecommerce.ru/",
-        "logo": "https://cdek-ecommerce.ru/favicon.png",
-        "parentOrganization": {
-          "@type": "Organization",
-          "name": "СДЭК",
-          "url": "https://www.cdek.ru"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "b2b sales",
-          "areaServed": "RU",
-          "availableLanguage": "Russian"
-        }
+        "name": "СДЭК",
+        "url": "https://www.cdek.ru"
       },
-      {
-        "@type": "Service",
-        "@id": "https://cdek-ecommerce.ru/dogovor/internet-magazin/#service",
-        "name": "Заключение B2B-договора СДЭК для интернет-магазинов",
-        "serviceType": "Логистика для интернет-магазинов и E-Commerce",
-        "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
-        "areaServed": {
-          "@type": "Country",
-          "name": "Россия"
-        },
-        "description": "Официальный логистический договор СДЭК для интернет-магазинов: корпоративный тариф «Посылка», наложенный платеж 54-ФЗ, интеграция виджетов с CMS и скидки до 50%.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "RUB",
-          "availability": "https://schema.org/InStock"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
-          {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
-          {"@type": "ListItem", "position": 3, "name": "Для интернет-магазинов", "item": "https://cdek-ecommerce.ru/dogovor/internet-magazin/"}
-        ]
-      },
-      {
-        "@type": "HowTo",
-        "name": "Как подключить доставку СДЭК к интернет-магазину",
-        "description": "Пошаговая инструкция по заключению B2B-договора СДЭК и интеграции службы доставки на сайт интернет-магазина.",
-        "totalTime": "PT15M",
-        "step": [
-          {
-            "@type": "HowToStep",
-            "position": 1,
-            "name": "Подача онлайн-заявки и выбор сетки тарифов",
-            "text": "Заполните форму реквизитов на сайте. Менеджер проверяет организацию и регистрирует договор по льготной тарифной сетке УСН или ОСНО."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 2,
-            "name": "Дистанционное подписание по СМС или ЭДО",
-            "text": "Подпишите договор проверочным кодом ПЭП из СМС или через систему электронного документооборота (Диадок / СБИС)."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 3,
-            "name": "Установка модуля в CMS и выдача API-ключей",
-            "text": "Получите боевые ключи Rest API v2.0, подключите готовый плагин для вашей CMS (Тильда, Битрикс, InSales, WooCommerce) и активируйте карту ПВЗ в корзине."
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cdek-ecommerce.ru/dogovor/internet-magazin/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Что такое тариф «Посылка» для интернет-магазинов?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "«Посылка» — это специальный закрытый тариф СДЭК для интернет-магазинов с B2B-договором. Он до 50% дешевле обычных расценок физлиц и включает режимы доставки склад-склад (до ПВЗ/постамата) и склад-дверь (курьером покупателю)."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Нужна ли собственная онлайн-касса для приема наложенного платежа?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Нет. При приеме наложенного платежа СДЭК выступает платежным агентом, самостоятельно пробивает фискальный кассовый чек по 54-ФЗ в момент вручения заказа покупателю и отправляет электронный чек в налоговую и клиенту."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как работает примерка и частичный выкуп в интернет-магазине?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Покупатель может примерить вещи в оборудованных кабинках любого из 5 000+ ПВЗ СДЭК. При частичном выкупе клиент оплачивает только подошедшие товары, а остальные позиции возвращаются продавцу по льготному возвратному тарифу."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "С какими CMS интегрируется доставка СДЭК?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Официальные модули работают с Тильдой, 1С-Битрикс, МойСклад, InSales, WooCommerce (WordPress), OpenCart, CS-Cart, а также доступны библиотеки Rest API v2.0 и виджет карты для самописных сайтов."
-            }
-          }
-        ]
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7-993-322-15-20",
+        "contactType": "sales",
+        "areaServed": "RU",
+        "availableLanguage": "Russian"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
+        {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
+        {"@type": "ListItem", "position": 3, "name": "Для интернет-магазинов", "item": "https://cdek-ecommerce.ru/dogovor/internet-magazin/"}
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/dogovor/internet-magazin/#service",
+      "name": "Заключение B2B-договора СДЭК для интернет-магазинов",
+      "serviceType": "Курьерская доставка и выдача в ПВЗ по тарифу «Посылка»",
+      "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
+      "areaServed": { "@type": "Country", "name": "Россия" },
+      "description": "Официальный B2B-договор СДЭК для онлайн-ритейла: тариф «Посылка» со скидкой до 50%, готовые виджеты карты ПВЗ в корзину для Tilda, Bitrix, InSales, наложенный платеж 54-ФЗ и постоплата.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "name": "Как подключить доставку СДЭК к интернет-магазину",
+      "description": "Пошаговое руководство по интеграции СДЭК с корзиной сайта и старту отгрузок.",
+      "totalTime": "PT15M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Онлайн-заключение B2B-договора",
+          "text": "Заполните форму реквизитов и подпишите договор за 15 минут."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Установка модуля доставки в корзину",
+          "text": "Подключите плагин СДЭК к Tilda, 1С-Битрикс, InSales, WooCommerce или МойСклад."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Автоматический прием заказов",
+          "text": "Покупатели выбирают ПВЗ на карте сайта, а накладные создаются в 1 клик со скидкой до 50%."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cdek-ecommerce.ru/dogovor/internet-magazin/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "В чем выгода тарифа «Посылка» для интернет-магазинов?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Тариф «Посылка» на 30–50% дешевле стандартных тарифов для физлиц, включает опции примерки, частичного выкупа, льготную ставку возвратов и бесплатное хранение до 7–14 дней."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как покупатели выбирают пункт выдачи на сайте магазина?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "В корзину встраивается интерактивный виджет карты с 5 000+ ПВЗ и постаматами СДЭК, рассчитывающий точную стоимость и срок доставки в реальном времени."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Нужно ли магазину покупать свою кассу для наложенного платежа?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. СДЭК выступает агентом и самостоятельно пробивает электронный кассовый чек по 54-ФЗ при выдаче заказа покупателю."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white">
 
