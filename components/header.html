@@ -29,13 +29,18 @@
 
     <!-- Навигация (Desktop) -->
     <nav class="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-semibold text-slate-700">
-      <!-- 1. Калькулятор B2B -->
-      <a href="/calculator/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors">
-        <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-        Калькулятор B2B
+      <!-- 1. Договор и тарифы -->
+      <a href="/dogovor/" class="hover:text-[#1AB248] transition-colors">
+        Тарифы и договор
       </a>
 
-      <!-- 2. Интеграции -->
+      <!-- 2. Калькулятор B2B -->
+      <a href="/calculator/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors">
+        <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        Калькулятор
+      </a>
+
+      <!-- 3. Интеграции -->
       <div class="relative group py-2">
         <a href="/#integrations" class="hover:text-[#1AB248] transition-colors flex items-center gap-1">
           Интеграции и CMS
@@ -54,7 +59,7 @@
         </div>
       </div>
 
-      <!-- 3. Услуги (Все 6 направлений) -->
+      <!-- 4. Услуги -->
       <div class="relative group py-2">
         <span class="cursor-pointer hover:text-[#1AB248] transition-colors flex items-center gap-1">
           Услуги
@@ -70,13 +75,13 @@
         </div>
       </div>
 
-      <!-- 4. Трекинг -->
+      <!-- 5. Трекинг -->
       <a href="/tracking/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors">
         <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         Трекинг
       </a>
 
-      <!-- 5. О компании -->
+      <!-- 6. О компании -->
       <a href="/about/" class="hover:text-[#1AB248] transition-colors">
         О компании
       </a>
@@ -110,6 +115,11 @@
     
     <!-- Быстрые действия -->
     <div class="px-4 py-3 space-y-1 bg-slate-50/50">
+      <a href="/dogovor/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-2.5 text-sm font-bold text-slate-900">
+        <span>Тарифы и договор со СДЭК</span>
+        <span class="text-slate-400 text-xs">›</span>
+      </a>
+
       <a href="/tracking/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-2.5 text-sm font-bold text-slate-900">
         <span class="flex items-center gap-2">
           <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
@@ -159,7 +169,7 @@
       </div>
     </div>
 
-    <!-- Услуги (Все 6 направлений) -->
+    <!-- Услуги -->
     <div class="px-4 py-3">
       <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Услуги и логистика</div>
       <div class="space-y-1">
