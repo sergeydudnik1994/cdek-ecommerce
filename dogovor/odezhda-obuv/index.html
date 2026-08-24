@@ -38,120 +38,116 @@
 
   <!-- Schema.org Microdata (@graph) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://cdek-ecommerce.ru/logo.png",
+      "parentOrganization": {
         "@type": "Organization",
-        "@id": "https://cdek-ecommerce.ru/#organization",
-        "name": "СДЭК E-Commerce",
-        "url": "https://cdek-ecommerce.ru/",
-        "logo": "https://cdek-ecommerce.ru/favicon.png",
-        "parentOrganization": {
-          "@type": "Organization",
-          "name": "СДЭК",
-          "url": "https://www.cdek.ru"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "b2b sales",
-          "areaServed": "RU",
-          "availableLanguage": "Russian"
-        }
+        "name": "СДЭК",
+        "url": "https://www.cdek.ru"
       },
-      {
-        "@type": "Service",
-        "@id": "https://cdek-ecommerce.ru/dogovor/odezhda-obuv/#service",
-        "name": "Заключение B2B-договора СДЭК для магазинов одежды и обуви",
-        "serviceType": "Логистика для Fashion-ритейла с примеркой и частичным выкупом",
-        "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
-        "areaServed": {
-          "@type": "Country",
-          "name": "Россия"
-        },
-        "description": "Официальный логистический договор СДЭК для брендов одежды, обуви и аксессуаров: примерка в кабинках ПВЗ, частичный выкуп, работа с кодами «Честный ЗНАК» и скидки до 50%.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "RUB",
-          "availability": "https://schema.org/InStock"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
-          {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
-          {"@type": "ListItem", "position": 3, "name": "Одежда и обувь", "item": "https://cdek-ecommerce.ru/dogovor/odezhda-obuv/"}
-        ]
-      },
-      {
-        "@type": "HowTo",
-        "name": "Как подключить доставку с примеркой и частичным выкупом для магазина одежды и обуви",
-        "description": "Пошаговая инструкция по настройке B2B-логистики СДЭК для fashion-товаров.",
-        "totalTime": "PT15M",
-        "step": [
-          {
-            "@type": "HowToStep",
-            "position": 1,
-            "name": "Оформление официального B2B-договора",
-            "text": "Заполните заявку реквизитов ИП, ООО или самозанятого и подпишите договор по СМС за 15 минут."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 2,
-            "name": "Активация опций «Примерка» и «Частичный выкуп»",
-            "text": "В личном кабинете СДЭК или через модуль CMS активируйте дополнительные сервисы для fashion-заказов и сопоставьте коды маркировки «Честный ЗНАК»."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 3,
-            "name": "Отправка заказов и прием оплат",
-            "text": "Покупатели примеряют вещи в любом из 5 000+ ПВЗ, выкупают подходящие размеры, а СДЭК автоматически возвращает невыкупленные позиции на ваш склад."
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cdek-ecommerce.ru/dogovor/odezhda-obuv/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Как работает примерка одежды и обуви в пунктах выдачи СДЭК?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Более 5 000 ПВЗ СДЭК по всей России оборудованы комфортными примерочными кабинками с зеркалами. Покупателю дается 15 минут на примерку одежды или обуви перед принятием решения об оплате."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как устроен частичный выкуп товаров из заказа?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Если клиент заказал, например, 3 пары обуви или 2 размера платья, он может выкупить только одну подошедшую вещь. Оператор ПВЗ принимает оплату за выбранную позицию, выдает чек по 54-ФЗ, а остальные вещи бесплатно или по льготному возвратному тарифу отправляются обратно продавцу."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Поддерживает ли СДЭК работу с системой маркировки «Честный ЗНАК»?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Да. При оформлении заказа в накладную СДЭК передаются коды маркировки DataMatrix. При вручении или частичном выкупе оператор СДЭК сканирует коды, выводя выкупленный товар из оборота и возвращая невыкупленный в систему маркировки продавца."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Какова стоимость возврата невыкупленных вещей продавцу?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Для интернет-магазинов с B2B-договором действует льготный реверсивный тариф на возврат (до 50% дешевле прямой доставки), что позволяет минимизировать издержки на логистику отказов."
-            }
-          }
-        ]
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7-993-322-15-20",
+        "contactType": "sales",
+        "areaServed": "RU",
+        "availableLanguage": "Russian"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
+        {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
+        {"@type": "ListItem", "position": 3, "name": "Одежда и обувь", "item": "https://cdek-ecommerce.ru/dogovor/odezhda-obuv/"}
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/dogovor/odezhda-obuv/#service",
+      "name": "Заключение B2B-договора СДЭК для магазинов одежды и обуви",
+      "serviceType": "Логистика для Fashion-ритейла с примеркой и частичным выкупом",
+      "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
+      "areaServed": { "@type": "Country", "name": "Россия" },
+      "description": "Официальный логистический договор СДЭК для брендов одежды, обуви и аксессуаров: примерка в кабинках 5 000+ ПВЗ, частичный выкуп размеров, интеграция с «Честный ЗНАК» и скидки до 50%.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "name": "Как подключить доставку с примеркой и частичным выкупом",
+      "description": "Пошаговая настройка логистики для интернет-магазинов одежды и обуви.",
+      "totalTime": "PT15M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Оформление B2B-договора",
+          "text": "Заполните заявку и подпишите официальный договор по СМС за 15 минут."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Активация примерки и выкупа",
+          "text": "В личном кабинете или CMS включите опции примерки в ПВЗ и частичного выкупа позиций."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Синхронизация маркировки",
+          "text": "Передавайте коды DataMatrix «Честный ЗНАК» для автовывода товаров из оборота при вручении."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cdek-ecommerce.ru/dogovor/odezhda-obuv/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Как устроена примерка в пунктах выдачи СДЭК?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Более 5 000 ПВЗ СДЭК оборудованы примерочными кабинками с зеркалами. Клиенту дается 15 минут на примерку перед оплатой."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как работает частичный выкуп позиций из заказа?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Покупатель может выбрать и оплатить только подошедший размер, а невыкупленные вещи автоматически возвращаются продавцу по льготному тарифу."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Поддерживает ли СДЭК сканирование кодов «Честный ЗНАК»?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да. При выдаче оператор СДЭК сканирует DataMatrix-коды, выводя выкупленный товар из оборота в государственной системе маркировки."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white">
 
