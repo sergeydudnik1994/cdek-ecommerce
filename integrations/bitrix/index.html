@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Интеграция СДЭК с 1С-Битрикс — официальный модуль доставки для интернет-магазина</title>
-  <meta name="description" content="Пошаговая инструкция по настройке официального модуля СДЭК (IPOL) для 1С-Битрикс: подключение Rest API v2.0, карта ПВЗ в чекауте sale.order.ajax, автовыгрузка заказов и скидки до 50%." />
+  <title>Модуль СДЭК для 1С-Битрикс — официальная интеграция доставки для интернет-магазинов</title>
+  <meta name="description" content="Модуль интеграции СДЭК с 1C-Битрикс (1C-Bitrix): выгрузка заказов, генерация накладных, штрихкодов и трекинг посылок по API v2.0." />
   <link rel="canonical" href="https://cdek-ecommerce.ru/integrations/bitrix/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,110 +13,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>body { font-family: 'Roboto', sans-serif; }</style>
 
-  <!-- Schema.org: Breadcrumbs -->
+  <!-- Schema.org Microdata -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
-      {"@type": "ListItem", "position": 2, "name": "Интеграции", "item": "https://cdek-ecommerce.ru/integrations/"},
-      {"@type": "ListItem", "position": 3, "name": "1С-Битрикс", "item": "https://cdek-ecommerce.ru/integrations/bitrix/"}
-    ]
-  }
+  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"}, {"@type": "ListItem", "position": 2, "name": "Интеграции", "item": "https://cdek-ecommerce.ru/integrations/"}, {"@type": "ListItem", "position": 3, "name": "1С-Битрикс", "item": "https://cdek-ecommerce.ru/integrations/bitrix/"}]}
   </script>
-
-  <!-- Schema.org: FAQPage -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Где скачать официальный модуль СДЭК для 1С-Битрикс?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Модуль интеграции СДЭК (разработчик IPOL, код ipol.sdek) устанавливается бесплатно напрямую из 1С-Битрикс: Маркетплейс через панель администрирования сайта."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Как работает выбор ПВЗ и постаматов на карте в оформлении заказа Битрикс?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Модуль встраивает интерактивную карту в стандартный компонент оформления заказа (sale.order.ajax) или одностраничный чекаут, позволяя клиенту выбрать ПВЗ/постамат с расчетом цены и сроков доставки."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Как исправить ошибку сопоставления городов и местоположений Битрикс со СДЭК?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "В настройках модуля СДЭК в разделе «Синхронизация местоположений» необходимо запустить автоматическое сопоставление базы городов СДЭК с местоположениями 1С-Битрикс 2.0 (по кодам ФИАС/КЛАДР)."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Передаются ли заказы в личный кабинет СДЭК автоматически?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Да, модуль поддерживает автоматическую отправку заявки в СДЭК при смене статуса заказа в Битриксе (например, при оплате или подтверждении менеджером), а также пакетную ручную выгрузку."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Можно ли печатать штрихкоды и вызывать курьера из админки Битрикса?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Да, прямо из списка заказов 1С-Битрикс доступны печать квитанций к заказам, печать термоэтикеток со штрихкодами (ШК-мест) и вызов курьера СДЭК на склад интернет-магазина."
-        }
-      }
-    ]
-  }
-  </script>
-
-  <!-- Schema.org: HowTo для быстрого ответа AI -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "Как подключить и настроить модуль СДЭК в 1С-Битрикс",
-    "description": "Пошаговая инструкция по установке модуля ipol.sdek из Маркетплейса 1С-Битрикс, авторизации по Rest API v2.0 и интеграции карты ПВЗ.",
-    "totalTime": "PT8M",
-    "step": [
-      {
-        "@type": "HowToStep",
-        "position": 1,
-        "name": "Установка модуля из 1С-Битрикс: Маркетплейс",
-        "text": "В панели администрирования откройте «Marketplace → Каталог решений», найдите модуль «Интеграция со СДЭК» (ipol.sdek) и нажмите «Установить»."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 2,
-        "name": "Авторизация по протоколу Rest API v2.0",
-        "text": "В личном кабинете СДЭК для бизнеса перейдите в «Интеграция → Ключи API», скопируйте Account и Secure password и сохраните их в общих настройках модуля в Битриксе."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 3,
-        "name": "Синхронизация местоположений и городов",
-        "text": "В настройках модуля перейдите на вкладку «Местоположения» и выполните синхронизацию базы городов СДЭК с местоположениями интернет-магазина."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 4,
-        "name": "Создание служб доставки и сопоставление свойств заказа",
-        "text": "В разделе «Магазин → Настройки → Службы доставки» активируйте обработчики СДЭК (Курьер, ПВЗ, Постамат) и привяжите поля заказа (ФИАС, телефон, адрес, ФИО)."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 5,
-        "name": "Настройка триггеров автоотгрузки и печати",
-        "text": "Задайте статусы заказов Битрикса, при которых накладная создается в СДЭК автоматически, настройте печать термоэтикеток ШК и трекинг посылок."
-      }
-    ]
-  }
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Где скачать официальный модуль СДЭК для 1С-Битрикс?", "acceptedAnswer": {"@type": "Answer", "text": "Модуль доступен бесплатно в маркетплейсе 1С-Битрикс и настраивается с помощью Client ID и Client Secret из договора СДЭК."}}, {"@type": "Question", "name": "Поддерживает ли модуль расчет объемного веса?", "acceptedAnswer": {"@type": "Answer", "text": "Да, габариты и вес товаров из каталога Битрикс автоматически передаются в калькулятор СДЭК для точной тарификации."}}]}
   </script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 min-h-screen flex flex-col antialiased">
@@ -129,260 +31,72 @@
     <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400">
       <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
       <span>/</span>
-      <a href="/integrations/" class="hover:text-[#1AB248] transition">Интеграции</a>
+      <span>Интеграции</span>
       <span>/</span>
       <span class="text-slate-700 font-semibold">1С-Битрикс</span>
     </nav>
 
     <!-- Главный блок -->
     <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
-      <div class="flex flex-wrap items-center gap-3">
-        <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200">
-          CMS & E-Commerce
-        </span>
-        <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600">
-          1С-Битрикс: Управление сайтом • Модуль ipol.sdek
-        </span>
-      </div>
-
+      <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200">
+        CMS & Корпоративные системы
+      </span>
       <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-        Подключение и настройка модуля СДЭК для 1С-Битрикс
+        Интеграция службы доставки СДЭК для 1С-Битрикс
       </h1>
       <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
-        Официальный модуль интеграции СДЭК для интернет-магазинов на платформе 1С-Битрикс. Интерактивная карта ПВЗ и постаматов в чекауте, автоматическая выгрузка накладных по API v2.0, пакетная печать штрихкодов и скидки на логистику до 50% по B2B-договору.
+        Модуль интеграции СДЭК с 1C-Битрикс (1C-Bitrix): выгрузка заказов, генерация накладных, штрихкодов и трекинг посылок по API v2.0.
       </p>
 
       <div class="pt-4 border-t border-slate-100">
         <h3 class="text-lg font-bold text-slate-900 mb-4">Возможности и преимущества решения:</h3>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-          <li class="flex items-start gap-3">
-            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-            <span class="text-slate-700 text-sm leading-relaxed"><strong>Карта ПВЗ в чекауте:</strong> нативная интеграция с компонентом <code class="text-xs bg-slate-100 px-1 py-0.5 rounded">sale.order.ajax</code> и кастомными корзинами.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-            <span class="text-slate-700 text-sm leading-relaxed"><strong>Автоматизация отгрузок:</strong> генерация квитанций СДЭК по триггерам смены статусов заказов в Битриксе.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-            <span class="text-slate-700 text-sm leading-relaxed"><strong>Печать ШК и вызов курьера:</strong> массовая печать термоэтикеток со штрихкодами и заказ забора груза из админки.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-            <span class="text-slate-700 text-sm leading-relaxed"><strong>Точный расчет габаритов:</strong> учет физического и объемного веса из торгового каталога 1С-Битрикс.</span>
-          </li>
+        <ul class="space-y-3">
+          
+      <li class="flex items-start gap-3">
+        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Синхронизация заказов по протоколу СДЭК API 2.0</span>
+      </li>
+    
+      <li class="flex items-start gap-3">
+        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Пакетная печать квитанций к заказам и штрихкодов грузовых мест</span>
+      </li>
+    
+      <li class="flex items-start gap-3">
+        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Отображение карты ПВЗ и постаматов в чекауте Битрикс</span>
+      </li>
+    
+      <li class="flex items-start gap-3">
+        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Автоматический вызов курьера на забор груза из админки сайта</span>
+      </li>
+    
         </ul>
       </div>
 
-      <div class="pt-4 flex flex-col sm:flex-row gap-4 items-center">
-        <a href="/dogovor/#contract-form-container" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg shadow-[#1AB248]/25 transition transform active:scale-95 text-center">
-          Подключить СДЭК со скидкой до 50%
-        </a>
-        <a href="#how-to" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-base rounded-2xl transition text-center">
-          Инструкция по установке ↓
+      <div class="pt-6">
+        <a href="/#lead-form" class="inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg shadow-[#1AB248]/25 transition transform active:scale-95">
+          Подключить со скидкой до 50%
         </a>
       </div>
     </div>
 
-    <!-- Пошаговая инструкция (Блок AEO для быстрого ответа Яндекса и Алисы) -->
-    <div id="how-to" class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
-      <div class="space-y-2">
-        <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          Пошаговая инструкция: как подключить СДЭК к 1С-Битрикс
-        </h2>
-        <p class="text-slate-600 text-sm sm:text-base">
-          Инструкция по настройке официального модуля СДЭК (от разработчика IPOL) по протоколу API v2.0.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 gap-6 pt-2">
-        
-        <!-- Шаг 1 -->
-        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
-            1
-          </div>
-          <div class="space-y-1.5">
-            <h3 class="text-base sm:text-lg font-bold text-slate-900">
-              Установите модуль из Маркетплейса 1С-Битрикс
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              В административной панели сайта перейдите в <strong>Marketplace → Каталог решений</strong>. Введите в поиске <code>ipol.sdek</code> (или «Интеграция со СДЭК»), загрузите и установите модуль в систему.
-            </p>
-          </div>
-        </div>
-
-        <!-- Шаг 2 -->
-        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
-            2
-          </div>
-          <div class="space-y-1.5">
-            <h3 class="text-base sm:text-lg font-bold text-slate-900">
-              Авторизуйтесь по боевым ключам Rest API v2.0
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              В личном кабинете СДЭК для бизнеса перейдите в <strong>«Интеграция → Ключи API»</strong>. Скопируйте <strong>Account</strong> и <strong>Secure password</strong> и вставьте их в настройках модуля: <em>Настройки → Настройки модулей → СДЭК (IPOL) → Основные</em>.
-            </p>
-          </div>
-        </div>
-
-        <!-- Шаг 3 -->
-        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
-            3
-          </div>
-          <div class="space-y-1.5">
-            <h3 class="text-base sm:text-lg font-bold text-slate-900">
-              Синхронизируйте базу местоположений
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Откройте вкладку <strong>«Местоположения»</strong> в настройках модуля СДЭК и запустите процесс сопоставления. Это свяжет города интернет-магазина 1С-Битрикс (структура 2.0) с внутренними кодами населенных пунктов СДЭК.
-            </p>
-          </div>
-        </div>
-
-        <!-- Шаг 4 -->
-        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
-            4
-          </div>
-          <div class="space-y-1.5">
-            <h3 class="text-base sm:text-lg font-bold text-slate-900">
-              Активируйте службы доставки и виджет карты
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              В разделе <strong>«Магазин → Настройки → Службы доставки»</strong> создайте и включите обработчики доставки СДЭК: «Доставка курьером», «Самовывоз (ПВЗ)» и «Постаматы». Модуль автоматически подключит интерактивную карту выбора пунктов к вашему чекауту.
-            </p>
-          </div>
-        </div>
-
-        <!-- Шаг 5 -->
-        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
-            5
-          </div>
-          <div class="space-y-1.5">
-            <h3 class="text-base sm:text-lg font-bold text-slate-900">
-              Настройте автоотгрузку и печать документов
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Во вкладке <strong>«Автоматизация»</strong> задайте соответствие статусов: например, отправлять заказ в СДЭК при переходе статуса в «Оплачен» или «Собирается на складе». Настройте формат печати ШК-этикеток под ваш термопринтер.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Таблица параметров модуля Битрикс -->
-    <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
-      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">
-        Справочник ключевых опций модуля СДЭК (ipol.sdek)
-      </h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-left text-sm text-slate-600 border-collapse">
-          <thead>
-            <tr class="border-b border-slate-200 text-slate-900 font-bold bg-slate-50">
-              <th class="p-3.5 rounded-l-xl">Вкладка / Опция</th>
-              <th class="p-3.5">Рекомендуемое значение</th>
-              <th class="p-3.5 rounded-r-xl">Назначение</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-100">
-            <tr>
-              <td class="p-3.5 font-semibold text-slate-800">Протокол обмена</td>
-              <td class="p-3.5 font-mono text-xs text-emerald-600">Rest API v2.0</td>
-              <td class="p-3.5">Актуальный протокол СДЭК с высокой скоростью расчета и безопасной авторизацией.</td>
-            </tr>
-            <tr>
-              <td class="p-3.5 font-semibold text-slate-800">Сопоставление свойств заказа</td>
-              <td class="p-3.5">ФИО, Телефон, Email, Адрес, ZIP</td>
-              <td class="p-3.5">Связка системных полей корзины Битрикс с полями накладной СДЭК.</td>
-            </tr>
-            <tr>
-              <td class="p-3.5 font-semibold text-slate-800">Габариты по умолчанию</td>
-              <td class="p-3.5">Д x Ш x В (мм), Вес (граммы)</td>
-              <td class="p-3.5">Подставляются для товаров каталога, у которых не заполнены размеры.</td>
-            </tr>
-            <tr>
-              <td class="p-3.5 font-semibold text-slate-800">Виджет ПВЗ в чекауте</td>
-              <td class="p-3.5">Включен (Яндекс Карты)</td>
-              <td class="p-3.5">Отображение всплывающего окна или встроенной карты для выбора ПВЗ и постаматов.</td>
-            </tr>
-            <tr>
-              <td class="p-3.5 font-semibold text-slate-800">Синхронизация статусов</td>
-              <td class="p-3.5">По агенту на cron (каждые 30 мин)</td>
-              <td class="p-3.5">Автоматическое обновление статуса заказа в Битриксе при движении посылки в СДЭК.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Решение ошибок (Troubleshooting) -->
+    <!-- FAQ -->
     <div class="space-y-4">
-      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">
-        Частые вопросы и решение ошибок в 1С-Битрикс
-      </h2>
+      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Часто задаваемые вопросы</h2>
       <div class="space-y-3">
         
-        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
-          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
-            Ошибка «Не сопоставлен город доставки» при расчете корзины
-          </h4>
-          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Причина: местоположение покупателя в 1С-Битрикс не связано с кодом города СДЭК. Откройте <em>Настройки модулей → СДЭК → Местоположения</em>, нажмите «Импортировать города СДЭК» и запустите процедуру автоматической привязки.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
-          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
-            Карта ПВЗ не открывается в компоненте оформления заказа (sale.order.ajax)
-          </h4>
-          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Чаще всего это вызвано конфликтом JavaScript в кастомизированном шаблоне оформления заказа или отсутствием API-ключа Яндекс Карт. В настройках модуля включите режим совместимости с кастомным чекаутом и пропишите ключ JS API карт.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
-          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
-            Ошибка авторизации: «Неверный идентификатор клиента или пароль»
-          </h4>
-          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Убедитесь, что в настройках модуля выбрана версия <strong>API 2.0</strong> и введены боевые параметры Account / Secure password из вкладки «Интеграция» личного кабинета СДЭК (логин и пароль от входа в ЛК не подходят).
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
-          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
-            Поддерживается ли печать термоэтикеток со штрихкодами 75х120 мм?
-          </h4>
-          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Да. В модуле предусмотрен выбор формата генерации документов: PDF-квитанция А4 или файл стикеров для термопринтеров (разрешение 200/300 DPI, формат 75x120 мм).
-          </p>
-        </div>
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+        <h4 class="text-base font-bold text-slate-900 mb-2">Где скачать официальный модуль СДЭК для 1С-Битрикс?</h4>
+        <p class="text-sm text-slate-600 leading-relaxed">Модуль доступен бесплатно в маркетплейсе 1С-Битрикс и настраивается с помощью Client ID и Client Secret из договора СДЭК.</p>
+      </div>
     
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+        <h4 class="text-base font-bold text-slate-900 mb-2">Поддерживает ли модуль расчет объемного веса?</h4>
+        <p class="text-sm text-slate-600 leading-relaxed">Да, габариты и вес товаров из каталога Битрикс автоматически передаются в калькулятор СДЭК для точной тарификации.</p>
       </div>
-    </div>
-
-    <!-- Конверсионный CTA-блок -->
-    <div class="bg-gradient-to-br from-[#062A30] to-[#0A3840] rounded-3xl p-6 sm:p-10 text-white shadow-xl space-y-6">
-      <div class="max-w-2xl space-y-3">
-        <span class="inline-block px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider bg-[#1AB248] text-white">
-          Официальный договор СДЭК для 1С-Битрикс
-        </span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-          Подключите доставку СДЭК для вашего магазина на 1С-Битрикс
-        </h2>
-        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-          Заключите B2B-договор за 1 день. Предоставим боевые ключи API v2.0, скидки на доставку до 50%, помощь с установкой модуля ipol.sdek и персонального менеджера поддержки.
-        </p>
-      </div>
-      <div>
-        <a href="/dogovor/#contract-form-container" class="inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg transition transform active:scale-95">
-          Заключить договор со скидкой
-        </a>
+    
       </div>
     </div>
 

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Интеграция СДЭК и МойСклад — подключение приложения доставки и автоматизация отгрузок</title>
-  <meta name="description" content="Пошаговая инструкция по настройке приложения СДЭК в МойСклад: авторизация API v2.0, создание накладных из заказов, печать термоэтикеток ШК 120х75, трекинг статусов и скидки до 50%." />
+  <title>Интеграция СДЭК и МойСклад — автоматизация доставки и печати накладных</title>
+  <meta name="description" content="Официальная интеграция сервиса МойСклад со СДЭК. Создание отгрузок, печать маркировок и синхронизация статусов заказов." />
   <link rel="canonical" href="https://cdek-ecommerce.ru/integrations/moysklad/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,113 +13,15 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>body { font-family: 'Roboto', sans-serif; }</style>
 
-  <!-- Schema.org: Breadcrumbs -->
+  <!-- Schema.org Microdata -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
-      {"@type": "ListItem", "position": 2, "name": "Интеграции", "item": "https://cdek-ecommerce.ru/integrations/"},
-      {"@type": "ListItem", "position": 3, "name": "МойСклад", "item": "https://cdek-ecommerce.ru/integrations/moysklad/"}
-    ]
-  }
+  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"}, {"@type": "ListItem", "position": 2, "name": "Интеграции", "item": "https://cdek-ecommerce.ru/integrations/"}, {"@type": "ListItem", "position": 3, "name": "МойСклад", "item": "https://cdek-ecommerce.ru/integrations/moysklad/"}]}
   </script>
-
-  <!-- Schema.org: FAQPage -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Как подключить СДЭК к сервису МойСклад?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "В панели МойСклад откройте раздел «Приложения», найдите официальный модуль «СДЭК», установите его и введите ключи Rest API v2.0 (Account и Secure password) из раздела «Интеграция» личного кабинета СДЭК."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Из каких документов МойСклад можно создавать накладные СДЭК?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Накладные и трек-номера СДЭК можно формировать напрямую из документов «Заказ покупателя» и «Отгрузка» — данные получателя, состав заказа, вес и габариты подтягиваются автоматически."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Поддерживается ли массовая печать термоэтикеток со штрихкодами?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Да, приложение позволяет в один клик распечатывать транспортные накладные А4, акты приема-передачи и термоэтикетки со штрихкодами грузовых мест (ШК-мест) формата 120х75 мм или 75х120 мм для термопринтера."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Как работает синхронизация статусов доставки со статусами МойСклад?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "В настройках интеграции настраивается сопоставление этапов: при смене статуса посылки в СДЭК («В пути», «Прибыл на ПВЗ», «Вручен», «Отказ») статус документа «Заказ покупателя» в МойСклад обновляется автоматически."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Как учитывается наложенный платеж от СДЭК в МойСклад?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "При успешном вручении заказа с наложенным платежом система автоматически может создавать документ «Входящий платеж», фиксируя факт оплаты покупателем и сумму агентского вознаграждения СДЭК."
-        }
-      }
-    ]
-  }
-  </script>
-
-  <!-- Schema.org: HowTo для быстрых ответов AI (Яндекс Алиса) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "Как подключить доставку СДЭК к системе МойСклад",
-    "description": "Пошаговая инструкция по настройке приложения СДЭК в МойСклад, синхронизации заказов и печати маркировок по API v2.0.",
-    "totalTime": "PT7M",
-    "step": [
-      {
-        "@type": "HowToStep",
-        "position": 1,
-        "name": "Получение API-ключей в ЛК СДЭК",
-        "text": "Авторизуйтесь в личном кабинете СДЭК для бизнеса, перейдите в «Интеграция → Ключи API» и скопируйте Account и Secure password."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 2,
-        "name": "Установка приложения в МойСклад",
-        "text": "В интерфейсе МойСклад перейдите в меню «Приложения», найдите модуль «СДЭК» и нажмите «Установить»."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 3,
-        "name": "Авторизация и привязка складов",
-        "text": "Вставьте полученные ключи API, укажите город отгрузки и свяжите склады МойСклад с договором СДЭК."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 4,
-        "name": "Настройка маппинга статусов",
-        "text": "Задайте правила автоматической смены статусов заказов покупателей при изменении статусов доставки в СДЭК."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 5,
-        "name": "Создание первой отгрузки и печать ШК",
-        "text": "Откройте заказ покупателя, нажмите кнопку СДЭК, рассчитайте тариф, выберите ПВЗ или курьера и распечатайте транспортный стикер."
-      }
-    ]
-  }
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Как настроить передачу заказов из МойСклад в СДЭК?", "acceptedAnswer": {"@type": "Answer", "text": "Установите приложение «СДЭК» из каталога приложений МойСклад, авторизуйтесь под вашим договором и сопоставьте статусы доставки."}}]}
   </script>
 </head>
-<body class="bg-[#F4F7F6] text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#1AB248] selection:text-white">
+<body class="bg-[#F5F8FE] text-slate-900 min-h-screen flex flex-col antialiased">
 
   <!--# include virtual="/components/header.html" -->
 
@@ -129,260 +31,67 @@
     <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400">
       <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
       <span>/</span>
-      <a href="/integrations/" class="hover:text-[#1AB248] transition">Интеграции</a>
+      <span>Интеграции</span>
       <span>/</span>
       <span class="text-slate-700 font-semibold">МойСклад</span>
     </nav>
 
-    <!-- Главный Hero-блок -->
+    <!-- Главный блок -->
     <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
-      <div class="flex flex-wrap items-center gap-3">
-        <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200">
-          Складской учет & CRM
-        </span>
-        <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600">
-          Официальное приложение • API v2.0
-        </span>
-      </div>
-
+      <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200">
+        Учетные системы & Склады
+      </span>
       <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-        Подключение и настройка интеграции СДЭК с сервисом МойСклад
+        Модуль доставки СДЭК для системы МойСклад
       </h1>
       <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
-        Автоматизируйте доставку заказов прямо из интерфейса МойСклад. Создание накладных в один клик из «Заказов покупателей», пакетная печать термоэтикеток со штрихкодами, автоматическое обновление статусов и корпоративные B2B-скидки до 50% на логистику.
+        Официальная интеграция сервиса МойСклад со СДЭК. Создание отгрузок, печать маркировок и синхронизация статусов заказов.
       </p>
 
       <div class="pt-4 border-t border-slate-100">
-        <h3 class="text-lg font-bold text-slate-900 mb-4">Возможности официального приложения СДЭК в МойСклад:</h3>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-          <li class="flex items-start gap-3">
-            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-            <span class="text-slate-700 text-sm leading-relaxed"><strong>Оформление из заказа или отгрузки:</strong> автоподстановка веса, габаритов, адреса и состава корзины.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-            <span class="text-slate-700 text-sm leading-relaxed"><strong>Массовая печать термоэтикеток:</strong> быстрая генерация ШК-мест 120х75 мм и реестров передачи курьеру.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-            <span class="text-slate-700 text-sm leading-relaxed"><strong>Двусторонняя синхронизация статусов:</strong> автоперевод заказа в МойСклад («В пути», «Готов к выдаче», «Вручен»).</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-            <span class="text-slate-700 text-sm leading-relaxed"><strong>Наложенный платеж:</strong> автоформирование входящих платежей при перечислении денег за выкупленные заказы.</span>
-          </li>
+        <h3 class="text-lg font-bold text-slate-900 mb-4">Возможности и преимущества решения:</h3>
+        <ul class="space-y-3">
+          
+      <li class="flex items-start gap-3">
+        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Создание накладных СДЭК напрямую из документов «Заказ покупателя» или «Отгрузка»</span>
+      </li>
+    
+      <li class="flex items-start gap-3">
+        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Автоматическое обновление статусов доставки в интерфейсе МойСклад</span>
+      </li>
+    
+      <li class="flex items-start gap-3">
+        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Печать этикеток со штрихкодами формата 120x75 и квитанций А4</span>
+      </li>
+    
+      <li class="flex items-start gap-3">
+        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
+        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Учет наложенного платежа и комиссии за прием наличных/карт</span>
+      </li>
+    
         </ul>
       </div>
 
-      <div class="pt-4 flex flex-col sm:flex-row gap-4 items-center">
-        <a href="/dogovor/#contract-form-container" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg shadow-[#1AB248]/25 transition transform active:scale-95 text-center">
-          Подключить СДЭК со скидкой до 50%
-        </a>
-        <a href="#how-to" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-base rounded-2xl transition text-center">
-          Инструкция по настройке ↓
+      <div class="pt-6">
+        <a href="/#lead-form" class="inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg shadow-[#1AB248]/25 transition transform active:scale-95">
+          Подключить со скидкой до 50%
         </a>
       </div>
     </div>
 
-    <!-- Пошаговая инструкция (Блок AEO для быстрого ответа Яндекса и Алисы) -->
-    <div id="how-to" class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
-      <div class="space-y-2">
-        <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          Пошаговая инструкция: подключение СДЭК к МойСклад за 5 минут
-        </h2>
-        <p class="text-slate-600 text-sm sm:text-base">
-          Интеграция настраивается через официальное готовое приложение из Маркетплейса МойСклад по протоколу API v2.0.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 gap-6 pt-2">
-        
-        <!-- Шаг 1 -->
-        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
-            1
-          </div>
-          <div class="space-y-1.5">
-            <h3 class="text-base sm:text-lg font-bold text-slate-900">
-              Получите ключи API v2.0 в личном кабинете СДЭК
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              В личном кабинете СДЭК для бизнеса перейдите в меню <strong>«Интеграция → Ключи API»</strong> и скопируйте значения: <strong>Account</strong> (Идентификатор клиента) и <strong>Secure password</strong> (Секрет клиента).
-            </p>
-          </div>
-        </div>
-
-        <!-- Шаг 2 -->
-        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
-            2
-          </div>
-          <div class="space-y-1.5">
-            <h3 class="text-base sm:text-lg font-bold text-slate-900">
-              Установите приложение «СДЭК» в МойСклад
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              В левом меню сервиса МойСклад перейдите в раздел <strong>«Приложения»</strong>, найдите модуль <strong>«СДЭК»</strong> и нажмите кнопку <strong>«Установить»</strong>.
-            </p>
-          </div>
-        </div>
-
-        <!-- Шаг 3 -->
-        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
-            3
-          </div>
-          <div class="space-y-1.5">
-            <h3 class="text-base sm:text-lg font-bold text-slate-900">
-              Авторизуйтесь и укажите параметры отгрузки
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              В настройках приложения вставьте Account и Secure password. Задайте город отправления по умолчанию, сопоставьте склад МойСклад со складом отгрузки СДЭК и укажите габариты по умолчанию.
-            </p>
-          </div>
-        </div>
-
-        <!-- Шаг 4 -->
-        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
-            4
-          </div>
-          <div class="space-y-1.5">
-            <h3 class="text-base sm:text-lg font-bold text-slate-900">
-              Настройте сопоставление статусов (маппинг)
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Свяжите статусы заказов СДЭК со статусами «Заказов покупателей» в МойСклад. При изменении статуса посылки в логистической сети статус в системе учета обновится автоматически без участия менеджера.
-            </p>
-          </div>
-        </div>
-
-        <!-- Шаг 5 -->
-        <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-xl bg-[#1AB248] text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md shadow-[#1AB248]/20">
-            5
-          </div>
-          <div class="space-y-1.5">
-            <h3 class="text-base sm:text-lg font-bold text-slate-900">
-              Создавайте накладные и печатайте термоэтикетки
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Откройте любой «Заказ покупателя» или «Отгрузку», нажмите на кнопку СДЭК в верхнем меню, выберите тариф («Посылка Склад-Склад», постамат или курьер) и распечатайте ШК-этикетку на принтер.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Справочник опций приложения -->
-    <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
-      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">
-        Справочник настроек модуля СДЭК в МойСклад
-      </h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-left text-sm text-slate-600 border-collapse">
-          <thead>
-            <tr class="border-b border-slate-200 text-slate-900 font-bold bg-slate-50">
-              <th class="p-3.5 rounded-l-xl">Параметр настройки</th>
-              <th class="p-3.5">Значение / Тип</th>
-              <th class="p-3.5 rounded-r-xl">Назначение</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-100">
-            <tr>
-              <td class="p-3.5 font-semibold text-slate-800">Ключи API v2.0</td>
-              <td class="p-3.5 font-mono text-xs text-emerald-600">Account / Secure password</td>
-              <td class="p-3.5">Авторизация B2B-договора в системе СДЭК.</td>
-            </tr>
-            <tr>
-              <td class="p-3.5 font-semibold text-slate-800">Документ-основание</td>
-              <td class="p-3.5">Заказ покупателя / Отгрузка</td>
-              <td class="p-3.5">Определяет, из какого документа создается накладная СДЭК.</td>
-            </tr>
-            <tr>
-              <td class="p-3.5 font-semibold text-slate-800">Габариты по умолчанию</td>
-              <td class="p-3.5">Длина, Ширина, Высота (см), Вес (кг)</td>
-              <td class="p-3.5">Используются, если у товаров в справочнике не заполнены характеристики.</td>
-            </tr>
-            <tr>
-              <td class="p-3.5 font-semibold text-slate-800">Формат термоэтикетки</td>
-              <td class="p-3.5 font-semibold text-slate-900">120×75 мм / А4</td>
-              <td class="p-3.5">Формирование готового файла маркировки для термопринтера.</td>
-            </tr>
-            <tr>
-              <td class="p-3.5 font-semibold text-slate-800">Создание входящего платежа</td>
-              <td class="p-3.5">Автоматически / Вручную</td>
-              <td class="p-3.5">Автоматическая проводка оплаты при получении денег за наложенный платеж.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Troubleshooting (Частые вопросы и ошибки) -->
+    <!-- FAQ -->
     <div class="space-y-4">
-      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">
-        Частые вопросы и решение ошибок в МойСклад
-      </h2>
+      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Часто задаваемые вопросы</h2>
       <div class="space-y-3">
         
-        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
-          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
-            Ошибка авторизации 401 при сохранении ключей в МойСклад
-          </h4>
-          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Убедитесь, что используются ключи API v2.0 из раздела «Интеграция» личного кабинета СДЭК (Account и Secure password), а не логин и пароль от входа в личный кабинет. Проверьте отсутствие пробелов.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
-          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
-            Почему не создается накладная из документа заказа?
-          </h4>
-          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Основные причины: не заполнен номер телефона получателя, отсутствует адрес или выбран некорректный ПВЗ, либо суммарный вес товаров равен 0. Заполните базовый вес по умолчанию в настройках интеграции.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
-          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
-            Как передавать заказы в СДЭК с наложенным платежом?
-          </h4>
-          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-            В окне оформления отправления СДЭК активируйте признак «Наложенный платеж». Сумма к оплате покупателем автоматически заполнится из итоговой суммы документа МойСклад.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
-          <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
-            Как распечатать сразу несколько стикеров ШК на термопринтере?
-          </h4>
-          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-            В общем списке «Заказов покупателей» выделите галочками нужные строки, нажмите меню «Печать» → выберите «Этикетки СДЭК». Сформируется общий PDF-файл в формате 120х75 мм.
-          </p>
-        </div>
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+        <h4 class="text-base font-bold text-slate-900 mb-2">Как настроить передачу заказов из МойСклад в СДЭК?</h4>
+        <p class="text-sm text-slate-600 leading-relaxed">Установите приложение «СДЭК» из каталога приложений МойСклад, авторизуйтесь под вашим договором и сопоставьте статусы доставки.</p>
+      </div>
     
-      </div>
-    </div>
-
-    <!-- Фирменный темно-зеленый CTA-блок (#062A30) -->
-    <div class="bg-gradient-to-br from-[#062A30] to-[#0A3840] rounded-3xl p-6 sm:p-10 text-white shadow-xl space-y-6">
-      <div class="max-w-2xl space-y-3">
-        <span class="inline-block px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider bg-[#1AB248] text-white">
-          B2B-договор для МойСклад
-        </span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-          Подключите доставку СДЭК для МойСклад со скидкой до 50%
-        </h2>
-        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-          Заключите официальный B2B-договор за 1 день. Предоставим боевые API-ключи, поможем настроить приложение в МойСклад, обучим сотрудников и выделим персонального куратора.
-        </p>
-      </div>
-      <div>
-        <a href="/dogovor/#contract-form-container" class="inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg transition transform active:scale-95">
-          Заключить договор со скидкой
-        </a>
       </div>
     </div>
 
