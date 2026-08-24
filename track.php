@@ -1,5 +1,8 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+header('Expires: 0');
 
 $user_login = 'apiuser-cdek-ecommerce';
 $raw_pass   = '60910f5286789ba520baad4a8137f6d3';
@@ -8,6 +11,7 @@ $auth_url    = 'https://auth.api.cdek.ru/web/simpleauth/authorize';
 $tracing_url = 'https://tracing.api.cdek.ru/web/v2/order/find';
 
 $track_number = isset($_GET['cdek_number']) ? trim($_GET['cdek_number']) : '';
+$is_debug     = isset($_GET['debug']) && $_GET['debug'] == '1';
 
 if (empty($track_number)) {
     echo json_encode(['success' => false, 'message' => 'Введите номер накладной или заказа'], JSON_UNESCAPED_UNICODE);
@@ -98,57 +102,12 @@ if ($http_code === 401 || $http_code === 403) {
     }
 }
 
-// 3. Получение точного адреса ПВЗ по его коду из базы СДЭК
-function getPvzDetailsByCode($code) {
-    $code = trim($code);
-    if (empty($code) || mb_strlen($code) > 25) return null;
-
-    $cacheDir = sys_get_temp_dir() . '/cdek_pvz_cache';
-    if (!is_dir($cacheDir)) @mkdir($cacheDir, 0777, true);
-    $safeName = preg_replace('/[^a-zA-Z0-9_-]/', '', $code);
-    $cacheFile = $cacheDir . '/' . $safeName . '.json';
-
-    if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < 86400 * 30)) {
-        $cached = json_decode(file_get_contents($cacheFile), true);
-        if (!empty($cached['address'])) {
-            return $cached['address'];
-        }
-    }
-
-    $url = 'https://delivery.cdek.ru/pvzlist.php?code=' . urlencode($code);
-    $ch = curl_init();
-    curl_setopt_array($ch, [
-        CURLOPT_URL            => $url,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT        => 3,
-        CURLOPT_CONNECTTIMEOUT => 2,
-        CURLOPT_SSL_VERIFYPEER => false,
-        CURLOPT_SSL_VERIFYHOST => false
-    ]);
-    $xmlStr = curl_exec($ch);
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
-
-    if ($httpCode === 200 && !empty($xmlStr)) {
-        libxml_use_internal_errors(true);
-        $xml = simplexml_load_string($xmlStr);
-        if ($xml && isset($xml->Pvz)) {
-            $pvz = $xml->Pvz[0];
-            $fullAddr = trim((string)($pvz['FullAddress'] ?? ''));
-            $addr     = trim((string)($pvz['Address'] ?? ''));
-            $city     = trim((string)($pvz['City'] ?? ''));
-
-            $res = $fullAddr ?: ($addr ? ($city ? "г. {$city}, {$addr}" : $addr) : null);
-            if ($res) {
-                @file_put_contents($cacheFile, json_encode(['address' => $res], JSON_UNESCAPED_UNICODE));
-                return $res;
-            }
-        }
-    }
-
-    return null;
+if ($is_debug) {
+    echo json_encode(['http_code' => $http_code, 'raw_response' => $response], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    exit;
 }
 
+// 3. Функции точного извлечения
 function extractCity($obj) {
     if (empty($obj)) return null;
     if (is_string($obj)) return trim($obj);
@@ -187,68 +146,93 @@ function extractCity($obj) {
     return null;
 }
 
-function extractPvzAddress($resData, $cityTo = '') {
+function searchAddressDeep($data) {
+    if (empty($data)) return null;
+
+    // Регулярное выражение поиска паттерна адреса (ул, дом, пр-т, шоссе и т.д.)
+    $pattern = '/(?:\b(?:ул|улица|просп|проспект|проезд|пер|переулок|шоссе|ш|наб|набережная|тракт|бульвар|б-р|пл|площадь|кв-л|мкр|микрорайон)\b[\.\s]|(?:д\.|дом)\s*\d+)/ui';
+
+    if (is_string($data)) {
+        $val = trim($data);
+        if (mb_strlen($val) > 6 && preg_match($pattern, $val)) {
+            return $val;
+        }
+        return null;
+    }
+
+    if (is_array($data)) {
+        // Проверка составного адреса (street + house)
+        if (!empty($data['street']) || (!empty($data['city']) && !empty($data['house']))) {
+            $parts = [];
+            if (!empty($data['city']) && is_string($data['city'])) $parts[] = 'г. ' . trim($data['city']);
+            if (!empty($data['street']) && is_string($data['street'])) $parts[] = 'ул. ' . trim($data['street']);
+            if (!empty($data['house']) && is_string($data['house'])) $parts[] = 'д. ' . trim($data['house']);
+            if (!empty($data['flat']) && is_string($data['flat'])) $parts[] = 'оф./кв. ' . trim($data['flat']);
+            if (count($parts) >= 2) return implode(', ', $parts);
+        }
+
+        // Проверка именованных полей адреса
+        foreach (['fullAddress', 'formattedAddress', 'address', 'rawAddress', 'name', 'title', 'warehouse', 'office'] as $key) {
+            if (!empty($data[$key])) {
+                $res = searchAddressDeep($data[$key]);
+                if ($res) return $res;
+            }
+        }
+
+        // Рекурсивный обход всех остальных полей (исключая отправителя)
+        foreach ($data as $k => $v) {
+            $lower = strtolower((string)$k);
+            if (in_array($lower, ['sender', 'fromlocation', 'from_location', 'senderlocation'], true)) {
+                continue;
+            }
+            if (is_array($v)) {
+                $res = searchAddressDeep($v);
+                if ($res) return $res;
+            }
+        }
+    }
+    return null;
+}
+
+function extractPvzAddressUniversal($resData, $cityTo = '') {
     if (empty($resData) || !is_array($resData)) return null;
 
-    $candidates = [];
+    // 1. Поиск в деталях доставки
+    if (!empty($resData['deliveryDetail'])) {
+        $addr = searchAddressDeep($resData['deliveryDetail']);
+        if ($addr) return $addr;
+    }
 
-    // Поиск явных текстовых адресов или объектов локаций
-    if (!empty($resData['deliveryDetail']) && is_array($resData['deliveryDetail'])) {
-        $dd = $resData['deliveryDetail'];
-        if (!empty($dd['deliveryPointLocation']) && is_array($dd['deliveryPointLocation'])) {
-            foreach (['address', 'fullAddress', 'name'] as $k) {
-                if (!empty($dd['deliveryPointLocation'][$k]) && is_string($dd['deliveryPointLocation'][$k])) {
-                    $candidates[] = $dd['deliveryPointLocation'][$k];
-                }
-            }
-        }
-        if (!empty($dd['deliveryPoint'])) {
-            $candidates[] = $dd['deliveryPoint'];
-        }
-        if (!empty($dd['pvzCode'])) {
-            $candidates[] = $dd['pvzCode'];
-        }
-        if (!empty($dd['address'])) {
-            $candidates[] = $dd['address'];
+    // 2. Поиск в статусах (часто адрес ПВЗ пишется в статусе "Готов к выдаче" или "Принят в офисе")
+    if (!empty($resData['statuses']) && is_array($resData['statuses'])) {
+        for ($i = count($resData['statuses']) - 1; $i >= 0; $i--) {
+            $st = $resData['statuses'][$i];
+            $addr = searchAddressDeep($st);
+            if ($addr) return $addr;
         }
     }
 
-    if (!empty($resData['warehouse'])) {
-        $candidates[] = $resData['warehouse'];
-    }
-    if (!empty($resData['toWarehouse'])) {
-        $candidates[] = $resData['toWarehouse'];
-    }
-    if (!empty($resData['order']['deliveryPoint'])) {
-        $candidates[] = $resData['order']['deliveryPoint'];
+    // 3. Поиск в складах и объекте заказа
+    foreach (['warehouse', 'toWarehouse', 'order', 'toLocation'] as $sec) {
+        if (!empty($resData[$sec])) {
+            $addr = searchAddressDeep($resData[$sec]);
+            if ($addr) return $addr;
+        }
     }
 
-    // Проверяем каждого кандидата
-    foreach ($candidates as $item) {
-        if (is_array($item)) {
-            foreach (['fullAddress', 'formattedAddress', 'address', 'name', 'code', 'deliveryPoint'] as $k) {
-                if (!empty($item[$k]) && is_string($item[$k])) {
-                    $val = trim($item[$k]);
-                    if (mb_strlen($val) > 12 && (mb_strpos($val, ' ') !== false || mb_strpos($val, ',') !== false)) {
-                        return $val;
-                    }
-                    $resolved = getPvzDetailsByCode($val);
-                    if ($resolved) return $resolved;
-                }
-            }
-        } elseif (is_string($item)) {
-            $val = trim($item);
-            // Если это уже полный адрес
-            if (mb_strlen($val) > 15 && (mb_strpos($val, 'ул') !== false || mb_strpos($val, ',') !== false || mb_strpos($val, 'д.') !== false)) {
-                return $val;
-            }
-            // Если это код ПВЗ (например SUR1, MSK12)
-            $resolved = getPvzDetailsByCode($val);
-            if ($resolved) return $resolved;
-            if (preg_match('/^[A-Za-z0-9_-]{3,15}$/', $val)) {
-                return "Пункт выдачи {$val}" . ($cityTo ? " ({$cityTo})" : "");
-            }
-        }
+    // 4. Проверка кодов ПВЗ (если текстовый адрес отсутствует)
+    $pvzCode = null;
+    if (!empty($resData['deliveryDetail']['deliveryPoint'])) {
+        $dp = $resData['deliveryDetail']['deliveryPoint'];
+        $pvzCode = is_string($dp) ? $dp : ($dp['code'] ?? null);
+    }
+    if (!$pvzCode && !empty($resData['order']['deliveryPoint'])) {
+        $dp = $resData['order']['deliveryPoint'];
+        $pvzCode = is_string($dp) ? $dp : ($dp['code'] ?? null);
+    }
+
+    if ($pvzCode && is_string($pvzCode) && preg_match('/^[A-Za-z0-9_-]{3,15}$/', trim($pvzCode))) {
+        return "Пункт выдачи " . trim($pvzCode) . ($cityTo ? " ({$cityTo})" : "");
     }
 
     return null;
@@ -303,7 +287,7 @@ if ($http_code === 200 && !empty($response['result'])) {
     $city_to = $city_to ?: 'Пункт назначения';
 
     // Точный адрес ПВЗ
-    $pvz_address = extractPvzAddress($resData, $city_to) ?: 'Пункт выдачи СДЭК';
+    $pvz_address = extractPvzAddressUniversal($resData, $city_to) ?: 'Пункт выдачи СДЭК';
 
     // Получатель (152-ФЗ)
     $raw_recipient = extractRecipientName($resData);
