@@ -239,26 +239,31 @@ function extractPvzAddressUniversal($resData, $cityTo = '') {
 }
 
 function extractRecipientName($resData) {
-    $raw = null;
-    if (!empty($resData['order']['recipient'])) {
-        $rec = $resData['order']['recipient'];
-        if (is_string($rec)) $raw = $rec;
-        elseif (is_array($rec)) {
-            foreach (['name', 'fio', 'receiver'] as $k) {
-                if (!empty($rec[$k]) && is_string($rec[$k])) { $raw = $rec[$k]; break; }
+    if (empty($resData) || !is_array($resData)) return null;
+
+    $candidates = [
+        $resData['order']['recipient'] ?? null,
+        $resData['deliveryDetail']['recipientName'] ?? null,
+        $resData['deliveryDetail']['recipient'] ?? null,
+        $resData['recipient'] ?? null,
+        $resData['client'] ?? null
+    ];
+
+    foreach ($candidates as $cand) {
+        if (empty($cand)) continue;
+        if (is_string($cand) && mb_strlen(trim($cand)) > 2) {
+            return trim($cand);
+        }
+        if (is_array($cand)) {
+            foreach (['name', 'fio', 'receiver', 'recipientName', 'clientName'] as $k) {
+                if (!empty($cand[$k]) && is_string($cand[$k]) && mb_strlen(trim($cand[$k])) > 2) {
+                    return trim($cand[$k]);
+                }
             }
         }
     }
-    if (!$raw && !empty($resData['deliveryDetail'])) {
-        $dd = $resData['deliveryDetail'];
-        foreach (['recipientName', 'fio', 'recipient'] as $k) {
-            if (!empty($dd[$k])) {
-                if (is_string($dd[$k])) { $raw = $dd[$k]; break; }
-                if (is_array($dd[$k]) && !empty($dd[$k]['name']) && is_string($dd[$k]['name'])) { $raw = $dd[$k]['name']; break; }
-            }
-        }
-    }
-    return $raw ? trim($raw) : null;
+
+    return null;
 }
 
 // 4. Формирование ответа
