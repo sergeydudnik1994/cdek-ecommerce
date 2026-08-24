@@ -38,120 +38,116 @@
 
   <!-- Schema.org Microdata (@graph) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://cdek-ecommerce.ru/logo.png",
+      "parentOrganization": {
         "@type": "Organization",
-        "@id": "https://cdek-ecommerce.ru/#organization",
-        "name": "СДЭК E-Commerce",
-        "url": "https://cdek-ecommerce.ru/",
-        "logo": "https://cdek-ecommerce.ru/favicon.png",
-        "parentOrganization": {
-          "@type": "Organization",
-          "name": "СДЭК",
-          "url": "https://www.cdek.ru"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "b2b sales",
-          "areaServed": "RU",
-          "availableLanguage": "Russian"
-        }
+        "name": "СДЭК",
+        "url": "https://www.cdek.ru"
       },
-      {
-        "@type": "Service",
-        "@id": "https://cdek-ecommerce.ru/dogovor/marketplace/#service",
-        "name": "Заключение B2B-договора СДЭК для селлеров маркетплейсов",
-        "serviceType": "Логистика для продавцов маркетплейсов по схемам FBS и DBS",
-        "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
-        "areaServed": {
-          "@type": "Country",
-          "name": "Россия"
-        },
-        "description": "Официальный B2B-договор СДЭК для продавцов Ozon, Wildberries, Яндекс Маркета и Авито: доставка заказов со своего склада (FBS/DBS), быстрая сдача в ПВЗ у дома и скидки до 50%.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "RUB",
-          "availability": "https://schema.org/InStock"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
-          {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
-          {"@type": "ListItem", "position": 3, "name": "Для маркетплейсов", "item": "https://cdek-ecommerce.ru/dogovor/marketplace/"}
-        ]
-      },
-      {
-        "@type": "HowTo",
-        "name": "Как подключить доставку СДЭК для продаж на маркетплейсах",
-        "description": "Пошаговая инструкция по настройке доставки FBS и DBS через B2B-договор СДЭК.",
-        "totalTime": "PT15M",
-        "step": [
-          {
-            "@type": "HowToStep",
-            "position": 1,
-            "name": "Заключение официального B2B-договора СДЭК",
-            "text": "Заполните заявку на сайте по ИНН ИП, ООО или самозанятого и подпишите договор по СМС за 15 минут."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 2,
-            "name": "Получение API-ключей и привязка складов",
-            "text": "Скопируйте Account и Secure password в личном кабинете СДЭК и добавьте метод доставки СДЭК в кабинете продавца Ozon, WB, Яндекс Маркета или Авито."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 3,
-            "name": "Печать маркировки и отгрузка в ПВЗ",
-            "text": "Генерируйте транспортные этикетки со штрихкодом и сдавайте упакованные заказы в любой ближайший пункт СДЭК без очередей на СЦ."
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cdek-ecommerce.ru/dogovor/marketplace/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "По каким схемам маркетплейсов можно работать через СДЭК?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "СДЭК поддерживает схемы FBS (сдача в СЦ маркетплейса), realFBS (Ozon), DBS (Wildberries, Яндекс Маркет, Мегамаркет) и продажи через Авито Доставку для бизнеса."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "В чем выгода схемы DBS через СДЭК по сравнению со складами FBO/FBS?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "При работе по DBS товары хранятся на вашем складе (нет платы за платную приемку и хранение на складах площадок). Вы не рискуете заморозкой остатков, доставляете крупногабаритные (КГТ) или хрупкие товары по выгодным корпоративным ставкам СДЭК и получаете прозрачный контроль возвратов."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Куда селлер сдает готовые заказы маркетплейсов?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Вы можете сдавать заказы в любой удобный пункт выдачи СДЭК рядом с вашим домом/складом (более 5 000 ПВЗ по всей РФ) либо заказать ежедневный забор курьером прямо с вашего склада или производства."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как передаются трек-номера и статусы доставки в кабинет селлера?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "При создании накладной СДЭК трек-код автоматически транслируется в заказ на маркетплейсе по API, а смена статусов («Принят СДЭК», «В пути», «Готов к выдаче», «Вручен») обновляет статус отправления на маркетплейсе в режиме реального времени."
-            }
-          }
-        ]
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7-993-322-15-20",
+        "contactType": "sales",
+        "areaServed": "RU",
+        "availableLanguage": "Russian"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
+        {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
+        {"@type": "ListItem", "position": 3, "name": "Для маркетплейсов", "item": "https://cdek-ecommerce.ru/dogovor/marketplace/"}
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/dogovor/marketplace/#service",
+      "name": "Заключение B2B-договора СДЭК для селлеров маркетплейсов",
+      "serviceType": "Логистика для маркетплейсов по схемам FBS, realFBS и DBS",
+      "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
+      "areaServed": { "@type": "Country", "name": "Россия" },
+      "description": "Официальный B2B-договор СДЭК для селлеров Ozon, Wildberries, Яндекс Маркет и Мегамаркет: интеграция по DBS/FBS, автопечать этикеток, сдача в 5 000+ ПВЗ и скидки до 50%.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "name": "Как подключить доставку СДЭК для продаж на маркетплейсах",
+      "description": "Пошаговая инструкция по настройке схем FBS и DBS через B2B-договор СДЭК.",
+      "totalTime": "PT15M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Оформление договора со СДЭК",
+          "text": "Укажите ИНН компании или ИП для регистрации договора и получения ключей API v2.0."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Синхронизация кабинета селлера",
+          "text": "Подключите модуль интеграции СДЭК в кабинетах Ozon, WB или Яндекс Маркет для автопередачи остатков и треков."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Маркировка и передача заказов",
+          "text": "Печатайте штрихкоды и сдавайте отправления в любой ближайший ПВЗ СДЭК без очередей."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cdek-ecommerce.ru/dogovor/marketplace/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Какие схемы работы с маркетплейсами поддерживает СДЭК?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Поддерживаются схемы DBS (доставка силами продавца для Ozon, WB, Яндекс Маркет), realFBS Express/Standard, а также поставка партий товаров на склады FBO/FBW."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как передаются трек-номера в кабинет продавца?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Интеграция по API автоматически генерирует накладную СДЭК и транслирует трек-номер со статусами доставки напрямую в заказ на маркетплейсе."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Где селлер может сдавать упакованные заказы?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Заказы можно сдавать в любом из 5 000+ ПВЗ СДЭК без привязки к конкретному отделению или вызывать ежедневного курьера на склад."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white">
 
