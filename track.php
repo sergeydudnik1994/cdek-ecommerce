@@ -149,7 +149,6 @@ function extractCity($obj) {
 function searchAddressDeep($data) {
     if (empty($data)) return null;
 
-    // Регулярное выражение поиска паттерна адреса (ул, дом, пр-т, шоссе и т.д.)
     $pattern = '/(?:\b(?:ул|улица|просп|проспект|проезд|пер|переулок|шоссе|ш|наб|набережная|тракт|бульвар|б-р|пл|площадь|кв-л|мкр|микрорайон)\b[\.\s]|(?:д\.|дом)\s*\d+)/ui';
 
     if (is_string($data)) {
@@ -161,7 +160,6 @@ function searchAddressDeep($data) {
     }
 
     if (is_array($data)) {
-        // Проверка составного адреса (street + house)
         if (!empty($data['street']) || (!empty($data['city']) && !empty($data['house']))) {
             $parts = [];
             if (!empty($data['city']) && is_string($data['city'])) $parts[] = 'г. ' . trim($data['city']);
@@ -171,7 +169,6 @@ function searchAddressDeep($data) {
             if (count($parts) >= 2) return implode(', ', $parts);
         }
 
-        // Проверка именованных полей адреса
         foreach (['fullAddress', 'formattedAddress', 'address', 'rawAddress', 'name', 'title', 'warehouse', 'office'] as $key) {
             if (!empty($data[$key])) {
                 $res = searchAddressDeep($data[$key]);
@@ -179,7 +176,6 @@ function searchAddressDeep($data) {
             }
         }
 
-        // Рекурсивный обход всех остальных полей (исключая отправителя)
         foreach ($data as $k => $v) {
             $lower = strtolower((string)$k);
             if (in_array($lower, ['sender', 'fromlocation', 'from_location', 'senderlocation'], true)) {
@@ -197,13 +193,11 @@ function searchAddressDeep($data) {
 function extractPvzAddressUniversal($resData, $cityTo = '') {
     if (empty($resData) || !is_array($resData)) return null;
 
-    // 1. Поиск в деталях доставки
     if (!empty($resData['deliveryDetail'])) {
         $addr = searchAddressDeep($resData['deliveryDetail']);
         if ($addr) return $addr;
     }
 
-    // 2. Поиск в статусах (часто адрес ПВЗ пишется в статусе "Готов к выдаче" или "Принят в офисе")
     if (!empty($resData['statuses']) && is_array($resData['statuses'])) {
         for ($i = count($resData['statuses']) - 1; $i >= 0; $i--) {
             $st = $resData['statuses'][$i];
@@ -212,7 +206,6 @@ function extractPvzAddressUniversal($resData, $cityTo = '') {
         }
     }
 
-    // 3. Поиск в складах и объекте заказа
     foreach (['warehouse', 'toWarehouse', 'order', 'toLocation'] as $sec) {
         if (!empty($resData[$sec])) {
             $addr = searchAddressDeep($resData[$sec]);
@@ -220,7 +213,6 @@ function extractPvzAddressUniversal($resData, $cityTo = '') {
         }
     }
 
-    // 4. Проверка кодов ПВЗ (если текстовый адрес отсутствует)
     $pvzCode = null;
     if (!empty($resData['deliveryDetail']['deliveryPoint'])) {
         $dp = $resData['deliveryDetail']['deliveryPoint'];
@@ -310,7 +302,6 @@ if ($http_code === 200 && !empty($response['result'])) {
         } else {
             $recipient_name = $raw_recipient;
         }
-    }
     }
 
     $status_groups_raw = $resData['statusGroups'] ?? [];
