@@ -32,101 +32,7 @@
   </style>
 
   <!-- Единая микроразметка Schema.org (@graph) без ошибок для Яндекса -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://cdek-ecommerce.ru/#website",
-        "url": "https://cdek-ecommerce.ru/",
-        "name": "СДЭК E-Commerce",
-        "inLanguage": "ru-RU"
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://cdek-ecommerce.ru/#organization",
-        "name": "СДЭК для Интернет-магазинов",
-        "url": "https://cdek-ecommerce.ru/",
-        "logo": "https://cdek-ecommerce.ru/logo.png",
-        "parentOrganization": {
-          "@type": "Organization",
-          "name": "СДЭК",
-          "url": "https://www.cdek.ru"
-        },
-        "email": "sv.dudik@cdek.ru",
-        "telephone": "+7-993-322-15-20",
-        "sameAs": [
-          "https://t.me/cdek_marketplace",
-          "https://wa.me/79933221520",
-          "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+7-993-322-15-20",
-          "contactType": "sales",
-          "areaServed": "RU",
-          "availableLanguage": "Russian"
-        }
-      },
-      {
-        "@type": "Service",
-        "@id": "https://cdek-ecommerce.ru/#service",
-        "name": "Подключение интернет-магазинов к логистике СДЭК",
-        "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
-        "areaServed": {
-          "@type": "Country",
-          "name": "Россия"
-        },
-        "description": "Бесплатное заключение B2B-договора со СДЭК, скидка до 50% на тариф «Посылка», наложенный платеж 54-ФЗ, интеграция с CMS и маркетплейсами DBS.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "RUB",
-          "availability": "https://schema.org/InStock"
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cdek-ecommerce.ru/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Сколько стоит заключение и обслуживание договора со СДЭК?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Заключение B2B-договора, доступ в личный кабинет и предоставление API-ключей полностью бесплатны (0 ₽). Минимальных объемов отгрузок и абонентской платы нет."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Кто может заключить официальный договор?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Договор могут заключить юридические лица (ООО, АО), индивидуальные предприниматели (ИП) и физические лица со статусом плательщика налога на профессиональный доход (самозанятые)."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как работает наложенный платеж по 54-ФЗ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "СДЭК выступает платежным агентом: принимает оплату от покупателей при вручении (картой или наличными), формирует фискальный кассовый чек по 54-ФЗ и перечисляет средства на расчетный счет интернет-магазина."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как быстро активируется договор и API-ключи?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Регистрация договора занимает от 15 минут. После онлайн-проверки реквизитов вы сразу получаете доступы в личный кабинет и боевые ключи API для интеграции с CMS."
-            }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
+  
   <!-- Open Graph & Social Cards -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="СДЭК E-Commerce" />
@@ -142,6 +48,116 @@
   <meta name="twitter:title" content="СДЭК договор для интернет-магазинов, ИП, ООО и самозанятых" />
   <meta name="twitter:description" content="Официальный договор СДЭК для интернет-магазинов, ИП и юрлиц. Скидки до 50%, наложенный платеж 54-ФЗ, постоплата и интеграция за 15 минут." />
   <meta name="twitter:image" content="https://cdek-ecommerce.ru/og-image.png" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cdek-ecommerce.ru/#website",
+      "url": "https://cdek-ecommerce.ru/",
+      "name": "СДЭК E-Commerce",
+      "inLanguage": "ru-RU"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://cdek-ecommerce.ru/favicon.png",
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520",
+        "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+7-993-322-15-20",
+          "contactType": "sales",
+          "areaServed": "RU",
+          "availableLanguage": [
+            "Russian"
+          ],
+          "contactOption": "TollFree"
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://t.me/cdek_marketplace",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        }
+      ],
+      "potentialAction": [
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в Telegram",
+          "target": "https://t.me/cdek_marketplace"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в WhatsApp",
+          "target": "https://wa.me/79933221520"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в MAX",
+          "target": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+        },
+        {
+          "@type": "OrderAction",
+          "name": "Заключить договор онлайн",
+          "target": "https://cdek-ecommerce.ru/#lead-form"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cdek-ecommerce.ru/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://cdek-ecommerce.ru/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/#service",
+      "name": "СДЭК договор для интернет-магазинов, ИП, ООО и самозанятых",
+      "provider": {
+        "@id": "https://cdek-ecommerce.ru/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "description": "Официальный договор СДЭК для интернет-магазинов, ИП и юрлиц. Скидки до 50%, наложенный платеж 54-ФЗ, постоплата и интеграция за 15 минут.",
+      "offers": {
+        "@type": "Offer",
+        "price": "205",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock",
+        "url": "https://cdek-ecommerce.ru/"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white">
 

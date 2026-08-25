@@ -14,12 +14,8 @@
   <style>body { font-family: 'Roboto', sans-serif; }</style>
 
   <!-- Schema.org Microdata -->
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"}, {"@type": "ListItem", "position": 2, "name": "Интеграции", "item": "https://cdek-ecommerce.ru/integrations/"}, {"@type": "ListItem", "position": 3, "name": "Tilda", "item": "https://cdek-ecommerce.ru/integrations/tilda/"}]}
-  </script>
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Как подключить СДЭК к интернет-магазину на Tilda?", "acceptedAnswer": {"@type": "Answer", "text": "Заключите B2B-договор, получите ключи Rest API в личном кабинете СДЭК и добавьте службу доставки CDEK в настройках корзины Tilda."}}, {"@type": "Question", "name": "Работает ли выбор пунктов выдачи на карте в Tilda?", "acceptedAnswer": {"@type": "Answer", "text": "Да, виджет СДЭК нативно встроен в корзину Tilda и дает покупателю возможность выбрать ПВЗ с автоматическим расчетом цены."}}]}
-  </script>
+  
+  
   <!-- Open Graph & Social Cards -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="СДЭК E-Commerce" />
@@ -35,6 +31,122 @@
   <meta name="twitter:title" content="Интеграция СДЭК с Tilda Publishing — модуль доставки для интернет-магазина" />
   <meta name="twitter:description" content="Официальное подключение СДЭК к Tilda. Интерактивная карта ПВЗ в корзине ST100, расчет стоимости, скидки до 50% по B2B-договору." />
   <meta name="twitter:image" content="https://cdek-ecommerce.ru/og-image.png" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cdek-ecommerce.ru/#website",
+      "url": "https://cdek-ecommerce.ru/",
+      "name": "СДЭК E-Commerce",
+      "inLanguage": "ru-RU"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://cdek-ecommerce.ru/favicon.png",
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520",
+        "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+7-993-322-15-20",
+          "contactType": "sales",
+          "areaServed": "RU",
+          "availableLanguage": [
+            "Russian"
+          ],
+          "contactOption": "TollFree"
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://t.me/cdek_marketplace",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        }
+      ],
+      "potentialAction": [
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в Telegram",
+          "target": "https://t.me/cdek_marketplace"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в WhatsApp",
+          "target": "https://wa.me/79933221520"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в MAX",
+          "target": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+        },
+        {
+          "@type": "OrderAction",
+          "name": "Заключить договор онлайн",
+          "target": "https://cdek-ecommerce.ru/integrations/tilda/#lead-form"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cdek-ecommerce.ru/integrations/tilda/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://cdek-ecommerce.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Интеграция СДЭК с Tilda Publishing",
+          "item": "https://cdek-ecommerce.ru/integrations/tilda/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/integrations/tilda/#service",
+      "name": "Интеграция СДЭК с Tilda Publishing — модуль доставки для интернет-магазина",
+      "provider": {
+        "@id": "https://cdek-ecommerce.ru/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "description": "Официальное подключение СДЭК к Tilda. Интерактивная карта ПВЗ в корзине ST100, расчет стоимости, скидки до 50% по B2B-договору.",
+      "offers": {
+        "@type": "Offer",
+        "price": "205",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock",
+        "url": "https://cdek-ecommerce.ru/integrations/tilda/"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 min-h-screen flex flex-col antialiased">
 

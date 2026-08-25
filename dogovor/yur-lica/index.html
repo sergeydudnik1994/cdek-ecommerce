@@ -28,117 +28,7 @@
   </style>
 
   <!-- Schema.org Microdata (@graph) -->
- <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://cdek-ecommerce.ru/#organization",
-      "name": "СДЭК E-Commerce",
-      "url": "https://cdek-ecommerce.ru/",
-      "logo": "https://cdek-ecommerce.ru/logo.png",
-      "parentOrganization": {
-        "@type": "Organization",
-        "name": "СДЭК",
-        "url": "https://www.cdek.ru"
-      },
-      "email": "sv.dudik@cdek.ru",
-      "telephone": "+7-993-322-15-20",
-      "sameAs": [
-        "https://t.me/cdek_marketplace",
-        "https://wa.me/79933221520"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+7-993-322-15-20",
-        "contactType": "sales",
-        "areaServed": "RU",
-        "availableLanguage": "Russian"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
-        {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
-        {"@type": "ListItem", "position": 3, "name": "Для юридических лиц", "item": "https://cdek-ecommerce.ru/dogovor/yur-lica/"}
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://cdek-ecommerce.ru/dogovor/yur-lica/#service",
-      "name": "Заключение B2B-договора СДЭК для юридических лиц (ООО, АО)",
-      "serviceType": "Корпоративное логистическое обслуживание",
-      "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
-      "areaServed": { "@type": "Country", "name": "Россия" },
-      "description": "Официальный B2B-договор СДЭК для ООО: электронный документооборот (Диадок, СБИС), работа по постоплате с кредитным лимитом, закрывающие акты и УПД, скидки до 50%.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "RUB",
-        "availability": "https://schema.org/InStock"
-      }
-    },
-    {
-      "@type": "HowTo",
-      "name": "Как оформить B2B-договор СДЭК для организации (ООО)",
-      "description": "Пошаговая инструкция по онлайн-подключению юридических лиц к СДЭК через ЭДО.",
-      "totalTime": "PT15M",
-      "step": [
-        {
-          "@type": "HowToStep",
-          "position": 1,
-          "name": "Ввод ИНН компании",
-          "text": "Укажите ИНН организации для автоматической проверки реквизитов по ЕГРЮЛ."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 2,
-          "name": "Подписание через ЭДО (Диадок / СБИС)",
-          "text": "Получите договор в системе электронного документооборота и подпишите КЭП руководителя."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 3,
-          "name": "Активация постоплаты и кредитного лимита",
-          "text": "Начало отгрузок без предоплаты с единым счетом по итогам месяца."
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://cdek-ecommerce.ru/dogovor/yur-lica/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Как передаются закрывающие документы для ООО?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Акты, реестры и УПД направляются автоматически через Диадок или СБИС до 5-го числа каждого месяца."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Возможна ли работа по постоплате для юрлиц?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Да. Юридическим лицам открывается персональный кредитный лимит, позволяющий отправлять грузы без авансов и оплачивать услуги раз в месяц."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Как получить договор по ОСНО с выделенным НДС 22%?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "При оформлении заявки укажите систему налогообложения ОСНО, и договор будет оформлен с полным выделением НДС для налогового вычета."
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
+ 
   <!-- Open Graph & Social Cards -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="СДЭК E-Commerce" />
@@ -154,6 +44,128 @@
   <meta name="twitter:title" content="Договор СДЭК для юридических лиц и ООО | Подключение B2B" />
   <meta name="twitter:description" content="Официальный B2B-договор СДЭК для юридических лиц (ООО, АО): работа через ЭДО (Диадок, СБИС), выделенный НДС 22%, постоплата раз в месяц, скидки до 50% и персональный куратор." />
   <meta name="twitter:image" content="https://cdek-ecommerce.ru/og-image.png" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cdek-ecommerce.ru/#website",
+      "url": "https://cdek-ecommerce.ru/",
+      "name": "СДЭК E-Commerce",
+      "inLanguage": "ru-RU"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://cdek-ecommerce.ru/favicon.png",
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520",
+        "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+7-993-322-15-20",
+          "contactType": "sales",
+          "areaServed": "RU",
+          "availableLanguage": [
+            "Russian"
+          ],
+          "contactOption": "TollFree"
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://t.me/cdek_marketplace",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        }
+      ],
+      "potentialAction": [
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в Telegram",
+          "target": "https://t.me/cdek_marketplace"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в WhatsApp",
+          "target": "https://wa.me/79933221520"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в MAX",
+          "target": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+        },
+        {
+          "@type": "OrderAction",
+          "name": "Заключить договор онлайн",
+          "target": "https://cdek-ecommerce.ru/dogovor/yur-lica/#lead-form"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cdek-ecommerce.ru/dogovor/yur-lica/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://cdek-ecommerce.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Договор",
+          "item": "https://cdek-ecommerce.ru/dogovor/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Договор СДЭК для юридических лиц и ООО",
+          "item": "https://cdek-ecommerce.ru/dogovor/yur-lica/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/dogovor/yur-lica/#service",
+      "name": "Договор СДЭК для юридических лиц и ООО | Подключение B2B",
+      "provider": {
+        "@id": "https://cdek-ecommerce.ru/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "description": "Официальный B2B-договор СДЭК для юридических лиц (ООО, АО): работа через ЭДО (Диадок, СБИС), выделенный НДС 22%, постоплата раз в месяц, скидки до 50% и персональный куратор.",
+      "offers": {
+        "@type": "Offer",
+        "price": "205",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock",
+        "url": "https://cdek-ecommerce.ru/dogovor/yur-lica/"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white">
 

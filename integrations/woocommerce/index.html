@@ -14,12 +14,8 @@
   <style>body { font-family: 'Roboto', sans-serif; }</style>
 
   <!-- Schema.org Microdata -->
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"}, {"@type": "ListItem", "position": 2, "name": "Интеграции", "item": "https://cdek-ecommerce.ru/integrations/"}, {"@type": "ListItem", "position": 3, "name": "WooCommerce", "item": "https://cdek-ecommerce.ru/integrations/woocommerce/"}]}
-  </script>
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Где взять API-ключи для плагина WooCommerce?", "acceptedAnswer": {"@type": "Answer", "text": "Ключи Client ID и Client Secret формируются в личном кабинете СДЭК сразу после подписания электронного договора."}}]}
-  </script>
+  
+  
   <!-- Open Graph & Social Cards -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="СДЭК E-Commerce" />
@@ -35,6 +31,122 @@
   <meta name="twitter:title" content="Плагин СДЭК для WordPress WooCommerce — скачать и настроить доставку" />
   <meta name="twitter:description" content="Бесплатный плагин доставки СДЭК для интернет-магазинов на WooCommerce. Карта ПВЗ, калькулятор и трекинг." />
   <meta name="twitter:image" content="https://cdek-ecommerce.ru/og-image.png" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cdek-ecommerce.ru/#website",
+      "url": "https://cdek-ecommerce.ru/",
+      "name": "СДЭК E-Commerce",
+      "inLanguage": "ru-RU"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://cdek-ecommerce.ru/favicon.png",
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520",
+        "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+7-993-322-15-20",
+          "contactType": "sales",
+          "areaServed": "RU",
+          "availableLanguage": [
+            "Russian"
+          ],
+          "contactOption": "TollFree"
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://t.me/cdek_marketplace",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        }
+      ],
+      "potentialAction": [
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в Telegram",
+          "target": "https://t.me/cdek_marketplace"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в WhatsApp",
+          "target": "https://wa.me/79933221520"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в MAX",
+          "target": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+        },
+        {
+          "@type": "OrderAction",
+          "name": "Заключить договор онлайн",
+          "target": "https://cdek-ecommerce.ru/integrations/woocommerce/#lead-form"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cdek-ecommerce.ru/integrations/woocommerce/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://cdek-ecommerce.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Плагин СДЭК для WordPress WooCommerce",
+          "item": "https://cdek-ecommerce.ru/integrations/woocommerce/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/integrations/woocommerce/#service",
+      "name": "Плагин СДЭК для WordPress WooCommerce — скачать и настроить доставку",
+      "provider": {
+        "@id": "https://cdek-ecommerce.ru/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "description": "Бесплатный плагин доставки СДЭК для интернет-магазинов на WooCommerce. Карта ПВЗ, калькулятор и трекинг.",
+      "offers": {
+        "@type": "Offer",
+        "price": "205",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock",
+        "url": "https://cdek-ecommerce.ru/integrations/woocommerce/"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 min-h-screen flex flex-col antialiased">
 
