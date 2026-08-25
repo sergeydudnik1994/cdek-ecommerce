@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<yml_catalog date="2026-08-25T11:49:26+03:00">
+  <shop>
+    <name>CDEK E-Commerce</name>
+    <company>CDEK E-Commerce</company>
+    <url>https://cdek-ecommerce.ru</url>
+    <currencies>
+      <currency id="RUB" rate="1"/>
+    </currencies>
+    <categories>
+      <category id="1">Логистика и доставка</category>
+      <category id="2" parentId="1">Доставка для интернет-магазинов</category>
+      <category id="3" parentId="1">Доставка для маркетплейсов</category>
+      <category id="4" parentId="1">Специальные услуги доставки</category>
+      <category id="5" parentId="1">B2B договоры</category>
+    </categories>
+    <offers>
+      <offer id="srv_ecom" available="true">
+        <url>https://cdek-ecommerce.ru/dogovor/internet-magazin/</url>
+        <price>205</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>2</categoryId>
+        <picture>https://cdek-ecommerce.ru/favicon.png</picture>
+        <name>Доставка для интернет-магазинов со скидкой до 50%</name>
+        <description>B2B-договор СДЭК для онлайн-магазинов: льготный тариф «Посылка» от 205 руб., наложенный платеж по 54-ФЗ, интеграция с CMS и доставка через 5000+ ПВЗ и курьером.</description>
+      </offer>
+      <offer id="srv_market" available="true">
+        <url>https://cdek-ecommerce.ru/dogovor/marketplace/</url>
+        <price>205</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://cdek-ecommerce.ru/favicon.png</picture>
+        <name>Логистика для маркетплейсов по схемам FBS и DBS</name>
+        <description>Официальная доставка СДЭК для продавцов Wildberries, Ozon и Яндекс Маркет. Отгрузка заказов по схемам FBS, rFBS и DBS с передачей трек-номеров по API.</description>
+      </offer>
+      <offer id="srv_clothes" available="true">
+        <url>https://cdek-ecommerce.ru/services/dostavka-odezhdy/</url>
+        <price>250</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>4</categoryId>
+        <picture>https://cdek-ecommerce.ru/favicon.png</picture>
+        <name>Доставка одежды и обуви с примеркой и частичным выкупом</name>
+        <description>Специализированный сервис СДЭК для магазинов одежды: примерка в ПВЗ и на дому до 15 минут, частичный выкуп товаров, бесплатный возврат непринятых позиций.</description>
+      </offer>
+      <offer id="srv_fulf" available="true">
+        <url>https://cdek-ecommerce.ru/services/fulfillment/</url>
+        <price>1500</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>4</categoryId>
+        <picture>https://cdek-ecommerce.ru/favicon.png</picture>
+        <name>Фулфилмент под ключ для e-commerce и селлеров</name>
+        <description>Комплексный фулфилмент СДЭК: ответственное хранение на складе класса А, маркировка Честный Знак, комплектация, упаковка и оперативная отправка заказов.</description>
+      </offer>
+      <offer id="srv_heavy" available="true">
+        <url>https://cdek-ecommerce.ru/dogovor/krupnogabarit/</url>
+        <price>450</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>4</categoryId>
+        <picture>https://cdek-ecommerce.ru/favicon.png</picture>
+        <name>Доставка крупногабаритных грузов (КГТ) по России</name>
+        <description>Магистральная и курьерская доставка крупногабаритных грузов и оборудования по специальным тарифам B2B с забором с вашего склада.</description>
+      </offer>
+      <offer id="srv_parts" available="true">
+        <url>https://cdek-ecommerce.ru/dogovor/avtozapchasti/</url>
+        <price>250</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>4</categoryId>
+        <picture>https://cdek-ecommerce.ru/favicon.png</picture>
+        <name>Доставка автозапчастей и агрегатов для СТО и магазинов</name>
+        <description>Корпоративная логистика для автобизнеса: экспресс-доставка запчастей, кузовных деталей и расходных материалов без переплаты НДС по сетке УСН.</description>
+      </offer>
+      <offer id="srv_ip" available="true">
+        <url>https://cdek-ecommerce.ru/dogovor/ip/</url>
+        <price>205</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>5</categoryId>
+        <picture>https://cdek-ecommerce.ru/favicon.png</picture>
+        <name>Заключение договора СДЭК для ИП онлайн за 15 минут</name>
+        <description>Официальное оформление договора СДЭК для индивидуальных предпринимателей: тарифная сетка УСН без НДС 22%, постоплата раз в месяц, наложенный платеж 54-ФЗ.</description>
+      </offer>
+      <offer id="srv_self" available="true">
+        <url>https://cdek-ecommerce.ru/dogovor/samozanyatye/</url>
+        <price>205</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>5</categoryId>
+        <picture>https://cdek-ecommerce.ru/favicon.png</picture>
+        <name>Договор СДЭК для самозанятых (плательщиков НПД)</name>
+        <description>Дистанционное подключение самозанятых к корпоративным тарифам СДЭК: скидка до 50% на отправку посылок, интеграция по API, оплата картой в ЛК.</description>
+      </offer>
+      <offer id="srv_llc" available="true">
+        <url>https://cdek-ecommerce.ru/dogovor/yur-lica/</url>
+        <price>205</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>5</categoryId>
+        <picture>https://cdek-ecommerce.ru/favicon.png</picture>
+        <name>B2B-договор СДЭК для юридических лиц и ООО</name>
+        <description>Корпоративное обслуживание юрлиц: документооборот через Диадок и СБИС (ЭДО), выбор налоговой сетки (УСН / ОСНО с НДС), персональный менеджер.</description>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>
