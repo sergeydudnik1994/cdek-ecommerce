@@ -30,6 +30,8 @@ jobs:
           BASE_URL = "https://cdek-ecommerce.ru"
           DEFAULT_OG_IMAGE = f"{BASE_URL}/og-image.png"
 
+          updated_count = 0
+
           for root, dirs, files in os.walk(BASE_DIR):
               if any(skip in root for skip in [".git", ".github", "components", "scripts"]):
                   continue
@@ -54,22 +56,23 @@ jobs:
 
                       og_block = (
                           '<!-- Open Graph & Social Cards -->\n'
-                          '    <meta property="og:type" content="website" />\n'
-                          '    <meta property="og:site_name" content="СДЭК E-Commerce" />\n'
-                          '    <meta property="og:locale" content="ru_RU" />\n'
-                          f'    <meta property="og:title" content="{title}" />\n'
-                          f'    <meta property="og:description" content="{desc}" />\n'
-                          f'    <meta property="og:url" content="{page_url}" />\n'
-                          f'    <meta property="og:image" content="{DEFAULT_OG_IMAGE}" />\n'
-                          '    <meta property="og:image:width" content="1200" />\n'
-                          '    <meta property="og:image:height" content="630" />\n'
-                          '    <meta property="og:image:type" content="image/png" />\n'
-                          '    <meta name="twitter:card" content="summary_large_image" />\n'
-                          f'    <meta name="twitter:title" content="{title}" />\n'
-                          f'    <meta name="twitter:description" content="{desc}" />\n'
-                          f'    <meta name="twitter:image" content="{DEFAULT_OG_IMAGE}" />'
+                          '  <meta property="og:type" content="website" />\n'
+                          '  <meta property="og:site_name" content="СДЭК E-Commerce" />\n'
+                          '  <meta property="og:locale" content="ru_RU" />\n'
+                          f'  <meta property="og:title" content="{title}" />\n'
+                          f'  <meta property="og:description" content="{desc}" />\n'
+                          f'  <meta property="og:url" content="{page_url}" />\n'
+                          f'  <meta property="og:image" content="{DEFAULT_OG_IMAGE}" />\n'
+                          '  <meta property="og:image:width" content="1200" />\n'
+                          '  <meta property="og:image:height" content="630" />\n'
+                          '  <meta property="og:image:type" content="image/png" />\n'
+                          '  <meta name="twitter:card" content="summary_large_image" />\n'
+                          f'  <meta name="twitter:title" content="{title}" />\n'
+                          f'  <meta name="twitter:description" content="{desc}" />\n'
+                          f'  <meta name="twitter:image" content="{DEFAULT_OG_IMAGE}" />'
                       )
 
+                      # Очищаем старые теги
                       content = re.sub(r'<!--\s*(?:Open Graph|Twitter).*?-->', '', content, flags=re.DOTALL)
                       content = re.sub(r'\n\s*<meta\s+property=["\']og:[^>]*>', '', content)
                       content = re.sub(r'\n\s*<meta\s+name=["\']twitter:[^>]*>', '', content)
@@ -78,19 +81,20 @@ jobs:
                           content = content.replace("</head>", f"  {og_block}\n</head>")
                           with open(filepath, "w", encoding="utf-8") as f:
                               f.write(content)
+                          updated_count += 1
                           print(f"Обновлен: {filepath}")
 
-          print("Все страницы успешно обработаны.")
+          print(f"Всего обновлено файлов: {updated_count}")
 
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A *.html
+          git add .
           if ! git diff --cached --quiet; then
-            git commit -m "chore: auto-update Open Graph and Twitter cards [skip ci]"
+            git commit -m "chore: auto-update Open Graph and Twitter cards on all pages [skip ci]"
             git pull --rebase origin main
             git push origin main
           else
-            echo "Изменений нет, все теги актуальны."
+            echo "Изменений нет."
           fi
