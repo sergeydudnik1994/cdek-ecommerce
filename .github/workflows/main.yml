@@ -36,20 +36,22 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Generate sitemap.xml
-        run: python scripts/generate_sitemap.py
+      - name: Generate sitemap.xml and services.yml
+        run: |
+          python scripts/generate_sitemap.py
+          python scripts/generate_yml_feed.py
 
-      - name: Commit & push updated sitemap.xml
+      - name: Commit & push updated sitemap and feeds
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add sitemap.xml
+          git add sitemap.xml services.yml
           if ! git diff --cached --quiet; then
-            git commit -m "automated: update sitemap.xml [skip ci]"
+            git commit -m "automated: update sitemap and yml feed [skip ci]"
             git pull --rebase origin main
             git push origin main
           else
-            echo "sitemap.xml не изменился, коммит не требуется."
+            echo "Файлы sitemap.xml и services.yml не изменились, коммит не требуется."
           fi
 
   deploy:
