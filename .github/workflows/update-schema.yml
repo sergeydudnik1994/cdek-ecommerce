@@ -1,4 +1,4 @@
-name: Update Schema.org Rich Snippets
+name: Update LocalBusiness Schema
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ permissions:
   contents: write
 
 jobs:
-  update-schema:
+  sync-local-business:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Inject Schema.org with Action Buttons
+      - name: Inject Full LocalBusiness Schema
         shell: python
         run: |
           import os
@@ -46,14 +46,12 @@ jobs:
                       with open(filepath, "r", encoding="utf-8") as f:
                           content = f.read()
 
-                      # Извлекаем title и description
                       title_m = re.search(r"<title>(.*?)</title>", content, re.IGNORECASE | re.DOTALL)
                       title = title_m.group(1).strip() if title_m else "СДЭК E-Commerce"
 
                       desc_m = re.search(r'<meta\s+name=["\']description["\']\s+content=["\'](.*?)["\']', content, re.IGNORECASE)
                       desc = desc_m.group(1).strip() if desc_m else title
 
-                      # Формируем URL страницы
                       rel_path = os.path.relpath(filepath, BASE_DIR).replace("\\", "/")
                       if rel_path == "index.html":
                           page_url = f"{BASE_URL}/"
@@ -63,7 +61,6 @@ jobs:
                           page_url = f"{BASE_URL}/{clean_path}/" if clean_path else f"{BASE_URL}/"
                           page_name = title.split("|")[0].split("—")[0].split(":")[0].strip()
 
-                      # Формируем хлебные крошки
                       breadcrumbs = [
                           {"@type": "ListItem", "position": 1, "name": "Главная", "item": f"{BASE_URL}/"}
                       ]
@@ -73,7 +70,6 @@ jobs:
                       elif page_url != f"{BASE_URL}/":
                           breadcrumbs.append({"@type": "ListItem", "position": 2, "name": page_name, "item": page_url})
 
-                      # Сборка графа Schema.org
                       schema_graph = {
                           "@context": "https://schema.org",
                           "@graph": [
@@ -85,13 +81,30 @@ jobs:
                                   "inLanguage": "ru-RU"
                               },
                               {
-                                  "@type": "Organization",
+                                  "@type": ["Organization", "LocalBusiness"],
                                   "@id": f"{BASE_URL}/#organization",
                                   "name": "СДЭК E-Commerce",
                                   "url": f"{BASE_URL}/",
                                   "logo": f"{BASE_URL}/favicon.png",
+                                  "image": f"{BASE_URL}/og-image.png",
                                   "email": EMAIL,
                                   "telephone": PHONE,
+                                  "priceRange": "от 205 ₽",
+                                  "address": {
+                                      "@type": "PostalAddress",
+                                      "streetAddress": "Бородинская ул., 156/2",
+                                      "addressLocality": "Краснодар",
+                                      "addressRegion": "Краснодарский край",
+                                      "addressCountry": "RU"
+                                  },
+                                  "openingHoursSpecification": [
+                                      {
+                                          "@type": "OpeningHoursSpecification",
+                                          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                                          "opens": "09:00",
+                                          "closes": "18:00"
+                                      }
+                                  ],
                                   "sameAs": [TELEGRAM, WHATSAPP, MAX_APP],
                                   "contactPoint": [
                                       {
@@ -164,16 +177,14 @@ jobs:
                       schema_json_str = json.dumps(schema_graph, ensure_ascii=False, indent=2)
                       new_schema_block = f'<script type="application/ld+json">\n{schema_json_str}\n</script>'
 
-                      # Удаляем старую разметку
                       content_clean = re.sub(r'<script\s+type=["\']application/ld\+json["\']>.*?</script>', '', content, flags=re.DOTALL)
 
-                      # Вставляем перед </head>
                       if "</head>" in content_clean:
                           updated_html = content_clean.replace("</head>", f"  {new_schema_block}\n</head>")
                           with open(filepath, "w", encoding="utf-8") as f:
                               f.write(updated_html)
                           count += 1
-                          print(f"Обновлена микроразметка: {filepath}")
+                          print(f"Обновлен: {filepath}")
 
           print(f"Всего файлов обновлено: {count}")
 
@@ -183,7 +194,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           if ! git diff --cached --quiet; then
-            git commit -m "feat(seo): update Schema.org with MAX messenger and rich actions [skip ci]"
+            git commit -m "feat(seo): sync LocalBusiness address, schedule and priceRange [skip ci]"
             git pull --rebase origin main
             git push origin main
           else
