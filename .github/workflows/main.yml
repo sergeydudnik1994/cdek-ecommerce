@@ -39,7 +39,6 @@ jobs:
       - name: Generate sitemap.xml and services.yml
         run: |
           python scripts/generate_sitemap.py
-          python scripts/generate_yml_feed.py
 
       - name: Commit & push updated sitemap and feeds
         run: |
