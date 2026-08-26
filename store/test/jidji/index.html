@@ -1,70 +1,83 @@
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111763499', 'ym');
+    ym(111763499, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/111763499" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JIDJI — Фирменный интернет-магазин бренда | Доставка СДЭК</title>
-  <meta name="description" content="Официальная онлайн-витрина бренда JIDJI. Базовая коллекция одежды оверсайз, доставка СДЭК по всей России, оплата по СБП." />
+  <title>JIDJI — Официальный магазин рюкзаков и сумок | Городские и спортивные рюкзаки</title>
+  <meta name="description" content="Фирменные рюкзаки JIDJI: городские, школьные, спортивные и тактические модели с отделением для ноутбука и влагозащитой. Доставка СДЭК по всей России, оплата по СБП." />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .badge-blur { backdrop-filter: blur(8px); }
+    body { font-family: 'Inter', sans-serif; }
+    .font-brand { font-family: 'Space Grotesk', sans-serif; }
   </style>
 </head>
-<body class="bg-[#090D14] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#1AB248] selection:text-white">
+<body class="bg-[#0B0D13] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-white selection:text-black">
 
-  <!-- ДЕМОНСТРАЦИОННЫЙ ПЛАВАЮЩИЙ ТОПБАР ДЛЯ КЛИЕНТА -->
-  <div class="sticky top-0 z-50 bg-[#0B1522]/95 border-b border-white/10 px-4 py-2.5 badge-blur">
+  <!-- ДЕМО-ТОПБАР ДЛЯ ПОКАЗА СЕЛЛЕРУ -->
+  <div class="sticky top-0 z-50 bg-[#121622]/95 border-b border-white/10 px-4 py-2 backdrop-blur-md">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
       <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-[#22E58B] animate-ping"></span>
-        <span class="text-slate-300">Демонстрационный референс для селлера: <b>JIDJI (Ozon / Wildberries)</b></span>
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="text-slate-300">Референс интернет-магазина для бренда <b>JIDJI</b> (Селлер Ozon / Wildberries)</span>
       </div>
       <div class="flex items-center gap-3">
-        <span class="text-slate-400 hidden md:inline">Запуск такой витрины со СДЭК и СБП за 2 дня</span>
-        <a href="/store/" class="px-3 py-1 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black rounded-lg uppercase tracking-wider text-[11px] transition shadow-md shadow-[#1AB248]/30">
-          Заказать за 15 000 ₽ →
+        <span class="text-slate-400 hidden md:inline">Запуск под ваш бренд за 2 дня</span>
+        <a href="/store/" class="px-3 py-1 bg-white hover:bg-slate-200 text-slate-950 font-black rounded-lg uppercase tracking-wider text-[11px] transition">
+          Подключить витрину →
         </a>
       </div>
     </div>
   </div>
 
-  <!-- ШАПКА МАГАЗИНА СЕЛЛЕРА -->
-  <header class="border-b border-white/[0.08] bg-[#06090F]/80 sticky top-10 z-40 backdrop-blur-md">
+  <!-- ШАПКА БРЕНДА JIDJI -->
+  <header class="border-b border-white/[0.08] bg-[#0B0D13]/90 sticky top-9 z-40 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       
-      <!-- Бренд -->
-      <div class="flex items-center gap-6">
-        <a href="#" class="text-2xl font-black tracking-widest text-white uppercase flex items-center gap-1.5">
-          JIDJI<span class="text-[#22E58B] text-3xl leading-none">.</span>
+      <!-- Логотип бренда -->
+      <div class="flex items-center gap-8">
+        <a href="#" class="font-brand text-2xl font-black tracking-widest text-white uppercase flex items-center gap-1.5">
+          JIDJI<span class="text-white/40">/</span><span class="text-xs font-normal tracking-normal text-slate-400 uppercase">Urban Gear</span>
         </a>
-        <nav class="hidden md:flex items-center gap-5 text-xs font-semibold text-slate-300">
-          <button onclick="filterCategory('all')" class="cat-btn text-[#22E58B] hover:text-white transition" data-cat="all">Все товары</button>
-          <button onclick="filterCategory('hoodie')" class="cat-btn text-slate-400 hover:text-white transition" data-cat="hoodie">Худи & Свитшоты</button>
-          <button onclick="filterCategory('pants')" class="cat-btn text-slate-400 hover:text-white transition" data-cat="pants">Джоггеры</button>
-          <button onclick="filterCategory('tshirts')" class="cat-btn text-slate-400 hover:text-white transition" data-cat="tshirts">Футболки</button>
+        <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-400">
+          <button onclick="filterCategory('all')" class="cat-btn text-white transition" data-cat="all">Все рюкзаки</button>
+          <button onclick="filterCategory('urban')" class="cat-btn hover:text-white transition" data-cat="urban">Городские</button>
+          <button onclick="filterCategory('sport')" class="cat-btn hover:text-white transition" data-cat="sport">Спортивные & Школа</button>
+          <button onclick="filterCategory('tech')" class="cat-btn hover:text-white transition" data-cat="tech">Для ноутбука</button>
         </nav>
       </div>
 
-      <!-- Корзина и контакты -->
+      <!-- Корзина -->
       <div class="flex items-center gap-4">
         <div class="hidden sm:flex items-center gap-2 text-xs text-slate-400 border-r border-white/10 pr-4">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#22E58B]"></span>
-          <span>ПВЗ СДЭК: от 205 ₽</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          <span>Доставка в ПВЗ СДЭК: от 205 ₽</span>
         </div>
 
         <button onclick="openCart()" class="relative p-2.5 bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 transition cursor-pointer flex items-center gap-2">
-          <svg class="w-5 h-5 text-[#22E58B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
           </svg>
           <span class="text-xs font-bold text-white hidden sm:inline">Корзина</span>
-          <span id="cartCount" class="w-5 h-5 rounded-full bg-[#1AB248] text-white text-[11px] font-black flex items-center justify-center">0</span>
+          <span id="cartCount" class="w-5 h-5 rounded-full bg-white text-black text-[11px] font-black flex items-center justify-center">0</span>
         </button>
       </div>
 
@@ -72,113 +85,123 @@
   </header>
 
   <!-- БАННЕР БРЕНДА -->
-  <section class="py-10 border-b border-white/[0.08] relative overflow-hidden bg-gradient-to-b from-[#0B1522] to-transparent">
+  <section class="py-12 sm:py-16 border-b border-white/[0.08] relative overflow-hidden bg-gradient-to-b from-[#121622] to-transparent">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-12 gap-6 items-center">
-        <div class="md:col-span-8 space-y-3">
-          <span class="px-2.5 py-1 rounded-md bg-[#22E58B]/10 text-[#22E58B] border border-[#22E58B]/20 text-[11px] font-extrabold uppercase tracking-wider">
-            Официальный D2C магазин
+      <div class="grid md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-8 space-y-4">
+          <span class="px-3 py-1 rounded-full bg-white/10 text-slate-200 border border-white/15 text-[11px] font-bold uppercase tracking-wider">
+            Официальный магазин бренда
           </span>
-          <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
-            Коллекция Oversize 2026
+          <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.1]">
+            Городские и спортивные рюкзаки JIDJI
           </h1>
-          <p class="text-slate-400 text-sm max-w-xl">
-            Прямой заказ у производителя: цены без наценки маркетплейсов 35%, быстрая доставка через 5 000+ ПВЗ СДЭК и безопасная оплата по СБП.
+          <p class="text-slate-400 text-sm max-w-xl leading-relaxed">
+            Влагозащитная ткань Oxford, усиленные швы, анатомические лямки и защищенные отсеки для ноутбука 15.6". Цены без наценки площадок.
           </p>
-        </div>
-        <div class="md:col-span-4 flex md:justify-end gap-3 text-xs">
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center w-full">
-            <div class="text-[#22E58B] text-xl font-black">−15%</div>
-            <div class="text-slate-400 text-[11px] mt-0.5">по промокоду FLAYER15</div>
+          <div class="flex flex-wrap gap-2 pt-2 text-xs">
+            <span class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 font-semibold text-slate-300">✓ Ткань Оксфорд 900D</span>
+            <span class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 font-semibold text-slate-300">✓ Отсек для ноутбука</span>
+            <span class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 font-semibold text-slate-300">✓ СДЭК по всей России</span>
           </div>
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center w-full">
-            <div class="text-white text-xl font-black">2–4 дня</div>
-            <div class="text-slate-400 text-[11px] mt-0.5">СДЭК по России</div>
+        </div>
+
+        <div class="md:col-span-4 flex md:justify-end gap-3 text-xs">
+          <div class="bg-white/5 border border-white/10 rounded-3xl p-5 text-center w-full space-y-1">
+            <div class="text-2xl font-black text-white">−15%</div>
+            <div class="text-slate-400 text-[11px]">по промокоду из флаера</div>
+            <div class="text-[10px] text-emerald-400 font-bold">JIDJI15</div>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-3xl p-5 text-center w-full space-y-1">
+            <div class="text-2xl font-black text-white">2–3 дня</div>
+            <div class="text-slate-400 text-[11px]">Выдача в 5000+ ПВЗ</div>
+            <div class="text-[10px] text-slate-400">от 205 ₽</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- КАТАЛОГ ТОВАРОВ СЕЛЛЕРА -->
+  <!-- КАТАЛОГ РЮКЗАКОВ JIDJI -->
   <main class="flex-grow py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
     <div class="flex items-center justify-between mb-8">
-      <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">Каталог товаров</h2>
-      <div class="text-xs text-slate-400">Показано: <span id="itemCount" class="font-bold text-white">6</span> позиций</div>
+      <div>
+        <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">Рюкзаки в наличии</h2>
+        <p class="text-xs text-slate-400 mt-0.5">Прямой заказ со склада производителя</p>
+      </div>
+      <div class="text-xs text-slate-400">Показано: <span id="itemCount" class="font-bold text-white">6</span> моделей</div>
     </div>
 
-    <!-- Сетка карточек -->
+    <!-- Сетка товаров -->
     <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-      <!-- Рендерится скриптом -->
+      <!-- Рендерится JS -->
     </div>
   </main>
 
-  <!-- ВЫДВИЖНАЯ КОРЗИНА (DRAWER) С РАСЧЕТОМ СДЭК И СБП -->
-  <div id="cartDrawer" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex justify-end">
-    <div class="w-full max-w-lg bg-[#0C121D] border-l border-white/10 h-full flex flex-col justify-between p-6 overflow-y-auto">
+  <!-- КОРЗИНА И ОФОРМЛЕНИЕ ЗАКАЗА (СДЭК + СБП) -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex justify-end">
+    <div class="w-full max-w-lg bg-[#0F121B] border-l border-white/10 h-full flex flex-col justify-between p-6 overflow-y-auto">
       
-      <!-- Шапка корзины -->
       <div>
         <div class="flex items-center justify-between pb-4 border-b border-white/10">
           <div class="flex items-center gap-2">
             <h3 class="text-lg font-black text-white">Корзина заказа</h3>
-            <span id="drawerBadge" class="text-xs text-[#22E58B] bg-[#22E58B]/10 px-2 py-0.5 rounded-full font-bold">0 шт</span>
+            <span id="drawerBadge" class="text-xs bg-white/10 text-white px-2 py-0.5 rounded-full font-bold">0 шт</span>
           </div>
-          <button onclick="closeCart()" class="text-slate-400 hover:text-white p-1 text-xl font-bold cursor-pointer">&times;</button>
+          <button onclick="closeCart()" class="text-slate-400 hover:text-white p-1 text-2xl font-bold cursor-pointer">&times;</button>
         </div>
 
-        <!-- Список добавленных товаров -->
+        <!-- Список выбранных позиций -->
         <div id="cartItemsList" class="divide-y divide-white/5 py-4 space-y-3">
-          <p class="text-slate-500 text-xs text-center py-8">Корзина пока пуста</p>
+          <p class="text-slate-500 text-xs text-center py-8">В корзине пока нет товаров</p>
         </div>
 
         <!-- Доставка СДЭК -->
         <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3 my-4">
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold text-white flex items-center gap-1.5">
-              <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              Способ доставки СДЭК
+              <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Доставка СДЭК по России
             </span>
-            <span class="text-[10px] text-[#22E58B] font-bold uppercase">Скидка B2B 50%</span>
+            <span class="text-[10px] text-emerald-400 font-bold uppercase">Скидка 50%</span>
           </div>
 
           <div class="grid grid-cols-2 gap-2 text-xs">
-            <label class="flex items-center gap-2 p-2.5 rounded-xl border border-[#22E58B]/40 bg-[#22E58B]/5 cursor-pointer">
-              <input type="radio" name="delivery" value="205" checked onchange="calcTotal()" class="accent-[#22E58B]">
+            <label class="flex items-center gap-2 p-2.5 rounded-xl border border-white/20 bg-white/5 cursor-pointer">
+              <input type="radio" name="delivery" value="205" checked onchange="calcTotal()" class="accent-white">
               <div>
-                <div class="font-bold text-white">Пункт ПВЗ</div>
+                <div class="font-bold text-white">Пункт ПВЗ СДЭК</div>
                 <div class="text-[10px] text-slate-400">205 ₽ · 2–3 дня</div>
               </div>
             </label>
-            <label class="flex items-center gap-2 p-2.5 rounded-xl border border-white/10 bg-white/5 cursor-pointer">
-              <input type="radio" name="delivery" value="390" onchange="calcTotal()" class="accent-[#22E58B]">
+            <label class="flex items-center gap-2 p-2.5 rounded-xl border border-white/10 bg-white/[0.02] cursor-pointer">
+              <input type="radio" name="delivery" value="390" onchange="calcTotal()" class="accent-white">
               <div>
-                <div class="font-bold text-white">Курьер в руки</div>
+                <div class="font-bold text-white">Курьер до двери</div>
                 <div class="text-[10px] text-slate-400">390 ₽ · 1–2 дня</div>
               </div>
             </label>
           </div>
         </div>
 
-        <!-- Форма оформления -->
+        <!-- Форма покупателя -->
         <form id="orderForm" onsubmit="submitOrder(event)" class="space-y-3 pt-2">
           <div>
-            <label class="block text-[11px] font-bold uppercase text-slate-400 mb-1">Имя получателя *</label>
-            <input type="text" id="custName" required placeholder="Константин" class="w-full bg-[#06090F] border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#22E58B]">
+            <label class="block text-[11px] font-bold uppercase text-slate-400 mb-1">Имя и Фамилия *</label>
+            <input type="text" id="custName" required placeholder="Константин" class="w-full bg-[#0B0D13] border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-white">
           </div>
           <div>
-            <label class="block text-[11px] font-bold uppercase text-slate-400 mb-1">Телефон *</label>
-            <input type="tel" id="custPhone" required placeholder="+7 (999) 000-00-00" class="w-full bg-[#06090F] border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#22E58B]">
+            <label class="block text-[11px] font-bold uppercase text-slate-400 mb-1">Телефон для трек-номера *</label>
+            <input type="tel" id="custPhone" required placeholder="+7 (999) 000-00-00" class="w-full bg-[#0B0D13] border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-white">
           </div>
           <div>
-            <label class="block text-[11px] font-bold uppercase text-slate-400 mb-1">Город и адрес ПВЗ СДЭК *</label>
-            <input type="text" id="custAddress" required placeholder="Москва, ул. Ленина 10 (ПВЗ MSK12)" class="w-full bg-[#06090F] border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#22E58B]">
+            <label class="block text-[11px] font-bold uppercase text-slate-400 mb-1">Город и адрес удобного ПВЗ СДЭК *</label>
+            <input type="text" id="custAddress" required placeholder="Москва, ул. Тверская 12 (ПВЗ MSK4)" class="w-full bg-[#0B0D13] border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-white">
           </div>
 
-          <!-- Итоговый блок -->
+          <!-- Итог -->
           <div class="pt-4 border-t border-white/10 space-y-1.5 text-xs">
             <div class="flex justify-between text-slate-400">
-              <span>Товары:</span>
+              <span>Стоимость рюкзаков:</span>
               <span id="subTotalSum">0 ₽</span>
             </div>
             <div class="flex justify-between text-slate-400">
@@ -187,136 +210,141 @@
             </div>
             <div class="flex justify-between text-base font-black text-white pt-2">
               <span>Итого к оплате:</span>
-              <span id="totalOrderSum" class="text-[#22E58B]">0 ₽</span>
+              <span id="totalOrderSum" class="text-emerald-400">0 ₽</span>
             </div>
           </div>
 
-          <!-- Кнопка оплаты СБП -->
-          <button type="submit" id="payBtn" class="w-full mt-4 py-3.5 bg-gradient-to-r from-[#22E58B] to-[#00b341] hover:brightness-110 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl transition shadow-lg shadow-[#22E58B]/20 cursor-pointer">
-            Оплатить через СБП (0% комиссии) →
+          <!-- Оплата СБП -->
+          <button type="submit" id="payBtn" class="w-full mt-4 py-3.5 bg-white hover:bg-slate-200 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl transition cursor-pointer">
+            Оплатить через СБП (QR-код 0%) →
           </button>
         </form>
       </div>
 
-      <!-- Футер модалки -->
       <div class="pt-4 text-[10px] text-slate-500 text-center">
-        🔒 Безопасный платеж СБП · Фискальный чек по 54-ФЗ
+        🔒 Безопасный платеж · Электронный чек по 54-ФЗ
       </div>
     </div>
   </div>
 
-  <!-- ФУТЕР МАГАЗИНА СЕЛЛЕРА -->
-  <footer class="border-t border-white/10 bg-[#06090F] py-8 text-xs text-slate-500">
+  <!-- ФУТЕР БРЕНДА -->
+  <footer class="border-t border-white/10 bg-[#07090D] py-8 text-xs text-slate-500">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        © 2026 JIDJI Brand Store. Все права защищены.
+        © 2026 JIDJI Urban Gear. Официальный онлайн-магазин бренда.
       </div>
       <div class="flex items-center gap-4 text-slate-400">
         <span>Логистика: <b>СДЭК B2B</b></span>
-        <span>Оплата: <b>СБП (QR-код)</b></span>
+        <span>Оплата: <b>СБП 54-ФЗ</b></span>
       </div>
     </div>
   </footer>
 
-  <!-- JS: ЛОГИКА ТОВАРОВ, КОРЗИНЫ И СДЭК РАСЧЕТА -->
+  <!-- JS: КАТАЛОГ РЮКЗАКОВ JIDJI, КОРЗИНА И СДЭК -->
   <script>
     const products = [
       {
         id: 1,
-        cat: 'hoodie',
-        name: 'Худи оверсайз с начесом JIDJI Heavy',
-        price: 3890,
-        oldPrice: 5990,
-        sizes: ['S', 'M', 'L', 'XL'],
-        img: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&auto=format&fit=crop&q=80',
-        badge: 'Хит продаж'
+        cat: 'urban',
+        name: 'Рюкзак мужской городской спортивный JIDJI Urban Black',
+        spec: 'Объем 25 л · Отсек под ноут 15.6" · Влагозащита',
+        price: 1890,
+        oldPrice: 3990,
+        colors: ['Черный', 'Графит'],
+        img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&auto=format&fit=crop&q=80',
+        badge: 'Хит Ozon'
       },
       {
         id: 2,
-        cat: 'hoodie',
-        name: 'Свитшот свободного кроя JIDJI Basic Black',
-        price: 2990,
-        oldPrice: 4490,
-        sizes: ['M', 'L', 'XL'],
-        img: 'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=600&auto=format&fit=crop&q=80',
-        badge: 'New'
+        cat: 'sport',
+        name: 'Рюкзак для тренировок и школы JIDJI Active Sport',
+        spec: 'Объем 30 л · Отделение для обуви · Оксфорд 900D',
+        price: 2190,
+        oldPrice: 4290,
+        colors: ['Черный', 'Хаки'],
+        img: 'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=800&auto=format&fit=crop&q=80',
+        badge: 'Топ выбор'
       },
       {
         id: 3,
-        cat: 'pants',
-        name: 'Брюки джоггеры плотные JIDJI Relax Fit',
-        price: 3490,
-        oldPrice: 4990,
-        sizes: ['S', 'M', 'L'],
-        img: 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&auto=format&fit=crop&q=80',
-        badge: null
+        cat: 'tech',
+        name: 'Рюкзак водонепроницаемый для ноутбука JIDJI Pro Tech',
+        spec: 'USB-порт · Противоударный слот 16" · Карман антивор',
+        price: 2690,
+        oldPrice: 5490,
+        colors: ['Матовый черный'],
+        img: 'https://images.unsplash.com/photo-1581605405669-fcdf81165afa?w=800&auto=format&fit=crop&q=80',
+        badge: 'Влагозащита'
       },
       {
         id: 4,
-        cat: 'tshirts',
-        name: 'Футболка оверсайз Heavy Cotton 240g',
-        price: 1890,
-        oldPrice: 2790,
-        sizes: ['XS', 'S', 'M', 'L', 'XL'],
-        img: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&auto=format&fit=crop&q=80',
-        badge: 'Топ цена'
+        cat: 'urban',
+        name: 'Компактный городской рюкзак на каждый день JIDJI Daily',
+        spec: 'Объем 18 л · Легкий 450 г · Ткань с пропиткой',
+        price: 1590,
+        oldPrice: 2990,
+        colors: ['Черный', 'Серый'],
+        img: 'https://images.unsplash.com/photo-1577733966973-d680bffd2e80?w=800&auto=format&fit=crop&q=80',
+        badge: 'Выгода'
       },
       {
         id: 5,
-        cat: 'hoodie',
-        name: 'Костюм спортивный оверсайз (худи + джоггеры)',
-        price: 6490,
-        oldPrice: 9990,
-        sizes: ['S', 'M', 'L'],
-        img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&auto=format&fit=crop&q=80',
-        badge: 'Выгода −35%'
+        cat: 'sport',
+        name: 'Тактический рюкзак для зала и походов JIDJI Tactical 35L',
+        spec: 'Стропы MOLLE · Грудная стяжка · Усиленное дно',
+        price: 2990,
+        oldPrice: 5990,
+        colors: ['Black Camo', 'Олива'],
+        img: 'https://images.unsplash.com/photo-1546938576-6e6a64f317cc?w=800&auto=format&fit=crop&q=80',
+        badge: 'Новинка'
       },
       {
         id: 6,
-        cat: 'tshirts',
-        name: 'Лонгслив вареный JIDJI Vintage Wash',
-        price: 2490,
-        oldPrice: 3690,
-        sizes: ['M', 'L', 'XL'],
-        img: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&auto=format&fit=crop&q=80',
+        cat: 'tech',
+        name: 'Сумка-слинг через плечо кросс-боди JIDJI CrossBag',
+        spec: 'Водоотталкивающий · Для планшета 11" и документов',
+        price: 1390,
+        oldPrice: 2690,
+        colors: ['Черный'],
+        img: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&auto=format&fit=crop&q=80',
         badge: null
       }
     ];
 
     let cart = [];
 
-    // Рендер каталога
     function renderProducts(items) {
       const grid = document.getElementById('productsGrid');
       grid.innerHTML = items.map(p => `
-        <div class="bg-[#0C121D] border border-white/[0.08] rounded-3xl overflow-hidden flex flex-col justify-between hover:border-white/20 transition group">
-          <div class="relative overflow-hidden aspect-[4/5] bg-slate-900">
+        <div class="bg-[#121622] border border-white/[0.08] rounded-3xl overflow-hidden flex flex-col justify-between hover:border-white/20 transition group">
+          <div class="relative overflow-hidden aspect-[4/4] bg-slate-900">
             <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
-            ${p.badge ? `<span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-[#22E58B] text-slate-950 font-black text-[10px] uppercase tracking-wider">${p.badge}</span>` : ''}
+            ${p.badge ? `<span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-white text-black font-black text-[10px] uppercase tracking-wider">${p.badge}</span>` : ''}
           </div>
           
           <div class="p-5 space-y-3">
             <div>
-              <div class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Артикул: JIDJI-${p.id}0${p.id}</div>
-              <h3 class="text-sm font-bold text-white mt-1 group-hover:text-[#22E58B] transition">${p.name}</h3>
+              <div class="text-[10px] uppercase tracking-wider text-slate-400 font-mono">Арт: JIDJI-BP0${p.id}</div>
+              <h3 class="text-sm font-bold text-white mt-1 leading-snug">${p.name}</h3>
+              <p class="text-[11px] text-slate-400 mt-1">${p.spec}</p>
             </div>
 
-            <!-- Размеры -->
-            <div class="flex items-center gap-1.5">
-              ${p.sizes.map((s, idx) => `
-                <button type="button" class="px-2.5 py-1 rounded-lg border border-white/10 text-[11px] font-bold ${idx === 0 ? 'bg-white text-slate-950' : 'text-slate-400 hover:text-white'}">
-                  ${s}
-                </button>
+            <!-- Цвета -->
+            <div class="flex items-center gap-1.5 pt-1">
+              ${p.colors.map(c => `
+                <span class="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-[10px] text-slate-300 font-medium">
+                  ${c}
+                </span>
               `).join('')}
             </div>
 
             <!-- Цена и кнопка -->
-            <div class="flex items-center justify-between pt-2 border-t border-white/5">
+            <div class="flex items-center justify-between pt-3 border-t border-white/5">
               <div>
                 <span class="text-base font-black text-white">${p.price.toLocaleString()} ₽</span>
                 <span class="text-xs text-slate-500 line-through ml-1.5">${p.oldPrice.toLocaleString()} ₽</span>
               </div>
-              <button onclick="addToCart(${p.id})" class="px-3.5 py-2 bg-[#22E58B]/10 hover:bg-[#22E58B] text-[#22E58B] hover:text-slate-950 border border-[#22E58B]/30 rounded-xl font-bold text-xs transition cursor-pointer active:scale-95">
+              <button onclick="addToCart(${p.id})" class="px-3.5 py-2 bg-white/10 hover:bg-white text-white hover:text-black rounded-xl font-bold text-xs transition cursor-pointer active:scale-95">
                 В корзину +
               </button>
             </div>
@@ -326,13 +354,12 @@
       document.getElementById('itemCount').innerText = items.length;
     }
 
-    // Фильтр категорий
     function filterCategory(cat) {
       document.querySelectorAll('.cat-btn').forEach(b => {
-        b.classList.remove('text-[#22E58B]');
+        b.classList.remove('text-white');
         b.classList.add('text-slate-400');
         if (b.dataset.cat === cat) {
-          b.classList.add('text-[#22E58B]');
+          b.classList.add('text-white');
           b.classList.remove('text-slate-400');
         }
       });
@@ -340,14 +367,13 @@
       renderProducts(filtered);
     }
 
-    // Логика корзины
     function addToCart(id) {
       const prod = products.find(p => p.id === id);
       const inCart = cart.find(item => item.id === id);
       if (inCart) {
         inCart.qty += 1;
       } else {
-        cart.push({ ...prod, qty: 1, size: prod.sizes[0] });
+        cart.push({ ...prod, qty: 1, color: prod.colors[0] });
       }
       updateCartUI();
       openCart();
@@ -370,7 +396,7 @@
 
       const list = document.getElementById('cartItemsList');
       if (cart.length === 0) {
-        list.innerHTML = '<p class="text-slate-500 text-xs text-center py-8">Корзина пока пуста</p>';
+        list.innerHTML = '<p class="text-slate-500 text-xs text-center py-8">В корзине пока нет товаров</p>';
       } else {
         list.innerHTML = cart.map(item => `
           <div class="flex items-center justify-between py-2 text-xs">
@@ -378,7 +404,7 @@
               <img src="${item.img}" class="w-12 h-12 rounded-xl object-cover">
               <div>
                 <div class="font-bold text-white truncate max-w-[160px]">${item.name}</div>
-                <div class="text-[11px] text-slate-400">Размер: ${item.size} · ${item.price} ₽</div>
+                <div class="text-[11px] text-slate-400">${item.color} · ${item.price} ₽</div>
               </div>
             </div>
             <div class="flex items-center gap-2">
@@ -412,20 +438,19 @@
     function submitOrder(e) {
       e.preventDefault();
       if (cart.length === 0) {
-        alert('Добавьте хотя бы один товар в корзину');
+        alert('Добавьте товар в корзину');
         return;
       }
       const name = document.getElementById('custName').value;
-      const phone = document.getElementById('custPhone').value;
       const total = document.getElementById('totalOrderSum').innerText;
 
-      alert(`✅ Тестовый заказ сформирован!\nПолучатель: ${name}\nТелефон: ${phone}\nСумма: ${total}\n\nВ боевом режиме создается трек-номер СДЭК и открывается QR-код оплаты СБП.`);
+      alert(`✅ Тестовый заказ сформирован для ${name} на сумму ${total}!\nВ боевой версии генерируется трек СДЭК и открывается оплата СБП.`);
       cart = [];
       updateCartUI();
       closeCart();
     }
 
-    // Инициализация
+    // Старт
     renderProducts(products);
   </script>
 </body>
