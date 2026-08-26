@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<yml_catalog date="2026-08-25T14:53:04+03:00">
+<yml_catalog date="2026-08-26T13:21:16+03:00">
   <shop>
-    <name>СДЭК E-Commerce</name>
-    <company>СДЭК E-Commerce</company>
-    <url>https://cdek-ecommerce.ru</url>
+    <name>СДЭК Marketplace</name>
+    <company>СДЭК Marketplace</company>
+    <url>https://cdek-marketplace.ru</url>
     <currencies>
       <currency id="RUB" rate="1"/>
     </currencies>
@@ -16,162 +16,135 @@
     </categories>
     <sets>
       <set id="cdek_org">
-        <name>СДЭК E-Commerce</name>
-        <url>https://cdek-ecommerce.ru</url>
+        <name>СДЭК Marketplace</name>
+        <url>https://cdek-marketplace.ru</url>
       </set>
     </sets>
     <offers>
       <offer id="srv_ecom" available="true">
-        <url>https://cdek-ecommerce.ru/dogovor/internet-magazin/</url>
+        <url>https://cdek-marketplace.ru/dogovor/internet-magazin/</url>
         <price>205</price>
         <currencyId>RUB</currencyId>
         <categoryId>2</categoryId>
-        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
-        <name>СДЭК E-Commerce: Курьерская доставка для интернет-магазинов</name>
+        <picture>https://cdek-marketplace.ru/og-image.png</picture>
+        <name>Курьерская доставка для интернет-магазинов</name>
         <set-ids>
           <set-id>cdek_org</set-id>
         </set-ids>
-        <param name="Рейтинг">5.0</param>
-        <param name="Число отзывов">25</param>
-        <param name="Годы опыта">6</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">0.98</param>
+        <param name="Тип услуги">Логистика и доставка</param>
         <description>Доставка заказов интернет-магазинов по тарифу Посылка (от 205 руб. по городу до 1 кг). Прием наложенного платежа с формированием чеков по 54-ФЗ, забор курьером и выдача через сеть ПВЗ.</description>
       </offer>
       <offer id="srv_market" available="true">
-        <url>https://cdek-ecommerce.ru/dogovor/marketplace/</url>
+        <url>https://cdek-marketplace.ru/dogovor/marketplace/</url>
         <price>205</price>
         <currencyId>RUB</currencyId>
         <categoryId>3</categoryId>
-        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
-        <name>СДЭК E-Commerce: Доставка заказов с маркетплейсов по схемам FBS и DBS</name>
+        <picture>https://cdek-marketplace.ru/og-image.png</picture>
+        <name>Доставка заказов с маркетплейсов по схемам FBS и DBS</name>
         <set-ids>
           <set-id>cdek_org</set-id>
         </set-ids>
-        <param name="Рейтинг">5.0</param>
-        <param name="Число отзывов">25</param>
-        <param name="Годы опыта">6</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">0.98</param>
+        <param name="Тип услуги">Логистика и доставка</param>
         <description>Логистическое обслуживание селлеров Wildberries, Ozon и Яндекс Маркет. Отгрузка отправлений по схемам FBS, rFBS и DBS с автоматической синхронизацией трек-номеров по API.</description>
       </offer>
       <offer id="srv_clothes" available="true">
-        <url>https://cdek-ecommerce.ru/services/dostavka-odezhdy/</url>
+        <url>https://cdek-marketplace.ru/services/dostavka-odezhdy/</url>
         <price>250</price>
         <currencyId>RUB</currencyId>
         <categoryId>4</categoryId>
-        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
-        <name>СДЭК E-Commerce: Доставка одежды и обуви с примеркой и частичным выкупом</name>
+        <picture>https://cdek-marketplace.ru/og-image.png</picture>
+        <name>Доставка одежды и обуви с примеркой и частичным выкупом</name>
         <set-ids>
           <set-id>cdek_org</set-id>
         </set-ids>
-        <param name="Рейтинг">5.0</param>
-        <param name="Число отзывов">25</param>
-        <param name="Годы опыта">6</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">0.98</param>
+        <param name="Тип услуги">Логистика и доставка</param>
         <description>Курьерская доставка и обслуживание в пунктах выдачи заказов с возможностью примерки до 15 минут, частичного выкупа позиций и возврата неподошедших товаров.</description>
       </offer>
       <offer id="srv_fulf" available="true">
-        <url>https://cdek-ecommerce.ru/services/fulfillment/</url>
+        <url>https://cdek-marketplace.ru/services/fulfillment/</url>
         <price>1500</price>
         <currencyId>RUB</currencyId>
         <categoryId>4</categoryId>
-        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
-        <name>СДЭК E-Commerce: Складское хранение, комплектация и фулфилмент для e-commerce</name>
+        <picture>https://cdek-marketplace.ru/og-image.png</picture>
+        <name>Складское хранение, комплектация и фулфилмент для e-commerce</name>
         <set-ids>
           <set-id>cdek_org</set-id>
         </set-ids>
-        <param name="Рейтинг">5.0</param>
-        <param name="Число отзывов">25</param>
-        <param name="Годы опыта">6</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">0.98</param>
+        <param name="Тип услуги">Логистика и доставка</param>
         <description>Комплекс складских операций: приемка партий, ответственное хранение, маркировка товаров Честный Знак, сборка заказов, упаковка и передача в доставку.</description>
       </offer>
       <offer id="srv_heavy" available="true">
-        <url>https://cdek-ecommerce.ru/dogovor/krupnogabarit/</url>
+        <url>https://cdek-marketplace.ru/dogovor/krupnogabarit/</url>
         <price>450</price>
         <currencyId>RUB</currencyId>
         <categoryId>4</categoryId>
-        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
-        <name>СДЭК E-Commerce: Доставка крупногабаритных грузов и оборудования</name>
+        <picture>https://cdek-marketplace.ru/og-image.png</picture>
+        <name>Доставка крупногабаритных грузов и оборудования</name>
         <set-ids>
           <set-id>cdek_org</set-id>
         </set-ids>
-        <param name="Рейтинг">5.0</param>
-        <param name="Число отзывов">25</param>
-        <param name="Годы опыта">6</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">0.98</param>
+        <param name="Тип услуги">Логистика и доставка</param>
         <description>Транспортировка тяжелых и объемных отправлений по России. Забор с адреса отправителя грузовым транспортом, отслеживание по трек-номеру и доставка до двери получателя.</description>
       </offer>
       <offer id="srv_parts" available="true">
-        <url>https://cdek-ecommerce.ru/dogovor/avtozapchasti/</url>
+        <url>https://cdek-marketplace.ru/dogovor/avtozapchasti/</url>
         <price>250</price>
         <currencyId>RUB</currencyId>
         <categoryId>4</categoryId>
-        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
-        <name>СДЭК E-Commerce: Доставка автозапчастей и комплектующих для интернет-магазинов</name>
+        <picture>https://cdek-marketplace.ru/og-image.png</picture>
+        <name>Доставка автозапчастей и комплектующих для интернет-магазинов</name>
         <set-ids>
           <set-id>cdek_org</set-id>
         </set-ids>
-        <param name="Рейтинг">5.0</param>
-        <param name="Число отзывов">25</param>
-        <param name="Годы опыта">6</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">0.98</param>
+        <param name="Тип услуги">Логистика и доставка</param>
         <description>Транспортная логистика для магазинов автотоваров и станций техобслуживания: перевозка деталей, кузовных элементов и расходных материалов с кассовым обслуживанием.</description>
       </offer>
       <offer id="srv_ip" available="true">
-        <url>https://cdek-ecommerce.ru/dogovor/ip/</url>
+        <url>https://cdek-marketplace.ru/dogovor/ip/</url>
         <price>205</price>
         <currencyId>RUB</currencyId>
         <categoryId>5</categoryId>
-        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
-        <name>СДЭК E-Commerce: Оформление B2B-договора СДЭК для индивидуальных предпринимателей</name>
+        <picture>https://cdek-marketplace.ru/og-image.png</picture>
+        <name>Оформление B2B-договора СДЭК для индивидуальных предпринимателей</name>
         <set-ids>
           <set-id>cdek_org</set-id>
         </set-ids>
-        <param name="Рейтинг">5.0</param>
-        <param name="Число отзывов">25</param>
-        <param name="Годы опыта">6</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">0.98</param>
+        <param name="Тип услуги">Логистика и доставка</param>
         <description>Подключение ИП к корпоративным тарифам СДЭК: тарифная сетка УСН без начисления НДС 22%, ежемесячная постоплата по счету, доступ к наложенному платежу и интеграции по API.</description>
       </offer>
       <offer id="srv_self" available="true">
-        <url>https://cdek-ecommerce.ru/dogovor/samozanyatye/</url>
+        <url>https://cdek-marketplace.ru/dogovor/samozanyatye/</url>
         <price>205</price>
         <currencyId>RUB</currencyId>
         <categoryId>5</categoryId>
-        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
-        <name>СДЭК E-Commerce: Оформление договора СДЭК для самозанятых граждан (НПД)</name>
+        <picture>https://cdek-marketplace.ru/og-image.png</picture>
+        <name>Оформление договора СДЭК для самозанятых граждан (НПД)</name>
         <set-ids>
           <set-id>cdek_org</set-id>
         </set-ids>
-        <param name="Рейтинг">5.0</param>
-        <param name="Число отзывов">25</param>
-        <param name="Годы опыта">6</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">0.98</param>
+        <param name="Тип услуги">Логистика и доставка</param>
         <description>Регистрация договора доставки для плательщиков налога на профессиональный доход. Корпоративные тарифы на отправку посылок, интеграция по API, оплата банковской картой в ЛК.</description>
       </offer>
       <offer id="srv_llc" available="true">
-        <url>https://cdek-ecommerce.ru/dogovor/yur-lica/</url>
+        <url>https://cdek-marketplace.ru/dogovor/yur-lica/</url>
         <price>205</price>
         <currencyId>RUB</currencyId>
         <categoryId>5</categoryId>
-        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
-        <name>СДЭК E-Commerce: Оформление B2B-договора СДЭК для юридических лиц (ООО, АО)</name>
+        <picture>https://cdek-marketplace.ru/og-image.png</picture>
+        <name>Оформление B2B-договора СДЭК для юридических лиц (ООО, АО)</name>
         <set-ids>
           <set-id>cdek_org</set-id>
         </set-ids>
-        <param name="Рейтинг">5.0</param>
-        <param name="Число отзывов">25</param>
-        <param name="Годы опыта">6</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">0.98</param>
+        <param name="Тип услуги">Логистика и доставка</param>
         <description>Корпоративное обслуживание коммерческих организаций: обмен закрывающими документами через системы ЭДО (Диадок, СБИС), выбор налоговой ставки (УСН или ОСНО с НДС).</description>
       </offer>
     </offers>
