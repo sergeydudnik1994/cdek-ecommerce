@@ -2,6 +2,9 @@ name: Generate YML Feed for Yandex
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -31,9 +34,9 @@ jobs:
           yml_catalog = ET.Element("yml_catalog", date=now)
           shop = ET.SubElement(yml_catalog, "shop")
 
-          ET.SubElement(shop, "name").text = "СДЭК E-Commerce"
-          ET.SubElement(shop, "company").text = "СДЭК E-Commerce"
-          ET.SubElement(shop, "url").text = "https://cdek-ecommerce.ru"
+          ET.SubElement(shop, "name").text = "СДЭК Marketplace"
+          ET.SubElement(shop, "company").text = "СДЭК Marketplace"
+          ET.SubElement(shop, "url").text = "https://cdek-marketplace.ru"
 
           currencies = ET.SubElement(shop, "currencies")
           ET.SubElement(currencies, "currency", id="RUB", rate="1")
@@ -45,82 +48,81 @@ jobs:
           ET.SubElement(categories, "category", id="4", parentId="1").text = "Грузоперевозки и спецдоставка"
           ET.SubElement(categories, "category", id="5", parentId="1").text = "Корпоративное обслуживание B2B"
 
-          # Обязательный блок профиля исполнителя/организации
           sets = ET.SubElement(shop, "sets")
           s = ET.SubElement(sets, "set", id="cdek_org")
-          ET.SubElement(s, "name").text = "СДЭК E-Commerce"
-          ET.SubElement(s, "url").text = "https://cdek-ecommerce.ru"
+          ET.SubElement(s, "name").text = "СДЭК Marketplace"
+          ET.SubElement(s, "url").text = "https://cdek-marketplace.ru"
 
           offers_data = [
               {
                   "id": "srv_ecom",
                   "cat": "2",
-                  "name": "СДЭК E-Commerce: Курьерская доставка для интернет-магазинов",
-                  "url": "https://cdek-ecommerce.ru/dogovor/internet-magazin/",
+                  "name": "Курьерская доставка для интернет-магазинов",
+                  "url": "https://cdek-marketplace.ru/dogovor/internet-magazin/",
                   "price": "205",
                   "desc": "Доставка заказов интернет-магазинов по тарифу Посылка (от 205 руб. по городу до 1 кг). Прием наложенного платежа с формированием чеков по 54-ФЗ, забор курьером и выдача через сеть ПВЗ."
               },
               {
                   "id": "srv_market",
                   "cat": "3",
-                  "name": "СДЭК E-Commerce: Доставка заказов с маркетплейсов по схемам FBS и DBS",
-                  "url": "https://cdek-ecommerce.ru/dogovor/marketplace/",
+                  "name": "Доставка заказов с маркетплейсов по схемам FBS и DBS",
+                  "url": "https://cdek-marketplace.ru/dogovor/marketplace/",
                   "price": "205",
                   "desc": "Логистическое обслуживание селлеров Wildberries, Ozon и Яндекс Маркет. Отгрузка отправлений по схемам FBS, rFBS и DBS с автоматической синхронизацией трек-номеров по API."
               },
               {
                   "id": "srv_clothes",
                   "cat": "4",
-                  "name": "СДЭК E-Commerce: Доставка одежды и обуви с примеркой и частичным выкупом",
-                  "url": "https://cdek-ecommerce.ru/services/dostavka-odezhdy/",
+                  "name": "Доставка одежды и обуви с примеркой и частичным выкупом",
+                  "url": "https://cdek-marketplace.ru/services/dostavka-odezhdy/",
                   "price": "250",
                   "desc": "Курьерская доставка и обслуживание в пунктах выдачи заказов с возможностью примерки до 15 минут, частичного выкупа позиций и возврата неподошедших товаров."
               },
               {
                   "id": "srv_fulf",
                   "cat": "4",
-                  "name": "СДЭК E-Commerce: Складское хранение, комплектация и фулфилмент для e-commerce",
-                  "url": "https://cdek-ecommerce.ru/services/fulfillment/",
+                  "name": "Складское хранение, комплектация и фулфилмент для e-commerce",
+                  "url": "https://cdek-marketplace.ru/services/fulfillment/",
                   "price": "1500",
                   "desc": "Комплекс складских операций: приемка партий, ответственное хранение, маркировка товаров Честный Знак, сборка заказов, упаковка и передача в доставку."
               },
               {
                   "id": "srv_heavy",
                   "cat": "4",
-                  "name": "СДЭК E-Commerce: Доставка крупногабаритных грузов и оборудования",
-                  "url": "https://cdek-ecommerce.ru/dogovor/krupnogabarit/",
+                  "name": "Доставка крупногабаритных грузов и оборудования",
+                  "url": "https://cdek-marketplace.ru/dogovor/krupnogabarit/",
                   "price": "450",
                   "desc": "Транспортировка тяжелых и объемных отправлений по России. Забор с адреса отправителя грузовым транспортом, отслеживание по трек-номеру и доставка до двери получателя."
               },
               {
                   "id": "srv_parts",
                   "cat": "4",
-                  "name": "СДЭК E-Commerce: Доставка автозапчастей и комплектующих для интернет-магазинов",
-                  "url": "https://cdek-ecommerce.ru/dogovor/avtozapchasti/",
+                  "name": "Доставка автозапчастей и комплектующих для интернет-магазинов",
+                  "url": "https://cdek-marketplace.ru/dogovor/avtozapchasti/",
                   "price": "250",
                   "desc": "Транспортная логистика для магазинов автотоваров и станций техобслуживания: перевозка деталей, кузовных элементов и расходных материалов с кассовым обслуживанием."
               },
               {
                   "id": "srv_ip",
                   "cat": "5",
-                  "name": "СДЭК E-Commerce: Оформление B2B-договора СДЭК для индивидуальных предпринимателей",
-                  "url": "https://cdek-ecommerce.ru/dogovor/ip/",
+                  "name": "Оформление B2B-договора СДЭК для индивидуальных предпринимателей",
+                  "url": "https://cdek-marketplace.ru/dogovor/ip/",
                   "price": "205",
                   "desc": "Подключение ИП к корпоративным тарифам СДЭК: тарифная сетка УСН без начисления НДС 22%, ежемесячная постоплата по счету, доступ к наложенному платежу и интеграции по API."
               },
               {
                   "id": "srv_self",
                   "cat": "5",
-                  "name": "СДЭК E-Commerce: Оформление договора СДЭК для самозанятых граждан (НПД)",
-                  "url": "https://cdek-ecommerce.ru/dogovor/samozanyatye/",
+                  "name": "Оформление договора СДЭК для самозанятых граждан (НПД)",
+                  "url": "https://cdek-marketplace.ru/dogovor/samozanyatye/",
                   "price": "205",
                   "desc": "Регистрация договора доставки для плательщиков налога на профессиональный доход. Корпоративные тарифы на отправку посылок, интеграция по API, оплата банковской картой в ЛК."
               },
               {
                   "id": "srv_llc",
                   "cat": "5",
-                  "name": "СДЭК E-Commerce: Оформление B2B-договора СДЭК для юридических лиц (ООО, АО)",
-                  "url": "https://cdek-ecommerce.ru/dogovor/yur-lica/",
+                  "name": "Оформление B2B-договора СДЭК для юридических лиц (ООО, АО)",
+                  "url": "https://cdek-marketplace.ru/dogovor/yur-lica/",
                   "price": "205",
                   "desc": "Корпоративное обслуживание коммерческих организаций: обмен закрывающими документами через системы ЭДО (Диадок, СБИС), выбор налоговой ставки (УСН или ОСНО с НДС)."
               }
@@ -134,19 +136,14 @@ jobs:
               ET.SubElement(offer, "price").text = item["price"]
               ET.SubElement(offer, "currencyId").text = "RUB"
               ET.SubElement(offer, "categoryId").text = item["cat"]
-              ET.SubElement(offer, "picture").text = "https://cdek-ecommerce.ru/og-image.png"
+              ET.SubElement(offer, "picture").text = "https://cdek-marketplace.ru/og-image.png"
               ET.SubElement(offer, "name").text = item["name"]
 
-              # Привязка к профилю организации
               set_ids = ET.SubElement(offer, "set-ids")
               ET.SubElement(set_ids, "set-id").text = "cdek_org"
 
-              # 5 обязательных параметров для категории «Исполнители»
-              ET.SubElement(offer, "param", name="Рейтинг").text = "5.0"
-              ET.SubElement(offer, "param", name="Число отзывов").text = "25"
-              ET.SubElement(offer, "param", name="Годы опыта").text = "6"
               ET.SubElement(offer, "param", name="Регион").text = "Россия"
-              ET.SubElement(offer, "param", name="Конверсия").text = "0.98"
+              ET.SubElement(offer, "param", name="Тип услуги").text = "Логистика и доставка"
 
               ET.SubElement(offer, "description").text = item["desc"]
 
@@ -166,7 +163,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add services.yml
           if ! git diff --cached --quiet; then
-            git commit -m "fix(feed): add mandatory sets, set-ids and params for Yandex executor standard [skip ci]"
+            git commit -m "fix(feed): update domain to cdek-marketplace.ru and clean param schema [skip ci]"
             git pull --rebase origin main
             git push origin main
           fi
