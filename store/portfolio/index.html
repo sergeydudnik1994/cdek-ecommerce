@@ -17,10 +17,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Галерея готовых интернет-магазинов со СДЭК и СБП | Портфолио и референсы</title>
-  <meta name="description" content="Каталог готовых рабочих примеров интернет-магазинов для различных ниш: одежда, автозапчасти, косметика, электроника. Встроенный модуль СДЭК, оплата СБП, запуск за 2 дня." />
-  <meta name="keywords" content="примеры интернет магазинов со сдэк, готовые шаблоны интернет магазинов, референсы сайтов для селлеров, портфолио интернет магазинов под ключ" />
-  <link rel="canonical" href="https://cdek-ecommerce.ru/store/test/" />
+  <title>Портфолио и примеры готовых интернет-магазинов со СДЭК и СБП</title>
+  <meta name="description" content="Реализованные проекты и готовые примеры интернет-магазинов для селлеров маркетплейсов и B2B-бизнеса. Интеграция доставки СДЭК со скидкой 50% и оплата по СБП (0-0.7%)." />
+  <meta name="keywords" content="портфолио интернет магазинов, примеры сайтов со сдэк, готовые интернет магазины для селлеров, кейсы разработки магазинов сбп" />
+  <link rel="canonical" href="https://cdek-ecommerce.ru/store/portfolio/" />
 
   <meta name="theme-color" content="#08221F" />
   <link rel="icon" type="image/png" href="/favicon.png" />
@@ -42,7 +42,7 @@
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        "@id": "https://cdek-ecommerce.ru/store/test/#breadcrumb",
+        "@id": "https://cdek-ecommerce.ru/store/portfolio/#breadcrumb",
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -53,27 +53,27 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Создание магазина",
+            "name": "Создание интернет-магазина",
             "item": "https://cdek-ecommerce.ru/store/"
           },
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "Галерея примеров",
-            "item": "https://cdek-ecommerce.ru/store/test/"
+            "name": "Портфолио и примеры",
+            "item": "https://cdek-ecommerce.ru/store/portfolio/"
           }
         ]
       },
       {
         "@type": "CollectionPage",
-        "@id": "https://cdek-ecommerce.ru/store/test/#page",
-        "name": "Галерея референсов готовых интернет-магазинов со СДЭК и СБП",
+        "@id": "https://cdek-ecommerce.ru/store/portfolio/#page",
+        "name": "Портфолио и примеры готовых интернет-магазинов со СДЭК и СБП",
         "provider": {
           "@type": "Organization",
           "name": "СДЭК E-Commerce",
           "url": "https://cdek-ecommerce.ru/"
         },
-        "description": "Примеры готовых решений интернет-магазинов с доставкой СДЭК и приемом платежей СБП от 0% до 0.7%."
+        "description": "Примеры готовых решений интернет-магазинов с доставкой СДЭК со скидкой 50% и приемом платежей по QR СБП."
       }
     ]
   }
@@ -94,16 +94,16 @@
         <div class="max-w-3xl space-y-4">
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1AB248]/15 border border-[#1AB248]/30 text-xs font-bold text-[#1AB248] uppercase tracking-wider">
             <span class="w-2 h-2 rounded-full bg-[#1AB248] animate-pulse"></span>
-            Демо-витрины & Референсы
+            Портфолио & Готовые витрины
           </div>
           
           <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-[1.15]">
-            Каталог готовых магазинов <br>
+            Примеры интернет-магазинов <br>
             <span class="text-[#1AB248]">со СДЭК и СБП</span> под ключ
           </h1>
 
           <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
-            Выберите готовый референс под вашу нишу. Любой пример адаптируется под ваши товары, фирменный стиль и логотип за 2 дня с подключением договора СДЭК со скидкой 50% и эквайринга СБП (от 0% до 0.7%).
+            Ознакомьтесь с реальными форматами витрин. Любой проект адаптируется под ваши товары, фирменный стиль и логотип за 2 дня с подключением договора СДЭК со скидкой 50% и эквайринга СБП (от 0% до 0.7%).
           </p>
 
           <div class="flex flex-wrap gap-2 pt-2">
@@ -128,10 +128,10 @@
         <!-- Кнопки категорий -->
         <div class="flex flex-wrap items-center gap-2 pb-8 border-b border-slate-200 mb-10 overflow-x-auto">
           <button onclick="filterExamples('all')" class="filter-tab px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition cursor-pointer bg-[#08221F] text-white shadow-sm" data-category="all">
-            Все ниши (<span id="count-all">5</span>)
+            Все направления (<span id="count-all">5</span>)
           </button>
-          <button onclick="filterExamples('fashion')" class="filter-tab px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition cursor-pointer bg-white text-slate-600 hover:bg-slate-100 border border-slate-200" data-category="fashion">
-            Одежда и обувь
+          <button onclick="filterExamples('gear')" class="filter-tab px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition cursor-pointer bg-white text-slate-600 hover:bg-slate-100 border border-slate-200" data-category="gear">
+            Сумки и рюкзаки
           </button>
           <button onclick="filterExamples('auto')" class="filter-tab px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition cursor-pointer bg-white text-slate-600 hover:bg-slate-100 border border-slate-200" data-category="auto">
             Автотовары и запчасти
@@ -150,13 +150,13 @@
         <!-- Сетка референсов -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="examplesGrid">
           
-          <!-- КЕЙС 1: JIDJI (ОДЕЖДА / STREETWEAR) -->
-          <div class="example-card bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:border-[#1AB248] hover:shadow-lg transition group" data-niche="fashion">
+          <!-- КЕЙС 1: JIDJI (РЮКЗАКИ И СУМКИ) -->
+          <div class="example-card bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:border-[#1AB248] hover:shadow-lg transition group" data-niche="gear">
             <div>
               <div class="relative aspect-[16/10] overflow-hidden bg-slate-950">
                 <img 
-                  src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&auto=format&fit=crop&q=80" 
-                  alt="Интернет-магазин одежды JIDJI" 
+                  src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&auto=format&fit=crop&q=80" 
+                  alt="Интернет-магазин рюкзаков JIDJI" 
                   class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
                 <div class="absolute top-3 left-3 flex gap-1.5">
@@ -164,25 +164,25 @@
                     Live Demo
                   </span>
                   <span class="px-2.5 py-1 rounded-lg bg-black/70 text-white font-bold text-[10px] backdrop-blur-sm">
-                    Fashion D2C
+                    Urban Gear
                   </span>
                 </div>
               </div>
 
               <div class="p-6 space-y-3">
                 <div class="flex items-center justify-between text-xs text-slate-400">
-                  <span>Селлер: <b>JIDJI (Ozon / WB)</b></span>
-                  <span class="font-bold text-slate-700">Запуск за 2 дня</span>
+                  <span>Бренд: <b>JIDJI (Ozon / WB)</b></span>
+                  <span class="font-bold text-slate-700">2 дня запуск</span>
                 </div>
                 <h3 class="text-lg font-black text-slate-900 group-hover:text-[#1AB248] transition">
-                  Брендовый магазин одежды оверсайз
+                  Магазин городских и спортивных рюкзаков
                 </h3>
                 <p class="text-xs text-slate-500 leading-relaxed">
-                  Перелив покупателей с маркетплейсов по промо-флаерам, выбор размеров, расчет доставки в ПВЗ СДЭК и оплата по QR СБП.
+                  Прямые продажи селлера маркетплейсов: подробные характеристики (литры, отсек под ноутбук, влагозащита), выбор ПВЗ СДЭК и чекаут по СБП без наценки площадок.
                 </p>
                 <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] text-slate-600 font-medium">
-                  <span class="px-2 py-0.5 rounded-md bg-slate-100">Выбор размеров</span>
-                  <span class="px-2 py-0.5 rounded-md bg-slate-100">Корзина с ПВЗ</span>
+                  <span class="px-2 py-0.5 rounded-md bg-slate-100">Характеристики моделей</span>
+                  <span class="px-2 py-0.5 rounded-md bg-slate-100">Корзина СДЭК</span>
                   <span class="px-2 py-0.5 rounded-md bg-slate-100">СБП 0%–0.7%</span>
                 </div>
               </div>
@@ -190,18 +190,18 @@
 
             <div class="p-6 pt-0 space-y-2">
               <a 
-                href="/store/test/jidji/" 
+                href="/store/portfolio/jidji/" 
                 target="_blank" 
                 class="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-[#08221F] hover:bg-[#062A30] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition shadow-sm"
               >
-                <span>Открыть живое демо</span>
+                <span>Открыть рабочий магазин</span>
                 <span class="text-[#1AB248]">→</span>
               </a>
               <button 
-                onclick="chooseTemplate('Бренд одежды (как JIDJI)')" 
+                onclick="chooseTemplate('Магазин рюкзаков (как JIDJI)')" 
                 class="w-full py-2 px-4 bg-slate-50 hover:bg-[#E8F8ED] text-slate-700 hover:text-[#1AB248] font-bold text-xs rounded-xl transition text-center cursor-pointer"
               >
-                Хочу такой магазин (15 000 ₽)
+                Заказать такой магазин
               </button>
             </div>
           </div>
@@ -217,7 +217,7 @@
                 />
                 <div class="absolute top-3 left-3 flex gap-1.5">
                   <span class="px-2.5 py-1 rounded-lg bg-[#08221F]/90 text-[#1AB248] font-black text-[10px] uppercase tracking-wider backdrop-blur-sm border border-[#1AB248]/30">
-                    Шаблон
+                    Конфигурация
                   </span>
                   <span class="px-2.5 py-1 rounded-lg bg-black/70 text-white font-bold text-[10px] backdrop-blur-sm">
                     Автотовары
@@ -228,18 +228,18 @@
               <div class="p-6 space-y-3">
                 <div class="flex items-center justify-between text-xs text-slate-400">
                   <span>Специфика: <b>Крупногабарит / LTL</b></span>
-                  <span class="font-bold text-slate-700">Запуск за 2 дня</span>
+                  <span class="font-bold text-slate-700">2–3 дня запуск</span>
                 </div>
                 <h3 class="text-lg font-black text-slate-900 group-hover:text-[#1AB248] transition">
                   Магазин автозапчастей и расходников
                 </h3>
                 <p class="text-xs text-slate-500 leading-relaxed">
-                  Поиск товаров по OEM-артикулу и марке авто, расчет доставки тяжелых посылок СДЭК, оплата по безналу для юрлиц и СБП.
+                  Поиск по артикулу детали, расчет сборных грузов СДЭК для тяжелых деталей, выставление счета для юридических лиц и чеки по 54-ФЗ.
                 </p>
                 <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] text-slate-600 font-medium">
-                  <span class="px-2 py-0.5 rounded-md bg-slate-100">Поиск по артикулу</span>
+                  <span class="px-2 py-0.5 rounded-md bg-slate-100">Поиск по OEM</span>
                   <span class="px-2 py-0.5 rounded-md bg-slate-100">Счет юрлицам</span>
-                  <span class="px-2 py-0.5 rounded-md bg-slate-100">Сборный груз</span>
+                  <span class="px-2 py-0.5 rounded-md bg-slate-100">Сборный груз СДЭК</span>
                 </div>
               </div>
             </div>
@@ -249,7 +249,7 @@
                 onclick="chooseTemplate('Магазин автозапчастей')" 
                 class="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-[#08221F] hover:bg-[#062A30] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition shadow-sm cursor-pointer"
               >
-                <span>Заказать под автотовары</span>
+                <span>Выбрать под автотовары</span>
                 <span class="text-[#1AB248]">→</span>
               </button>
             </div>
@@ -266,7 +266,7 @@
                 />
                 <div class="absolute top-3 left-3 flex gap-1.5">
                   <span class="px-2.5 py-1 rounded-lg bg-[#08221F]/90 text-[#1AB248] font-black text-[10px] uppercase tracking-wider backdrop-blur-sm border border-[#1AB248]/30">
-                    Шаблон
+                    Конфигурация
                   </span>
                   <span class="px-2.5 py-1 rounded-lg bg-black/70 text-white font-bold text-[10px] backdrop-blur-sm">
                     Beauty & Care
@@ -277,16 +277,16 @@
               <div class="p-6 space-y-3">
                 <div class="flex items-center justify-between text-xs text-slate-400">
                   <span>Специфика: <b>Наборы / Подарки</b></span>
-                  <span class="font-bold text-slate-700">Запуск за 2 дня</span>
+                  <span class="font-bold text-slate-700">2 дня запуск</span>
                 </div>
                 <h3 class="text-lg font-black text-slate-900 group-hover:text-[#1AB248] transition">
-                  Витрина натуральной косметики и ухода
+                  Витрина косметики и уходовых средств
                 </h3>
                 <p class="text-xs text-slate-500 leading-relaxed">
-                  Быстрый чекаут с промокодами, вариации объема (30/50/100 мл), наложенный платеж при вручении и мгновенные чеки 54-ФЗ.
+                  Чекаут с поддержкой промокодов из флаеров в заказах, вариации объема (30/50/100 мл), наложенный платеж при вручении и мгновенные чеки 54-ФЗ.
                 </p>
                 <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] text-slate-600 font-medium">
-                  <span class="px-2 py-0.5 rounded-md bg-slate-100">Вариации объемов</span>
+                  <span class="px-2 py-0.5 rounded-md bg-slate-100">Вариации объема</span>
                   <span class="px-2 py-0.5 rounded-md bg-slate-100">Промокоды</span>
                   <span class="px-2 py-0.5 rounded-md bg-slate-100">Чеки 54-ФЗ</span>
                 </div>
@@ -298,7 +298,7 @@
                 onclick="chooseTemplate('Магазин косметики и ухода')" 
                 class="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-[#08221F] hover:bg-[#062A30] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition shadow-sm cursor-pointer"
               >
-                <span>Заказать под косметику</span>
+                <span>Выбрать под косметику</span>
                 <span class="text-[#1AB248]">→</span>
               </button>
             </div>
@@ -315,7 +315,7 @@
                 />
                 <div class="absolute top-3 left-3 flex gap-1.5">
                   <span class="px-2.5 py-1 rounded-lg bg-[#08221F]/90 text-[#1AB248] font-black text-[10px] uppercase tracking-wider backdrop-blur-sm border border-[#1AB248]/30">
-                    Шаблон
+                    Конфигурация
                   </span>
                   <span class="px-2.5 py-1 rounded-lg bg-black/70 text-white font-bold text-[10px] backdrop-blur-sm">
                     Gadgets / Tech
@@ -325,14 +325,14 @@
 
               <div class="p-6 space-y-3">
                 <div class="flex items-center justify-between text-xs text-slate-400">
-                  <span>Специфика: <b>Высокий средний чек</b></span>
-                  <span class="font-bold text-slate-700">Запуск за 2 дня</span>
+                  <span>Специфика: <b>Высокий чек</b></span>
+                  <span class="font-bold text-slate-700">2 дня запуск</span>
                 </div>
                 <h3 class="text-lg font-black text-slate-900 group-hover:text-[#1AB248] transition">
                   Магазин аудиотехники и смарт-аксессуаров
                 </h3>
                 <p class="text-xs text-slate-500 leading-relaxed">
-                  Фильтрация по характеристикам, страхование ценных грузов в СДЭК, быстрая оплата по СБП и подтверждение заказа в Telegram.
+                  Фильтрация по характеристикам, страхование ценных грузов в СДЭК, быстрая оплата по QR СБП и подтверждение заказа в Telegram.
                 </p>
                 <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] text-slate-600 font-medium">
                   <span class="px-2 py-0.5 rounded-md bg-slate-100">Страховка груза</span>
@@ -347,7 +347,7 @@
                 onclick="chooseTemplate('Магазин электроники и гаджетов')" 
                 class="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-[#08221F] hover:bg-[#062A30] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition shadow-sm cursor-pointer"
               >
-                <span>Заказать под электронику</span>
+                <span>Выбрать под электронику</span>
                 <span class="text-[#1AB248]">→</span>
               </button>
             </div>
@@ -364,7 +364,7 @@
                 />
                 <div class="absolute top-3 left-3 flex gap-1.5">
                   <span class="px-2.5 py-1 rounded-lg bg-[#08221F]/90 text-[#1AB248] font-black text-[10px] uppercase tracking-wider backdrop-blur-sm border border-[#1AB248]/30">
-                    Шаблон
+                    Конфигурация
                   </span>
                   <span class="px-2.5 py-1 rounded-lg bg-black/70 text-white font-bold text-[10px] backdrop-blur-sm">
                     Home & Decor
@@ -374,14 +374,14 @@
 
               <div class="p-6 space-y-3">
                 <div class="flex items-center justify-between text-xs text-slate-400">
-                  <span>Специфика: <b>Уют / Текстиль / Декор</b></span>
-                  <span class="font-bold text-slate-700">Запуск за 2 дня</span>
+                  <span>Специфика: <b>Уют / Текстиль</b></span>
+                  <span class="font-bold text-slate-700">2 дня запуск</span>
                 </div>
                 <h3 class="text-lg font-black text-slate-900 group-hover:text-[#1AB248] transition">
                   Витрина домашнего декора и текстиля
                 </h3>
                 <p class="text-xs text-slate-500 leading-relaxed">
-                  Каталог с коллекциями комнат, авто-расчет габаритов в корзине, отгрузка через ближайший пункт выдачи СДЭК без очередей.
+                  Каталог коллекций, авто-расчет габаритов в корзине, быстрая отгрузка через ближайший пункт выдачи СДЭК без очередей.
                 </p>
                 <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] text-slate-600 font-medium">
                   <span class="px-2 py-0.5 rounded-md bg-slate-100">Каталог коллекций</span>
@@ -396,7 +396,7 @@
                 onclick="chooseTemplate('Магазин товаров для дома')" 
                 class="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-[#08221F] hover:bg-[#062A30] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition shadow-sm cursor-pointer"
               >
-                <span>Заказать под декор и дом</span>
+                <span>Выбрать под декор и дом</span>
                 <span class="text-[#1AB248]">→</span>
               </button>
             </div>
@@ -415,16 +415,16 @@
 
           <div class="text-center max-w-xl mx-auto mb-8">
             <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              Не нашли свою нишу?
+              Запустить магазин под ваш бренд
             </h2>
             <p class="text-slate-300 text-xs sm:text-sm mt-2">
-              Скиньте ссылку на ваш магазин на Wildberries, Ozon или список товаров — мы бесплатно подготовим персональный демо-референс витрины под ваш бренд.
+              Укажите ссылку на ваш магазин на Wildberries, Ozon или категорию товаров — подготовим персональный расчет и план запуска.
             </p>
           </div>
 
           <form class="js-lead-form space-y-4 max-w-lg mx-auto">
-            <input type="hidden" name="platform" value="Заказ из каталога референсов (Store Test)" />
-            <input type="hidden" id="selectedTemplateInput" name="template_name" value="Индивидуальный референс" />
+            <input type="hidden" name="platform" value="Заказ из каталога портфолио (Store Portfolio)" />
+            <input type="hidden" id="selectedTemplateInput" name="template_name" value="Индивидуальный проект" />
 
             <div>
               <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1">
@@ -495,7 +495,7 @@
               type="submit" 
               class="submit-btn w-full py-3.5 px-6 bg-[#1AB248] hover:bg-[#158E3A] active:scale-[0.99] text-white font-black text-sm uppercase tracking-wider rounded-xl transition shadow-lg shadow-[#1AB248]/30 cursor-pointer disabled:opacity-50"
             >
-              Получить демо под свой магазин →
+              Рассчитать запуск витрины →
             </button>
 
             <p class="text-[10px] text-slate-400 text-center leading-relaxed">
@@ -511,7 +511,7 @@
             </div>
             <h3 class="text-xl font-black text-white tracking-tight">Заявка принята!</h3>
             <p class="text-xs text-slate-300 max-w-xs mx-auto leading-relaxed">
-              Специалист свяжется с вами в течение 15 минут и подготовит персональную демо-витрину.
+              Специалист свяжется с вами в течение 15 минут в выбранном мессенджере.
             </p>
           </div>
 
@@ -548,7 +548,7 @@
     function chooseTemplate(name) {
       const input = document.getElementById('selectedTemplateInput');
       const comment = document.getElementById('commentField');
-      if (input) input.value = `Выбран шаблон: ${name}`;
+      if (input) input.value = `Выбран пример: ${name}`;
       if (comment && !comment.value) comment.value = `Интересует запуск по примеру: ${name}`;
       
       const formEl = document.getElementById('customOrder');
@@ -588,7 +588,7 @@
       const btn = form.querySelector('.submit-btn');
       const statusDiv = form.querySelector('.form-status');
       const phoneInput = form.querySelector('.js-phone-input');
-      const originalText = btn ? btn.innerText : 'Получить демо под свой магазин →';
+      const originalText = btn ? btn.innerText : 'Рассчитать запуск витрины →';
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
