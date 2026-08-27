@@ -1,0 +1,284 @@
+name: Inject Schema.org Microdata to All Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  inject-schema:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Process and Inject Schema.org
+        shell: python
+        run: |
+          import os
+          import re
+          import json
+
+          BASE_DOMAIN = "https://cdek-ecommerce.ru"
+          COMPANY_NAME = "СДЭК E-Commerce"
+
+          SLUG_NAMES = {
+              "dogovor": "Договор",
+              "services": "Услуги",
+              "integrations": "Интеграции",
+              "calculator": "Калькулятор",
+              "internet-magazin": "Интернет-магазинам",
+              "marketplace": "Маркетплейсам",
+              "ip": "Для ИП",
+              "yur-lica": "Юридическим лицам",
+              "samozanyatye": "Самозанятым",
+              "krupnogabarit": "Крупногабаритный груз",
+              "avtozapchasti": "Автозапчасти",
+              "dostavka-odezhdy": "Доставка одежды",
+              "fulfillment": "Фулфилмент",
+              "tilda": "Tilda",
+              "bitrix": "1С-Битрикс",
+              "insales": "InSales",
+              "moysklad": "МойСклад",
+              "woocommerce": "WooCommerce",
+              "1c": "1C:Предприятие",
+              "api": "REST API"
+          }
+
+          def process_file(filepath):
+              with open(filepath, "r", encoding="utf-8") as f:
+                  content = f.read()
+
+              # Пропускаем шаблоны/компоненты без секции <head>
+              if "<head" not in content.lower():
+                  return False
+
+              # Извлекаем canonical URL
+              can_match = re.search(r'<link\s+[^>]*rel=["\']canonical["\'][^>]*href=["\']([^"\']+)["\']', content, re.I)
+              if not can_match:
+                  can_match = re.search(r'<link\s+[^>]*href=["\']([^"\']+)["\'][^>]*rel=["\']canonical["\']', content, re.I)
+
+              if can_match:
+                  page_url = can_match.group(1).strip()
+              else:
+                  rel = os.path.relpath(filepath, ".").replace("\\", "/")
+                  if rel.endswith("index.html"):
+                      rel = rel[:-10]
+                  elif rel.endswith(".html"):
+                      rel = rel[:-5]
+                  page_url = f"{BASE_DOMAIN}/{rel}".rstrip("/") + "/"
+                  if page_url == f"{BASE_DOMAIN}//":
+                      page_url = f"{BASE_DOMAIN}/"
+
+              # Title & Description
+              t_match = re.search(r'<title>(.*?)</title>', content, re.I | re.S)
+              title = t_match.group(1).strip() if t_match else "СДЭК Доставка для бизнеса"
+
+              d_match = re.search(r'<meta\s+[^>]*name=["\']description["\'][^>]*content=["\']([^"\']*)["\']', content, re.I)
+              if not d_match:
+                  d_match = re.search(r'<meta\s+[^>]*content=["\']([^"\']*)["\'][^>]*name=["\']description["\']', content, re.I)
+              desc = d_match.group(1).strip() if d_match else title
+
+              # Хлебные крошки
+              path_clean = page_url.replace(BASE_DOMAIN, "").strip("/")
+              parts = [p for p in path_clean.split("/") if p]
+              breadcrumbs = [
+                  {
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "Главная",
+                      "item": f"{BASE_DOMAIN}/"
+                  }
+              ]
+              cur_path = BASE_DOMAIN
+              for idx, part in enumerate(parts, start=2):
+                  cur_path += f"/{part}"
+                  name = SLUG_NAMES.get(part, part.replace("-", " ").capitalize())
+                  breadcrumbs.append({
+                      "@type": "ListItem",
+                      "position": idx,
+                      "name": name,
+                      "item": f"{cur_path}/"
+                  })
+
+              # FAQ из элементов <details>
+              faq_items = []
+              details_matches = re.findall(r'<details[^>]*>(.*?)</details>', content, re.I | re.S)
+              for block in details_matches:
+                  q_match = re.search(r'<summary[^>]*>(.*?)</summary>', block, re.I | re.S)
+                  if q_match:
+                      question = re.sub(r'<[^>]+>', '', q_match.group(1)).strip()
+                      ans_content = block.replace(q_match.group(0), "")
+                      answer = re.sub(r'<[^>]+>', ' ', ans_content).strip()
+                      answer = re.sub(r'\s+', ' ', answer)
+                      if question and answer:
+                          faq_items.append({
+                              "@type": "Question",
+                              "name": question,
+                              "acceptedAnswer": {
+                                  "@type": "Answer",
+                                  "text": answer
+                              }
+                          })
+
+              # Формирование графа Schema.org
+              graph = [
+                  {
+                      "@type": "WebSite",
+                      "@id": f"{BASE_DOMAIN}/#website",
+                      "url": f"{BASE_DOMAIN}/",
+                      "name": COMPANY_NAME,
+                      "inLanguage": "ru-RU"
+                  },
+                  {
+                      "@type": ["Organization", "LocalBusiness"],
+                      "@id": f"{BASE_DOMAIN}/#organization",
+                      "name": COMPANY_NAME,
+                      "url": f"{BASE_DOMAIN}/",
+                      "logo": f"{BASE_DOMAIN}/favicon.png",
+                      "image": f"{BASE_DOMAIN}/og-image.png",
+                      "email": "sv.dudik@cdek.ru",
+                      "telephone": "+7-993-322-15-20",
+                      "priceRange": "от 205 ₽",
+                      "address": {
+                          "@type": "PostalAddress",
+                          "streetAddress": "Бородинская ул., 156/2",
+                          "addressLocality": "Краснодар",
+                          "addressRegion": "Краснодарский край",
+                          "addressCountry": "RU"
+                      },
+                      "openingHoursSpecification": [
+                          {
+                              "@type": "OpeningHoursSpecification",
+                              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                              "opens": "09:00",
+                              "closes": "18:00"
+                          }
+                      ],
+                      "sameAs": [
+                          "https://t.me/cdek_marketplace",
+                          "https://wa.me/79933221520"
+                      ],
+                      "contactPoint": [
+                          {
+                              "@type": "ContactPoint",
+                              "telephone": "+7-993-322-15-20",
+                              "contactType": "sales",
+                              "areaServed": "RU",
+                              "availableLanguage": ["Russian"],
+                              "contactOption": "TollFree"
+                          },
+                          {
+                              "@type": "ContactPoint",
+                              "url": "https://t.me/cdek_marketplace",
+                              "contactType": "customer support",
+                              "availableLanguage": ["Russian"]
+                          }
+                      ],
+                      "potentialAction": [
+                          {
+                              "@type": "CommunicateAction",
+                              "name": "Написать в Telegram",
+                              "target": "https://t.me/cdek_marketplace"
+                          },
+                          {
+                              "@type": "CommunicateAction",
+                              "name": "Написать в WhatsApp",
+                              "target": "https://wa.me/79933221520"
+                          },
+                          {
+                              "@type": "OrderAction",
+                              "name": "Заключить договор онлайн",
+                              "target": f"{BASE_DOMAIN}/#lead-form"
+                          }
+                      ]
+                  },
+                  {
+                      "@type": "BreadcrumbList",
+                      "@id": f"{page_url}#breadcrumb",
+                      "itemListElement": breadcrumbs
+                  },
+                  {
+                      "@type": "Service",
+                      "@id": f"{page_url}#service",
+                      "name": title,
+                      "provider": {
+                          "@id": f"{BASE_DOMAIN}/#organization"
+                      },
+                      "areaServed": {
+                          "@type": "Country",
+                          "name": "Россия"
+                      },
+                      "description": desc,
+                      "offers": {
+                          "@type": "Offer",
+                          "price": "205",
+                          "priceCurrency": "RUB",
+                          "availability": "https://schema.org/InStock",
+                          "url": page_url
+                      }
+                  }
+              ]
+
+              if faq_items:
+                  graph.append({
+                      "@type": "FAQPage",
+                      "@id": f"{page_url}#faq",
+                      "mainEntity": faq_items
+                  })
+
+              schema_data = {
+                  "@context": "https://schema.org",
+                  "@graph": graph
+              }
+
+              schema_json = json.dumps(schema_data, ensure_ascii=False, indent=2)
+              schema_tag = f'  <script type="application/ld+json">\n{schema_json}\n  </script>'
+
+              # Заменяем существующий script ld+json или вставляем перед </head>
+              if re.search(r'<script\s+type=["\']application/ld\+json["\'].*?</script>', content, re.I | re.S):
+                  new_content = re.sub(r'<script\s+type=["\']application/ld\+json["\'].*?</script>', schema_tag.strip(), content, count=1, flags=re.I | re.S)
+              elif '</head>' in content:
+                  new_content = content.replace('</head>', f'{schema_tag}\n</head>')
+              elif '</HEAD>' in content:
+                  new_content = content.replace('</HEAD>', f'{schema_tag}\n</HEAD>')
+              else:
+                  new_content = content
+
+              if new_content != content:
+                  with open(filepath, "w", encoding="utf-8") as f:
+                      f.write(new_content)
+                  print(f"Updated Schema.org in: {filepath}")
+                  return True
+              return False
+
+          updated_count = 0
+          for root, dirs, files in os.walk("."):
+              if any(ignored in root for ignored in [".git", "node_modules", "dist", ".github"]):
+                  continue
+              for file in files:
+                  if file.endswith(".html"):
+                      full_path = os.path.join(root, file)
+                      if process_file(full_path):
+                          updated_count += 1
+
+          print(f"Finished. Total pages updated: {updated_count}")
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "feat(seo): inject unified Schema.org Service, Offer and FAQ across all pages [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          else
+            print("No changes to commit.")
+          fi
