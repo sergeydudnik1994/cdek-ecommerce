@@ -33,6 +33,10 @@ jobs:
               "services": "Услуги",
               "integrations": "Интеграции",
               "calculator": "Калькулятор",
+              "store": "Создание сайтов",
+              "tracking": "Трекинг",
+              "about": "О компании",
+              "policy": "Политика конфиденциальности",
               "internet-magazin": "Интернет-магазинам",
               "marketplace": "Маркетплейсам",
               "ip": "Для ИП",
@@ -42,13 +46,19 @@ jobs:
               "avtozapchasti": "Автозапчасти",
               "dostavka-odezhdy": "Доставка одежды",
               "fulfillment": "Фулфилмент",
+              "sbornyj-gruz": "Сборный груз",
+              "dostavka-dokumentov": "Документы экспресс",
+              "mezhdunarodnaya-dostavka": "Международная доставка",
+              "nalozhennyj-platezh": "Наложенный платеж",
               "tilda": "Tilda",
               "bitrix": "1С-Битрикс",
               "insales": "InSales",
               "moysklad": "МойСклад",
               "woocommerce": "WooCommerce",
+              "opencart": "OpenCart",
               "1c": "1C:Предприятие",
-              "api": "REST API"
+              "api": "REST API",
+              "dbs": "СДЭК DBS"
           }
 
           def process_file(filepath):
@@ -107,13 +117,16 @@ jobs:
                       "item": f"{cur_path}/"
                   })
 
-              # FAQ из аккордеонов <details>
+              # FAQ из аккордеонов <details> с очисткой стрелок и лишних пробелов
               faq_items = []
               details_matches = re.findall(r'<details[^>]*>(.*?)</details>', content, re.I | re.S)
               for block in details_matches:
                   q_match = re.search(r'<summary[^>]*>(.*?)</summary>', block, re.I | re.S)
                   if q_match:
-                      question = re.sub(r'<[^>]+>', '', q_match.group(1)).strip()
+                      raw_q = re.sub(r'<[^>]+>', '', q_match.group(1))
+                      question = re.sub(r'[▾▼▲►›\s]+$', '', raw_q).strip()
+                      question = re.sub(r'\s+', ' ', question)
+
                       ans_content = block.replace(q_match.group(0), "")
                       answer = re.sub(r'<[^>]+>', ' ', ans_content).strip()
                       answer = re.sub(r'\s+', ' ', answer)
