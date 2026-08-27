@@ -1,4 +1,4 @@
-<div id="lead-form" class="bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200/80 border-t-[6px] border-t-[#1AB248] relative space-y-5">
+<div id="lead-form" class="bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200/80 border-t-[6px] border-t-[#FF5A27] relative space-y-5">
   
   <!-- Шапка формы -->
   <div class="js-form-header text-center space-y-1">
@@ -66,7 +66,8 @@
           Договор СДЭК <span class="text-red-500">*</span>
         </label>
         <select name="contract_status" required class="js-contract-select w-full px-3 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] outline-none text-xs sm:text-sm bg-white transition cursor-pointer">
-          <option value="new" selected>Нет договора (Новый клиент)</option>
+          <option value="" disabled selected>Статус...</option>
+          <option value="new">Нет договора (Новый клиент)</option>
           <option value="inactive">Есть (нет отправок 6+ мес.)</option>
           <option value="active">Есть действующий (отправляю)</option>
         </select>
@@ -229,12 +230,22 @@
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // 1. Проверка на спам-бота (honeypot)
+        // 1. Проверка выбора статуса договора
+        if (contractSelect && (!contractSelect.value || contractSelect.value === '')) {
+          if (statusDiv) {
+            statusDiv.classList.remove('hidden');
+            statusDiv.innerText = 'Выберите статус договора со СДЭК';
+          }
+          contractSelect.focus();
+          return;
+        }
+
+        // 2. Защита от ботов
         if (honeypot && honeypot.value.trim() !== '') {
           return;
         }
 
-        // 2. Валидация компании / ИНН
+        // 3. Проверка компании / ИНН
         if (companyInput && companyInput.value.trim().length < 3) {
           if (statusDiv) {
             statusDiv.classList.remove('hidden');
@@ -244,7 +255,7 @@
           return;
         }
 
-        // 3. Валидация телефона
+        // 4. Проверка телефона
         if (phoneInput) {
           const rawDigits = phoneInput.value.replace(/\D/g, '');
           if (rawDigits.length !== 11) {
