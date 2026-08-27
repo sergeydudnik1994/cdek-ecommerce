@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111763499', 'ym');
+    ym(111763499, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/111763499" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Наложенный платеж СДЭК: как работает отправка, комиссия и фискализация чеков по 54-ФЗ</title>
+  <meta name="description" content="Полный гайд по наложенному платежу СДЭК для интернет-магазинов и ИП: правила приема оплаты при вручении, комиссия агента, чеки по 54-ФЗ и сроки вывода средств на р/с." />
+  <meta name="keywords" content="сдэк наложенный платеж, наложенный платеж сдэк как работает, сдэк отправка наложенным платежом, договор со сдэк, наложенный платеж 54 фз" />
+  <link rel="canonical" href="https://cdek-ecommerce.ru/blog/nalozhennyj-platezh-sdek/" />
+
+  <meta name="theme-color" content="#08221F" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Roboto', sans-serif; }
+  </style>
+
+  <!-- Schema.org Microdata -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://cdek-ecommerce.ru/blog/nalozhennyj-platezh-sdek/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/" },
+          { "@type": "ListItem", "position": 2, "name": "Блог", "item": "https://cdek-ecommerce.ru/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "Наложенный платеж СДЭК", "item": "https://cdek-ecommerce.ru/blog/nalozhennyj-platezh-sdek/" }
+        ]
+      },
+      {
+        "@type": "NewsArticle",
+        "@id": "https://cdek-ecommerce.ru/blog/nalozhennyj-platezh-sdek/#article",
+        "headline": "Наложенный платеж СДЭК: как работает отправка, комиссия и фискализация чеков по 54-ФЗ",
+        "datePublished": "2026-08-25T10:00:00+03:00",
+        "dateModified": "2026-08-25T10:00:00+03:00",
+        "author": { "@type": "Organization", "name": "СДЭК E-Commerce" },
+        "publisher": { "@type": "Organization", "name": "СДЭК E-Commerce", "logo": { "@type": "ImageObject", "url": "https://cdek-ecommerce.ru/favicon.png" } }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://cdek-ecommerce.ru/blog/nalozhennyj-platezh-sdek/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Может ли физическое лицо без договора отправить посылку с наложенным платежом?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Нет, опция наложенного платежа с приемом денег доступна только юридическим лицам, ИП и самозанятым по официальному B2B-договору СДЭК."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Нужно ли интернет-магазину покупать онлайн-кассу для наложенного платежа?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Нет, СДЭК выступает платежным агентом и сам формирует фискальный кассовый чек по 54-ФЗ в момент выдачи посылки покупателю."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white flex flex-col min-h-screen">
+
+  <!--# include virtual="/components/header.html" -->
+
+  <main class="flex-grow py-10 sm:py-14">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <nav class="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-6">
+        <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
+        <span>/</span>
+        <a href="/blog/" class="hover:text-[#1AB248] transition">Блог</a>
+        <span>/</span>
+        <span class="text-slate-800">Наложенный платеж СДЭК</span>
+      </nav>
+
+      <article class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-8">
+        
+        <header class="space-y-4 border-b border-slate-100 pb-6">
+          <div class="flex items-center gap-3 text-xs font-bold">
+            <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-full uppercase tracking-wider">Финансы & 54-ФЗ</span>
+            <span class="text-slate-400">25 августа 2026</span>
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight">
+            Наложенный платеж СДЭК: как работает отправка, комиссия и фискализация чеков по 54-ФЗ
+          </h1>
+        </header>
+
+        <div class="bg-[#E8F8ED] border border-[#1AB248]/30 rounded-2xl p-5 text-xs sm:text-sm text-slate-800 leading-relaxed space-y-2">
+          <p class="font-bold text-[#1AB248] text-base">Главное о наложенном платеже:</p>
+          <p>
+            Наложенный платеж в СДЭК позволяет интернет-магазинам принимать оплату за товар при вручении в пункте выдачи или курьером. СДЭК берет на себя функции платежного агента: выдает фискальный чек по 54-ФЗ и переводит выручку на ваш расчетный счет.
+          </p>
+        </div>
+
+        <section class="space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed">
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Как устроен процесс взаиморасчетов</h2>
+          <p>
+            Для подключения наложенного платежа требуется заключение B2B-договора со СДЭК (для ИП, юридических лиц или самозанятых). Схема работы включает следующие этапы:
+          </p>
+          <ul class="space-y-2.5 text-sm pl-2">
+            <li class="flex items-start gap-2">
+              <span class="text-[#1AB248] font-bold">1.</span>
+              <span><b>Формирование накладной:</b> В личном кабинете или через модуль CMS указывается сумма наложенного платежа за товар и доставку.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-[#1AB248] font-bold">2.</span>
+              <span><b>Оплата покупателем:</b> Клиент осматривает заказ в ПВЗ и оплачивает его банковской картой, по QR-коду СБП или наличными.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-[#1AB248] font-bold">3.</span>
+              <span><b>Фискализация (54-ФЗ):</b> Кассовый аппарат СДЭК пробивает электронный чек с указанием вашей номенклатуры и признака агентской схемы.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-[#1AB248] font-bold">4.</span>
+              <span><b>Перевод выручки:</b> Деньги за вычетом агентского вознаграждения перечисляются на ваш банковский счет по согласованному графику.</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- CTA Блок -->
+        <div class="bg-[#08221F] text-white rounded-3xl p-6 sm:p-8 text-center space-y-4 shadow-xl">
+          <h3 class="text-xl sm:text-2xl font-black">Подключите наложенный платеж по договору СДЭК</h3>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-md mx-auto">
+            Официальное заключение договора за 15 минут онлайн: прием оплат при вручении, закрывающие акты и вывод средств без кассовых разрывов.
+          </p>
+          <a href="/dogovor/" class="inline-block px-8 py-3.5 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-xs uppercase tracking-wider rounded-xl transition shadow-lg shadow-[#1AB248]/30">
+            Заключить договор онлайн →
+          </a>
+        </div>
+
+      </article>
+
+    </div>
+  </main>
+
+  <!--# include virtual="/components/footer.html" -->
+
+</body>
+</html>
