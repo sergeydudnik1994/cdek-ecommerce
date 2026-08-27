@@ -1,33 +1,39 @@
-<div id="contract-form-container" class="scroll-mt-24 bg-white text-slate-900 rounded-3xl p-6 sm:p-10 shadow-2xl border border-slate-200/80 border-t-[6px] border-t-[#FF5A27] relative space-y-6">
+<div id="contract-form-container" class="scroll-mt-24 bg-white text-slate-900 rounded-3xl p-6 sm:p-10 shadow-2xl border border-slate-200/80 border-t-[6px] border-t-[#1AB248] relative space-y-6">
+  
   <!-- Шапка анкеты -->
   <div class="js-contract-header border-b border-slate-200 pb-5">
-    <span class="text-xs font-black uppercase tracking-wider text-[#1AB248]">Экспресс-подключение</span>
-    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">Онлайн-анкета на заключение договора</h2>
+    <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#1AB248]">
+      <span class="w-2 h-2 rounded-full bg-[#1AB248]"></span>
+      Регистрация B2B-клиента
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1.5">
+      Онлайн-анкета на заключение договора СДЭК
+    </h2>
     <p class="text-xs sm:text-sm text-slate-500 mt-1">
-      Выберите форму собственности — форма автоматически настроит необходимые поля и условия договора.
+      Зарегистрируйтесь за минуту — отправляйте заказы со скидками до 50% уже сегодня.
     </p>
   </div>
 
   <!-- Форма регистрации -->
-  <form id="dogovor-form" class="js-contract-form space-y-5">
+  <form id="dogovor-form" class="js-contract-form space-y-5" novalidate>
     
     <!-- Переключатель формы бизнеса -->
     <div>
       <label class="block text-xs font-bold text-slate-700 uppercase mb-2">
         Форма ведения бизнеса <span class="text-red-500">*</span>
       </label>
-      <div class="grid grid-cols-3 gap-3">
-        <label class="js-entity-label border-2 border-[#1AB248] bg-[#E8F8ED]/30 text-slate-900 rounded-2xl p-3.5 text-center cursor-pointer font-bold text-xs sm:text-sm flex flex-col items-center justify-center gap-0.5 transition" data-type="ИП">
+      <div class="grid grid-cols-3 gap-2.5 sm:gap-3">
+        <label class="js-entity-label border-2 border-[#1AB248] bg-[#E8F8ED]/40 text-slate-900 rounded-2xl p-3 sm:p-3.5 text-center cursor-pointer font-bold text-xs sm:text-sm flex flex-col items-center justify-center gap-0.5 transition" data-type="ИП">
           <input type="radio" name="entity_type" value="ИП" checked class="hidden">
           <span>ИП</span>
           <span class="text-[10px] text-slate-500 font-normal">Предприниматель</span>
         </label>
-        <label class="js-entity-label border border-slate-200 text-slate-700 rounded-2xl p-3.5 text-center cursor-pointer font-bold text-xs sm:text-sm flex flex-col items-center justify-center gap-0.5 hover:border-slate-300 transition" data-type="ООО">
+        <label class="js-entity-label border border-slate-200 text-slate-700 rounded-2xl p-3 sm:p-3.5 text-center cursor-pointer font-bold text-xs sm:text-sm flex flex-col items-center justify-center gap-0.5 hover:border-slate-300 transition" data-type="ООО">
           <input type="radio" name="entity_type" value="ООО" class="hidden">
-          <span>ООО</span>
-          <span class="text-[10px] text-slate-500 font-normal">Организация</span>
+          <span>ООО / АО</span>
+          <span class="text-[10px] text-slate-500 font-normal">Юрлицо</span>
         </label>
-        <label class="js-entity-label border border-slate-200 text-slate-700 rounded-2xl p-3.5 text-center cursor-pointer font-bold text-xs sm:text-sm flex flex-col items-center justify-center gap-0.5 hover:border-slate-300 transition" data-type="Самозанятый">
+        <label class="js-entity-label border border-slate-200 text-slate-700 rounded-2xl p-3 sm:p-3.5 text-center cursor-pointer font-bold text-xs sm:text-sm flex flex-col items-center justify-center gap-0.5 hover:border-slate-300 transition" data-type="Самозанятый">
           <input type="radio" name="entity_type" value="Самозанятый" class="hidden">
           <span>Самозанятый</span>
           <span class="text-[10px] text-slate-500 font-normal">Плательщик НПД</span>
@@ -35,47 +41,107 @@
       </div>
     </div>
 
-    <!-- Информационный бейдж условий (динамический) -->
+    <!-- Информационный бейдж условий -->
     <div id="entity-info-badge" class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-700 leading-relaxed space-y-1">
       <strong class="text-slate-900 block font-bold">Условия для ИП:</strong>
-      <p>Тарифная сетка УСН без переплаты за НДС 22%. Доступны наложенный платеж по 54-ФЗ с выплатой на р/с, постоплата раз в месяц и интеграция по API.</p>
+      <p>Тарифная сетка УСН без переплаты за НДС 22%. Доступен наложенный платеж 54-ФЗ с перечислением на р/с, постоплата раз в месяц и интеграция по API.</p>
     </div>
 
-    <!-- Базовые поля -->
+    <!-- Блок ИНН и Названия -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
         <label id="inn-label" class="block text-xs font-bold text-slate-700 uppercase mb-1">
           ИНН ИП (12 цифр) <span class="text-red-500">*</span>
         </label>
-        <input type="text" name="inn" id="inn-input" required placeholder="Введите 12 цифр ИНН" maxlength="12" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none text-sm transition" />
+        <div class="relative">
+          <input 
+            type="text" 
+            name="inn" 
+            id="inn-input" 
+            required 
+            placeholder="Введите 12 цифр ИНН" 
+            maxlength="12" 
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none text-sm transition font-mono tracking-wider" 
+          />
+          <span id="inn-check-icon" class="absolute right-3.5 top-3.5 hidden text-emerald-600 font-bold text-sm">✓</span>
+        </div>
+        <p id="inn-error-text" class="text-[11px] text-red-500 mt-1 hidden font-medium">Введите корректный ИНН (проверка по контрольной сумме ФНС)</p>
       </div>
 
       <div>
         <label id="company-label" class="block text-xs font-bold text-slate-700 uppercase mb-1">
           ФИО Индивидуального предпринимателя <span class="text-red-500">*</span>
         </label>
-        <input type="text" name="company_name" id="company-input" required placeholder="ИП Иванов Иван Иванович" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none text-sm transition" />
-      </div>
-
-      <div>
-        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">
-          Мобильный телефон <span class="text-red-500">*</span>
-        </label>
-        <input type="tel" name="phone" required value="+7 " placeholder="+7 (999) 000-00-00" maxlength="18" class="js-phone-input w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none text-sm font-medium transition" />
-      </div>
-
-      <div>
-        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">
-          Email для личного кабинета <span class="text-red-500">*</span>
-        </label>
-        <input type="email" name="email" required placeholder="director@company.ru" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none text-sm transition" />
+        <input 
+          type="text" 
+          name="company_name" 
+          id="company-input" 
+          required 
+          placeholder="ИП Фамилия Имя Отчество" 
+          class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none text-sm transition" 
+        />
       </div>
     </div>
 
-    <!-- Канал связи и статус в СДЭК -->
+    <!-- Контактные данные -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div>
+        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">
+          Город отправки <span class="text-red-500">*</span>
+        </label>
+        <input 
+          type="text" 
+          name="city" 
+          required 
+          placeholder="Например: Краснодар" 
+          class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none text-sm transition" 
+        />
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">
+          Телефон для связи <span class="text-red-500">*</span>
+        </label>
+        <input 
+          type="tel" 
+          name="phone" 
+          required 
+          value="+7 " 
+          placeholder="+7 (999) 000-00-00" 
+          maxlength="18" 
+          class="js-phone-input w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none text-sm font-medium transition" 
+        />
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">
+          Рабочий Email <span class="text-red-500">*</span>
+        </label>
+        <input 
+          type="email" 
+          name="email" 
+          required 
+          placeholder="info@company.ru" 
+          class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] focus:border-[#1AB248] outline-none text-sm transition" 
+        />
+      </div>
+    </div>
+
+    <!-- Статус в СДЭК и Канал связи -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
-        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Удобный канал связи</label>
+        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">
+          Статус договора со СДЭК <span class="text-red-500">*</span>
+        </label>
+        <select name="contract_status" required class="js-contract-select w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] outline-none text-sm bg-white cursor-pointer transition">
+          <option value="new" selected>Нет договора (Новый B2B-клиент)</option>
+          <option value="inactive">Есть договор (нет отправок 6+ мес.)</option>
+          <option value="active">Есть действующий договор (отправляю)</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Удобный канал для связи</label>
         <select name="messenger" class="w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] outline-none text-sm bg-white cursor-pointer transition">
           <option value="Telegram">Telegram</option>
           <option value="WhatsApp">WhatsApp</option>
@@ -83,79 +149,69 @@
           <option value="Звонок">Звонок менеджера</option>
         </select>
       </div>
-      <div>
-        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">
-          Статус в СДЭК <span class="text-red-500">*</span>
+    </div>
+
+    <!-- Предупреждение для клиентов с действующим договором -->
+    <div class="js-contract-warning hidden p-4 rounded-2xl bg-amber-50 border border-amber-300 text-amber-900 text-xs leading-relaxed space-y-1">
+      <div class="font-bold flex items-center gap-1.5 text-amber-800">
+        <span>⚠️</span>
+        <span>Регистрация дублирующих договоров не производится</span>
+      </div>
+      <p>
+        У вас уже есть активный B2B-договор СДЭК. Для смены тарифа, подключения модулей или смены условий обратитесь напрямую к вашему персональному куратору в личном кабинете СДЭК.
+      </p>
+    </div>
+
+    <!-- Тоггл онлайн-продаж (как на оф. форме СДЭК) -->
+    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
+      <label class="flex items-center justify-between cursor-pointer select-none">
+        <span class="text-xs font-bold text-slate-700">Компания не продаёт товары онлайн (только B2B-грузы)</span>
+        <div class="relative inline-flex items-center">
+          <input type="checkbox" id="offline-toggle" class="sr-only peer">
+          <div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#1AB248]"></div>
+        </div>
+      </label>
+
+      <div id="shop-url-wrapper">
+        <label class="block text-xs font-semibold text-slate-600 mb-1">
+          Сайт интернет-магазина или ссылка на маркетплейс / соцсеть
         </label>
-        <select name="contract_status" required class="js-contract-select w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] outline-none text-sm bg-white cursor-pointer transition">
-          <option value="new" selected>Нет договора (Новый клиент)</option>
-          <option value="inactive">Есть договор (не отправляю 6+ мес.)</option>
-          <option value="active">Есть действующий договор (отправляю)</option>
-        </select>
+        <input 
+          type="text" 
+          name="shop_url" 
+          id="shop-url-input" 
+          placeholder="myshop.ru, ссылка на магазин Wildberries, Ozon или Авито" 
+          class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs outline-none focus:ring-1 focus:ring-[#1AB248] transition" 
+        />
+        <p class="text-[10px] text-slate-400 mt-1">
+          Поможет менеджеру сразу подключить готовый интеграционный модуль вашей платформы.
+        </p>
       </div>
     </div>
 
-    <div class="js-contract-warning hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs leading-snug">
-      ⚠️ Мы регистрируем только новые договоры или клиентов без отправок более 6 месяцев. Если у вас есть действующий договор — обратитесь к текущему куратору.
+    <!-- Интерактивная плашка договора -->
+    <div class="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2 text-xs text-slate-700">
+        <span class="text-base">📄</span>
+        <span>Договор на оказание курьерских услуг:</span>
+      </div>
+      <button 
+        type="button" 
+        onclick="if(typeof openContractModal === 'function') { openContractModal(); } else { window.open('/dogovor/cdek-dogovor-im.pdf', '_blank'); }" 
+        class="text-xs font-bold text-[#158E3A] hover:text-[#0f682a] underline cursor-pointer">
+        Прочитать
+      </button>
     </div>
 
-    <!-- Опциональные реквизиты (Карточка предприятия) -->
-    <details class="group bg-slate-50 border border-slate-200/80 rounded-2xl p-4 sm:p-5">
-      <summary class="font-bold text-xs sm:text-sm text-slate-800 cursor-pointer flex justify-between items-center list-none select-none">
-        <span class="flex items-center gap-2">
-          <span>Реквизиты и адрес для мгновенной регистрации</span>
-          <span class="text-[10px] bg-emerald-100 text-[#158E3A] px-2 py-0.5 rounded font-bold">Опционально</span>
-        </span>
-        <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
-      </summary>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 mt-3 border-t border-slate-200">
-        <div>
-          <label id="legal-address-label" class="block text-xs font-semibold text-slate-600 mb-1">Адрес регистрации (по паспорту / ЕГРИП)</label>
-          <input type="text" name="legal_address" placeholder="Индекс, город, улица, дом, офис" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs outline-none focus:ring-1 focus:ring-[#1AB248]" />
-        </div>
-        <div>
-  <label class="block text-xs font-semibold text-slate-600 mb-1">
-    Удобный ПВЗ для сдачи и возвратов
-  </label>
-  <input 
-    type="text" 
-    name="fact_address" 
-    placeholder="Например: Краснодар, ул. Красная, 120 (или код ПВЗ: KRD1)" 
-    class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs outline-none focus:ring-1 focus:ring-[#1AB248] transition placeholder:text-slate-400" 
-  />
-  <p class="text-[10px] text-slate-400 mt-1">
-    Укажите адрес любого пункта СДЭК, где вам удобнее получать возвраты и отправлять посылки.
-  </p>
-</div>
-        <div>
-          <label id="account-label" class="block text-xs font-semibold text-slate-600 mb-1">Расчетный счет ИП (20 знаков: 40802...)</label>
-          <input type="text" name="rs" id="account-input" placeholder="40802810..." maxlength="20" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs outline-none focus:ring-1 focus:ring-[#1AB248]" />
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1">БИК Банка (9 цифр)</label>
-          <input type="text" name="bik" placeholder="044525..." maxlength="9" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs outline-none focus:ring-1 focus:ring-[#1AB248]" />
-        </div>
-        <div>
-  <label class="block text-xs font-semibold text-slate-600 mb-1">Налоговый режим (НДС)</label>
-  <select name="tax_system" id="tax-select" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs outline-none focus:ring-1 focus:ring-[#1AB248]">
-    <option value="УСН / Спецрежимы">УСН, Патент, Самозанятые</option>
-    <option value="ОСНО (с НДС 22%)">ОСНО</option>
-  </select>
-</div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1">Сайт или ссылка на маркетплейс</label>
-          <input type="text" name="shop_url" placeholder="myshop.ru или ссылка на магазин WB/Ozon" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs outline-none focus:ring-1 focus:ring-[#1AB248]" />
-        </div>
-      </div>
-    </details>
-
-    <button type="submit" class="submit-btn w-full bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-sm uppercase tracking-wider py-4 px-6 rounded-2xl transition duration-200 shadow-lg shadow-[#1AB248]/25 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
-      Заключить договор со СДЭК
+    <!-- Кнопка отправки -->
+    <button 
+      type="submit" 
+      class="submit-btn w-full bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-sm uppercase tracking-wider py-4 px-6 rounded-2xl transition duration-200 shadow-lg shadow-[#1AB248]/25 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+      Зарегистрироваться
     </button>
 
-    <p class="text-[11px] text-slate-400 text-center">
-      Нажимая кнопку, вы соглашаетесь с <a href="/policy/" target="_blank" class="underline hover:text-slate-600">Политикой конфиденциальности</a> и регламентом 152-ФЗ.
+    <p class="text-[11px] text-slate-400 text-center leading-relaxed">
+      Нажимая кнопку «Зарегистрироваться», вы принимаете условия <a href="/policy/" target="_blank" class="underline hover:text-slate-600">Политики конфиденциальности</a> и даёте согласие на обработку персональных данных.
     </p>
 
     <div class="form-status text-xs text-center text-red-500 font-semibold hidden"></div>
@@ -168,16 +224,16 @@
     </div>
     <h3 class="text-2xl font-black text-slate-900 tracking-tight">Анкета успешно принята!</h3>
     <p class="text-sm text-slate-600 max-w-sm mx-auto leading-relaxed">
-      Менеджер проверяет реквизиты и свяжется с вами в течение <strong class="text-[#1AB248] font-bold">15 минут</strong> для подтверждения кода подписания.
+      Менеджер проверяет реквизиты и свяжется с вами в течение <strong class="text-[#1AB248] font-bold">15 минут</strong> для активации личного кабинета со спецтарифами.
     </p>
     <button type="button" class="js-reset-btn text-xs font-bold uppercase text-slate-500 hover:text-[#1AB248] underline transition-colors pt-2 cursor-pointer">
       Заполнить ещё одну анкету
     </button>
   </div>
 
-  <!-- Блок прямых ссылок на мессенджеры -->
+  <!-- Блок прямых мессенджеров -->
   <div class="mt-5 pt-4 border-t border-slate-100 text-center">
-    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2.5">Или свяжитесь с нами напрямую:</div>
+    <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2.5">Или свяжитесь с отделом подключений напрямую:</div>
     <div class="grid grid-cols-3 gap-2">
       <a href="https://t.me/cdek_marketplace" target="_blank" rel="noopener noreferrer" class="py-2.5 px-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold flex items-center justify-center gap-1.5 transition shadow-sm active:scale-95">
         <svg class="w-4 h-4 text-[#2AABEE] shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.52 8.35l-1.97 9.28c-.14.66-.54.82-1.08.51l-3-2.21-1.45 1.39c-.14.18-.36.22-.55.22l.19-2.85 5.18-4.68c.22-.2-.05-.31-.35-.11l-6.4 4.02-2.76-.86c-.6-.19-.62-.6.13-.89l10.8-4.16c.5-.19.95.12.83.89z"/></svg>
@@ -200,6 +256,36 @@
 
 <script>
   (function() {
+    // Алгоритм ФНС для проверки контрольной суммы ИНН (10 и 12 знаков)
+    function validateINNChecksum(inn) {
+      inn = String(inn).trim();
+      if (!/^\d+$/.test(inn)) return false;
+
+      if (inn.length === 10) {
+        const coefs = [2, 4, 10, 3, 5, 9, 4, 6, 8];
+        let sum = 0;
+        for (let i = 0; i < 9; i++) sum += parseInt(inn[i], 10) * coefs[i];
+        let control = sum % 11;
+        if (control > 9) control %= 10;
+        return control === parseInt(inn[9], 10);
+      } else if (inn.length === 12) {
+        const coefs1 = [7, 2, 4, 10, 3, 5, 9, 4, 6, 8];
+        let sum1 = 0;
+        for (let i = 0; i < 10; i++) sum1 += parseInt(inn[i], 10) * coefs1[i];
+        let control1 = sum1 % 11;
+        if (control1 > 9) control1 %= 10;
+
+        const coefs2 = [3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8];
+        let sum2 = 0;
+        for (let i = 0; i < 11; i++) sum2 += parseInt(inn[i], 10) * coefs2[i];
+        let control2 = sum2 % 11;
+        if (control2 > 9) control2 %= 10;
+
+        return control1 === parseInt(inn[10], 10) && control2 === parseInt(inn[11], 10);
+      }
+      return false;
+    }
+
     function formatRussianPhoneNumber(value) {
       const digits = value.replace(/\D/g, '');
       let body = digits;
@@ -231,13 +317,24 @@
     const entityLabels = container.querySelectorAll('.js-entity-label');
     const innLabel = container.querySelector('#inn-label');
     const innInput = container.querySelector('#inn-input');
+    const innCheckIcon = container.querySelector('#inn-check-icon');
+    const innErrorText = container.querySelector('#inn-error-text');
     const companyLabel = container.querySelector('#company-label');
     const companyInput = container.querySelector('#company-input');
-    const accountLabel = container.querySelector('#account-label');
-    const accountInput = container.querySelector('#account-input');
-    const legalAddressLabel = container.querySelector('#legal-address-label');
-    const taxSelect = container.querySelector('#tax-select');
     const entityInfoBadge = container.querySelector('#entity-info-badge');
+    const offlineToggle = container.querySelector('#offline-toggle');
+    const shopUrlWrapper = container.querySelector('#shop-url-wrapper');
+
+    // Переключение офлайн / онлайн
+    if (offlineToggle && shopUrlWrapper) {
+      offlineToggle.addEventListener('change', () => {
+        if (offlineToggle.checked) {
+          shopUrlWrapper.classList.add('hidden');
+        } else {
+          shopUrlWrapper.classList.remove('hidden');
+        }
+      });
+    }
 
     const entityConfigs = {
       'ИП': {
@@ -245,64 +342,82 @@
         innPlaceholder: 'Введите 12 цифр ИНН',
         innMax: 12,
         companyLabel: 'ФИО Индивидуального предпринимателя <span class="text-red-500">*</span>',
-        companyPlaceholder: 'ИП Иванов Иван Иванович',
-        accountLabel: 'Расчетный счет ИП (20 знаков: 40802...)',
-        accountPlaceholder: '40802810...',
-        legalAddressLabel: 'Адрес регистрации (по паспорту / ЕГРИП)',
-        defaultTax: 'УСН / Спецрежимы',
-        infoHtml: '<strong class="text-slate-900 block font-bold">Условия для ИП:</strong><p>Льготная тарифная сетка для спецрежимов без переплаты за НДС 22%. Доступны наложенный платеж по 54-ФЗ с выплатой на р/с, постоплата раз в месяц и интеграция по API.</p>'
+        companyPlaceholder: 'ИП Фамилия Имя Отчество',
+        infoHtml: '<strong class="text-slate-900 block font-bold">Условия для ИП:</strong><p>Тарифная сетка УСН без переплаты за НДС 22%. Доступен наложенный платеж 54-ФЗ с перечислением на р/с, постоплата раз в месяц и интеграция по API.</p>'
       },
       'ООО': {
         innLabel: 'ИНН организации (10 цифр) <span class="text-red-500">*</span>',
         innPlaceholder: 'Введите 10 цифр ИНН',
         innMax: 10,
         companyLabel: 'Наименование организации (ООО / АО) <span class="text-red-500">*</span>',
-        companyPlaceholder: 'ООО «Вектор Логистик»',
-        accountLabel: 'Расчетный счет юрлица (20 знаков: 40702...)',
-        accountPlaceholder: '40702810...',
-        legalAddressLabel: 'Юридический адрес (по ЕГРЮЛ)',
-        defaultTax: 'ОСНО (с НДС 22%)',
+        companyPlaceholder: 'ООО «Название компании»',
         infoHtml: '<strong class="text-slate-900 block font-bold">Условия для ООО (Юрлиц):</strong><p>Полный документооборот через ЭДО (Диадок / СБИС), наложенный платеж, постоплата и возможность выбора договора по ОСНО (с НДС 22%) или льготной сетке.</p>'
       },
       'Самозанятый': {
-        innLabel: 'ИНН физлица (12 цифр) <span class="text-red-500">*</span>',
+        innLabel: 'ИНН самозанятого (12 цифр) <span class="text-red-500">*</span>',
         innPlaceholder: 'Введите 12 цифр ИНН',
         innMax: 12,
-        companyLabel: 'ФИО самозанятого гражданина <span class="text-red-500">*</span>',
-        companyPlaceholder: 'Иванов Иван Иванович',
-        accountLabel: 'Лицевой счет карты физлица (40817...)',
-        accountPlaceholder: '40817810...',
-        legalAddressLabel: 'Адрес постоянной регистрации (по паспорту)',
-        defaultTax: 'УСН / Спецрежимы',
+        companyLabel: 'ФИО плательщика НПД <span class="text-red-500">*</span>',
+        companyPlaceholder: 'Фамилия Имя Отчество',
         infoHtml: '<strong class="text-slate-900 block font-bold">Условия для Самозанятых (НПД):</strong><p>Единая льготная тарифная сетка спецрежимов. Отправка только предоплаченных заказов (наложенный платеж недоступен). Оплата доставки картой в ЛК.</p>'
       }
     };
+
+    let currentExpectedInnLen = 12;
 
     entityLabels.forEach(label => {
       const radio = label.querySelector('input[type="radio"]');
       radio.addEventListener('change', () => {
         const selectedType = label.getAttribute('data-type');
         entityLabels.forEach(l => {
-          l.classList.remove('border-2', 'border-[#1AB248]', 'bg-[#E8F8ED]/30', 'text-slate-900');
+          l.classList.remove('border-2', 'border-[#1AB248]', 'bg-[#E8F8ED]/40', 'text-slate-900');
           l.classList.add('border', 'border-slate-200', 'text-slate-700');
         });
-        label.classList.add('border-2', 'border-[#1AB248]', 'bg-[#E8F8ED]/30', 'text-slate-900');
+        label.classList.add('border-2', 'border-[#1AB248]', 'bg-[#E8F8ED]/40', 'text-slate-900');
         label.classList.remove('border', 'border-slate-200', 'text-slate-700');
 
         const cfg = entityConfigs[selectedType];
         if (cfg) {
+          currentExpectedInnLen = cfg.innMax;
           if (innLabel) innLabel.innerHTML = cfg.innLabel;
-          if (innInput) { innInput.placeholder = cfg.innPlaceholder; innInput.maxLength = cfg.innMax; }
+          if (innInput) { 
+            innInput.placeholder = cfg.innPlaceholder; 
+            innInput.maxLength = cfg.innMax; 
+            innInput.value = '';
+          }
+          if (innCheckIcon) innCheckIcon.classList.add('hidden');
+          if (innErrorText) innErrorText.classList.add('hidden');
           if (companyLabel) companyLabel.innerHTML = cfg.companyLabel;
           if (companyInput) companyInput.placeholder = cfg.companyPlaceholder;
-          if (accountLabel) accountLabel.innerText = cfg.accountLabel;
-          if (accountInput) accountInput.placeholder = cfg.accountPlaceholder;
-          if (legalAddressLabel) legalAddressLabel.innerText = cfg.legalAddressLabel;
-          if (taxSelect) taxSelect.value = cfg.defaultTax;
           if (entityInfoBadge) entityInfoBadge.innerHTML = cfg.infoHtml;
         }
       });
     });
+
+    // Живая валидация ИНН
+    if (innInput) {
+      innInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/\D/g, '');
+        const val = e.target.value;
+        if (val.length === currentExpectedInnLen) {
+          if (validateINNChecksum(val)) {
+            innCheckIcon?.classList.remove('hidden');
+            innErrorText?.classList.add('hidden');
+            innInput.classList.remove('border-red-500');
+            innInput.classList.add('border-emerald-500');
+          } else {
+            innCheckIcon?.classList.add('hidden');
+            innErrorText?.classList.remove('hidden');
+            innInput.classList.add('border-red-500');
+            innInput.classList.remove('border-emerald-500');
+          }
+        } else {
+          innCheckIcon?.classList.add('hidden');
+          innErrorText?.classList.add('hidden');
+          innInput.classList.remove('border-red-500', 'border-emerald-500');
+        }
+      });
+    }
 
     const dogovorForm = container.querySelector('.js-contract-form');
     const headerBlock = container.querySelector('.js-contract-header');
@@ -313,16 +428,16 @@
     const resetBtn = container.querySelector('.js-reset-btn');
     const contractSelect = container.querySelector('.js-contract-select');
     const contractWarning = container.querySelector('.js-contract-warning');
-    const originalText = submitBtn ? submitBtn.innerText : 'Заключить договор со СДЭК';
+    const originalText = submitBtn ? submitBtn.innerText : 'Зарегистрироваться';
 
     if (contractSelect) {
       contractSelect.addEventListener('change', (e) => {
         if (e.target.value === 'active') {
           submitBtn.disabled = true;
-          if (contractWarning) contractWarning.classList.remove('hidden');
+          contractWarning?.classList.remove('hidden');
         } else {
           submitBtn.disabled = false;
-          if (contractWarning) contractWarning.classList.add('hidden');
+          contractWarning?.classList.add('hidden');
         }
       });
     }
@@ -331,19 +446,35 @@
       dogovorForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        // 1. Проверка ИНН
+        if (innInput) {
+          const innVal = innInput.value.trim();
+          if (innVal.length !== currentExpectedInnLen || !validateINNChecksum(innVal)) {
+            if (statusDiv) {
+              statusDiv.classList.remove('hidden');
+              statusDiv.innerText = `Укажите корректный ИНН (${currentExpectedInnLen} цифр)`;
+            }
+            innInput.focus();
+            innErrorText?.classList.remove('hidden');
+            return;
+          }
+        }
+
+        // 2. Проверка телефона
         if (phoneInput) {
           const rawDigits = phoneInput.value.replace(/\D/g, '');
           if (rawDigits.length !== 11) {
             if (statusDiv) {
               statusDiv.classList.remove('hidden');
-              statusDiv.innerText = 'Введите корректный номер: 10 цифр после +7';
+              statusDiv.innerText = 'Введите корректный номер телефона: 10 цифр после +7';
             }
+            phoneInput.focus();
             return;
           }
         }
 
         submitBtn.disabled = true;
-        submitBtn.innerText = 'РЕГИСТРАЦИЯ...';
+        submitBtn.innerText = 'ПРОВЕРКА И РЕГИСТРАЦИЯ...';
         if (statusDiv) statusDiv.classList.add('hidden');
 
         const formData = new FormData(dogovorForm);
@@ -366,7 +497,7 @@
             if (successScreen) successScreen.classList.remove('hidden');
             dogovorForm.reset();
           } else {
-            throw new Error(resData.message || 'Ошибка при отправке');
+            throw new Error(resData.message || 'Ошибка при отправке анкеты');
           }
         } catch (err) {
           submitBtn.disabled = false;
