@@ -55,11 +55,11 @@ jobs:
               with open(filepath, "r", encoding="utf-8") as f:
                   content = f.read()
 
-              # Пропускаем шаблоны/компоненты без секции <head>
+              # Пропускаем служебные файлы и шаблоны без тега head
               if "<head" not in content.lower():
                   return False
 
-              # Извлекаем canonical URL
+              # Извлечение канонического URL
               can_match = re.search(r'<link\s+[^>]*rel=["\']canonical["\'][^>]*href=["\']([^"\']+)["\']', content, re.I)
               if not can_match:
                   can_match = re.search(r'<link\s+[^>]*href=["\']([^"\']+)["\'][^>]*rel=["\']canonical["\']', content, re.I)
@@ -107,7 +107,7 @@ jobs:
                       "item": f"{cur_path}/"
                   })
 
-              # FAQ из элементов <details>
+              # FAQ из аккордеонов <details>
               faq_items = []
               details_matches = re.findall(r'<details[^>]*>(.*?)</details>', content, re.I | re.S)
               for block in details_matches:
@@ -127,7 +127,7 @@ jobs:
                               }
                           })
 
-              # Формирование графа Schema.org
+              # Формирование графа микроразметки
               graph = [
                   {
                       "@type": "WebSite",
@@ -241,7 +241,6 @@ jobs:
               schema_json = json.dumps(schema_data, ensure_ascii=False, indent=2)
               schema_tag = f'  <script type="application/ld+json">\n{schema_json}\n  </script>'
 
-              # Заменяем существующий script ld+json или вставляем перед </head>
               if re.search(r'<script\s+type=["\']application/ld\+json["\'].*?</script>', content, re.I | re.S):
                   new_content = re.sub(r'<script\s+type=["\']application/ld\+json["\'].*?</script>', schema_tag.strip(), content, count=1, flags=re.I | re.S)
               elif '</head>' in content:
@@ -280,5 +279,5 @@ jobs:
             git pull --rebase origin main
             git push origin main
           else
-            print("No changes to commit.")
+            echo "No changes to commit."
           fi
