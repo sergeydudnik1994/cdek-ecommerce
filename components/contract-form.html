@@ -1,4 +1,4 @@
-<div id="contract-form-container" class="scroll-mt-24 bg-white text-slate-900 rounded-3xl p-6 sm:p-10 shadow-2xl border border-slate-200/80 border-t-[6px] border-t-[#1AB248] relative space-y-6">
+<div id="contract-form-container" class="scroll-mt-24 bg-white text-slate-900 rounded-3xl p-6 sm:p-10 shadow-2xl border border-slate-200/80 border-t-[6px] border-t-[#FF5A27] relative space-y-6">
   
   <!-- Шапка анкеты -->
   <div class="js-contract-header border-b border-slate-200 pb-5">
@@ -134,7 +134,8 @@
           Статус договора со СДЭК <span class="text-red-500">*</span>
         </label>
         <select name="contract_status" required class="js-contract-select w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1AB248] outline-none text-sm bg-white cursor-pointer transition">
-          <option value="new" selected>Нет договора (Новый B2B-клиент)</option>
+          <option value="" disabled selected>Статус...</option>
+          <option value="new">Нет договора (Новый B2B-клиент)</option>
           <option value="inactive">Есть договор (нет отправок 6+ мес.)</option>
           <option value="active">Есть действующий договор (отправляю)</option>
         </select>
@@ -162,7 +163,7 @@
       </p>
     </div>
 
-    <!-- Тоггл онлайн-продаж (как на оф. форме СДЭК) -->
+    <!-- Тоггл онлайн-продаж -->
     <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
       <label class="flex items-center justify-between cursor-pointer select-none">
         <span class="text-xs font-bold text-slate-700">Компания не продаёт товары онлайн (только B2B-грузы)</span>
@@ -256,7 +257,6 @@
 
 <script>
   (function() {
-    // Алгоритм ФНС для проверки контрольной суммы ИНН (10 и 12 знаков)
     function validateINNChecksum(inn) {
       inn = String(inn).trim();
       if (!/^\d+$/.test(inn)) return false;
@@ -325,7 +325,6 @@
     const offlineToggle = container.querySelector('#offline-toggle');
     const shopUrlWrapper = container.querySelector('#shop-url-wrapper');
 
-    // Переключение офлайн / онлайн
     if (offlineToggle && shopUrlWrapper) {
       offlineToggle.addEventListener('change', () => {
         if (offlineToggle.checked) {
@@ -394,7 +393,6 @@
       });
     });
 
-    // Живая валидация ИНН
     if (innInput) {
       innInput.addEventListener('input', (e) => {
         e.target.value = e.target.value.replace(/\D/g, '');
@@ -446,7 +444,17 @@
       dogovorForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // 1. Проверка ИНН
+        // 1. Проверка выбора статуса
+        if (contractSelect && (!contractSelect.value || contractSelect.value === '')) {
+          if (statusDiv) {
+            statusDiv.classList.remove('hidden');
+            statusDiv.innerText = 'Выберите статус договора со СДЭК';
+          }
+          contractSelect.focus();
+          return;
+        }
+
+        // 2. Проверка ИНН
         if (innInput) {
           const innVal = innInput.value.trim();
           if (innVal.length !== currentExpectedInnLen || !validateINNChecksum(innVal)) {
@@ -460,7 +468,7 @@
           }
         }
 
-        // 2. Проверка телефона
+        // 3. Проверка телефона
         if (phoneInput) {
           const rawDigits = phoneInput.value.replace(/\D/g, '');
           if (rawDigits.length !== 11) {
