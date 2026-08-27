@@ -36,129 +36,180 @@
 
   <!-- Schema.org Microdata -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://cdek-ecommerce.ru/#organization",
-        "name": "СДЭК E-Commerce",
-        "url": "https://cdek-ecommerce.ru/",
-        "logo": "https://cdek-ecommerce.ru/logo.png",
-        "parentOrganization": {
-          "@type": "Organization",
-          "name": "СДЭК",
-          "url": "https://www.cdek.ru"
-        },
-        "email": "sv.dudik@cdek.ru",
-        "telephone": "+7-993-322-15-20",
-        "sameAs": [
-          "https://t.me/cdek_marketplace",
-          "https://wa.me/79933221520"
-        ],
-        "contactPoint": {
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cdek-ecommerce.ru/#website",
+      "url": "https://cdek-ecommerce.ru/",
+      "name": "СДЭК E-Commerce",
+      "inLanguage": "ru-RU"
+    },
+    {
+      "@type": [
+        "Organization",
+        "LocalBusiness"
+      ],
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://cdek-ecommerce.ru/favicon.png",
+      "image": "https://cdek-ecommerce.ru/og-image.png",
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "priceRange": "от 205 ₽",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Бородинская ул., 156/2",
+        "addressLocality": "Краснодар",
+        "addressRegion": "Краснодарский край",
+        "addressCountry": "RU"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520"
+      ],
+      "contactPoint": [
+        {
           "@type": "ContactPoint",
           "telephone": "+7-993-322-15-20",
           "contactType": "sales",
           "areaServed": "RU",
-          "availableLanguage": "Russian"
+          "availableLanguage": [
+            "Russian"
+          ],
+          "contactOption": "TollFree"
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://t.me/cdek_marketplace",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
         }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
-          {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
-          {"@type": "ListItem", "position": 3, "name": "Мебель и товары для дома", "item": "https://cdek-ecommerce.ru/dogovor/mebel/"}
-        ]
-      },
-      {
-        "@type": "Service",
-        "@id": "https://cdek-ecommerce.ru/dogovor/mebel/#service",
-        "name": "Заключение B2B-договора СДЭК для доставки мебели и товаров для дома",
-        "serviceType": "Логистика корпусной и мягкой мебели, паллетные грузоперевозки по РФ",
-        "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
-        "areaServed": { "@type": "Country", "name": "Россия" },
-        "description": "Официальный логистический B2B-договор СДЭК для производителей и интернет-магазинов мебели: транспортировка на европаллетах (LTL), паллетный борт, подъем на этаж курьером, наложенный платеж 54-ФЗ и скидки до 50%.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "RUB",
-          "availability": "https://schema.org/InStock"
+      ],
+      "potentialAction": [
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в Telegram",
+          "target": "https://t.me/cdek_marketplace"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в WhatsApp",
+          "target": "https://wa.me/79933221520"
+        },
+        {
+          "@type": "OrderAction",
+          "name": "Заключить договор онлайн",
+          "target": "https://cdek-ecommerce.ru/#lead-form"
         }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cdek-ecommerce.ru/dogovor/mebel/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://cdek-ecommerce.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Договор",
+          "item": "https://cdek-ecommerce.ru/dogovor/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Mebel",
+          "item": "https://cdek-ecommerce.ru/dogovor/mebel/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/dogovor/mebel/#service",
+      "name": "Доставка и перевозка мебели СДЭК: B2B-договор, паллеты и обрешетка",
+      "provider": {
+        "@id": "https://cdek-ecommerce.ru/#organization"
       },
-      {
-        "@type": "HowTo",
-        "name": "Как отправить мебель через СДЭК по B2B-договору",
-        "description": "Пошаговый регламент подготовки, упаковки и отправки мебели по России.",
-        "totalTime": "PT15M",
-        "step": [
-          {
-            "@type": "HowToStep",
-            "position": 1,
-            "name": "Заключение B2B-договора онлайн",
-            "text": "Оформите договор по ИНН за 15 минут для получения оптовых ставок на негабаритные и паллетные отправления."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 2,
-            "name": "Разборка и упаковка элементов",
-            "text": "Разберите мебель на плоские модули, защитите углы демпферами, оберните фурнитуру и фасады в воздушно-пузырьковую пленку."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 3,
-            "name": "Заказ жесткой упаковки на терминале",
-            "text": "Для зеркал, столешниц и готовых модулей выберите паллетный борт или индивидуальную деревянную обрешетку."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 4,
-            "name": "Отгрузка со склада с гидробортом",
-            "text": "Закажите забор партии грузовым автомобилем с гидролифтом или сдайте упакованные коробки в грузовой филиал СДЭК."
-          }
-        ]
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
       },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cdek-ecommerce.ru/dogovor/mebel/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Можно ли отправить мебель через СДЭК в другой город?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Да. Разобранная корпусная мебель в заводских коробках доставляется до пунктов выдачи (до 30–75 кг) или до двери покупателя. Крупные партии и собранная мебель перевозятся на европаллетах по магистральным тарифам."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Предоставляется ли подъем мебели на этаж?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Да, при выборе курьерской доставки «до двери» доступна услуга подъема мебели на этаж на лифте или по лестнице с заносом в квартиру или офис."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Что такое паллетный борт и деревянная обрешетка для мебели?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Это прочный деревянный каркас, который собирается вокруг груза на терминале СДЭК. Он на 100% защищает стеклянные фасады, зеркала и углы мебели от ударов и сдавливания при транспортировке."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как работает наложенный платеж при доставке дорогой мебели?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "СДЭК принимает оплату от покупателя при вручении (картой, наличными или по СБП), фискализирует чек по 54-ФЗ и переводит выручку на расчетный счет производителя без задержек."
-            }
-          }
-        ]
+      "description": "Официальный B2B-договор СДЭК для производителей и интернет-магазинов мебели: перевозка разобранной и корпусной мебели, паллетная доставка, жесткая обрешетка, подъем на этаж и скидки до 50%.",
+      "offers": {
+        "@type": "Offer",
+        "price": "205",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock",
+        "url": "https://cdek-ecommerce.ru/dogovor/mebel/"
       }
-    ]
-  }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cdek-ecommerce.ru/dogovor/mebel/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Можно ли отправить мебель через СДЭК в другой город?
+              ▾",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, доставка мебели осуществляется по всей России, Беларуси, Казахстану и странам ЕАЭС как в разобранном виде через ПВЗ и курьеров, так и на паллетах через магистральные терминалы."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как рассчитывается стоимость перевозки крупной мебели?
+              ▾",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Расчет ведется по большему значению между физической массой и объемным весом отправления (Д×Ш×В/5000). По B2B-договору предоставляется скидка до 50% от базового тарифа."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какая страховка действует на зеркала и стеклянные элементы мебели?
+              ▾",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Все отправления страхуются по ставке 0.75% от объявленной стоимости. При условии заказа деревянной обрешетки или паллетного борта повреждения компенсируются в 100% размере."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Доступен ли наложенный платеж 54-ФЗ для мебельных заказов?
+              ▾",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, покупатель может оплатить мебель курьеру при получении или в ПВЗ. СДЭК фискализирует чек по 54-ФЗ и переводит средства на расчетный счет продавца."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white min-h-screen flex flex-col">

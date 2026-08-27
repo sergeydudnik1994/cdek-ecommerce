@@ -36,129 +36,180 @@
 
   <!-- Schema.org Microdata -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://cdek-ecommerce.ru/#organization",
-        "name": "СДЭК E-Commerce",
-        "url": "https://cdek-ecommerce.ru/",
-        "logo": "https://cdek-ecommerce.ru/logo.png",
-        "parentOrganization": {
-          "@type": "Organization",
-          "name": "СДЭК",
-          "url": "https://www.cdek.ru"
-        },
-        "email": "sv.dudik@cdek.ru",
-        "telephone": "+7-993-322-15-20",
-        "sameAs": [
-          "https://t.me/cdek_marketplace",
-          "https://wa.me/79933221520"
-        ],
-        "contactPoint": {
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cdek-ecommerce.ru/#website",
+      "url": "https://cdek-ecommerce.ru/",
+      "name": "СДЭК E-Commerce",
+      "inLanguage": "ru-RU"
+    },
+    {
+      "@type": [
+        "Organization",
+        "LocalBusiness"
+      ],
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://cdek-ecommerce.ru/favicon.png",
+      "image": "https://cdek-ecommerce.ru/og-image.png",
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "priceRange": "от 205 ₽",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Бородинская ул., 156/2",
+        "addressLocality": "Краснодар",
+        "addressRegion": "Краснодарский край",
+        "addressCountry": "RU"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520"
+      ],
+      "contactPoint": [
+        {
           "@type": "ContactPoint",
           "telephone": "+7-993-322-15-20",
           "contactType": "sales",
           "areaServed": "RU",
-          "availableLanguage": "Russian"
+          "availableLanguage": [
+            "Russian"
+          ],
+          "contactOption": "TollFree"
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://t.me/cdek_marketplace",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
         }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
-          {"@type": "ListItem", "position": 2, "name": "Договор", "item": "https://cdek-ecommerce.ru/dogovor/"},
-          {"@type": "ListItem", "position": 3, "name": "БАДы и витамины", "item": "https://cdek-ecommerce.ru/dogovor/bady/"}
-        ]
-      },
-      {
-        "@type": "Service",
-        "@id": "https://cdek-ecommerce.ru/dogovor/bady/#service",
-        "name": "Заключение B2B-договора СДЭК для доставки БАД, витаминов и добавок",
-        "serviceType": "Логистика биологически активных добавок, витаминных комплексов и спортпита",
-        "provider": { "@id": "https://cdek-ecommerce.ru/#organization" },
-        "areaServed": { "@type": "Country", "name": "Россия" },
-        "description": "Официальный логистический договор СДЭК для производителей и продавцов БАД: передача и автоматическое списание кодов маркировки «Честный ЗНАК», наложенный платеж по 54-ФЗ, доставка до 5 000+ ПВЗ и скидки до 50%.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "RUB",
-          "availability": "https://schema.org/InStock"
+      ],
+      "potentialAction": [
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в Telegram",
+          "target": "https://t.me/cdek_marketplace"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в WhatsApp",
+          "target": "https://wa.me/79933221520"
+        },
+        {
+          "@type": "OrderAction",
+          "name": "Заключить договор онлайн",
+          "target": "https://cdek-ecommerce.ru/#lead-form"
         }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cdek-ecommerce.ru/dogovor/bady/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://cdek-ecommerce.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Договор",
+          "item": "https://cdek-ecommerce.ru/dogovor/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Bady",
+          "item": "https://cdek-ecommerce.ru/dogovor/bady/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/dogovor/bady/#service",
+      "name": "Доставка БАД и витаминов СДЭК: B2B-договор, Честный ЗНАК и наложенный платеж",
+      "provider": {
+        "@id": "https://cdek-ecommerce.ru/#organization"
       },
-      {
-        "@type": "HowTo",
-        "name": "Как отправлять БАДы и витамины через СДЭК по B2B-договору",
-        "description": "Пошаговый регламент регистрации договора, маркировки и передачи заказов в доставку.",
-        "totalTime": "PT15M",
-        "step": [
-          {
-            "@type": "HowToStep",
-            "position": 1,
-            "name": "Заключение B2B-договора онлайн",
-            "text": "Оформите договор по ИНН за 15 минут для получения доступа к спецтарифам линейки «Посылка»."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 2,
-            "name": "Герметичная упаковка банок и блистеров",
-            "text": "Упаковывайте банки с капсулами и жидкими витаминами в картонные коробки с воздушно-пузырьковой пленкой для защиты от ударов."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 3,
-            "name": "Передача кодов маркировки DataMatrix",
-            "text": "Указывайте коды обязательной маркировки «Честный ЗНАК» при формировании накладной в ЛК или через API вашей CMS."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 4,
-            "name": "Выдача покупателю и вывод из оборота",
-            "text": "СДЭК принимает оплату в ПВЗ, сканирует DataMatrix и автоматически передает сведения о выбытии в систему маркировки."
-          }
-        ]
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
       },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cdek-ecommerce.ru/dogovor/bady/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Можно ли отправлять БАДы и витамины через СДЭК?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Да, отправка биологически активных добавок и витаминов разрешена. БАДы относятся к специализированной пищевой продукции (не являются рецептурными лекарствами) и свободно доставляются по всей территории РФ по B2B-договору."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как СДЭК работает с маркировкой БАД в системе «Честный ЗНАК»?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "При создании накладной в систему передаются коды DataMatrix. В момент выдачи заказа покупателю сотрудник ПВЗ сканирует код, и сервис автоматически выводит товар из оборота без ручных отчетов продавца."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Какие документы требуются для отправки добавок?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Для заключения договора нужен только ИНН компании, ИП или самозанятого. При производстве или импорте продукции у продавца должны быть оформлены Свидетельства о государственной регистрации (СГР) или декларации соответствия."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как работает наложенный платеж 54-ФЗ при продаже витаминов?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "СДЭК принимает оплату от клиента наличными, банковской картой или через СБП, выдает фискальный кассовый чек с наименованием позиций и перечисляет средства на ваш расчетный счет."
-            }
-          }
-        ]
+      "description": "Официальный B2B-договор СДЭК для интернет-магазинов БАД, витаминов и добавок: отправка по России, обязательная маркировка «Честный ЗНАК», наложенный платеж 54-ФЗ и скидки до 50%.",
+      "offers": {
+        "@type": "Offer",
+        "price": "205",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock",
+        "url": "https://cdek-ecommerce.ru/dogovor/bady/"
       }
-    ]
-  }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cdek-ecommerce.ru/dogovor/bady/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Можно ли отправлять БАДы и витамины через СДЭК?
+              ▾",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, биологически активные добавки и витамины официально разрешены к пересылке по B2B-договору по всей территории России и странам ЕАЭС."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как СДЭК выводит БАДы из оборота в «Честном ЗНАКе»?
+              ▾",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "При выдаче отправления в ПВЗ оператор считывает DataMatrix-код сканером. В момент закрытия чека информация автоматически отправляется в ГИС МТ, списывая товар с баланса продавца."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как подключить наложенный платеж для магазина витаминов?
+              ▾",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Опция активируется автоматически при оформлении договора для ИП и ООО. Покупатель оплачивает заказ при получении, а СДЭК перечисляет деньги на ваш расчетный счет."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Предоставляется ли скидка на тяжелые заказы (протеин, гейнеры)?
+              ▾",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, корпоративный тариф «Посылка» включает льготные весовые градации от 1 до 30+ кг, что дает экономию до 50% по сравнению с базовыми тарифами для физлиц."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white min-h-screen flex flex-col">

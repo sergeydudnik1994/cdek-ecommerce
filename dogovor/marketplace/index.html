@@ -92,8 +92,7 @@
       ],
       "sameAs": [
         "https://t.me/cdek_marketplace",
-        "https://wa.me/79933221520",
-        "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+        "https://wa.me/79933221520"
       ],
       "contactPoint": [
         {
@@ -113,14 +112,6 @@
           "availableLanguage": [
             "Russian"
           ]
-        },
-        {
-          "@type": "ContactPoint",
-          "url": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo",
-          "contactType": "customer support",
-          "availableLanguage": [
-            "Russian"
-          ]
         }
       ],
       "potentialAction": [
@@ -135,14 +126,9 @@
           "target": "https://wa.me/79933221520"
         },
         {
-          "@type": "CommunicateAction",
-          "name": "Написать в MAX",
-          "target": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
-        },
-        {
           "@type": "OrderAction",
           "name": "Заключить договор онлайн",
-          "target": "https://cdek-ecommerce.ru/dogovor/marketplace/#lead-form"
+          "target": "https://cdek-ecommerce.ru/#lead-form"
         }
       ]
     },
@@ -165,7 +151,7 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Договор СДЭК для маркетплейсов онлайн",
+          "name": "Маркетплейсам",
           "item": "https://cdek-ecommerce.ru/dogovor/marketplace/"
         }
       ]
@@ -189,10 +175,52 @@
         "availability": "https://schema.org/InStock",
         "url": "https://cdek-ecommerce.ru/dogovor/marketplace/"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cdek-ecommerce.ru/dogovor/marketplace/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "По каким схемам маркетплейсов можно работать через СДЭК?
+                ▾",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "СДЭК поддерживает схемы FBS (сдача в СЦ маркетплейса), realFBS (Ozon), DBS (Wildberries, Яндекс Маркет, Мегамаркет) и продажи через Авито Доставку для бизнеса."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "В чем выгода схемы DBS через СДЭК по сравнению со складами FBO/FBS?
+                ▾",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "При работе по DBS товары хранятся на вашем складе (нет платы за платную приемку и хранение на складах площадок). Вы не рискуете заморозкой остатков, доставляете крупногабаритные (КГТ) или хрупкие товары по выгодным корпоративным ставкам СДЭК и получаете прозрачный контроль возвратов."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Куда селлер сдает готовые заказы маркетплейсов?
+                ▾",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Вы можете сдавать заказы в любой удобный пункт выдачи СДЭК рядом с вашим домом/складом (более 5 000 ПВЗ по всей РФ) либо заказать регулярный забор курьером прямо с вашего склада или производства."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как передаются трек-номера и статусы доставки в кабинет селлера?
+                ▾",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "При создании накладной СДЭК трек-код автоматически транслируется в заказ на маркетплейсе по API, а смена статусов («Принят СДЭК», «В пути», «Готов к выдаче», «Вручен») обновляет статус отправления на маркетплейсе в режиме реального времени."
+          }
+        }
+      ]
     }
   ]
 }
-</script>
+  </script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white">
 

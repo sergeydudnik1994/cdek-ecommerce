@@ -47,79 +47,165 @@
 
   <!-- Schema.org Microdata -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://cdek-ecommerce.ru/store/#breadcrumb",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Главная",
-            "item": "https://cdek-ecommerce.ru/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Создание интернет-магазина",
-            "item": "https://cdek-ecommerce.ru/store/"
-          }
-        ]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cdek-ecommerce.ru/#website",
+      "url": "https://cdek-ecommerce.ru/",
+      "name": "СДЭК E-Commerce",
+      "inLanguage": "ru-RU"
+    },
+    {
+      "@type": [
+        "Organization",
+        "LocalBusiness"
+      ],
+      "@id": "https://cdek-ecommerce.ru/#organization",
+      "name": "СДЭК E-Commerce",
+      "url": "https://cdek-ecommerce.ru/",
+      "logo": "https://cdek-ecommerce.ru/favicon.png",
+      "image": "https://cdek-ecommerce.ru/og-image.png",
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "priceRange": "от 205 ₽",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Бородинская ул., 156/2",
+        "addressLocality": "Краснодар",
+        "addressRegion": "Краснодарский край",
+        "addressCountry": "RU"
       },
-      {
-        "@type": "Service",
-        "@id": "https://cdek-ecommerce.ru/store/#service",
-        "name": "Создание интернет-магазина под ключ со СДЭК и эквайрингом СБП",
-        "provider": {
-          "@type": "Organization",
-          "name": "СДЭК E-Commerce",
-          "url": "https://cdek-ecommerce.ru/",
-          "telephone": "+7-993-322-15-20",
-          "email": "sv.dudik@cdek.ru"
-        },
-        "description": "Разработка автономного интернет-магазина с модулем доставки СДЭК, оплатой по QR СБП 54-ФЗ и размещением на VDS Selectel.",
-        "offers": {
-          "@type": "AggregateOffer",
-          "lowPrice": "15000",
-          "highPrice": "30000",
-          "priceCurrency": "RUB",
-          "offerCount": "2"
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "18:00"
         }
+      ],
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+7-993-322-15-20",
+          "contactType": "sales",
+          "areaServed": "RU",
+          "availableLanguage": [
+            "Russian"
+          ],
+          "contactOption": "TollFree"
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://t.me/cdek_marketplace",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        }
+      ],
+      "potentialAction": [
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в Telegram",
+          "target": "https://t.me/cdek_marketplace"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в WhatsApp",
+          "target": "https://wa.me/79933221520"
+        },
+        {
+          "@type": "OrderAction",
+          "name": "Заключить договор онлайн",
+          "target": "https://cdek-ecommerce.ru/#lead-form"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cdek-ecommerce.ru/store/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://cdek-ecommerce.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Store",
+          "item": "https://cdek-ecommerce.ru/store/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-ecommerce.ru/store/#service",
+      "name": "Создание интернет-магазина под ключ со СДЭК от 15 000 ₽ за 2 дня",
+      "provider": {
+        "@id": "https://cdek-ecommerce.ru/#organization"
       },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cdek-ecommerce.ru/store/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Сколько стоит содержание сайта в 1-й год и со 2-го года?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "В 1-й год вы оплачиваете разовую разработку (15 000 или 30 000 ₽) + домен (120 ₽) и сервер VDS Selectel (от 200 ₽/мес). Со 2-го года вы больше НЕ платите за разработку: содержание вашего сайта стоит всего 2 890 ₽ в год (~240 ₽ в месяц) за продление домена (490 ₽) и VDS-сервер."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как происходит прием оплаты на сайте?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Вы можете выбрать любой удобный способ: подключить свой эквайринг (ЮKassa, Robokassa, Т-Банк и др.), настроить прямую оплату по СБП (QR-код с комиссией от 0% до 0.7%), выставлять счета для юрлиц или принимать наложенный платеж при вручении в СДЭК с выдачей чеков по 54-ФЗ."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Смогу ли я самостоятельно добавлять товары и менять цены?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "На старте мы полностью собираем и наполняем каталог под ключ. Для дальнейшего обновления цен и добавления позиций мы предоставляем простую инструкцию через онлайн-таблицу — вы сможете легко вносить правки без знания кода или передавать нам списки для быстрого обновления."
-            }
-          }
-        ]
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "description": "Разработка готового интернет-магазина со СДЭК и эквайрингом СБП (0-0.7%). Быстрый старт за 15 000 ₽. Прозрачные расходы: со 2-го года обслуживание всего 2 890 ₽/год (домен + VDS).",
+      "offers": {
+        "@type": "Offer",
+        "price": "205",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock",
+        "url": "https://cdek-ecommerce.ru/store/"
       }
-    ]
-  }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cdek-ecommerce.ru/store/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Сколько стоит ежемесячное обслуживание и содержание своего сайта?
+              ▾",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "У нас нет абонентской платы за пользование магазином. За разработку вы платите один раз. Ваши обязательные прямые расходы на инфраструктуру: регистрация домена — 120 ₽ при покупке (~490 ₽ в год за продление) и скоростной сервер VDS в Selectel — от 200 ₽ в месяц. Со 2-го года содержание сайта обходится всего около ~240 ₽ в месяц (2 890 ₽ в год)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как происходит прием оплаты на сайте?
+              ▾",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Вы можете выбрать любой удобный способ: подключить свой эквайринг (ЮKassa, Robokassa, Т-Банк и др.), настроить прямую оплату по СБП (QR-код с комиссией от 0% до 0.7%), выставлять счета для юрлиц или принимать наложенный платеж при вручении в СДЭК с выдачей чеков по 54-ФЗ."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Смогу ли я самостоятельно добавлять товары и менять цены?
+              ▾",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "На старте мы полностью собираем и наполняем каталог под ключ. Для дальнейшего обновления цен и добавления позиций мы предоставляем простую инструкцию через онлайн-таблицу — вы сможете легко вносить правки без знания кода или передавать нам списки для быстрого обновления."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white flex flex-col min-h-screen">

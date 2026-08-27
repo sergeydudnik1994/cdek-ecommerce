@@ -96,8 +96,44 @@
       ],
       "sameAs": [
         "https://t.me/cdek_marketplace",
-        "https://wa.me/79933221520",
-        "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+        "https://wa.me/79933221520"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+7-993-322-15-20",
+          "contactType": "sales",
+          "areaServed": "RU",
+          "availableLanguage": [
+            "Russian"
+          ],
+          "contactOption": "TollFree"
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://t.me/cdek_marketplace",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        }
+      ],
+      "potentialAction": [
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в Telegram",
+          "target": "https://t.me/cdek_marketplace"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в WhatsApp",
+          "target": "https://wa.me/79933221520"
+        },
+        {
+          "@type": "OrderAction",
+          "name": "Заключить договор онлайн",
+          "target": "https://cdek-ecommerce.ru/#lead-form"
+        }
       ]
     },
     {
@@ -113,7 +149,13 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Доставка документов СДЭК",
+          "name": "Услуги",
+          "item": "https://cdek-ecommerce.ru/services/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Dostavka dokumentov",
           "item": "https://cdek-ecommerce.ru/services/dostavka-dokumentov/"
         }
       ]
@@ -121,7 +163,7 @@
     {
       "@type": "Service",
       "@id": "https://cdek-ecommerce.ru/services/dostavka-dokumentov/#service",
-      "name": "Экспресс-доставка документов и деловой корреспонденции СДЭК",
+      "name": "Доставка документов СДЭК для юридических лиц и ИП | Экспресс от 24 часов",
       "provider": {
         "@id": "https://cdek-ecommerce.ru/#organization"
       },
@@ -129,7 +171,7 @@
         "@type": "Country",
         "name": "Россия"
       },
-      "description": "Срочная экспресс-доставка оригиналов договоров, бухгалтерских актов, счетов и корреспонденции СДЭК для бизнеса. Вручение лично в руки под подпись от 24 часов.",
+      "description": "Срочная экспресс-доставка документов, оригиналов договоров и корреспонденции СДЭК для бизнеса. Вручение лично в руки под подпись от 24 часов, возврат подписанных актов и скидки до 50% по договору.",
       "offers": {
         "@type": "Offer",
         "price": "205",
@@ -137,48 +179,10 @@
         "availability": "https://schema.org/InStock",
         "url": "https://cdek-ecommerce.ru/services/dostavka-dokumentov/"
       }
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://cdek-ecommerce.ru/services/dostavka-dokumentov/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "В какие сроки осуществляется доставка документов по России?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "По специальным тарифам «Супер-экспресс» доставка между городами осуществляется за 24 часа к назначенному часу (до 10:00, 12:00, 14:00, 16:00 или 18:00). По базовым экспресс-тарифам стандартный срок составляет 1–3 рабочих дня."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Предоставляется ли фирменный защитный конверт для документов?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Да, при отправке документов курьер или сотрудник ПВЗ бесплатно предоставляет прочный влагозащитный конверт формата А4 с контрольной номерной лентой, исключающей незаметное вскрытие."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Как работает услуга возврата подписанных документов (реверс)?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Курьер доставляет пакет документов получателю, ожидает подписания оригиналов договоров/актов контрагентом и сразу отправляет подписанный экземпляр обратно отправителю по специальному льготному возвратному тарифу."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Как вызвать курьера за документами в офис?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "В личном кабинете СДЭК или через API оформляется накладная и заявка на вызов курьера. Курьер приезжает в согласованный временной интервал, забирает конверт и выдает квитанцию с трек-номером."
-          }
-        }
-      ]
     }
   ]
 }
-</script>
+  </script>
 </head>
 <body class="bg-[#F4F7F6] text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#1AB248] selection:text-white">
 

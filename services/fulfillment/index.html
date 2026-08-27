@@ -81,15 +81,57 @@
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
           "opens": "09:00",
           "closes": "18:00"
         }
       ],
       "sameAs": [
         "https://t.me/cdek_marketplace",
-        "https://wa.me/79933221520",
-        "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+        "https://wa.me/79933221520"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+7-993-322-15-20",
+          "contactType": "sales",
+          "areaServed": "RU",
+          "availableLanguage": [
+            "Russian"
+          ],
+          "contactOption": "TollFree"
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://t.me/cdek_marketplace",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        }
+      ],
+      "potentialAction": [
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в Telegram",
+          "target": "https://t.me/cdek_marketplace"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в WhatsApp",
+          "target": "https://wa.me/79933221520"
+        },
+        {
+          "@type": "OrderAction",
+          "name": "Заключить договор онлайн",
+          "target": "https://cdek-ecommerce.ru/#lead-form"
+        }
       ]
     },
     {
@@ -106,7 +148,7 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Услуги",
-          "item": "https://cdek-ecommerce.ru/#benefits"
+          "item": "https://cdek-ecommerce.ru/services/"
         },
         {
           "@type": "ListItem",
@@ -119,7 +161,7 @@
     {
       "@type": "Service",
       "@id": "https://cdek-ecommerce.ru/services/fulfillment/#service",
-      "name": "Складской фулфилмент СДЭК для интернет-магазинов и селлеров",
+      "name": "Фулфилмент СДЭК для интернет-магазинов и селлеров | Калькулятор склада и доставки",
       "provider": {
         "@id": "https://cdek-ecommerce.ru/#organization"
       },
@@ -127,58 +169,18 @@
         "@type": "Country",
         "name": "Россия"
       },
-      "description": "Полный комплекс складских услуг: приемка, ответственное хранение, комплектация за 2 часа, маркировка Честный ЗНАК, упаковка и отгрузка в маркетплейсы и покупателям.",
+      "description": "Складской фулфилмент СДЭК под ключ для селлеров Wildberries, Ozon, Яндекс Маркет и интернет-магазинов. Хранение, сборка за 2 часа, упаковка, маркировка Честный ЗНАК и доставка по РФ со скидкой 50%.",
       "offers": {
-        "@type": "AggregateOffer",
+        "@type": "Offer",
+        "price": "205",
         "priceCurrency": "RUB",
-        "lowPrice": "15",
-        "highPrice": "205",
-        "offerCount": "10",
         "availability": "https://schema.org/InStock",
         "url": "https://cdek-ecommerce.ru/services/fulfillment/"
       }
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://cdek-ecommerce.ru/services/fulfillment/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Какая минимальная партия товара для передачи на фулфилмент?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Минимальных ограничений по объему нет. Вы можете передать на хранение как небольшую тестовую партию от 10-20 единиц, так и крупнооптовые паллетные поставки."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Работает ли фулфилмент СДЭК по схемам FBS и FBO для маркетплейсов?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Да. Мы готовим и упаковываем товары по регламентам маркетплейсов для поставок на склады FBO, а также оперативно собираем и доставляем заказы по схеме FBS день в день."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Как склад СДЭК интегрируется с интернет-магазином или CRM?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Интеграция происходит по прямому API 2.0 или через готовые модули (МойСклад, 1С, InSales, Битрикс, Tilda). Заказы из магазина автоматически поступают на сборку, а остатки синхронизируются в реальном времени."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Осуществляется ли маркировка системой «Честный ЗНАК»?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Да, склады СДЭК выполняют печать и нанесение кодов маркировки DataMatrix Честный ЗНАК для одежды, обуви, текстиля, парфюмерии и других подконтрольных категорий."
-          }
-        }
-      ]
     }
   ]
 }
-</script>
+  </script>
 </head>
 <body class="bg-[#F4F7F6] text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#1AB248] selection:text-white">
 

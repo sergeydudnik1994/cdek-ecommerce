@@ -81,15 +81,57 @@
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
           "opens": "09:00",
           "closes": "18:00"
         }
       ],
       "sameAs": [
         "https://t.me/cdek_marketplace",
-        "https://wa.me/79933221520",
-        "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+        "https://wa.me/79933221520"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+7-993-322-15-20",
+          "contactType": "sales",
+          "areaServed": "RU",
+          "availableLanguage": [
+            "Russian"
+          ],
+          "contactOption": "TollFree"
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://t.me/cdek_marketplace",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        }
+      ],
+      "potentialAction": [
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в Telegram",
+          "target": "https://t.me/cdek_marketplace"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в WhatsApp",
+          "target": "https://wa.me/79933221520"
+        },
+        {
+          "@type": "OrderAction",
+          "name": "Заключить договор онлайн",
+          "target": "https://cdek-ecommerce.ru/#lead-form"
+        }
       ]
     },
     {
@@ -105,7 +147,13 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Доставка одежды и обуви",
+          "name": "Услуги",
+          "item": "https://cdek-ecommerce.ru/services/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Доставка одежды",
           "item": "https://cdek-ecommerce.ru/services/dostavka-odezhdy/"
         }
       ]
@@ -113,7 +161,7 @@
     {
       "@type": "Service",
       "@id": "https://cdek-ecommerce.ru/services/dostavka-odezhdy/#service",
-      "name": "Доставка одежды и обуви с примеркой и частичным выкупом",
+      "name": "Доставка одежды и обуви СДЭК | Примерка и частичный выкуп для интернет-магазинов",
       "provider": {
         "@id": "https://cdek-ecommerce.ru/#organization"
       },
@@ -121,7 +169,7 @@
         "@type": "Country",
         "name": "Россия"
       },
-      "description": "Специализированная курьерская доставка и выдача в 5 000+ ПВЗ с примерочными. Частичный выкуп, наложенный платеж 54-ФЗ и скидки до 50% на возврат.",
+      "description": "Специализированная доставка одежды, обуви и аксессуаров со СДЭК. 5 000+ ПВЗ с примерочными кабинками, частичный выкуп, льготный возврат 50% и наложенный платеж по 54-ФЗ.",
       "offers": {
         "@type": "Offer",
         "price": "205",
@@ -129,48 +177,10 @@
         "availability": "https://schema.org/InStock",
         "url": "https://cdek-ecommerce.ru/services/dostavka-odezhdy/"
       }
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://cdek-ecommerce.ru/services/dostavka-odezhdy/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Как работает частичный выкуп в пунктах выдачи СДЭК?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Покупатель заказывает несколько размеров или моделей (например, S и M), примеряет их в кабинке ПВЗ, выкупает только подошедшую позицию, а неподошедший товар сотрудник ПВЗ оформляет на возврат отправителю по льготной ставке."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Сколько стоит возврат невыкупленной одежды?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "По официальному B2B-договору СДЭК стоимость обратной пересылки невыкупленных товаров тарифицируется со скидкой 50% от прямого тарифа «Посылка»."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Сколько времени дается клиенту на примерку?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "В пунктах выдачи заказов СДЭК время на примерку в оборудованных кабинках с зеркалами не ограничено в пределах рабочего дня ПВЗ. При курьерской доставке на дом бесплатное время ожидания курьера составляет 15 минут."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Как подключить опцию примерки в корзину интернет-магазина?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Опция примерки и частичного выкупа активируется одной галочкой в официальных модулях СДЭК для Tilda, 1С-Битрикс, InSales, МойСклад, WooCommerce или передается через параметр API 2.0."
-          }
-        }
-      ]
     }
   ]
 }
-</script>
+  </script>
 </head>
 <body class="bg-[#F4F7F6] text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#1AB248] selection:text-white">
 
