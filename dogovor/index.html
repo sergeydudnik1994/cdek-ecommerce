@@ -472,6 +472,26 @@
         </div>
       </div>
 
+      <!-- Информационная плашка с вызовом модального окна -->
+      <div class="p-5 sm:p-6 rounded-3xl bg-white border border-slate-200/80 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+        <div class="space-y-1">
+          <div class="font-bold text-slate-900 text-sm sm:text-base flex items-center gap-2">
+            <span class="text-xl">📄</span>
+            <span>Официальный типовой договор СДЭК (формат ИМ)</span>
+          </div>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            Ознакомьтесь с условиями оказания услуг, порядком выплат наложенного платежа и регламентом без ухода со страницы.
+          </p>
+        </div>
+        <button type="button" onclick="openContractModal()" class="shrink-0 px-5 py-3 rounded-2xl bg-slate-900 text-white font-bold text-xs hover:bg-[#1AB248] transition flex items-center gap-2 shadow-sm cursor-pointer">
+          <svg class="w-4 h-4 text-[#1AB248] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+          </svg>
+          <span>Изучить договор онлайн</span>
+        </button>
+      </div>
+      
       <!-- Вставка расширенной формы компонентом -->
       <!--# include virtual="/components/contract-form.html" -->
 
@@ -647,6 +667,93 @@
     </div>
   </main>
 
+<!-- Модальное окно просмотра договора -->
+  <div id="contractModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-950/80 backdrop-blur-sm p-3 sm:p-6 flex items-center justify-center transition-all">
+    <div class="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col h-[90vh]">
+      
+      <!-- Шапка модального окна -->
+      <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-xl bg-emerald-100 text-[#1AB248] font-black text-xs flex items-center justify-center">PDF</span>
+          <div>
+            <h3 class="text-sm sm:text-base font-bold text-slate-900">Шаблон договора СДЭК для интернет-магазинов</h3>
+            <p class="text-[11px] text-slate-500">Официальный регламент возмездного оказания курьерских услуг</p>
+          </div>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="scrollToLeadForm()" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#1AB248] text-white font-bold text-xs hover:bg-[#15933b] transition shadow-sm">
+            <span>Заключить договор</span>
+            <span>↓</span>
+          </button>
+          <button type="button" onclick="closeContractModal()" class="w-9 h-9 rounded-xl bg-slate-200/70 hover:bg-slate-300 text-slate-700 flex items-center justify-center transition font-bold text-sm">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- Встроенный просмотрщик документа -->
+      <div class="flex-grow bg-slate-100 relative">
+        <iframe 
+          src="/dogovor/cdek-dogovor-im.pdf#toolbar=0&navpanes=0" 
+          class="w-full h-full border-0" 
+          title="Шаблон договора СДЭК">
+        </iframe>
+      </div>
+
+      <!-- Подвал модального окна -->
+      <div class="px-6 py-3.5 border-t border-slate-200 bg-white flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+        <div class="text-xs text-slate-500 text-center sm:text-left">
+          Готовы к подключению? Онлайн-проверка по ИНН за 15 минут без визита в офис.
+        </div>
+        <div class="flex items-center gap-3 w-full sm:w-auto">
+          <a href="/dogovor/cdek-dogovor-im.pdf" download="Договор_СДЭК.pdf" class="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition text-center">
+            Скачать PDF
+          </a>
+          <button type="button" onclick="scrollToLeadForm()" class="flex-1 sm:flex-none px-5 py-2 rounded-xl bg-[#1AB248] text-white font-bold text-xs hover:bg-[#15933b] transition text-center shadow-sm">
+            Перейти к заполнению анкеты
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Скрипт управления окном -->
+  <script>
+    function openContractModal() {
+      const modal = document.getElementById('contractModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeContractModal() {
+      const modal = document.getElementById('contractModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function scrollToLeadForm() {
+      closeContractModal();
+      const leadSection = document.getElementById('lead-form');
+      if (leadSection) {
+        leadSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    document.getElementById('contractModal')?.addEventListener('click', function(e) {
+      if (e.target === this) closeContractModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeContractModal();
+    });
+  </script>
+  
   <!--# include virtual="/components/footer.html" -->
 
 </body>
