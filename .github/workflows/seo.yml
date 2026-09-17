@@ -5,14 +5,15 @@ on:
     branches:
       - main
     paths:
-      - '**.html'
-      - 'scripts/**'
+      - 'blog/**'
+      - 'geo/**'
       - 'integrations/**'
       - 'services/**'
-      - 'geo/**'
+      - 'scripts/**'
+      - '**.html'
       - '.github/workflows/seo.yml'
   schedule:
-    - cron: '0 3 * * 1' # автообновление каждый понедельник в 03:00 МСК
+    - cron: '0 3 * * 1'
   workflow_dispatch:
 
 permissions:
@@ -45,7 +46,7 @@ jobs:
         run: |
           python scripts/build_seo.py
 
-      - name: 5. Generate Sitemap XML
+      - name: 5. Generate Full Sitemap XML
         run: |
           python scripts/generate_sitemap.py
 
