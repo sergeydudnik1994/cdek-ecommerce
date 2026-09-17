@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111763499', 'ym');
+    ym(111763499, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/111763499" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Интеграция СДЭК и МойСклад: автоматизация отгрузок, печать этикеток и статусы</title>
+  <meta name="description" content="Инструкция по настройке связки МойСклад и СДЭК: генерация накладных из заказов покупателей, массовая печать термоэтикеток со штрихкодами и синхронизация трек-номеров." />
+  <meta name="keywords" content="сдэк мойсклад интеграция, мойсклад модуль доставки сдэк, печать накладных сдэк мойсклад, автоматизация заказов сдэк мойсклад" />
+  <link rel="canonical" href="https://cdek-ecommerce.ru/blog/dostavka-sdek-moysklad/" />
+
+  <meta name="theme-color" content="#08221F" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>body { font-family: 'Roboto', sans-serif; }</style>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="СДЭК E-Commerce" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="Интеграция СДЭК и МойСклад: автоматизация отгрузок" />
+  <meta property="og:description" content="Пошаговая настройка модуля СДЭК в сервисе МойСклад: печать штрихкодов, передача треков и синхронизация статусов." />
+  <meta property="og:url" content="https://cdek-ecommerce.ru/blog/dostavka-sdek-moysklad/" />
+  <meta property="og:image" content="https://cdek-ecommerce.ru/og-image.png" />
+
+  <!-- Schema.org Microdata -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://cdek-ecommerce.ru/blog/dostavka-sdek-moysklad/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/" },
+          { "@type": "ListItem", "position": 2, "name": "Блог", "item": "https://cdek-ecommerce.ru/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "СДЭК и МойСклад", "item": "https://cdek-ecommerce.ru/blog/dostavka-sdek-moysklad/" }
+        ]
+      },
+      {
+        "@type": "NewsArticle",
+        "@id": "https://cdek-ecommerce.ru/blog/dostavka-sdek-moysklad/#article",
+        "headline": "Интеграция СДЭК и МойСклад: автоматизация отгрузок, печать этикеток и статусы",
+        "datePublished": "2026-09-19T10:00:00+03:00",
+        "dateModified": "2026-09-19T10:00:00+03:00",
+        "author": { "@type": "Organization", "name": "СДЭК E-Commerce" },
+        "publisher": { "@type": "Organization", "name": "СДЭК E-Commerce", "logo": { "@type": "ImageObject", "url": "https://cdek-ecommerce.ru/favicon.png" } }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-[#F5F8FE] text-slate-900 antialiased selection:bg-[#1AB248] selection:text-white flex flex-col min-h-screen">
+
+  <!--# include virtual="/components/header.html" -->
+
+  <main class="flex-grow py-10 sm:py-14">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <nav class="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-6">
+        <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
+        <span>/</span>
+        <a href="/blog/" class="hover:text-[#1AB248] transition">Блог</a>
+        <span>/</span>
+        <span class="text-slate-800">СДЭК и МойСклад</span>
+      </nav>
+
+      <article class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-8">
+        
+        <header class="space-y-4 border-b border-slate-100 pb-6">
+          <div class="flex items-center gap-3 text-xs font-bold">
+            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full uppercase tracking-wider">Учет & Склад</span>
+            <span class="text-slate-400">19 сентября 2026</span>
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight">
+            Интеграция СДЭК и МойСклад: автоматизация отгрузок, печать этикеток и синхронизация статусов
+          </h1>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Когда объем заказов превышает 10–15 посылок в день, ручное копирование адресов в накладные СДЭК отнимает часы и приводит к ошибкам. Связка учетной системы МойСклад со СДЭК полностью автоматизирует складской процесс.
+          </p>
+        </header>
+
+        <div class="bg-[#E8F8ED] border border-[#1AB248]/30 rounded-2xl p-5 text-xs sm:text-sm text-slate-800 leading-relaxed space-y-2">
+          <p class="font-bold text-[#1AB248] text-base">Ключевая польза интеграции:</p>
+          <p>
+            Менеджер переводит статус заказа в «Готов к отгрузке» → накладная в СДЭК формируется автоматически → на термопринтер выводится готовая наклейка со штрихкодом → трек-номер отправляется покупателю по SMS.
+          </p>
+        </div>
+
+        <section class="space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed">
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Возможности официального модуля</h2>
+          <ul class="space-y-2.5 text-sm pl-2">
+            <li class="flex items-start gap-2">
+              <span class="text-[#1AB248] font-bold">✓</span>
+              <span><b>Массовое создание накладных:</b> Выделите 50 заказов в списке и сформируйте отправления одной кнопкой.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-[#1AB248] font-bold">✓</span>
+              <span><b>Печать термоэтикеток:</b> Прямая печать стандартных этикеток СДЭК (формат 120х75 мм или А4) прямо из карточки документа «Отгрузка».</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-[#1AB248] font-bold">✓</span>
+              <span><b>Автоматический трекинг:</b> При изменении статуса в СДЭК («Принят на склад», «Готов к выдаче», «Вручен») статус в МойСклад обновляется сам.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-[#1AB248] font-bold">✓</span>
+              <span><b>Учет наложенного платежа:</b> Фиксация полученных от покупателя денег и автоматическое закрытие взаиморасчетов.</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Пошаговое подключение -->
+        <section class="space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed">
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Как подключить модуль за 10 минут</h2>
+          <ol class="space-y-3 text-sm pl-2">
+            <li class="flex items-start gap-2.5">
+              <span class="font-bold text-[#1AB248]">1.</span>
+              <span>Заключите официальный B2B-договор со СДЭК для получения API-доступов.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="font-bold text-[#1AB248]">2.</span>
+              <span>В сервисе МойСклад перейдите в <i>Администрирование → Приложения → выберите «СДЭК»</i>.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="font-bold text-[#1AB248]">3.</span>
+              <span>Укажите Client ID и Secret, настройте соответствие статусов заказов и стандартные габариты посылок.</span>
+            </li>
+          </ol>
+        </section>
+
+        <!-- CTA Блок -->
+        <div class="bg-[#08221F] text-white rounded-3xl p-6 sm:p-8 text-center space-y-4 shadow-xl">
+          <h3 class="text-xl sm:text-2xl font-black">Подключите МойСклад к тарифам СДЭК</h3>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-md mx-auto">
+            Официальный договор для юридических лиц и ИП: доступ к льготным тарифам «Посылка», ключи API и автоматизация склада.
+          </p>
+          <a href="/dogovor/" class="inline-block px-8 py-3.5 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-xs uppercase tracking-wider rounded-xl transition shadow-lg shadow-[#1AB248]/30">
+            Заключить B2B-договор онлайн →
+          </a>
+        </div>
+
+      </article>
+
+    </div>
+  </main>
+
+  <!--# include virtual="/components/footer.html" -->
+
+</body>
+</html>
