@@ -3,7 +3,7 @@
   <url>
     <loc>https://cdek-ecommerce.ru/</loc>
     <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
@@ -13,55 +13,13 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/services/sbornyj-gruz/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/services/dostavka-odezhdy/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/services/nalozhennyj-platezh/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/services/fulfillment/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/services/dostavka-dokumentov/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/services/mezhdunarodnaya-dostavka/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://cdek-ecommerce.ru/about/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/policy/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/tracking/</loc>
+    <loc>https://cdek-ecommerce.ru/blog/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -73,43 +31,13 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://cdek-ecommerce.ru/dogovor/avito/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://cdek-ecommerce.ru/dogovor/avtozapchasti/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/dogovor/nalozhennyy-platezh/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/dogovor/tarify/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/dogovor/fiz-lica/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/dogovor/yur-lica/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/dogovor/dokumenty/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/dogovor/usn-bez-nds/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -121,7 +49,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/dogovor/samozanyatye/</loc>
+    <loc>https://cdek-ecommerce.ru/dogovor/dokumenty/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -133,25 +61,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/dogovor/opt/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/dogovor/postoplata/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/dogovor/kosmetika/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/dogovor/odezhda-obuv/</loc>
+    <loc>https://cdek-ecommerce.ru/dogovor/fiz-lica/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -169,19 +79,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/dogovor/avito/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/dogovor/mebel/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-ecommerce.ru/dogovor/mezhdunarodnaya-dostavka/</loc>
+    <loc>https://cdek-ecommerce.ru/dogovor/kosmetika/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -199,91 +97,163 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/blog/</loc>
+    <loc>https://cdek-ecommerce.ru/dogovor/mebel/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/blog/dostavka-dlya-avito/</loc>
+    <loc>https://cdek-ecommerce.ru/dogovor/mezhdunarodnaya-dostavka/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/blog/chto-vygodnee-svoj-sajt-ili-wb/</loc>
+    <loc>https://cdek-ecommerce.ru/dogovor/nalozhennyy-platezh/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/blog/fulfillment-sdek-marketplaces/</loc>
+    <loc>https://cdek-ecommerce.ru/dogovor/odezhda-obuv/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/blog/integratsiya-sdek-tilda/</loc>
+    <loc>https://cdek-ecommerce.ru/dogovor/opt/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/blog/kakoj-tarif-cdek-vybrat/</loc>
+    <loc>https://cdek-ecommerce.ru/dogovor/postoplata/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/blog/integratsiya-sdek-insales/</loc>
+    <loc>https://cdek-ecommerce.ru/dogovor/samozanyatye/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/blog/obemnyj-ves-cdek/</loc>
+    <loc>https://cdek-ecommerce.ru/dogovor/tarify/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/blog/sdek-bez-kassy-54fz/</loc>
+    <loc>https://cdek-ecommerce.ru/dogovor/usn-bez-nds/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/blog/dostavka-sdek-moysklad/</loc>
+    <loc>https://cdek-ecommerce.ru/dogovor/yur-lica/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/blog/modul-sdek-bitrix/</loc>
+    <loc>https://cdek-ecommerce.ru/integrations/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/blog/sdek-dbs-marketplaces/</loc>
+    <loc>https://cdek-ecommerce.ru/integrations/1c/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/blog/dostavka-sdek-s-primerkoj/</loc>
+    <loc>https://cdek-ecommerce.ru/integrations/api/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/blog/nalozhennyj-platezh-sdek/</loc>
+    <loc>https://cdek-ecommerce.ru/integrations/bitrix/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/blog/sdek-dlya-samozanyatyh/</loc>
+    <loc>https://cdek-ecommerce.ru/integrations/dbs/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/integrations/insales/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/integrations/moysklad/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/integrations/opencart/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/integrations/tilda/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/integrations/woocommerce/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/policy/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/services/dostavka-dokumentov/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/services/dostavka-odezhdy/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/services/fulfillment/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/services/mezhdunarodnaya-dostavka/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/services/nalozhennyj-platezh/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/services/sbornyj-gruz/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -307,63 +277,93 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/</loc>
+    <loc>https://cdek-ecommerce.ru/tracking/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/1c/</loc>
+    <loc>https://cdek-ecommerce.ru/blog/chto-vygodnee-svoj-sajt-ili-wb/</loc>
     <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/opencart/</loc>
+    <loc>https://cdek-ecommerce.ru/blog/dostavka-dlya-avito/</loc>
     <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/woocommerce/</loc>
+    <loc>https://cdek-ecommerce.ru/blog/dostavka-sdek-moysklad/</loc>
     <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/moysklad/</loc>
+    <loc>https://cdek-ecommerce.ru/blog/dostavka-sdek-s-primerkoj/</loc>
     <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/bitrix/</loc>
+    <loc>https://cdek-ecommerce.ru/blog/fulfillment-sdek-marketplaces/</loc>
     <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/insales/</loc>
+    <loc>https://cdek-ecommerce.ru/blog/integratsiya-sdek-insales/</loc>
     <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/api/</loc>
+    <loc>https://cdek-ecommerce.ru/blog/integratsiya-sdek-tilda/</loc>
     <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/dbs/</loc>
+    <loc>https://cdek-ecommerce.ru/blog/kakoj-tarif-cdek-vybrat/</loc>
     <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cdek-ecommerce.ru/integrations/tilda/</loc>
+    <loc>https://cdek-ecommerce.ru/blog/modul-sdek-bitrix/</loc>
     <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/blog/nalozhennyj-platezh-sdek/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/blog/obemnyj-ves-cdek/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/blog/sdek-bez-kassy-54fz/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/blog/sdek-dbs-marketplaces/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cdek-ecommerce.ru/blog/sdek-dlya-samozanyatyh/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
