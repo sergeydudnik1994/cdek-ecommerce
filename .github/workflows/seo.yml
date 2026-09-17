@@ -56,14 +56,19 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
           git add sitemap.xml
-          git add -A integrations/ services/ geo/ || true
           
-          if git diff-index --quiet HEAD --; then
-            echo "No changes detected. Skipping commit."
+          for dir in integrations services blog geo; do
+            if [ -d "$dir" ]; then
+              git add -A "$dir"
+            fi
+          done
+          
+          if git diff --cached --quiet; then
+            echo "✓ Изменений нет, коммит не требуется."
           else
             git commit -m "Auto-generate SEO pages and sitemap [skip ci]"
             git push origin main
-            echo "✓ Changes successfully pushed to main branch"
+            echo "✓ Изменения успешно закоммичены и отправлены в main"
           fi
 
       - name: 7. Push to IndexNow
