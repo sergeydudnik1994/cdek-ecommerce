@@ -5,9 +5,14 @@ on:
     branches:
       - main
     paths:
-      - 'scripts/pages_data.json'
-      - 'scripts/build_seo.py'
+      - '**.html'
+      - 'scripts/**'
+      - 'integrations/**'
+      - 'services/**'
+      - 'geo/**'
       - '.github/workflows/seo.yml'
+  schedule:
+    - cron: '0 3 * * 1' # автообновление каждый понедельник в 03:00 МСК
   workflow_dispatch:
 
 permissions:
@@ -40,13 +45,17 @@ jobs:
         run: |
           python scripts/build_seo.py
 
-      - name: 5. Commit and Push Generated Pages
+      - name: 5. Generate Sitemap XML
+        run: |
+          python scripts/generate_sitemap.py
+
+      - name: 6. Commit and Push Generated Pages and Sitemap
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
           git add sitemap.xml
-          git add -A integrations/ services/ || true
+          git add -A integrations/ services/ geo/ || true
           
           if git diff-index --quiet HEAD --; then
             echo "No changes detected. Skipping commit."
@@ -56,7 +65,7 @@ jobs:
             echo "✓ Changes successfully pushed to main branch"
           fi
 
-      - name: 6. Push to IndexNow
+      - name: 7. Push to IndexNow
         run: |
           python -c "
           import requests
