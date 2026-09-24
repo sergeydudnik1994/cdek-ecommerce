@@ -9,6 +9,7 @@
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111763499', 'ym');
+
     ym(111763499, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/111763499" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
@@ -84,19 +85,19 @@
               </span>
             </div>
 
-            <!-- 3 ключевые цифры (чистая оригинальная верстка без кривых плашек) -->
-            <div class="grid grid-cols-3 gap-4 pt-4 border-t border-white/10 max-w-lg">
+            <!-- 3 ключевые цифры (Симметрично, без переносов строки) -->
+            <div class="grid grid-cols-3 gap-4 sm:gap-6 pt-5 border-t border-white/10 max-w-xl">
               <div>
-                <div class="text-2xl sm:text-3xl font-black text-[#1AB248]">от 24 ч</div>
-                <div class="text-xs text-slate-400 mt-0.5">Срок запуска</div>
+                <div class="text-xl sm:text-2xl lg:text-3xl font-black text-[#1AB248] whitespace-nowrap">24 часа</div>
+                <div class="text-xs text-slate-400 mt-1 whitespace-nowrap">Срок запуска</div>
               </div>
               <div>
-                <div class="text-2xl sm:text-3xl font-black text-white">от 15 000 ₽</div>
-                <div class="text-xs text-slate-400 mt-0.5">Ведение в месяц</div>
+                <div class="text-xl sm:text-2xl lg:text-3xl font-black text-white whitespace-nowrap">15 000 ₽</div>
+                <div class="text-xs text-slate-400 mt-1 whitespace-nowrap">Ведение в месяц</div>
               </div>
               <div>
-                <div class="text-2xl sm:text-3xl font-black text-[#1AB248]">0% комиссий</div>
-                <div class="text-xs text-slate-400 mt-0.5">Прямые продажи</div>
+                <div class="text-xl sm:text-2xl lg:text-3xl font-black text-[#1AB248] whitespace-nowrap">0%</div>
+                <div class="text-xs text-slate-400 mt-1 whitespace-nowrap">Комиссий за заказы</div>
               </div>
             </div>
 
@@ -210,7 +211,7 @@
                 </p>
               </div>
 
-              <!-- Прямые мессенджеры со стандартными SVG-иконками -->
+              <!-- Прямые мессенджеры со стандартными векторными иконками -->
               <div class="mt-6 pt-5 border-t border-slate-100 text-center">
                 <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2.5">
                   Или свяжитесь напрямую:
