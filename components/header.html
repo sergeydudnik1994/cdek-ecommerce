@@ -29,27 +29,33 @@
 
     <!-- Навигация (Desktop с иконками) -->
     <nav class="hidden lg:flex items-center gap-3.5 xl:gap-5 text-xs sm:text-sm font-semibold text-slate-700">
-      <!-- 1. Договор и тарифы -->
-      <a href="/dogovor/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors">
-        <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-        </svg>
-        Договор
+      
+      <!-- 1. ВМЕСТО ДОГОВОРА: Яндекс Директ -->
+      <a href="/traffic/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors whitespace-nowrap text-slate-900 font-bold">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#1AB248] animate-pulse"></span>
+        <span>Директ</span>
+        <span class="text-[9px] bg-emerald-100 text-[#1AB248] px-1.5 py-0.5 rounded font-black tracking-wider border border-emerald-200">NEW</span>
       </a>
 
       <!-- 2. Калькулятор B2B -->
-      <a href="/calculator/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors">
+      <a href="/calculator/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors whitespace-nowrap">
         <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
         Калькулятор
       </a>
 
       <!-- 3. Интеграции -->
       <div class="relative group py-2">
-        <a href="/#integrations" class="hover:text-[#1AB248] transition-colors flex items-center gap-1">
+        <a href="/#integrations" class="hover:text-[#1AB248] transition-colors flex items-center gap-1 whitespace-nowrap">
           Интеграции и CMS
           <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </a>
         <div class="absolute left-0 top-full hidden group-hover:block w-64 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-50">
+          <a href="/traffic/" class="flex items-center justify-between px-3 py-2 text-xs font-bold text-slate-800 hover:bg-emerald-50 hover:text-[#1AB248] rounded-xl transition mb-1">
+            <span class="flex items-center gap-1.5">
+              <span class="text-[#1AB248]">🎯</span> Реклама в Директе
+            </span>
+            <span class="text-[10px] bg-emerald-100 text-[#1AB248] px-1.5 py-0.5 rounded font-black tracking-wider">NEW</span>
+          </a>
           <a href="/store/" class="flex items-center justify-between px-3 py-2 text-xs font-bold text-slate-800 hover:bg-emerald-50 hover:text-[#1AB248] rounded-xl transition mb-1">
             <span class="flex items-center gap-1.5">
               <span class="text-[#1AB248] font-mono">&lt;/&gt;</span> Создание SEO-сайта
@@ -70,11 +76,12 @@
 
       <!-- 4. Услуги -->
       <div class="relative group py-2">
-        <span class="cursor-pointer hover:text-[#1AB248] transition-colors flex items-center gap-1">
+        <span class="cursor-pointer hover:text-[#1AB248] transition-colors flex items-center gap-1 whitespace-nowrap">
           Услуги
           <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </span>
         <div class="absolute left-0 top-full hidden group-hover:block w-72 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-50">
+          <a href="/traffic/" class="block px-3 py-2 text-xs font-bold text-emerald-800 bg-emerald-50/80 hover:bg-emerald-100 rounded-xl transition mb-1">🎯 Настройка Яндекс Директа</a>
           <a href="/services/dostavka-odezhdy/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#1AB248] rounded-xl transition">Магазины одежды (примерка)</a>
           <a href="/services/fulfillment/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#1AB248] rounded-xl transition">Фулфилмент под ключ</a>
           <a href="/services/sbornyj-gruz/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#1AB248] rounded-xl transition">Сборный груз LTL (от 60 кг)</a>
@@ -85,21 +92,21 @@
       </div>
 
       <!-- 5. Трекинг -->
-      <a href="/tracking/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors">
+      <a href="/tracking/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors whitespace-nowrap">
         <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         Трекинг
       </a>
 
-      <!-- 6. Блог (с иконкой) -->
-      <a href="/blog/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors">
+      <!-- 6. Блог -->
+      <a href="/blog/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors whitespace-nowrap">
         <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
         </svg>
         Блог
       </a>
 
-      <!-- 7. О компании (с иконкой) -->
-      <a href="/about/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors text-slate-600">
+      <!-- 7. О компании -->
+      <a href="/about/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors text-slate-600 whitespace-nowrap">
         <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
         </svg>
@@ -116,7 +123,7 @@
         Подключиться
       </a>
       
-      <!-- Черный бургер -->
+      <!-- Бургер -->
       <button 
         onclick="toggleMobileMenu()" 
         aria-label="Открыть меню" 
@@ -130,19 +137,17 @@
 
   </div>
 
-  <!-- Мобильное выпадающее меню -->
+  <!-- Мобильное меню -->
   <div id="mobileMenu" class="lg:hidden hidden bg-white border-b border-slate-200 divide-y divide-slate-100 shadow-2xl">
-    
-    <!-- Быстрые действия -->
-    <div class="px-4 py-3 space-y-1 bg-slate-50/50">
-      <a href="/dogovor/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-2.5 text-sm font-bold text-slate-900">
+    <div class="px-4 py-3 space-y-1.5 bg-slate-50/50">
+      
+      <!-- Промо Директа в мобильном меню -->
+      <a href="/traffic/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-2.5 px-3 rounded-xl bg-emerald-50 text-sm font-bold text-slate-900 border border-emerald-100">
         <span class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-          </svg>
-          Договор со СДЭК
+          <span class="w-2 h-2 rounded-full bg-[#1AB248] animate-pulse"></span>
+          <span>Яндекс Директ для интернет-магазинов</span>
         </span>
-        <span class="text-slate-400 text-xs">›</span>
+        <span class="text-[10px] bg-[#1AB248] text-white px-1.5 py-0.5 rounded font-black">NEW</span>
       </a>
 
       <a href="/tracking/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-2.5 text-sm font-bold text-slate-900">
@@ -186,6 +191,10 @@
     <div class="px-4 py-3">
       <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Интеграции & Маркетплейсы</div>
       <div class="space-y-1">
+        <a href="/traffic/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs font-bold text-emerald-700">
+          <span>🎯 Яндекс Директ для сайтов</span>
+          <span class="text-xs">›</span>
+        </a>
         <a href="/store/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs font-bold text-slate-800">
           <span>&lt;/&gt; Создание SEO-сайта</span>
           <span class="text-[10px] bg-emerald-100 text-[#1AB248] px-1.5 py-0.5 rounded font-black">NEW</span>
@@ -206,41 +215,6 @@
           <span>МойСклад</span>
           <span class="text-xs text-slate-300">›</span>
         </a>
-        <a href="/integrations/api/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs text-slate-600">
-          <span>Rest API v2.0 & SDK</span>
-          <span class="text-xs text-slate-300">›</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- Услуги -->
-    <div class="px-4 py-3">
-      <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Услуги и логистика</div>
-      <div class="space-y-1">
-        <a href="/services/dostavka-odezhdy/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs text-slate-600">
-          <span>Магазины одежды (с примеркой)</span>
-          <span class="text-xs text-slate-300">›</span>
-        </a>
-        <a href="/services/fulfillment/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs text-slate-600">
-          <span>Фулфилмент под ключ</span>
-          <span class="text-xs text-slate-300">›</span>
-        </a>
-        <a href="/services/sbornyj-gruz/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs text-slate-600">
-          <span>Сборный груз LTL (от 60 кг)</span>
-          <span class="text-xs text-slate-300">›</span>
-        </a>
-        <a href="/services/dostavka-dokumentov/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs text-slate-600">
-          <span>СДЭК Документы (экспресс)</span>
-          <span class="text-xs text-slate-300">›</span>
-        </a>
-        <a href="/services/mezhdunarodnaya-dostavka/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs text-slate-600">
-          <span>Международная доставка</span>
-          <span class="text-xs text-slate-300">›</span>
-        </a>
-        <a href="/services/nalozhennyj-platezh/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-1.5 text-xs text-slate-600">
-          <span>Наложенный платеж 54-ФЗ</span>
-          <span class="text-xs text-slate-300">›</span>
-        </a>
       </div>
     </div>
 
@@ -250,7 +224,6 @@
         Заключить договор онлайн
       </a>
     </div>
-
   </div>
 </header>
 
