@@ -17,29 +17,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>СДЭК для продавцов Авито: как отправлять заказы со скидками до 50% по B2B-договору</title>
-  <meta name="description" content="Разбор логистики для бизнеса на Авито: почему прямая отправка по договору СДЭК выгоднее встроенной комиссии Авито, как отправлять крупногабарит и принимать наложенный платеж 54-ФЗ." />
-  <meta name="keywords" content="сдэк авито доставка для продавцов, отправка сдэк с авито b2b, авито доставка через сдэк тарифы, договор сдэк для авито" />
+  <!-- SEO Meta -->
+  <title>Авито Доставка через СДЭК: как подключить схему DBS и отправлять заказы со скидкой до 50%</title>
+  <meta name="description" content="Полная инструкция по настройке Авито Доставки через СДЭК по схеме «Силами продавца» (DBS). Как связать ЛК СДЭК и Avito по API, экономить на тарифах и автоматически формировать накладные." />
+  <meta name="keywords" content="авито доставка сдэк, авито доставка силами продавца сдэк, как отправить сдэком через авито, договор сдэк для авито, dbs авито сдэк, интеграция авито сдэк api" />
   <link rel="canonical" href="https://cdek-ecommerce.ru/blog/dostavka-dlya-avito/" />
 
   <meta name="theme-color" content="#08221F" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>body { font-family: 'Roboto', sans-serif; }</style>
-
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="СДЭК E-Commerce" />
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="СДЭК для продавцов Авито: доставка со скидками до 50%" />
-  <meta property="og:description" content="Как экономить на комиссиях площадки: прямая доставка заказов с Авито через СДЭК по B2B-договору." />
+  <meta property="og:title" content="Авито Доставка через СДЭК: интеграция DBS и экономия до 50% по B2B-договору" />
+  <meta property="og:description" content="Пошаговый мануал: генерация токенов Avito API, связка с личным кабинетом СДЭК, авто-создание накладных каждые 15 минут и преимущества своего договора." />
   <meta property="og:url" content="https://cdek-ecommerce.ru/blog/dostavka-dlya-avito/" />
   <meta property="og:image" content="https://cdek-ecommerce.ru/og-image.png" />
+
+  <!-- Tailwind CSS & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Roboto', sans-serif; }
+  </style>
 
   <!-- Schema.org Microdata -->
   <script type="application/ld+json">
@@ -50,19 +54,45 @@
         "@type": "BreadcrumbList",
         "@id": "https://cdek-ecommerce.ru/blog/dostavka-dlya-avito/#breadcrumb",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/" },
-          { "@type": "ListItem", "position": 2, "name": "Блог", "item": "https://cdek-ecommerce.ru/blog/" },
-          { "@type": "ListItem", "position": 3, "name": "СДЭК для продавцов Авито", "item": "https://cdek-ecommerce.ru/blog/dostavka-dlya-avito/" }
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "https://cdek-ecommerce.ru/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Блог",
+            "item": "https://cdek-ecommerce.ru/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Авито Доставка через СДЭК",
+            "item": "https://cdek-ecommerce.ru/blog/dostavka-dlya-avito/"
+          }
         ]
       },
       {
-        "@type": "NewsArticle",
+        "@type": "Article",
         "@id": "https://cdek-ecommerce.ru/blog/dostavka-dlya-avito/#article",
-        "headline": "СДЭК для продавцов Авито: как отправлять заказы со скидками до 50% по B2B-договору",
+        "headline": "Авито Доставка через СДЭК: как подключить схему DBS и отправлять по B2B-договору",
         "datePublished": "2026-09-20T10:00:00+03:00",
-        "dateModified": "2026-09-20T10:00:00+03:00",
-        "author": { "@type": "Organization", "name": "СДЭК E-Commerce" },
-        "publisher": { "@type": "Organization", "name": "СДЭК E-Commerce", "logo": { "@type": "ImageObject", "url": "https://cdek-ecommerce.ru/favicon.png" } }
+        "dateModified": "2026-09-25T10:00:00+03:00",
+        "author": {
+          "@type": "Organization",
+          "name": "СДЭК E-Commerce"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "СДЭК E-Commerce",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://cdek-ecommerce.ru/favicon.png"
+          }
+        },
+        "description": "Разбор работы Авито Доставки силами продавца (DBS) через СДЭК: экономия на тарифах, интеграция API за 10 минут и автоматическая печать накладных."
       }
     ]
   }
@@ -72,84 +102,226 @@
 
   <!--# include virtual="/components/header.html" -->
 
-  <main class="flex-grow py-10 sm:py-14">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <main class="flex-grow">
+    
+    <!-- HEADER СТАТЬИ -->
+    <header class="bg-[#08221F] text-white pt-10 pb-12 border-b border-[#133E38] relative overflow-hidden">
+      <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#1AB248]/10 rounded-full blur-3xl pointer-events-none"></div>
       
-      <nav class="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-6">
-        <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
-        <span>/</span>
-        <a href="/blog/" class="hover:text-[#1AB248] transition">Блог</a>
-        <span>/</span>
-        <span class="text-slate-800">Доставка для Авито</span>
-      </nav>
-
-      <article class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-8">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 space-y-4">
         
-        <header class="space-y-4 border-b border-slate-100 pb-6">
-          <div class="flex items-center gap-3 text-xs font-bold">
-            <span class="px-3 py-1 bg-purple-50 text-purple-700 rounded-full uppercase tracking-wider">Каналы продаж</span>
-            <span class="text-slate-400">20 сентября 2026</span>
-          </div>
-          <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight">
-            СДЭК для продавцов Авито: как отправлять заказы со скидками до 50% по B2B-договору
-          </h1>
-          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Авито давно трансформировался в полноценный маркетплейс. Однако встроенная доставка берет с продавца от 3% до 15% комиссии с каждого успешного заказа и имеет жесткие лимиты по весу и габаритам. Разбираем, когда магазинам выгоднее отправлять заказы напрямую через СДЭК по собственному корпоративному договору.
-          </p>
-        </header>
+        <!-- Хлебные крошки -->
+        <nav class="flex items-center gap-2 text-xs text-slate-400">
+          <a href="/" class="hover:text-white transition">Главная</a>
+          <span>/</span>
+          <a href="/blog/" class="hover:text-white transition">Блог</a>
+          <span>/</span>
+          <span class="text-[#1AB248]">Авито Доставка</span>
+        </nav>
 
-        <!-- В чем выгода прямого договора -->
-        <div class="bg-[#E8F8ED] border border-[#1AB248]/30 rounded-2xl p-5 text-xs sm:text-sm text-slate-800 leading-relaxed space-y-2">
-          <p class="font-bold text-[#1AB248] text-base">Прямая доставка vs Комиссия площадки:</p>
-          <p>
-            При продаже товара за 20 000 ₽ комиссия Авито Доставки может составлять от 1 000 до 3 000 ₽. Оформляя прямую доставку в личном кабинете СДЭК по тарифу «Посылка», вы не платите комиссию маркетплейсу, а клиент получает заказ в любом из 5 000+ ПВЗ.
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1AB248]/15 border border-[#1AB248]/30 text-[11px] font-bold text-[#1AB248] uppercase tracking-wider">
+          DBS & Маркетплейсы
+        </div>
+
+        <h1 class="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+          Авито Доставка через СДЭК: как подключить схему DBS и отправлять по договору
+        </h1>
+
+        <div class="flex items-center gap-6 text-xs text-slate-400 pt-2 border-t border-slate-800">
+          <span>Время чтения: 6 минут</span>
+          <span>Обновлено: Сентябрь 2026</span>
+          <span class="text-[#1AB248] font-bold">Официальный шлюз API Avito</span>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- ТЕЛО СТАТЬИ -->
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-8 text-slate-700 text-sm sm:text-base leading-relaxed">
+        
+        <!-- Вводка -->
+        <p class="text-base sm:text-lg text-slate-900 font-medium leading-relaxed">
+          Ежемесячно более 12 000 предпринимателей ищут возможность подключить СДЭК к Авито. Причина очевидна: стандартная доставка силами маркетплейса имеет строгие лимиты по весу и габаритам, а главное — лишает продавца гибкости в управлении расходами. Решением стала официальная интеграция <strong class="text-slate-900">Avito DBS (Delivery by Seller — доставка силами продавца)</strong> через прямой договор со СДЭК.
+        </p>
+
+        <!-- Блок ключевой выгоды -->
+        <div class="p-5 rounded-2xl bg-[#E8F8ED] border-l-4 border-[#1AB248] space-y-2">
+          <h4 class="font-black text-slate-900 text-sm sm:text-base">Главное отличие схемы DBS от базовой Авито Доставки:</h4>
+          <p class="text-xs sm:text-sm text-slate-700">
+            Заказы по схеме «Силами продавца» <strong>не являются</strong> стандартными отправлениями по агентскому договору Авито (ИМ-РФ-ММЛ-177). Вы отправляете посылки по <strong>своему прямому договору Интернет-Магазина со СДЭК</strong>, получая скидки до 50% на тариф «Посылка» и сохраняя полный контроль над логистикой.
           </p>
         </div>
 
-        <section class="space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed">
-          <h2 class="text-xl sm:text-2xl font-black text-slate-900">4 преимущества прямого договора для продавцов Авито</h2>
-          <ul class="space-y-2.5 text-sm pl-2">
-            <li class="flex items-start gap-2">
-              <span class="text-[#1AB248] font-bold">✓</span>
-              <span><b>Отправка тяжелых и негабаритных грузов:</b> Встроенная доставка часто отклоняет посылки тяжелее 15–20 кг или с суммой сторон более 120 см. СДЭК принимает отправления до 300+ кг (мебель, автозапчасти, мотоблоки, станки).</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-[#1AB248] font-bold">✓</span>
-              <span><b>Наложенный платеж 54-ФЗ:</b> Покупатель осматривает товар перед оплатой в ПВЗ, а деньги автоматически зачисляются на ваш расчетный счет с выдачей фискального чека.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-[#1AB248] font-bold">✓</span>
-              <span><b>Фиксированные ставки со скидкой 50%:</b> Корпоративный тариф «Посылка» делает логистику дешевле стандартных тарифов для физических лиц.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-[#1AB248] font-bold">✓</span>
-              <span><b>Защита от подмен и порчи:</b> В пунктах выдачи ведется видеоконтроль, а грузы страхуются на полную объявленную стоимость (0.75%).</span>
-            </li>
-          </ul>
-        </section>
+        <!-- Сравнение схем -->
+        <div class="space-y-4">
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">
+            Сравнение: Обычная Авито Доставка vs СДЭК DBS по договору
+          </h2>
+          
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse border border-slate-200 text-xs sm:text-sm">
+              <thead>
+                <tr class="bg-slate-50 text-slate-900 font-bold border-b border-slate-200">
+                  <th class="p-3 border-r border-slate-200">Параметр</th>
+                  <th class="p-3 border-r border-slate-200">Стандартная Авито Доставка</th>
+                  <th class="p-3 bg-[#E8F8ED] text-emerald-900">СДЭК DBS (по договору ИМ)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200">
+                <tr>
+                  <td class="p-3 font-semibold border-r border-slate-200">Габариты и вес</td>
+                  <td class="p-3 border-r border-slate-200 text-slate-500">Обычно до 15–20 кг, жесткие лимиты сторон</td>
+                  <td class="p-3 bg-emerald-50/40 font-medium">От 1 до 50+ кг (включая Магистральный экспресс и Сборный груз)</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold border-r border-slate-200">Скидка на доставку</td>
+                  <td class="p-3 border-r border-slate-200 text-slate-500">Фиксированные розничные тарифы площадки</td>
+                  <td class="p-3 bg-emerald-50/40 font-medium text-[#1AB248] font-bold">Скидка до 50% от базового тарифа по B2B-договору</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold border-r border-slate-200">Формирование накладных</td>
+                  <td class="p-3 border-r border-slate-200 text-slate-500">Генерация штрихкодов только в приложении Авито</td>
+                  <td class="p-3 bg-emerald-50/40 font-medium">Автоматически каждые 15 минут в ЛК СДЭК без ручного ввода</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold border-r border-slate-200">Зона покрытия</td>
+                  <td class="p-3 border-r border-slate-200 text-slate-500">Ограничена партнерской сетью пунктов</td>
+                  <td class="p-3 bg-emerald-50/40 font-medium">5 200+ ПВЗ СДЭК и 54 000+ направлений по РФ</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold border-r border-slate-200">Безопасность вручения</td>
+                  <td class="p-3 border-r border-slate-200 text-slate-500">Базовый регламент выдачи</td>
+                  <td class="p-3 bg-emerald-50/40 font-medium">Выдача строго по CDEK ID, коду или паспорту</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-        <!-- Как закрывать покупателей на прямую доставку -->
-        <section class="space-y-3 text-sm sm:text-base text-slate-700 leading-relaxed">
-          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Как оформлять сделки в переписке Авито</h2>
-          <p>
-            В объявлении и переписке укажите: <i>«Отправляем официальной курьерской службой СДЭК по договору. Возможна оплата при получении после осмотра в пункте выдачи»</i>. Это снимает страх мошенничества у покупателя и позволяет вам сохранить маржу без переплат площадке.
-          </p>
-        </section>
-
-        <!-- CTA Блок -->
-        <div class="bg-[#08221F] text-white rounded-3xl p-6 sm:p-8 text-center space-y-4 shadow-xl">
-          <h3 class="text-xl sm:text-2xl font-black">Подключите договор СДЭК для продаж на Авито</h3>
-          <p class="text-xs sm:text-sm text-slate-300 max-w-md mx-auto">
-            Официальный B2B-договор для ООО, ИП и самозанятых за 15 минут онлайн: скидки до 50%, наложенный платеж и отсутствие комиссий площадок.
-          </p>
-          <a href="/dogovor/marketplace/" class="inline-block px-8 py-3.5 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-xs uppercase tracking-wider rounded-xl transition shadow-lg shadow-[#1AB248]/30">
-            Подключить доставку со скидкой →
+        <!-- CTA 1 ВНУТРИ СТАТЬИ -->
+        <div class="my-8 p-6 bg-[#08221F] rounded-2xl text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-lg">
+          <div class="space-y-1 text-center sm:text-left">
+            <div class="text-xs uppercase tracking-wider text-[#1AB248] font-bold">Нужен договор для интеграции?</div>
+            <div class="text-lg font-black">Подключите B2B-договор со СДЭК за 15 минут</div>
+            <div class="text-xs text-slate-300">Тариф «Посылка», личный кабинет и доступ к API без абонплаты.</div>
+          </div>
+          <a href="/dogovor/" class="shrink-0 px-6 py-3 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition active:scale-95 text-center shadow-md">
+            Заключить договор →
           </a>
         </div>
 
-      </article>
+        <!-- Пошаговая инструкция по настройке -->
+        <div class="space-y-6">
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">
+            Пошаговая настройка интеграции СДЭК и Avito DBS
+          </h2>
+          <p>
+            Для работы связки не требуется установка сторонних модулей или программ. Всё настраивается прямо в браузере за 4 шага:
+          </p>
 
-    </div>
+          <div class="space-y-6">
+            
+            <!-- Шаг 1 -->
+            <div class="border border-slate-200 rounded-2xl p-5 space-y-3">
+              <div class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-full bg-[#1AB248] text-white flex items-center justify-center font-black text-xs">1</span>
+                <h3 class="font-bold text-slate-900 text-base">Генерация API-токена в кабинете Авито</h3>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 pl-10">
+                Зайдите в личный кабинет Avito → перейдите в <strong>«Профиль и настройки»</strong> → подраздел <strong>«Интеграции и API»</strong> → выберите <strong>«Собственная разработка»</strong> и нажмите <strong>«Получить ключи»</strong>. Система сгенерирует пару параметров: <code>Client_id</code> и <code>Client_secret</code>.
+              </p>
+            </div>
+
+            <!-- Шаг 2 -->
+            <div class="border border-slate-200 rounded-2xl p-5 space-y-3">
+              <div class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-full bg-[#1AB248] text-white flex items-center justify-center font-black text-xs">2</span>
+                <h3 class="font-bold text-slate-900 text-base">Привязка токена в личном кабинете СДЭК</h3>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 pl-10">
+                Авторизуйтесь в личном кабинете юридического лица СДЭК → откройте раздел <strong>«Интеграция DBS»</strong> → вкладка <strong>Avito</strong> → нажмите зеленую кнопку <strong>«Добавить магазин»</strong>. Вставьте полученные <code>Client ID</code> и <code>Client secret</code>, подтвердите согласие на обмен данными и нажмите <em>«Проверить Client secret»</em>.
+              </p>
+            </div>
+
+            <!-- Шаг 3 -->
+            <div class="border border-slate-200 rounded-2xl p-5 space-y-3">
+              <div class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-full bg-[#1AB248] text-white flex items-center justify-center font-black text-xs">3</span>
+                <h3 class="font-bold text-slate-900 text-base">Включение способов доставки в Авито</h3>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 pl-10">
+                В профиле Avito перейдите в <strong>«Способы доставки»</strong> → выберите плашку <strong>«Силами продавца»</strong> → далее <strong>«Пункты выдачи»</strong> → переведите тумблер <strong>СДЭК</strong> в активное положение и сохраните настройки.
+              </p>
+            </div>
+
+            <!-- Шаг 4 -->
+            <div class="border border-slate-200 rounded-2xl p-5 space-y-3">
+              <div class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-full bg-[#1AB248] text-white flex items-center justify-center font-black text-xs">4</span>
+                <h3 class="font-bold text-slate-900 text-base">Настройка склада и правил расчета в СДЭК</h3>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 pl-10">
+                Вернитесь в ЛК СДЭК. В блоке «Данные о складе» укажите ваш город отправления и пункт сдачи груза (ПВЗ). В секции габаритов задайте стандартные параметры по умолчанию (вес, Д×Ш×В), а в секции правил выберите стратегию подбора услуги: <em>«Дешёвые, но медленные»</em> либо <em>«Быстрые, но дорогие»</em>. Нажмите кнопку <strong>«Активировать»</strong>.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Как работает автоматизация -->
+        <div class="space-y-4">
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">
+            Как происходит обработка заказов на автомате
+          </h2>
+          <ul class="space-y-2.5 text-xs sm:text-sm list-disc pl-5">
+            <li><strong>Синхронизация каждые 15 минут:</strong> Шлюз автоматически проверяет новые оплаченные заказы в Avito. При появлении заявки накладная СДЭК генерируется автоматически.</li>
+            <li><strong>Передача трек-номера покупателю:</strong> Как только вы передаете посылку сотруднику ПВЗ СДЭК, трек-номер мгновенно уходит в чат заказа на Авито, а статус меняется на «Доставляется».</li>
+            <li><strong>Автоматическое завершение сделки:</strong> При выдаче посылки покупателю в ПВЗ по CDEK ID или паспорту статус заказа в Авито автоматически обновляется на «Доставлен».</li>
+          </ul>
+        </div>
+
+        <!-- Важные ограничения -->
+        <div class="p-5 rounded-2xl bg-amber-50 border border-amber-200 space-y-2 text-amber-900 text-xs sm:text-sm">
+          <h4 class="font-bold text-amber-950 flex items-center gap-2">
+            <span>⚠️</span> Обратите внимание перед стартом:
+          </h4>
+          <p>
+            С момента активации связки в кабинете должно пройти не менее 30 минут из-за технических регламентов обновления API Avito. Не создавайте заказы в первые полчаса после включения, чтобы накладные сформировались корректно.
+          </p>
+        </div>
+
+        <!-- Заключение -->
+        <div class="space-y-3 pt-4 border-t border-slate-200">
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">
+            Как начать отправлять заказы с Авито через СДЭК уже сегодня
+          </h2>
+          <p>
+            Чтобы подключить шлюз DBS и отправлять посылки по минимальной цене, необходим активный <strong>договор СДЭК для интернет-магазина (ИМ)</strong>. Оформить его могут юридические лица, индивидуальные предприниматели и самозанятые граждане РФ без визита в офис.
+          </p>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- ФИНАЛЬНЫЙ БАННЕР ЗАХВАТА НА ДОГОВОР -->
+    <section class="py-12 bg-white border-t border-slate-200">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="bg-[#08221F] text-white rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
+          <div class="space-y-2 text-center md:text-left">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#1AB248]">Быстрое подключение</span>
+            <h3 class="text-2xl font-black">Заключите B2B-договор СДЭК онлайн</h3>
+            <p class="text-xs sm:text-sm text-slate-300 max-w-lg">
+              Официальное подключение по ИНН за 15 минут. Доступ к тарифам со скидкой до 50%, интеграции с Avito DBS и личный кабинет.
+            </p>
+          </div>
+          <a href="/dogovor/" class="shrink-0 px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-xs uppercase tracking-wider rounded-xl transition shadow-lg shadow-[#1AB248]/30 active:scale-95 text-center">
+            Оформить договор онлайн →
+          </a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!--# include virtual="/components/footer.html" -->
