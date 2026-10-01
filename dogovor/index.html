@@ -611,7 +611,7 @@
     <div class="border-b border-slate-200 pb-5">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-slate-100 text-slate-700 border border-slate-200 mb-2">
         <span class="w-2 h-2 rounded-full bg-[#1AB248]"></span>
-        Регламент коммерческой классификации ТОП100 (ПУСК СДЭК)
+        Регламент коммерческой классификации ТОП100
       </div>
       <h2 class="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
         Заявка на индивидуальный корпоративный договор ТОП100 и кредитную линию
@@ -623,10 +623,10 @@
 
     <form id="corporate-heavy-form" class="space-y-8 text-slate-900" novalidate>
       
-      <!-- Блок 1: Объемы и параметры классификатора ПУСК -->
+      <!-- Блок 1: Объемы и параметры классификатора -->
       <div class="space-y-4">
         <div class="text-xs font-black uppercase tracking-wider text-[#1AB248] flex items-center gap-2">
-          <span>01.</span> Параметры логистического трафика (ПУСК)
+          <span>01.</span> Параметры логистического трафика
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
@@ -1059,7 +1059,7 @@
       // Проверка на заполненность и форматы
       const errors = [];
 
-      if (!volume || !budget || !insurance) errors.push('Выберите логистические объемы по ПУСК');
+      if (!volume || !budget || !insurance) errors.push('Выберите логистические объемы');
       if (inn.length < 10) errors.push('ИНН должен содержать 10 или 12 цифр');
       if (kpp.length !== 9) errors.push('КПП должен содержать 9 цифр');
       if (ogrn.length < 13) errors.push('ОГРН должен содержать 13 или 15 цифр');
