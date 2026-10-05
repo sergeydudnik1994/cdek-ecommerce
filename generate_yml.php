@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: text/xml; charset=utf-8');
 
+// Формируем дату в формате YYYY-MM-DDTHH:MM:SS+03:00 (без лишнего экранирования)
 \$date = date('Y-m-d\TH:i:sP');
 \$currency = 'RUB';
 
@@ -63,6 +64,7 @@ header('Content-Type: text/xml; charset=utf-8');
     ]
 ];
 
+// Генерируем XML строго через echo, чтобы избежать любых проблем с разметкой
 echo '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
 echo '<yml_catalog date="' . \$date . '">' . PHP_EOL;
 echo '    <shop>' . PHP_EOL;
@@ -72,25 +74,4 @@ echo '        <url>https://cdek-ecommerce.ru</url>' . PHP_EOL;
 echo '        <currencies>' . PHP_EOL;
 echo '            <currency id="' . \$currency . '" rate="1"/>' . PHP_EOL;
 echo '        </currencies>' . PHP_EOL;
-echo '        <categories>' . PHP_EOL;
-
-foreach ($categories as $id => \$name) {
-    echo '            <category id="' . $id . '">' . htmlspecialchars($name, ENT_XML1, 'UTF-8') . '</category>' . PHP_EOL;
-}
-
-echo '        </categories>' . PHP_EOL;
-echo '        <offers>' . PHP_EOL;
-
-foreach ($offers as $offer) {
-    echo '            <offer id="' . \$offer['id'] . '" available="true">' . PHP_EOL;
-    echo '                <name>' . htmlspecialchars(\$offer['name'], ENT_XML1, 'UTF-8') . '</name>' . PHP_EOL;
-    echo '                <categoryId>' . \$offer['categoryId'] . '</categoryId>' . PHP_EOL;
-    echo '                <url>' . htmlspecialchars(\$offer['url'], ENT_XML1, 'UTF-8') . '</url>' . PHP_EOL;
-    echo '                <price>' . \$offer['price'] . '</price>' . PHP_EOL;
-    echo '                <currencyId>' . \$offer['currencyId'] . '</currencyId>' . PHP_EOL;
-    echo '                <description>' . htmlspecialchars(\$offer['description'], ENT_XML1, 'UTF-8') . '</description>' . PHP_EOL;
-    echo '                <region>' . htmlspecialchars(\$offer['region'], ENT_XML1, 'UTF-8') . '</region>' . PHP_EOL;
-    echo '            </offer>' . PHP_EOL;
-}
-
-echo '        </offers>' . PHP_EOL;
+echo '        <categories>'
