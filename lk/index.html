@@ -212,8 +212,11 @@
 
           <!-- Правая колонка: Форма регистрации нового договора -->
           <div class="lg:col-span-5 w-full space-y-3">
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-3 text-center text-xs text-slate-300">
-              💡 <strong>Нет договора со СДЭК?</strong> Оформите подключение онлайн за 15 минут и получите персональный доступ в ЛК.
+            <div class="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-3.5 flex items-center gap-3 text-xs text-slate-300">
+              <span class="w-2 h-2 rounded-full bg-[#1AB248] shrink-0 animate-pulse"></span>
+              <p class="leading-relaxed">
+                <strong class="text-white font-semibold">Нет договора со СДЭК?</strong> Оформите подключение онлайн за 15 минут для доступа в ЛК со спецтарифами.
+              </p>
             </div>
             
             <div id="lead-form">
@@ -240,64 +243,88 @@
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           
-          <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:border-[#1AB248] hover:shadow-md transition space-y-3">
-            <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center font-black text-lg">
-              📄
+          <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:border-[#1AB248] hover:shadow-md transition space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
             </div>
-            <h3 class="text-lg font-bold text-slate-900">Создание накладных за 30 секунд</h3>
-            <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-              Ручное создание одиночных отправлений или пакетная загрузка реестров из Excel. Автоматический расчет стоимости по спецтарифу «Посылка».
-            </p>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900">Создание накладных за 30 секунд</h3>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
+                Ручное создание одиночных отправлений или пакетная загрузка реестров из Excel. Автоматический расчет стоимости по спецтарифу «Посылка».
+              </p>
+            </div>
           </div>
 
-          <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:border-[#1AB248] hover:shadow-md transition space-y-3">
-            <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center font-black text-lg">
-              🏷️
+          <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:border-[#1AB248] hover:shadow-md transition space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+              </svg>
             </div>
-            <h3 class="text-lg font-bold text-slate-900">Печать термоэтикеток 58×40</h3>
-            <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-              Пакетная генерация наклеек со штрихкодами для термопринтеров и стандартных квитанций А4. Сдавайте посылки в ПВЗ за 1 минуту по единому манифесту.
-            </p>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900">Печать термоэтикеток 58×40</h3>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
+                Пакетная генерация наклеек со штрихкодами для термопринтеров и стандартных квитанций А4. Сдавайте посылки в ПВЗ за 1 минуту по единому манифесту.
+              </p>
+            </div>
           </div>
 
-          <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:border-[#1AB248] hover:shadow-md transition space-y-3">
-            <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center font-black text-lg">
-              ⚡
+          <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:border-[#1AB248] hover:shadow-md transition space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+              </svg>
             </div>
-            <h3 class="text-lg font-bold text-slate-900">Ключи REST API 2.0</h3>
-            <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-              Генерация пары Account и Secure password для привязки модулей Tilda, InSales, 1С-Битрикс, МойСклад или собственной CRM-системы.
-            </p>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900">Ключи REST API 2.0</h3>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
+                Генерация пары Account и Secure password для привязки модулей Tilda, InSales, 1С-Битрикс, МойСклад или собственной CRM-системы.
+              </p>
+            </div>
           </div>
 
-          <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:border-[#1AB248] hover:shadow-md transition space-y-3">
-            <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center font-black text-lg">
-              💰
+          <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:border-[#1AB248] hover:shadow-md transition space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
             </div>
-            <h3 class="text-lg font-bold text-slate-900">Финансы и наложенный платеж</h3>
-            <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-              Детализированные финансовые реестры выплат наложенного платежа. Отслеживание статуса перечисления денег на ваш расчетный счет по 54-ФЗ.
-            </p>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900">Финансы и наложенный платеж</h3>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
+                Детализированные финансовые реестры выплат наложенного платежа. Отслеживание статуса перечисления денег на ваш расчетный счет по 54-ФЗ.
+              </p>
+            </div>
           </div>
 
-          <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:border-[#1AB248] hover:shadow-md transition space-y-3">
-            <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center font-black text-lg">
-              🚚
+          <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:border-[#1AB248] hover:shadow-md transition space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
+              </svg>
             </div>
-            <h3 class="text-lg font-bold text-slate-900">Вызов курьера на забор</h3>
-            <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-              Оформление забора груза с вашего склада, производства или магазина без звонков операторам. Назначение регулярных заборов по расписанию.
-            </p>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900">Вызов курьера на забор</h3>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
+                Оформление забора груза с вашего склада, производства или магазина без звонков операторам. Назначение регулярных заборов по расписанию.
+              </p>
+            </div>
           </div>
 
-          <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:border-[#1AB248] hover:shadow-md transition space-y-3">
-            <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center font-black text-lg">
-              📑
+          <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm hover:border-[#1AB248] hover:shadow-md transition space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-[#E8F8ED] text-[#1AB248] flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
             </div>
-            <h3 class="text-lg font-bold text-slate-900">Акты, счета и ЭДО</h3>
-            <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-              Электронный архив закрывающих документов за каждый отчетный месяц. Выгрузка актов сверки и синхронизация с Диадок и СБИС.
-            </p>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900">Акты, счета и ЭДО</h3>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
+                Электронный архив закрывающих документов за каждый отчетный месяц. Выгрузка актов сверки и синхронизация с Диадок и СБИС.
+              </p>
+            </div>
           </div>
 
         </div>
