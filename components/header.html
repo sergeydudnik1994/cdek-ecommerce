@@ -30,7 +30,7 @@
     <!-- Навигация (Desktop с иконками) -->
     <nav class="hidden lg:flex items-center gap-3.5 xl:gap-5 text-xs sm:text-sm font-semibold text-slate-700">
       
-      <!-- 1. Яндекс Директ (в едином стиле с меню) -->
+      <!-- 1. Яндекс Директ -->
       <a href="/traffic/" class="flex items-center gap-1.5 hover:text-[#1AB248] transition-colors whitespace-nowrap">
         <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="9"/>
@@ -117,11 +117,26 @@
       </a>
     </nav>
 
-    <!-- Правый блок: кнопка "Подключиться" + бургер меню -->
-    <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+    <!-- Правый блок: кнопка ЛК + кнопка "Подключиться" + бургер меню -->
+    <div class="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
+      
+      <!-- Личный кабинет (сквозная кнопка для SEO и входа) -->
+      <a 
+        href="/lk/" 
+        class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2 text-xs font-bold text-slate-700 hover:text-[#1AB248] rounded-xl hover:bg-slate-50 transition whitespace-nowrap"
+        title="Личный кабинет СДЭК: вход по договору"
+      >
+        <svg class="w-4 h-4 text-[#1AB248] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+        </svg>
+        <span class="hidden sm:inline">Личный кабинет</span>
+        <span class="sm:hidden font-extrabold text-[11px]">ЛК</span>
+      </a>
+
+      <!-- Кнопка Подключиться -->
       <a 
         href="/dogovor/#contract-form-container" 
-        class="px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-[#08221F] hover:bg-[#062A30] text-white font-bold text-xs uppercase tracking-wider transition shadow-sm whitespace-nowrap"
+        class="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-[#08221F] hover:bg-[#062A30] text-white font-bold text-xs uppercase tracking-wider transition shadow-sm whitespace-nowrap"
       >
         Подключиться
       </a>
@@ -144,7 +159,18 @@
   <div id="mobileMenu" class="lg:hidden hidden bg-white border-b border-slate-200 divide-y divide-slate-100 shadow-2xl">
     <div class="px-4 py-3 space-y-1.5 bg-slate-50/50">
       
-      <!-- Пункт в мобильном меню -->
+      <!-- Топовая кнопка ЛК в мобильной шторке -->
+      <a href="/lk/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-2.5 px-3 rounded-xl bg-emerald-50 text-sm font-bold text-[#1AB248] border border-emerald-200/80 mb-1">
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+          </svg>
+          <span>Личный кабинет (Вход по договору)</span>
+        </span>
+        <span class="text-xs text-[#1AB248]">›</span>
+      </a>
+
+      <!-- Пункт Яндекс Директ -->
       <a href="/traffic/" onclick="toggleMobileMenu()" class="flex items-center justify-between py-2.5 px-3 rounded-xl bg-slate-100 text-sm font-semibold text-slate-900">
         <span class="flex items-center gap-2">
           <svg class="w-4 h-4 text-[#1AB248]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
