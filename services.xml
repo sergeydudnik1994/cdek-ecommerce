@@ -21,8 +21,8 @@
         <categoryId>1</categoryId>
         <description><![CDATA[Бесплатное подключение к СДЭК для интернет-магазинов, юрлиц и самозанятых. Скидки на доставку по договору, интеграция по API и модули для CMS, наложенный платеж, кассовое обслуживание и личный кабинет.]]></description>
         <param name="рейтинг">0</param>
-        <param name="число отзывов">128</param>
-        <param name="годы опыта">8</param>
+        <param name="число отзывов">0</param>
+        <param name="годы опыта">10</param>
         <param name="регион">Россия</param>
         <param name="конверсия">98%</param>
       </offer>
@@ -36,8 +36,8 @@
         <categoryId>1</categoryId>
         <description><![CDATA[Курьерская доставка до двери и в пункты выдачи СДЭК по РФ и миру. Частичный выкуп, примерка, прием оплаты при получении и быстрый перевод выручки.]]></description>
         <param name="рейтинг">0</param>
-        <param name="число отзывов">94</param>
-        <param name="годы опыта">8</param>
+        <param name="число отзывов">0</param>
+        <param name="годы опыта">10</param>
         <param name="регион">Россия</param>
         <param name="конверсия">98%</param>
       </offer>
@@ -51,8 +51,8 @@
         <categoryId>1</categoryId>
         <description><![CDATA[B2B-доставка коммерческой корреспонденции, образцов и грузов от 24 часов. Персональный менеджер и закрывающие бухгалтерские документы.]]></description>
         <param name="рейтинг">0</param>
-        <param name="число отзывов">67</param>
-        <param name="годы опыта">8</param>
+        <param name="число отзывов">0</param>
+        <param name="годы опыта">10</param>
         <param name="регион">Россия</param>
         <param name="конверсия">99%</param>
       </offer>
