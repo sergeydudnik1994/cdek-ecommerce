@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE yml_catalog SYSTEM "shops.dtd">
-<yml_catalog date="2026-10-06 03:15">
+<yml_catalog date="2026-10-06 09:30">
   <shop>
     <name>СДЭК для бизнеса</name>
     <company>СДЭК для интернет-магазинов и юрлиц</company>
@@ -20,11 +20,13 @@
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
         <description><![CDATA[Бесплатное подключение к СДЭК для интернет-магазинов, юрлиц и самозанятых. Скидки на доставку по договору, интеграция по API и модули для CMS, наложенный платеж, кассовое обслуживание и личный кабинет.]]></description>
-        <param name="рейтинг">0</param>
-        <param name="число отзывов">0</param>
-        <param name="годы опыта">10</param>
-        <param name="регион">Россия</param>
-        <param name="конверсия">98%</param>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">10</param>
+        <param name="Регион">Россия</param>
+        <param name="Конверсия">0</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется удаленно">true</param>
       </offer>
 
       <!-- Оффер 2: Доставка заказов -->
@@ -35,11 +37,13 @@
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
         <description><![CDATA[Курьерская доставка до двери и в пункты выдачи СДЭК по РФ и миру. Частичный выкуп, примерка, прием оплаты при получении и быстрый перевод выручки.]]></description>
-        <param name="рейтинг">0</param>
-        <param name="число отзывов">0</param>
-        <param name="годы опыта">10</param>
-        <param name="регион">Россия</param>
-        <param name="конверсия">98%</param>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">10</param>
+        <param name="Регион">Россия</param>
+        <param name="Конверсия">0</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется удаленно">true</param>
       </offer>
 
       <!-- Оффер 3: B2B логистика -->
@@ -50,11 +54,13 @@
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
         <description><![CDATA[B2B-доставка коммерческой корреспонденции, образцов и грузов от 24 часов. Персональный менеджер и закрывающие бухгалтерские документы.]]></description>
-        <param name="рейтинг">0</param>
-        <param name="число отзывов">0</param>
-        <param name="годы опыта">10</param>
-        <param name="регион">Россия</param>
-        <param name="конверсия">99%</param>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Годы опыта">10</param>
+        <param name="Регион">Россия</param>
+        <param name="Конверсия">0</param>
+        <param name="Организация">true</param>
+        <param name="Выполняется удаленно">true</param>
       </offer>
     </offers>
   </shop>
