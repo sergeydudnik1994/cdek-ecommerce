@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE yml_catalog SYSTEM "shops.dtd">
-<yml_catalog date="2026-10-06 09:30">
+<yml_catalog date="2026-10-06 12:40">
   <shop>
     <name>СДЭК для бизнеса</name>
     <company>СДЭК для интернет-магазинов и юрлиц</company>
@@ -13,7 +13,7 @@
     </categories>
     <offers>
       <!-- Оффер 1: Договор СДЭК -->
-      <offer id="cdek-dogovor" available="true">
+      <offer id="1" available="true">
         <name>Заключение договора со СДЭК для бизнеса</name>
         <url>https://cdek-ecommerce.ru/dogovor/</url>
         <price>0</price>
@@ -30,7 +30,7 @@
       </offer>
 
       <!-- Оффер 2: Доставка заказов -->
-      <offer id="cdek-ecommerce-delivery" available="true">
+      <offer id="2" available="true">
         <name>Доставка заказов интернет-магазинов по договору СДЭК</name>
         <url>https://cdek-ecommerce.ru/dogovor/</url>
         <price>150</price>
@@ -47,7 +47,7 @@
       </offer>
 
       <!-- Оффер 3: B2B логистика -->
-      <offer id="cdek-b2b-express" available="true">
+      <offer id="3" available="true">
         <name>Срочная доставка грузов и документов для юридических лиц</name>
         <url>https://cdek-ecommerce.ru/dogovor/</url>
         <price>300</price>
