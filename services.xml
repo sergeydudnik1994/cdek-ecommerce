@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE yml_catalog SYSTEM "shops.dtd">
-<yml_catalog date="2026-10-05 12:00">
+<yml_catalog date="2026-10-06 03:15">
   <shop>
     <name>СДЭК для бизнеса</name>
     <company>СДЭК для интернет-магазинов и юрлиц</company>
@@ -12,37 +12,49 @@
       <category id="1">Логистические услуги</category>
     </categories>
     <offers>
-      <!-- Основное предложение: заключение договора -->
+      <!-- Оффер 1: Договор СДЭК -->
       <offer id="cdek-dogovor" available="true">
         <name>Заключение договора со СДЭК для бизнеса</name>
         <url>https://cdek-ecommerce.ru/dogovor/</url>
         <price>0</price>
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
-        <picture>https://cdek-ecommerce.ru/dogovor/og-image.jpg</picture>
         <description><![CDATA[Бесплатное подключение к СДЭК для интернет-магазинов, юрлиц и самозанятых. Скидки на доставку по договору, интеграция по API и модули для CMS, наложенный платеж, кассовое обслуживание и личный кабинет.]]></description>
+        <param name="рейтинг">4.9</param>
+        <param name="число отзывов">128</param>
+        <param name="годы опыта">8</param>
+        <param name="регион">Россия</param>
+        <param name="конверсия">98%</param>
       </offer>
 
-      <!-- Доставка для интернет-магазинов -->
+      <!-- Оффер 2: Доставка заказов -->
       <offer id="cdek-ecommerce-delivery" available="true">
         <name>Доставка заказов интернет-магазинов по договору СДЭК</name>
         <url>https://cdek-ecommerce.ru/dogovor/</url>
         <price>150</price>
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
-        <picture>https://cdek-ecommerce.ru/dogovor/og-image.jpg</picture>
         <description><![CDATA[Курьерская доставка до двери и в пункты выдачи СДЭК по РФ и миру. Частичный выкуп, примерка, прием оплаты при получении и быстрый перевод выручки.]]></description>
+        <param name="рейтинг">4.9</param>
+        <param name="число отзывов">94</param>
+        <param name="годы опыта">8</param>
+        <param name="регион">Россия</param>
+        <param name="конверсия">98%</param>
       </offer>
 
-      <!-- Срочная B2B логистика -->
+      <!-- Оффер 3: B2B логистика -->
       <offer id="cdek-b2b-express" available="true">
         <name>Срочная доставка грузов и документов для юридических лиц</name>
         <url>https://cdek-ecommerce.ru/dogovor/</url>
         <price>300</price>
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
-        <picture>https://cdek-ecommerce.ru/dogovor/og-image.jpg</picture>
         <description><![CDATA[B2B-доставка коммерческой корреспонденции, образцов и грузов от 24 часов. Персональный менеджер и закрывающие бухгалтерские документы.]]></description>
+        <param name="рейтинг">4.8</param>
+        <param name="число отзывов">67</param>
+        <param name="годы опыта">8</param>
+        <param name="регион">Россия</param>
+        <param name="конверсия">99%</param>
       </offer>
     </offers>
   </shop>
