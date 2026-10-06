@@ -22,29 +22,27 @@
   <!-- Яндекс Карты API -->
   <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 
-  <!-- Schema.org JSON-LD -->
-  
-
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { font-family: 'Roboto', sans-serif; }
     .ymaps-2-1-79-balloon__content { padding: 10px !important; font-family: 'Roboto', sans-serif !important; }
   </style>
+
   <!-- Open Graph & Social Cards -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="СДЭК E-Commerce" />
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="СДЭК калькулятор доставки | Рассчитать стоимость и сроки посылки" />
-  <meta property="og:description" content="Онлайн-калькулятор доставки СДЭК: точный расчет стоимости посылок по России. Тарифы со скидкой до 50% при заключении B2B-договора." />
+  <meta property="og:title" content="Калькулятор доставки СДЭК: рассчитать стоимость посылки онлайн" />
+  <meta property="og:description" content="Онлайн-расчет тарифов СДЭК со скидкой до 50%. Подбор стоимости доставки до ПВЗ и курьером." />
   <meta property="og:url" content="https://cdek-ecommerce.ru/calculator/" />
   <meta property="og:image" content="https://cdek-ecommerce.ru/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:type" content="image/png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="СДЭК калькулятор доставки | Рассчитать стоимость и сроки посылки" />
-  <meta name="twitter:description" content="Онлайн-калькулятор доставки СДЭК: точный расчет стоимости посылок по России. Тарифы со скидкой до 50% при заключении B2B-договора." />
+  <meta name="twitter:title" content="Калькулятор доставки СДЭК: рассчитать стоимость посылки онлайн" />
+  <meta name="twitter:description" content="Онлайн-расчет тарифов СДЭК со скидкой до 50%. Подбор стоимости доставки до ПВЗ и курьером." />
   <meta name="twitter:image" content="https://cdek-ecommerce.ru/og-image.png" />
   
   <script type="application/ld+json">
@@ -155,7 +153,7 @@
     {
       "@type": "Service",
       "@id": "https://cdek-ecommerce.ru/calculator/#service",
-      "name": "СДЭК калькулятор доставки | Рассчитать стоимость и сроки посылки",
+      "name": "Калькулятор доставки СДЭК: расчет тарифов для бизнеса",
       "provider": {
         "@id": "https://cdek-ecommerce.ru/#organization"
       },
@@ -163,7 +161,7 @@
         "@type": "Country",
         "name": "Россия"
       },
-      "description": "Онлайн-калькулятор доставки СДЭК: точный расчет стоимости посылок по России. Тарифы со скидкой до 50% при заключении B2B-договора.",
+      "description": "Онлайн-расчет тарифов СДЭК со скидкой до 50%. Подбор стоимости доставки до ПВЗ и курьером.",
       "offers": {
         "@type": "Offer",
         "price": "205",
@@ -212,6 +210,13 @@
 
   <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12">
     
+    <!-- Хлебные крошки -->
+    <nav class="flex items-center gap-2 text-xs text-slate-400">
+      <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
+      <span>/</span>
+      <span class="text-slate-700 font-semibold">Калькулятор доставки</span>
+    </nav>
+
     <!-- Заголовок страницы -->
     <div>
       <div class="inline-flex items-center gap-1.5 px-3 py-1 mb-3 rounded-full text-xs font-bold uppercase tracking-wider bg-[#E8F8ED] text-[#1AB248]">
@@ -382,7 +387,7 @@
 
         </div>
 
-        <!-- Правая колонка: Фирменная карточка результата в темно-изумрудном стиле -->
+        <!-- Правая колонка: Фирменная карточка результата -->
         <div class="lg:col-span-5 bg-[#08221F] border border-[#133E38] text-white rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-xl relative overflow-hidden">
           
           <div class="absolute -right-12 -top-12 w-48 h-48 bg-[#1AB248]/15 rounded-full blur-3xl pointer-events-none"></div>
@@ -524,7 +529,7 @@
       </div>
     </div>
 
-    <!-- ДВЕ СЕРВИСНЫЕ КАРТОЧКИ: КАРТА ПВЗ И ТРЕКИНГ (В ЕДИНОМ СТИЛЕ) -->
+    <!-- ДВЕ СЕРВИСНЫЕ КАРТОЧКИ: КАРТА ПВЗ И ТРЕКИНГ -->
     <div class="grid md:grid-cols-2 gap-6">
       
       <!-- Карточка 1: Интерактивная карта ПВЗ -->
@@ -566,7 +571,7 @@
 
     </div>
 
-    <!-- SEO БЛОК: Сравнение официальных тарифов (БЕЗ СИНИХ ЦВЕТОВ) -->
+    <!-- SEO БЛОК: Сравнение официальных тарифов -->
     <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6">
       <h2 class="text-2xl font-bold text-slate-900">Сравнение основных тарифов СДЭК для отправки</h2>
       <div class="grid sm:grid-cols-3 gap-4 text-sm">
@@ -598,9 +603,7 @@
 
         <div class="p-5 rounded-2xl bg-[#F8FAFC] border border-slate-200/60 flex flex-col justify-between">
           <div>
-            <span class="inline-block px-2.5 py-0.5 rounded-md bg-[#EDF5F3] text-[#0D5C4B] text-xs font-bold mb-2">
-  Крупногабарит
-</span>
+            <span class="inline-block px-2.5 py-0.5 rounded-md bg-[#EDF5F3] text-[#0D5C4B] text-xs font-bold mb-2">Крупногабарит</span>
             <h3 class="font-bold text-slate-900 text-base">Магистральный экспресс</h3>
             <p class="text-slate-500 text-xs mt-1 leading-relaxed">
               Экономичная транспортировка партий товаров, коробок и сборных грузов наземным магистральным транспортом между хабами СДЭК.
@@ -649,7 +652,7 @@
       </div>
     </div>
 
-    <!-- B2B Лид-магнит в темно-изумрудном стиле -->
+    <!-- B2B Лид-магнит -->
     <div class="bg-[#08221F] border border-[#133E38] rounded-3xl p-8 sm:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="space-y-3 max-w-xl">
         <span class="inline-block px-3.5 py-1 bg-[#1AB248]/20 border border-[#1AB248]/40 rounded-full text-[#1AB248] text-xs font-bold uppercase tracking-wider">
@@ -891,7 +894,6 @@
       document.getElementById('res-saved').innerText = `Экономия ${saved} ₽`;
     }
 
-    // 2. Логика мини-калькулятора объемного веса
     function calcVolumetricWeight() {
       const l = parseFloat(document.getElementById('vol-l').value) || 0;
       const w = parseFloat(document.getElementById('vol-w').value) || 0;
@@ -911,7 +913,6 @@
       }
     }
 
-    // 3. Управление модальным окном Яндекс.Карт
     function openMapModal() {
       const modal = document.getElementById('mapModal');
       modal.classList.remove('hidden');
