@@ -35,7 +35,7 @@
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
         <description><![CDATA[Курьерская доставка до двери и в пункты выдачи СДЭК по РФ и миру. Частичный выкуп, примерка, прием оплаты при получении и быстрый перевод выручки.]]></description>
-        <param name="рейтинг">4.9</param>
+        <param name="рейтинг">0</param>
         <param name="число отзывов">94</param>
         <param name="годы опыта">8</param>
         <param name="регион">Россия</param>
@@ -50,7 +50,7 @@
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
         <description><![CDATA[B2B-доставка коммерческой корреспонденции, образцов и грузов от 24 часов. Персональный менеджер и закрывающие бухгалтерские документы.]]></description>
-        <param name="рейтинг">4.8</param>
+        <param name="рейтинг">0</param>
         <param name="число отзывов">67</param>
         <param name="годы опыта">8</param>
         <param name="регион">Россия</param>
