@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+<yml_catalog date="2026-10-06 12:40">
+  <shop>
+    <name>СДЭК для бизнеса</name>
+    <company>СДЭК E-Commerce</company>
+    <url>https://cdek-ecommerce.ru</url>
+    <currencies>
+      <currency id="RUB" rate="1"/>
+    </currencies>
+    <categories>
+      <category id="1">Договор и подключение СДЭК</category>
+      <category id="2">Доставка для интернет-магазинов</category>
+      <category id="3">B2B логистика и грузы</category>
+    </categories>
+    <offers>
+      <!-- 1. Заключение договора -->
+      <offer id="biz-dogovor" available="true">
+        <name>Заключение договора со СДЭК для юридических лиц и ИП</name>
+        <url>https://cdek-ecommerce.ru/dogovor/</url>
+        <price>0</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
+        <description><![CDATA[Официальное онлайн-подключение к СДЭК за 15 минут. Скидки на доставку по договору до 50%, наложенный платеж 54-ФЗ, интеграция с сайтом по API, личный кабинет и отсутствие абонентской платы.]]></description>
+      </offer>
+
+      <!-- 2. Договор для самозанятых -->
+      <offer id="biz-samozanyatye" available="true">
+        <name>Договор СДЭК для самозанятых (НПД)</name>
+        <url>https://cdek-ecommerce.ru/dogovor/samozanyatye/</url>
+        <price>0</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
+        <description><![CDATA[Подключение к тарифам СДЭК без открытия ИП. Выплаты наложенного платежа на карту любого банка РФ, тариф «Посылка» со скидкой 50% и чеки в приложении Мой налог.]]></description>
+      </offer>
+
+      <!-- 3. Договор для ИП по сетке УСН -->
+      <offer id="biz-ip" available="true">
+        <name>Договор СДЭК для ИП (Тарифная сетка УСН без НДС)</name>
+        <url>https://cdek-ecommerce.ru/dogovor/ip/</url>
+        <price>0</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
+        <description><![CDATA[Оптимизация логистики для предпринимателей на УСН и Патенте: чистый тариф без переплаты невозвратного налога 22% НДС, вывод денег на расчетный счет и постоплата.]]></description>
+      </offer>
+
+      <!-- 4. Корпоративный договор для ООО -->
+      <offer id="biz-yur-lica" available="true">
+        <name>Договор СДЭК для ООО (ОСНО с НДС 22%, ЭДО Диадок/СБИС)</name>
+        <url>https://cdek-ecommerce.ru/dogovor/yur-lica/</url>
+        <price>0</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
+        <description><![CDATA[Корпоративное B2B-обслуживание: закрывающие документы УПД с выделенным НДС 22%, документооборот через Диадок/СБИС, кредитный лимит и постоплата раз в месяц.]]></description>
+      </offer>
+
+      <!-- 5. Доставка интернет-магазинов -->
+      <offer id="biz-delivery-im" available="true">
+        <name>Доставка заказов интернет-магазинов по тарифу «Посылка»</name>
+        <url>https://cdek-ecommerce.ru/dogovor/tarify/</url>
+        <price>205</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>2</categoryId>
+        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
+        <description><![CDATA[Курьерская доставка и выдача в 5 000+ ПВЗ по всей России. Примерка одежды, частичный выкуп, прием оплаты картой и наличными с выдачей кассовых чеков.]]></description>
+      </offer>
+
+      <!-- 6. Доставка DBS для маркетплейсов -->
+      <offer id="biz-marketplace-dbs" available="true">
+        <name>Доставка СДЭК DBS для маркетплейсов (Wildberries, Ozon, Яндекс Маркет)</name>
+        <url>https://cdek-ecommerce.ru/dogovor/marketplace/</url>
+        <price>205</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>2</categoryId>
+        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
+        <description><![CDATA[Специальная схема доставки со своего склада (DBS / realFBS). Автоматическая передача статусов и трек-номеров на маркетплейсы, соблюдение сроков отгрузки.]]></description>
+      </offer>
+
+      <!-- 7. B2B Сборный груз и магистраль -->
+      <offer id="biz-cargo-ltl" available="true">
+        <name>Срочная доставка грузов и корреспонденции B2B (Магистральный экспресс)</name>
+        <url>https://cdek-ecommerce.ru/dogovor/opt/</url>
+        <price>350</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://cdek-ecommerce.ru/og-image.png</picture>
+        <description><![CDATA[Транспортировка сборных грузов, образцов продукции и оптовых партий от 30 кг по РФ и ЕАЭС. Забор машиной с гидробортом, паллетирование и обрешетка.]]></description>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>
