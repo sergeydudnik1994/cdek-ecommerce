@@ -111,40 +111,33 @@
         <p class="text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
           Практические инструкции по настройке API, готовые модули доставки для CMS, регламенты работы со СДЭК DBS и разборы оптимизации юнит-экономики для интернет-магазинов и селлеров.
         </p>
-
       </div>
     </section>
 
-    <!-- СЕТКА СТАТЕЙ -->
+    <!-- СЕТКА СТАТЕЙ С РУБРИКАТОРОМ -->
     <section class="py-14 sm:py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Рубрикатор (Фильтры) -->
+        <div class="flex flex-wrap items-center gap-3 mb-10" id="blog-filters">
+          <button data-filter="all" class="px-5 py-2.5 rounded-full bg-[#1AB248] text-white text-sm font-bold shadow-md transition-all">
+            Все статьи
+          </button>
+          <button data-filter="tariffs" class="px-5 py-2.5 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-[#1AB248] hover:text-[#1AB248] text-sm font-bold transition-all">
+            Тарифы и B2B
+          </button>
+          <button data-filter="integrations" class="px-5 py-2.5 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-[#1AB248] hover:text-[#1AB248] text-sm font-bold transition-all">
+            Интеграции
+          </button>
+          <button data-filter="rules" class="px-5 py-2.5 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-[#1AB248] hover:text-[#1AB248] text-sm font-bold transition-all">
+            Правила и пересылка
+          </button>
+        </div>
 
-          <!-- Карточка: Упаковка дома -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
-            <div class="space-y-3">
-              <div class="flex items-center justify-between text-[11px] font-bold">
-                <span class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full uppercase tracking-wider">Инструкции</span>
-                <span class="text-slate-400">7 октября 2026</span>
-              </div>
-              <h2 class="text-lg font-black text-slate-900 leading-snug hover:text-[#1AB248] transition">
-                <a href="/blog/kak-upakovat-posylku-sdek-doma/">
-                  Нужно ли идти в СДЭК для упаковки посылки или можно упаковать дома?
-                </a>
-              </h2>
-              <p class="text-xs text-slate-600 leading-relaxed">
-                Можно ли использовать свою коробку, почему физическим лицам нельзя заклеивать скотч дома и как продавцам по договору сдавать заказы без досмотра.
-              </p>
-            </div>
-            <a href="/blog/kak-upakovat-posylku-sdek-doma/" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#1AB248] hover:text-[#158E3A] transition">
-              <span>Читать правила</span>
-              <span>→</span>
-            </a>
-          </article>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="articles-grid">
 
-          <!-- Карточка: Можно ли отправлять духи СДЭК -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <!-- НОВАЯ: Можно ли отправлять духи СДЭК -->
+          <article data-category="rules" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-pink-50 text-pink-700 rounded-full uppercase tracking-wider">Правила пересылки</span>
@@ -165,8 +158,30 @@
             </a>
           </article>
 
+          <!-- НОВАЯ: Упаковка дома -->
+          <article data-category="rules" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-[11px] font-bold">
+                <span class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full uppercase tracking-wider">Инструкции</span>
+                <span class="text-slate-400">7 октября 2026</span>
+              </div>
+              <h2 class="text-lg font-black text-slate-900 leading-snug hover:text-[#1AB248] transition">
+                <a href="/blog/kak-upakovat-posylku-sdek-doma/">
+                  Нужно ли идти в СДЭК для упаковки посылки или можно упаковать дома?
+                </a>
+              </h2>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Можно ли использовать свою коробку, почему физическим лицам нельзя заклеивать скотч дома и как продавцам по договору сдавать заказы без досмотра.
+              </p>
+            </div>
+            <a href="/blog/kak-upakovat-posylku-sdek-doma/" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#1AB248] hover:text-[#158E3A] transition">
+              <span>Читать правила</span>
+              <span>→</span>
+            </a>
+          </article>
+
           <!-- Карточка: Правила отправки посылок СДЭК -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="rules" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-[#E8F8ED] text-[#1AB248] rounded-full uppercase tracking-wider">Регламенты & Требования</span>
@@ -188,7 +203,7 @@
           </article>
           
           <!-- Карточка: Договор доставки СДЭК -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="tariffs" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-[#E8F8ED] text-[#1AB248] rounded-full uppercase tracking-wider">Подключение B2B</span>
@@ -210,7 +225,7 @@
           </article>
 
           <!-- Карточка: Как отправить посылку СДЭК -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="rules" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-[#E8F8ED] text-[#1AB248] rounded-full uppercase tracking-wider">Инструкции</span>
@@ -232,7 +247,7 @@
           </article>
 
           <!-- Карточка: СДЭК или Почта России -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="tariffs" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-purple-50 text-purple-700 rounded-full uppercase tracking-wider">Сравнение служб</span>
@@ -254,7 +269,7 @@
           </article>
 
           <!-- Карточка: Сколько хранится посылка в СДЭК -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="rules" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-emerald-50 text-[#1AB248] rounded-full uppercase tracking-wider">Регламенты доставки</span>
@@ -276,7 +291,7 @@
           </article>
 
           <!-- Карточка: Сколько стоит доставка СДЭК -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="tariffs" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-[#E8F8ED] text-[#1AB248] rounded-full uppercase tracking-wider">Тарифы B2B</span>
@@ -298,7 +313,7 @@
           </article>
           
           <!-- 1. СДЭК для Авито -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="tariffs" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-purple-50 text-purple-700 rounded-full uppercase tracking-wider">Каналы продаж</span>
@@ -320,7 +335,7 @@
           </article>
 
           <!-- 2. Синхронизация с МойСклад -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="integrations" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full uppercase tracking-wider">Учет & Склад</span>
@@ -342,7 +357,7 @@
           </article>
 
           <!-- 3. Интеграция с InSales -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="integrations" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-emerald-50 text-[#1AB248] rounded-full uppercase tracking-wider">Интеграции CMS</span>
@@ -364,7 +379,7 @@
           </article>
 
           <!-- 4. Свой сайт vs WB / Ozon -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="tariffs" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-purple-50 text-purple-700 rounded-full uppercase tracking-wider">Экономика каналов</span>
@@ -386,7 +401,7 @@
           </article>
 
           <!-- 5. Оплата без кассы 54-ФЗ -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="tariffs" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full uppercase tracking-wider">Финансы & 54-ФЗ</span>
@@ -408,7 +423,7 @@
           </article>
 
           <!-- 6. СДЭК для самозанятых -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="tariffs" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-emerald-50 text-[#1AB248] rounded-full uppercase tracking-wider">Самозанятые & НПД</span>
@@ -430,7 +445,7 @@
           </article>
 
           <!-- 7. Какой тариф СДЭК выбрать -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="tariffs" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-[#E8F8ED] text-[#1AB248] rounded-full uppercase tracking-wider">Тарифы B2B</span>
@@ -452,7 +467,7 @@
           </article>
 
           <!-- 8. Объемный вес СДЭК -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="rules" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full uppercase tracking-wider">Оптимизация логистики</span>
@@ -474,7 +489,7 @@
           </article>
 
           <!-- 9. СДЭК DBS -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="integrations" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-[#E8F8ED] text-[#1AB248] rounded-full uppercase tracking-wider">Маркетплейсы</span>
@@ -496,7 +511,7 @@
           </article>
 
           <!-- 10. Наложенный платеж 54-ФЗ -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="tariffs" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full uppercase tracking-wider">Финансы & 54-ФЗ</span>
@@ -518,7 +533,7 @@
           </article>
 
           <!-- 11. Доставка с примеркой -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="rules" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-[#EDF5F3] text-[#0D5C4B] rounded-full uppercase tracking-wider">Fashion & Retail</span>
@@ -540,7 +555,7 @@
           </article>
 
           <!-- 12. Интеграция с Tilda -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="integrations" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full uppercase tracking-wider">Интеграции CMS</span>
@@ -562,7 +577,7 @@
           </article>
 
           <!-- 13. Модуль для 1С-Битрикс -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="integrations" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-indigo-50 text-indigo-700 rounded-full uppercase tracking-wider">1С-Битрикс</span>
@@ -584,7 +599,7 @@
           </article>
 
           <!-- 14. Фулфилмент СДЭК -->
-          <article class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <article data-category="tariffs" class="bg-white border border-slate-200 rounded-3xl p-6 hover:border-[#1AB248] hover:shadow-md transition flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <div class="flex items-center justify-between text-[11px] font-bold">
                 <span class="px-2.5 py-1 bg-purple-50 text-purple-700 rounded-full uppercase tracking-wider">Склады & FBS</span>
@@ -606,7 +621,6 @@
           </article>
 
         </div>
-
       </div>
     </section>
 
@@ -629,6 +643,36 @@
     </section>
 
   </main>
+
+  <!-- Скрипт фильтрации блога -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filters = document.querySelectorAll('#blog-filters button');
+      const articles = document.querySelectorAll('article[data-category]');
+
+      filters.forEach(button => {
+        button.addEventListener('click', () => {
+          // Сброс стилей всех кнопок
+          filters.forEach(btn => {
+            btn.className = 'px-5 py-2.5 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-[#1AB248] hover:text-[#1AB248] text-sm font-bold transition-all';
+          });
+          // Установка активного стиля
+          button.className = 'px-5 py-2.5 rounded-full bg-[#1AB248] text-white text-sm font-bold shadow-md transition-all';
+
+          const filterValue = button.getAttribute('data-filter');
+
+          // Показ/скрытие карточек
+          articles.forEach(article => {
+            if (filterValue === 'all' || article.getAttribute('data-category') === filterValue) {
+              article.style.display = 'flex';
+            } else {
+              article.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
 
   <!--# include virtual="/components/footer.html" -->
 
