@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-07 13:00">
+<yml_catalog date="2026-10-07 10:00">
   <shop>
     <name>СДЭК E-Commerce</name>
     <company>СДЭК для интернет-магазинов и юрлиц</company>
@@ -13,7 +13,6 @@
       <category id="103">B2B логистика и сборные грузы</category>
     </categories>
 
-    <!-- Обязательный блок с расшифровкой групп (сетов), который просил добавить Яндекс -->
     <sets>
       <set id="cdek-uslugi">
         <name>Логистические услуги СДЭК для бизнеса</name>
@@ -24,9 +23,9 @@
     <offers>
       <!-- 1. Заключение договора -->
       <offer id="1001" available="true">
-        <name>СДЭК E-Commerce</name>
+        <name>СДЭК — Подключение договора для бизнеса</name>
         <url>https://cdek-ecommerce.ru/dogovor/</url>
-        <price>0</price>
+        <price from="true">0</price>
         <currencyId>RUB</currencyId>
         <categoryId>101</categoryId>
         <picture>https://cdek-ecommerce.ru/og-image.png</picture>
@@ -37,13 +36,14 @@
         <param name="Годы опыта">10</param>
         <param name="Регион">Россия</param>
         <param name="Конверсия">0</param>
+        <param name="Ссылка на телефон">tel:+79933221520</param>
       </offer>
 
       <!-- 2. Договор для самозанятых -->
       <offer id="1002" available="true">
-        <name>СДЭК E-Commerce</name>
+        <name>СДЭК — Договор для самозанятых (НПД)</name>
         <url>https://cdek-ecommerce.ru/dogovor/samozanyatye/</url>
-        <price>0</price>
+        <price from="true">0</price>
         <currencyId>RUB</currencyId>
         <categoryId>101</categoryId>
         <picture>https://cdek-ecommerce.ru/og-image.png</picture>
@@ -54,13 +54,14 @@
         <param name="Годы опыта">10</param>
         <param name="Регион">Россия</param>
         <param name="Конверсия">0</param>
+        <param name="Ссылка на телефон">tel:+79933221520</param>
       </offer>
 
       <!-- 3. Договор для ИП по сетке УСН -->
       <offer id="1003" available="true">
-        <name>СДЭК E-Commerce</name>
+        <name>СДЭК — Договор для ИП (Сетка УСН без НДС)</name>
         <url>https://cdek-ecommerce.ru/dogovor/ip/</url>
-        <price>0</price>
+        <price from="true">0</price>
         <currencyId>RUB</currencyId>
         <categoryId>101</categoryId>
         <picture>https://cdek-ecommerce.ru/og-image.png</picture>
@@ -71,13 +72,14 @@
         <param name="Годы опыта">10</param>
         <param name="Регион">Россия</param>
         <param name="Конверсия">0</param>
+        <param name="Ссылка на телефон">tel:+79933221520</param>
       </offer>
 
       <!-- 4. Корпоративный договор для ООО -->
       <offer id="1004" available="true">
-        <name>СДЭК E-Commerce</name>
+        <name>СДЭК — Договор для ООО (ОСНО с НДС 22%)</name>
         <url>https://cdek-ecommerce.ru/dogovor/yur-lica/</url>
-        <price>0</price>
+        <price from="true">0</price>
         <currencyId>RUB</currencyId>
         <categoryId>101</categoryId>
         <picture>https://cdek-ecommerce.ru/og-image.png</picture>
@@ -88,13 +90,14 @@
         <param name="Годы опыта">10</param>
         <param name="Регион">Россия</param>
         <param name="Конверсия">0</param>
+        <param name="Ссылка на телефон">tel:+79933221520</param>
       </offer>
 
       <!-- 5. Доставка интернет-магазинов -->
       <offer id="1005" available="true">
-        <name>СДЭК E-Commerce</name>
+        <name>СДЭК — Доставка заказов для интернет-магазинов</name>
         <url>https://cdek-ecommerce.ru/dogovor/tarify/</url>
-        <price>205</price>
+        <price from="true">205</price>
         <currencyId>RUB</currencyId>
         <categoryId>102</categoryId>
         <picture>https://cdek-ecommerce.ru/og-image.png</picture>
@@ -105,13 +108,14 @@
         <param name="Годы опыта">10</param>
         <param name="Регион">Россия</param>
         <param name="Конверсия">0</param>
+        <param name="Ссылка на телефон">tel:+79933221520</param>
       </offer>
 
       <!-- 6. Доставка DBS для маркетплейсов -->
       <offer id="1006" available="true">
-        <name>СДЭК E-Commerce</name>
+        <name>СДЭК — Доставка DBS для маркетплейсов</name>
         <url>https://cdek-ecommerce.ru/dogovor/marketplace/</url>
-        <price>205</price>
+        <price from="true">205</price>
         <currencyId>RUB</currencyId>
         <categoryId>102</categoryId>
         <picture>https://cdek-ecommerce.ru/og-image.png</picture>
@@ -122,13 +126,14 @@
         <param name="Годы опыта">10</param>
         <param name="Регион">Россия</param>
         <param name="Конверсия">0</param>
+        <param name="Ссылка на телефон">tel:+79933221520</param>
       </offer>
 
       <!-- 7. B2B Сборный груз и магистраль -->
       <offer id="1007" available="true">
-        <name>СДЭК E-Commerce</name>
+        <name>СДЭК — Перевозка B2B и сборные грузы</name>
         <url>https://cdek-ecommerce.ru/dogovor/opt/</url>
-        <price>350</price>
+        <price from="true">350</price>
         <currencyId>RUB</currencyId>
         <categoryId>103</categoryId>
         <picture>https://cdek-ecommerce.ru/og-image.png</picture>
@@ -139,6 +144,7 @@
         <param name="Годы опыта">10</param>
         <param name="Регион">Россия</param>
         <param name="Конверсия">0</param>
+        <param name="Ссылка на телефон">tel:+79933221520</param>
       </offer>
     </offers>
   </shop>
