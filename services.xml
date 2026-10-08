@@ -36,7 +36,6 @@
         <param name="Годы опыта">10</param>
         <param name="Регион">Россия</param>
         <param name="Конверсия">0</param>
-        <param name="Ссылка на телефон">tel:+79933221520</param>
       </offer>
 
       <!-- 2. Договор для самозанятых -->
@@ -54,7 +53,6 @@
         <param name="Годы опыта">10</param>
         <param name="Регион">Россия</param>
         <param name="Конверсия">0</param>
-        <param name="Ссылка на телефон">tel:+79933221520</param>
       </offer>
 
       <!-- 3. Договор для ИП по сетке УСН -->
@@ -72,7 +70,6 @@
         <param name="Годы опыта">10</param>
         <param name="Регион">Россия</param>
         <param name="Конверсия">0</param>
-        <param name="Ссылка на телефон">tel:+79933221520</param>
       </offer>
 
       <!-- 4. Корпоративный договор для ООО -->
@@ -90,7 +87,6 @@
         <param name="Годы опыта">10</param>
         <param name="Регион">Россия</param>
         <param name="Конверсия">0</param>
-        <param name="Ссылка на телефон">tel:+79933221520</param>
       </offer>
 
       <!-- 5. Доставка интернет-магазинов -->
@@ -108,7 +104,6 @@
         <param name="Годы опыта">10</param>
         <param name="Регион">Россия</param>
         <param name="Конверсия">0</param>
-        <param name="Ссылка на телефон">tel:+79933221520</param>
       </offer>
 
       <!-- 6. Доставка DBS для маркетплейсов -->
@@ -126,7 +121,6 @@
         <param name="Годы опыта">10</param>
         <param name="Регион">Россия</param>
         <param name="Конверсия">0</param>
-        <param name="Ссылка на телефон">tel:+79933221520</param>
       </offer>
 
       <!-- 7. B2B Сборный груз и магистраль -->
@@ -144,7 +138,6 @@
         <param name="Годы опыта">10</param>
         <param name="Регион">Россия</param>
         <param name="Конверсия">0</param>
-        <param name="Ссылка на телефон">tel:+79933221520</param>
       </offer>
     </offers>
   </shop>
