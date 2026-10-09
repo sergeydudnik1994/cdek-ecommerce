@@ -45,7 +45,7 @@
     body { font-family: 'Roboto', sans-serif; }
   </style>
 
-  <!-- Schema.org Microdata -->
+ <!-- Schema.org Microdata -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -69,7 +69,7 @@
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "Отправка СДЭК по договору",
+            "name": "Отправка по договору",
             "item": "https://cdek-ecommerce.ru/blog/kak-otpravit-posylku-sdek/"
           }
         ]
@@ -77,22 +77,99 @@
       {
         "@type": "Article",
         "@id": "https://cdek-ecommerce.ru/blog/kak-otpravit-posylku-sdek/#article",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://cdek-ecommerce.ru/#website",
+          "name": "СДЭК E-Commerce",
+          "url": "https://cdek-ecommerce.ru/"
+        },
         "headline": "Отправка СДЭК по договору: пошаговая инструкция, документы для юрлиц и скидки до 50%",
+        "description": "Пошаговый регламент: отправка СДЭК по B2B-договору. Требования к упаковке, необходимые документы, способы оформления и сдача без очередей.",
+        "image": "https://cdek-ecommerce.ru/og-image.png",
+        "mainEntityOfPage": "https://cdek-ecommerce.ru/blog/kak-otpravit-posylku-sdek/",
         "datePublished": "2026-09-25T10:00:00+03:00",
-        "dateModified": "2026-09-25T10:00:00+03:00",
+        "dateModified": "2026-10-09T10:00:00+03:00",
         "author": {
           "@type": "Organization",
-          "name": "СДЭК E-Commerce"
+          "name": "СДЭК E-Commerce",
+          "url": "https://cdek-ecommerce.ru/"
         },
         "publisher": {
           "@type": "Organization",
           "name": "СДЭК E-Commerce",
+          "url": "https://cdek-ecommerce.ru/",
           "logo": {
             "@type": "ImageObject",
             "url": "https://cdek-ecommerce.ru/favicon.png"
           }
-        },
-        "description": "Пошаговый регламент: отправка СДЭК по B2B-договору. Требования к упаковке, необходимые документы, способы оформления и сдача без очередей."
+        }
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://cdek-ecommerce.ru/blog/kak-otpravit-posylku-sdek/#howto",
+        "name": "Как отправить посылку через СДЭК по договору",
+        "description": "Пошаговая инструкция сдачи посылок в пункт выдачи (ПВЗ) СДЭК по B2B-договору со скидкой до 50%.",
+        "totalTime": "PT5M",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Подготовьте и упакуйте вложение",
+            "text": "Упакуйте товар в собственную коробку без лишних надписей либо используйте фирменный пакет СДЭК. Хрупкие предметы оберните в воздушно-пузырьковую пленку.",
+            "url": "https://cdek-ecommerce.ru/blog/kak-otpravit-posylku-sdek/#step1"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Выберите удобный ПВЗ",
+            "text": "Найдите ближайший из 5 000+ пунктов выдачи СДЭК. Для тяжелых грузов от 30 кг проверьте возможность приема крупногабаритных отправлений.",
+            "url": "https://cdek-ecommerce.ru/blog/kak-otpravit-posylku-sdek/#step2"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Оформите накладную",
+            "text": "Сформируйте накладную заранее в личном кабинете или назовите CDEK ID оператору в отделении без ручного заполнения бумаг.",
+            "url": "https://cdek-ecommerce.ru/blog/kak-otpravit-posylku-sdek/#step3"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Сдайте заказ и передайте трек-номер",
+            "text": "Передайте посылку по реестру без очередей. Получите трек-номер для отслеживания отправления клиентом.",
+            "url": "https://cdek-ecommerce.ru/blog/kak-otpravit-posylku-sdek/#step4"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://cdek-ecommerce.ru/blog/kak-otpravit-posylku-sdek/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Что нужно для отправки посылки СДЭК по договору?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Для отправки по договору достаточно иметь паспорт или подключенный CDEK ID, данные получателя (город, телефон, адрес ПВЗ) и предварительно сформированную накладную из личного кабинета."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "В чем выгода отправки посылок СДЭК по договору?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "По B2B-договору действует тариф «Посылка» со скидкой до 50%, доступна сдача заказов без очередей по общему реестру, наложенный платеж 54-ФЗ и оплата единым счетом раз в месяц."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Можно ли вызвать курьера СДЭК для забора груза от двери?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Да, через личный кабинет доступен вызов курьера на ваш склад или офис в режимах «Дверь-Склад» или «Дверь-Дверь», в том числе по регулярному расписанию."
+            }
+          }
+        ]
       }
     ]
   }
