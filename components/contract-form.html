@@ -204,6 +204,48 @@
       </button>
     </div>
 
+    <!-- Дополнительные реквизиты (раскрывающиеся) -->
+    <details class="group bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
+      <summary class="font-bold text-xs sm:text-sm text-slate-700 cursor-pointer flex justify-between items-center list-none select-none">
+        <span class="flex items-center gap-2">
+          <span>Реквизиты и адрес для мгновенного выпуска договора</span>
+          <span class="text-[10px] bg-emerald-100 text-[#1AB248] px-2 py-0.5 rounded font-bold border border-emerald-200">Опционально</span>
+        </span>
+        <span class="text-slate-500 group-open:rotate-180 transition-transform">▾</span>
+      </summary>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 mt-3 border-t border-slate-200">
+        <div>
+          <label id="legal-address-label" class="block text-xs font-semibold text-slate-600 mb-1">Адрес регистрации (по паспорту / ЕГРИП)</label>
+          <input type="text" name="legal_address" placeholder="Индекс, город, улица, дом" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder-slate-400 text-xs outline-none focus:border-[#1AB248] focus:ring-1 focus:ring-[#1AB248] transition" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">Удобный ПВЗ для сдачи FBS / DBS и возвратов</label>
+          <input type="text" name="fact_address" placeholder="Например: Москва, ул. Ленина, 10 или код: MSK12" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder-slate-400 text-xs outline-none focus:border-[#1AB248] focus:ring-1 focus:ring-[#1AB248] transition" />
+        </div>
+        <div>
+          <label id="account-label" class="block text-xs font-semibold text-slate-600 mb-1">Расчетный счет ИП (20 знаков: 40802...)</label>
+          <input type="text" name="rs" id="account-input" placeholder="40802810..." maxlength="20" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder-slate-400 text-xs outline-none focus:border-[#1AB248] focus:ring-1 focus:ring-[#1AB248] transition" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">БИК Банка (9 цифр)</label>
+          <input type="text" name="bik" placeholder="044525..." maxlength="9" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder-slate-400 text-xs outline-none focus:border-[#1AB248] focus:ring-1 focus:ring-[#1AB248] transition" />
+        </div>
+        <div class="sm:col-span-2">
+          <label class="block text-xs font-semibold text-slate-600 mb-1">Налоговый режим</label>
+          <div class="relative">
+            <select name="tax_system" id="tax-select" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 text-xs outline-none focus:border-[#1AB248] focus:ring-1 focus:ring-[#1AB248] cursor-pointer appearance-none pr-10 transition">
+              <option value="УСН / Спецрежимы">УСН, Патент, Самозанятые (без переплаты за НДС)</option>
+              <option value="ОСНО (с НДС 22%)">ОСНО (с НДС 22%)</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-500">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+
     <!-- Кнопка отправки -->
     <button 
       type="submit" 
