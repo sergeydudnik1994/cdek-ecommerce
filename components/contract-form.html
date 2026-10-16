@@ -185,23 +185,9 @@
           class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs outline-none focus:ring-1 focus:ring-[#1AB248] transition" 
         />
         <p class="text-[10px] text-slate-400 mt-1">
-          Поможет менеджеру сразу подключить готовый интеграционный модуль вашей платформы.
+          Поможет подключить готовый интеграционный модуль вашей платформы.
         </p>
       </div>
-    </div>
-
-    <!-- Интерактивная плашка договора -->
-    <div class="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 flex items-center justify-between gap-3">
-      <div class="flex items-center gap-2 text-xs text-slate-700">
-        <span class="text-base">📄</span>
-        <span>Договор на оказание курьерских услуг:</span>
-      </div>
-      <button 
-        type="button" 
-        onclick="if(typeof openContractModal === 'function') { openContractModal(); } else { window.open('/dogovor/cdek-dogovor-im.pdf', '_blank'); }" 
-        class="text-xs font-bold text-[#158E3A] hover:text-[#0f682a] underline cursor-pointer">
-        Прочитать
-      </button>
     </div>
 
     <!-- Дополнительные реквизиты (раскрывающиеся) -->
@@ -245,6 +231,20 @@
         </div>
       </div>
     </details>
+
+    <!-- Интерактивная плашка договора -->
+    <div class="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2 text-xs text-slate-700">
+        <span class="text-base">📄</span>
+        <span>Договор на оказание курьерских услуг:</span>
+      </div>
+      <button 
+        type="button" 
+        onclick="if(typeof openContractModal === 'function') { openContractModal(); } else { window.open('/dogovor/cdek-dogovor-im.pdf', '_blank'); }" 
+        class="text-xs font-bold text-[#158E3A] hover:text-[#0f682a] underline cursor-pointer">
+        Прочитать
+      </button>
+    </div>
 
     <!-- Кнопка отправки -->
     <button 
