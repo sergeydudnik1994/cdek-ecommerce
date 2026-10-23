@@ -220,7 +220,8 @@
         <div class="sm:col-span-2">
           <label class="block text-xs font-semibold text-slate-600 mb-1">Налоговый режим</label>
           <div class="relative">
-            <select name="tax_system" id="tax-select" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 text-xs outline-none focus:border-[#1AB248] focus:ring-1 focus:ring-[#1AB248] cursor-pointer appearance-none pr-10 transition">
+            <select name="tax_system" id="tax-select" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 text-xs outline-none focus:ring-1 focus:ring-[#1AB248] cursor-pointer appearance-none pr-10 transition">
+              <option value="" disabled selected>Выберите тип налогообложения...</option>
               <option value="УСН / Спецрежимы">УСН, Патент, Самозанятые (без переплаты за НДС)</option>
               <option value="ОСНО (с НДС 22%)">ОСНО (с НДС 22%)</option>
             </select>
@@ -229,7 +230,6 @@
             </div>
           </div>
         </div>
-      </div>
     </details>
 
     <!-- Интерактивная плашка договора -->
