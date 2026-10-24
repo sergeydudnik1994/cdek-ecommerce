@@ -111,6 +111,11 @@
   ]
 }
   </script>
+  
+  <!-- Yandex.RTB -->
+<script>window.yaContextCb=window.yaContextCb||[]</script>
+<script src="https://yandex.ru/ads/system/context.js" async></script>
+  
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#1AB248] selection:text-white">
 
@@ -278,6 +283,17 @@
         </div>
       </div>
     </div>
+
+    <!-- Yandex.RTB R-A-20265549-12 -->
+<div id="yandex_rtb_R-A-20265549-12"></div>
+<script>
+window.yaContextCb.push(() => {
+    Ya.Context.AdvManager.render({
+        "blockId": "R-A-20265549-12",
+        "renderTo": "yandex_rtb_R-A-20265549-12"
+    })
+})
+</script>
 
     <!-- ГЛАВНЫЙ B2B БЛОК: СТИЛЬ И ПРОПОРЦИИ КАК НА ГЛАВНОЙ СТРАНИЦЕ -->
     <section id="tracking-lead-section" class="scroll-mt-8 bg-[#08221F] rounded-3xl border border-[#133E38] shadow-2xl p-6 sm:p-10 lg:p-12 text-white relative overflow-hidden">
@@ -605,6 +621,11 @@
 
           renderMilestones(data.groups, data.sub_statuses);
           resultBox.classList.remove('hidden');
+          
+          // ПОКАЗЫВАЕМ РЕКЛАМУ ПОСЛЕ УСПЕШНОГО ПОИСКА
+          const adBox = document.getElementById('rtb-tracking-container');
+          if (adBox) adBox.classList.remove('hidden');
+
         } else {
           throw new Error(data.message || 'Накладная не найдена');
         }
