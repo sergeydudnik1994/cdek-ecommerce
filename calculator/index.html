@@ -668,20 +668,48 @@ window.yaContextCb.push(() => {
       </div>
     </div>
 
-    <!-- B2B Лид-магнит -->
-    <div class="bg-[#08221F] border border-[#133E38] rounded-3xl p-8 sm:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
-      <div class="space-y-3 max-w-xl">
-        <span class="inline-block px-3.5 py-1 bg-[#1AB248]/20 border border-[#1AB248]/40 rounded-full text-[#1AB248] text-xs font-bold uppercase tracking-wider">
-          Для интернет-магазинов и селлеров
-        </span>
-        <h3 class="text-2xl sm:text-3xl font-black tracking-tight">Хотите отправлять по минимальным тарифам?</h3>
-        <p class="text-slate-300 text-sm leading-relaxed">
-          Заключите официальный договор со СДЭК онлайн за 15 минут: доступ к личному кабинету, персональный менеджер и скидка до 50% на все направления по РФ.
-        </p>
+  <!-- B2B Лид-магнит с интегрированной формой -->
+    <div id="lead-form" class="bg-[#08221F] border border-[#133E38] rounded-3xl p-8 sm:p-10 text-white shadow-xl relative overflow-hidden">
+      
+      <!-- Декоративное свечение фона -->
+      <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-[#1AB248]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center relative z-10">
+        
+        <!-- Левая колонка: УТП -->
+        <div class="space-y-6">
+          <span class="inline-block px-3.5 py-1 bg-[#1AB248]/20 border border-[#1AB248]/40 rounded-full text-[#1AB248] text-xs font-bold uppercase tracking-wider">
+            Для интернет-магазинов и селлеров
+          </span>
+          <h3 class="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight">
+            Хотите отправлять по минимальным тарифам?
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Заключите официальный договор со СДЭК онлайн за 15 минут: доступ к личному кабинету, персональный менеджер и скидка до 50% на все направления по РФ.
+          </p>
+          
+          <ul class="space-y-3 text-sm text-slate-300 pt-2 hidden sm:block">
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full bg-[#1AB248]/20 flex items-center justify-center text-[#1AB248] shrink-0">✓</span>
+              Бесплатное подключение и боевые API-ключи
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full bg-[#1AB248]/20 flex items-center justify-center text-[#1AB248] shrink-0">✓</span>
+              Прием наложенного платежа и касса 54-ФЗ
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-5 h-5 rounded-full bg-[#1AB248]/20 flex items-center justify-center text-[#1AB248] shrink-0">✓</span>
+              Постоплата по единому счету раз в месяц
+            </li>
+          </ul>
+        </div>
+
+        <!-- Правая колонка: Форма заявки -->
+        <div class="w-full">
+          <!--# include virtual="/components/lead-form.html" -->
+        </div>
+
       </div>
-      <a href="/#lead-form" class="px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold rounded-2xl transition shadow-lg shadow-[#1AB248]/30 flex-shrink-0 text-center whitespace-nowrap active:scale-95">
-        Заключить договор онлайн
-      </a>
     </div>
 
   </main>
