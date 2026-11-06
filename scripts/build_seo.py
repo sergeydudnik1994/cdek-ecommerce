@@ -161,10 +161,22 @@ def build_all():
         f"{DOMAIN}/policy/"
     ]
 
-    for p in pages:
+for p in pages:
+        # Исключаем страницы, которые верстаются вручную
+        if p["slug"] in ["services/fulfillment"]:
+            all_urls.append(f"{DOMAIN}/{p['slug']}/")
+            print(f"✓ Skipped HTML generation for custom page: {p['slug']}")
+            continue
+
         dir_path = os.path.join(ROOT_DIR, p["slug"])
         os.makedirs(dir_path, exist_ok=True)
         file_path = os.path.join(dir_path, "index.html")
+        
+        with open(file_path, "w", encoding="utf-8") as out:
+            out.write(generate_html(p))
+            
+        all_urls.append(f"{DOMAIN}/{p['slug']}/")
+        print(f"✓ Generated: {file_path}")
         
         with open(file_path, "w", encoding="utf-8") as out:
             out.write(generate_html(p))
