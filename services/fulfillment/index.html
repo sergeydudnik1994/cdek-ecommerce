@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Фулфилмент СДЭК для интернет-магазинов и селлеров — хранение, сборка, упаковка</title>
-  <meta name="description" content="Аутсорсинг складской логистики под ключ. Хранение товаров на складах СДЭК, сборка заказов за 2 часа, доставка до двери и в ПВЗ." />
+  <title>Фулфилмент СДЭК для маркетплейсов и селлеров | Тарифы FBO и FBS</title>
+  <meta name="description" content="Аутсорсинг складской логистики от СДЭК: хранение, маркировка, упаковка заказов для маркетплейсов. Тарифы на фулфилмент, сборка за 2 часа, доставка до двери и ПВЗ." />
   <link rel="canonical" href="https://cdek-ecommerce.ru/services/fulfillment/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,85 +15,229 @@
 
   <!-- Schema.org Microdata -->
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"}, {"@type": "ListItem", "position": 2, "name": "Услуги", "item": "https://cdek-ecommerce.ru/services/"}, {"@type": "ListItem", "position": 3, "name": "Фулфилмент", "item": "https://cdek-ecommerce.ru/services/fulfillment/"}]}
-  </script>
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Какая минимальная партия товара для передачи на фулфилмент?", "acceptedAnswer": {"@type": "Answer", "text": "Ограничений по минимальному объему нет: услуга подходит как начинающим селлерам, так и крупным торговым сетям."}}]}
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-ecommerce.ru/"},
+          {"@type": "ListItem", "position": 2, "name": "Услуги", "item": "https://cdek-ecommerce.ru/services/"},
+          {"@type": "ListItem", "position": 3, "name": "Фулфилмент", "item": "https://cdek-ecommerce.ru/services/fulfillment/"}
+        ]
+      },
+      {
+        "@type": "Service",
+        "name": "Фулфилмент СДЭК для интернет-магазинов",
+        "provider": {"@type": "Organization", "name": "СДЭК E-Commerce"},
+        "description": "Складская логистика: хранение, сборка, упаковка и доставка заказов.",
+        "offers": {"@type": "AggregateOffer", "priceCurrency": "RUB", "lowPrice": "7"}
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Какая минимальная партия товара для передачи на фулфилмент?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Ограничений по минимальному объему нет: услуга подходит как начинающим селлерам, так и крупным торговым сетям."}
+          },
+          {
+            "@type": "Question",
+            "name": "С какими маркетплейсами вы работаете?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Мы работаем по схемам FBS и DBS с Wildberries, Ozon, Яндекс Маркет и Мегамаркет. Доставляем заказы до конечного покупателя или в ПВЗ."}
+          },
+          {
+            "@type": "Question",
+            "name": "Маркируете ли вы товары в системе Честный ЗНАК?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Да, мы предоставляем услуги полной складской подготовки, включая печать и нанесение кодов Data Matrix (Честный ЗНАК), а также штрихкодов маркетплейсов."}
+          }
+        ]
+      }
+    ]
+  }
   </script>
 </head>
 <body class="bg-[#F5F8FE] text-slate-900 min-h-screen flex flex-col antialiased">
 
   <!--# include virtual="/components/header.html" -->
 
-  <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
+  <main class="flex-grow">
     
-    <!-- Хлебные крошки -->
-    <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400">
-      <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
-      <span>/</span>
-      <span>Услуги</span>
-      <span>/</span>
-      <span class="text-slate-700 font-semibold">Фулфилмент</span>
-    </nav>
-
-    <!-- Главный блок -->
-    <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-200/80 space-y-6">
-      <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#1AB248] border border-emerald-200">
-        Склад & Фулфилмент
-      </span>
-      <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-        Фулфилмент СДЭК для e-commerce и селлеров
-      </h1>
-      <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
-        Аутсорсинг складской логистики под ключ. Хранение товаров на складах СДЭК, сборка заказов за 2 часа, доставка до двери и в ПВЗ.
-      </p>
-
-      <div class="pt-4 border-t border-slate-100">
-        <h3 class="text-lg font-bold text-slate-900 mb-4">Возможности и преимущества решения:</h3>
-        <ul class="space-y-3">
-          
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Сеть современных складов класса А в ключевых городах РФ</span>
-      </li>
-    
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Приемка, маркировка по стандартам Честный ЗНАК и упаковка заказов</span>
-      </li>
-    
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Интеграция с вашей CRM и автоматическая передача остатков</span>
-      </li>
-    
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 rounded-full bg-[#1AB248]/10 text-[#1AB248] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-sm">✓</span>
-        <span class="text-slate-700 text-sm sm:text-base leading-relaxed">Сокращение сроков доставки до покупателя за счет региональных хабов</span>
-      </li>
-    
-        </ul>
-      </div>
-
-      <div class="pt-6">
-        <a href="/#lead-form" class="inline-flex items-center justify-center px-8 py-4 bg-[#1AB248] hover:bg-[#158E3A] text-white font-bold text-base rounded-2xl shadow-lg shadow-[#1AB248]/25 transition transform active:scale-95">
-          Подключить со скидкой до 50%
-        </a>
-      </div>
-    </div>
-
-    <!-- FAQ -->
-    <div class="space-y-4">
-      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Часто задаваемые вопросы</h2>
-      <div class="space-y-3">
+    <!-- Hero Section со стандартной формой -->
+    <section class="bg-[#08221F] text-white py-12 sm:py-16 relative overflow-hidden border-b border-[#133E38]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
-        <h4 class="text-base font-bold text-slate-900 mb-2">Какая минимальная партия товара для передачи на фулфилмент?</h4>
-        <p class="text-sm text-slate-600 leading-relaxed">Ограничений по минимальному объему нет: услуга подходит как начинающим селлерам, так и крупным торговым сетям.</p>
+        <!-- Хлебные крошки (темная тема) -->
+        <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400 mb-8">
+          <a href="/" class="hover:text-[#1AB248] transition">Главная</a>
+          <span>/</span>
+          <a href="/services/" class="hover:text-[#1AB248] transition">Услуги</a>
+          <span>/</span>
+          <span class="text-slate-200 font-semibold">Фулфилмент</span>
+        </nav>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          
+          <!-- Текстовое УТП -->
+          <div class="lg:col-span-7 space-y-6">
+            <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#1AB248]/15 text-[#1AB248] border border-[#1AB248]/30">
+              Склад & Фулфилмент
+            </span>
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-[1.1]">
+              Фулфилмент СДЭК <br>
+              <span class="text-[#1AB248]">для маркетплейсов и селлеров</span>
+            </h1>
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl">
+              Аутсорсинг логистики под ключ. Приемка от 7 ₽, безопасное хранение, маркировка (в т.ч. Честный ЗНАК) и отгрузка заказов по схемам FBO и FBS.
+            </p>
+            
+            <div class="flex flex-wrap gap-2.5 pt-2">
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold">
+                <span class="text-[#1AB248]">✓</span> Сборка заказа за 2 часа
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold">
+                <span class="text-[#1AB248]">✓</span> Без ограничений по объему
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold">
+                <span class="text-[#1AB248]">✓</span> API для МойСклад и CMS
+              </span>
+            </div>
+          </div>
+
+          <!-- Правая колонка: Форма заявки (Стандартная с главной) -->
+          <div class="lg:col-span-5" id="lead-form">
+            <!--# include virtual="/components/lead-form.html" -->
+          </div>
+          
+        </div>
       </div>
-    
+    </section>
+
+    <!-- Коммерческие факторы: Блок Тарифов -->
+    <section class="py-16 bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="text-center max-w-2xl mx-auto">
+          <h2 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">Тарифы на фулфилмент</h2>
+          <p class="text-slate-500 mt-2">Прозрачное ценообразование без скрытых платежей. Платите только за фактические операции.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          
+          <div class="bg-[#F8FAFC] p-6 rounded-3xl border border-slate-200">
+            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-[#1AB248] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Приемка товара</h3>
+            <p class="text-sm text-slate-600 mb-4">Пересчет, осмотр, внесение в систему и размещение на полке.</p>
+            <div class="text-2xl font-black text-[#1AB248]">от 7 ₽ <span class="text-sm text-slate-400 font-normal">/ ед.</span></div>
+            <p class="text-[11px] text-slate-400 mt-1">Для товаров до 5 кг (до 0,025 м³)</p>
+          </div>
+
+          <div class="bg-[#F8FAFC] p-6 rounded-3xl border border-slate-200">
+            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-[#1AB248] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Ответственное хранение</h3>
+            <p class="text-sm text-slate-600 mb-4">Безопасное хранение на складах класса А с видеонаблюдением.</p>
+            <div class="text-2xl font-black text-[#1AB248]">от 0,1 ₽ <span class="text-sm text-slate-400 font-normal">/ сутки</span></div>
+            <p class="text-[11px] text-slate-400 mt-1">Мин. ставка хранения — 45 ₽/сутки за все товары</p>
+          </div>
+
+          <div class="bg-[#F8FAFC] p-6 rounded-3xl border border-slate-200">
+            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-[#1AB248] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Сборка и упаковка</h3>
+            <p class="text-sm text-slate-600 mb-4">Комплектация заказа, печать штрихкодов, подготовка к отгрузке.</p>
+            <div class="text-2xl font-black text-[#1AB248]">По запросу</div>
+            <p class="text-[11px] text-slate-400 mt-1">Зависит от габаритов и требований маркетплейса</p>
+          </div>
+
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Схема работы -->
+    <section class="py-16 sm:py-20 bg-[#F5F8FE]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="text-center max-w-2xl mx-auto">
+          <h2 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">Как работает фулфилмент СДЭК</h2>
+          <p class="text-slate-500 mt-2">Весь цикл логистики от вашего поставщика до двери покупателя.</p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto text-center">
+          <div class="space-y-4 relative">
+            <div class="w-16 h-16 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center mx-auto text-2xl font-black text-[#1AB248]">1</div>
+            <h3 class="font-bold text-slate-900">Поставка на склад</h3>
+            <p class="text-xs text-slate-500">Вы или ваш поставщик привозите партию товара на фулфилмент-центр СДЭК.</p>
+          </div>
+          <div class="space-y-4 relative">
+            <div class="w-16 h-16 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center mx-auto text-2xl font-black text-[#1AB248]">2</div>
+            <h3 class="font-bold text-slate-900">Приемка и хранение</h3>
+            <p class="text-xs text-slate-500">Мы пересчитываем товар, проверяем на брак, маркируем и размещаем на стеллажах.</p>
+          </div>
+          <div class="space-y-4 relative">
+            <div class="w-16 h-16 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center mx-auto text-2xl font-black text-[#1AB248]">3</div>
+            <h3 class="font-bold text-slate-900">Интеграция заказов</h3>
+            <p class="text-xs text-slate-500">Заказы с вашего сайта или маркетплейса автоматически падают в нашу систему по API.</p>
+          </div>
+          <div class="space-y-4 relative">
+            <div class="w-16 h-16 rounded-2xl bg-[#1AB248] shadow-md shadow-[#1AB248]/30 flex items-center justify-center mx-auto text-2xl font-black text-white">4</div>
+            <h3 class="font-bold text-slate-900">Сборка и доставка</h3>
+            <p class="text-xs text-slate-500">Собираем заказ за 2 часа и отправляем напрямую в ПВЗ или курьером покупателю.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO FAQ Блок -->
+    <section class="py-16 bg-white border-t border-slate-200">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mb-8 text-center">Часто задаваемые вопросы</h2>
+        
+        <div class="space-y-4 text-sm">
+          <details class="group border border-slate-200/80 rounded-2xl p-5 open:bg-[#F9FBFA] transition">
+            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+              <span>Какая минимальная партия товара для передачи на фулфилмент?</span>
+              <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+            </summary>
+            <p class="text-slate-600 mt-3 leading-relaxed">
+              Ограничений по минимальному объему нет: услуга подходит как начинающим селлерам с небольшими партиями, так и крупным торговым сетям.
+            </p>
+          </details>
+
+          <details class="group border border-slate-200/80 rounded-2xl p-5 open:bg-[#F9FBFA] transition">
+            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+              <span>С какими маркетплейсами вы работаете?</span>
+              <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+            </summary>
+            <p class="text-slate-600 mt-3 leading-relaxed">
+              Мы работаем по схемам FBS (Fulfillment by Seller) и DBS (Delivery by Seller) с Wildberries, Ozon, Яндекс Маркет и Мегамаркет. Обеспечиваем быструю сборку и доставку до сортировочных центров площадок или напрямую покупателям.
+            </p>
+          </details>
+
+          <details class="group border border-slate-200/80 rounded-2xl p-5 open:bg-[#F9FBFA] transition">
+            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+              <span>Маркируете ли вы товары в системе «Честный ЗНАК»?</span>
+              <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+            </summary>
+            <p class="text-slate-600 mt-3 leading-relaxed">
+              Да, мы предоставляем услуги полной складской подготовки. Наши сотрудники распечатают и нанесут коды Data Matrix (Честный ЗНАК), а также необходимые штрихкоды для отгрузки на маркетплейсы.
+            </p>
+          </details>
+
+          <details class="group border border-slate-200/80 rounded-2xl p-5 open:bg-[#F9FBFA] transition">
+            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+              <span>Как происходит возврат невыкупленных товаров?</span>
+              <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+            </summary>
+            <p class="text-slate-600 mt-3 leading-relaxed">
+              При отказе покупателя заказ возвращается на наш склад фулфилмента по льготному тарифу. Сотрудники склада вскрывают упаковку, проверяют товар на брак, переупаковывают при необходимости и возвращают в активный сток для новых продаж.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
 
   </main>
 
