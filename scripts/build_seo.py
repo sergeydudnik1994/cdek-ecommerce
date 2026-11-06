@@ -158,10 +158,11 @@ def build_all():
         f"{DOMAIN}/tracking/", 
         f"{DOMAIN}/calculator/",
         f"{DOMAIN}/integrations/dbs/",
-        f"{DOMAIN}/policy/"
+        f"{DOMAIN}/policy/",
+        f"{DOMAIN}/services/"
     ]
 
-for p in pages:
+    for p in pages:
         # Исключаем страницы, которые верстаются вручную
         if p["slug"] in ["services/fulfillment"]:
             all_urls.append(f"{DOMAIN}/{p['slug']}/")
@@ -177,12 +178,6 @@ for p in pages:
             
         all_urls.append(f"{DOMAIN}/{p['slug']}/")
         print(f"✓ Generated: {file_path}")
-        
-        with open(file_path, "w", encoding="utf-8") as out:
-            out.write(generate_html(p))
-            
-        all_urls.append(f"{DOMAIN}/{p['slug']}/")
-        print(f"✓ Generated: {file_path}")
 
     # Обновление sitemap.xml
     sitemap_path = os.path.join(ROOT_DIR, "sitemap.xml")
@@ -190,7 +185,7 @@ for p in pages:
     for url in all_urls:
         if url == f"{DOMAIN}/":
             priority = "1.0"
-        elif any(k in url for k in ["tracking", "calculator", "integrations/dbs"]):
+        elif any(k in url for k in ["tracking", "calculator", "integrations/dbs", "services"]):
             priority = "0.9"
         elif "policy" in url:
             priority = "0.3"
