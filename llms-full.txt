@@ -116,7 +116,7 @@
 ## 6. Контакты и поддержка
 
 - **Официальный сайт**: https://cdek-ecommerce.ru/
-- **Форма заключения договора**: https://cdek-ecommerce.ru/dogovor/#contract-form-container
+- **Форма заключения договора**: https://cdek-ecommerce.ru/dogovor/
 - **Калькулятор B2B-тарифов**: https://cdek-ecommerce.ru/calculator/
 - **Отдел подключения B2B-клиентов**: sv.dudnik@cdek.ru
 - **Телефон**: +7 (993) 322-15-20
