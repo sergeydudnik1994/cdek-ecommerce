@@ -1,0 +1,207 @@
+<div id="corporate-heavy-container" class="scroll-mt-24 bg-white text-slate-900 rounded-3xl p-6 sm:p-10 shadow-2xl border border-slate-200/80 border-t-[6px] border-t-slate-800 relative space-y-8 mt-12">
+  
+  <div class="border-b border-slate-200 pb-5">
+    <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-800">
+      <span class="w-2 h-2 rounded-full bg-slate-800"></span>
+      Тендерный отдел / TOP-100
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1.5">
+      Полная квалификационная анкета (ЭДО и ПДн)
+    </h2>
+    <p class="text-xs sm:text-sm text-slate-500 mt-1">
+      Запрос индивидуальных условий логистики, отсрочки платежа и настройки сложной интеграции.
+    </p>
+  </div>
+
+  <form id="corporate-heavy-form" class="space-y-6" novalidate>
+    
+    <!-- Блок 1: Логистика -->
+    <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+      <h3 class="font-bold text-sm text-slate-800 uppercase tracking-wide border-b border-slate-200 pb-2">1. Логистические параметры</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Объем отправок в мес. <span class="text-red-500">*</span></label>
+          <select id="corp-volume" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition bg-white">
+            <option value="" disabled selected>Выберите объем...</option>
+            <option value="100-500">100 - 500 посылок</option>
+            <option value="500-2000">500 - 2 000 посылок</option>
+            <option value="2000+">Более 2 000 посылок</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Логистический бюджет <span class="text-red-500">*</span></label>
+          <select id="corp-budget" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition bg-white">
+            <option value="" disabled selected>Ежемесячно...</option>
+            <option value="до 500к">До 500 000 ₽</option>
+            <option value="500к-2м">500 000 ₽ - 2 000 000 ₽</option>
+            <option value="от 2м">От 2 000 000 ₽</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Страхование грузов <span class="text-red-500">*</span></label>
+          <select id="corp-insurance" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition bg-white">
+            <option value="" disabled selected>Тип страховки...</option>
+            <option value="Базовая">Базовая (0.75%)</option>
+            <option value="Расширенная">Расширенная</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Блок 2: Реквизиты компании -->
+    <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+      <h3 class="font-bold text-sm text-slate-800 uppercase tracking-wide border-b border-slate-200 pb-2">2. Учредительные документы и Банк</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+        <div class="sm:col-span-1">
+          <label class="block text-xs font-bold text-slate-700 mb-1">ИНН <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-inn" placeholder="10 или 12 цифр" maxlength="12" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition" />
+        </div>
+        <div class="sm:col-span-1">
+          <label class="block text-xs font-bold text-slate-700 mb-1">КПП <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-kpp" placeholder="9 цифр" maxlength="9" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition" />
+        </div>
+        <div class="sm:col-span-1">
+          <label class="block text-xs font-bold text-slate-700 mb-1">ОГРН <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-ogrn" placeholder="13 или 15 цифр" maxlength="15" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition" />
+        </div>
+        <div class="sm:col-span-1">
+          <label class="block text-xs font-bold text-slate-700 mb-1">ОКПО <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-okpo" placeholder="8-10 цифр" maxlength="10" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition" />
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="sm:col-span-1">
+          <label class="block text-xs font-bold text-slate-700 mb-1">БИК Банка <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-bik" placeholder="9 цифр" maxlength="9" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition" />
+        </div>
+        <div class="sm:col-span-1">
+          <label class="block text-xs font-bold text-slate-700 mb-1">Расчетный счет <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-rs" placeholder="20 цифр" maxlength="20" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition" />
+        </div>
+        <div class="sm:col-span-1">
+          <label class="block text-xs font-bold text-slate-700 mb-1">Корреспондентский счет <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-ks" placeholder="20 цифр" maxlength="20" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition" />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Юридический адрес <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-jur-addr" placeholder="По выписке из ЕГРЮЛ" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Почтовый адрес для бухгалтерии <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-post-addr" placeholder="Для отправки оригиналов" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Блок 3: Подписант и Паспортные данные -->
+    <div class="p-5 rounded-2xl bg-amber-50/50 border border-amber-200/80 space-y-4">
+      <h3 class="font-bold text-sm text-slate-800 uppercase tracking-wide border-b border-amber-200 pb-2">3. Данные подписанта (Генеральный директор / ИП)</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">ФИО полностью <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-fio" placeholder="Иванов Иван Иванович" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-amber-400 outline-none text-sm transition bg-white" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Дата рождения <span class="text-red-500">*</span></label>
+          <input type="date" id="corp-birthdate" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-amber-400 outline-none text-sm transition bg-white" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Должность по Уставу <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-position" placeholder="Генеральный директор" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-amber-400 outline-none text-sm transition bg-white" />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+        <div class="sm:col-span-1">
+          <label class="block text-xs font-bold text-slate-700 mb-1">Серия паспорта <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-passport-series" placeholder="1234" maxlength="4" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-amber-400 outline-none text-sm transition bg-white" />
+        </div>
+        <div class="sm:col-span-1">
+          <label class="block text-xs font-bold text-slate-700 mb-1">Номер паспорта <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-passport-number" placeholder="567890" maxlength="6" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-amber-400 outline-none text-sm transition bg-white" />
+        </div>
+        <div class="sm:col-span-1">
+          <label class="block text-xs font-bold text-slate-700 mb-1">Дата выдачи <span class="text-red-500">*</span></label>
+          <input type="date" id="corp-passport-date" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-amber-400 outline-none text-sm transition bg-white" />
+        </div>
+        <div class="sm:col-span-1">
+          <label class="block text-xs font-bold text-slate-700 mb-1">Код подразделения <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-passport-code" placeholder="000-000" maxlength="7" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-amber-400 outline-none text-sm transition bg-white" />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Кем выдан <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-passport-issuer" placeholder="Точно как в паспорте" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-amber-400 outline-none text-sm transition bg-white" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Адрес регистрации (прописка) <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-passport-address" placeholder="Индекс, город, улица, дом, кв." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-amber-400 outline-none text-sm transition bg-white" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Блок 4: Интеграция и Контакты -->
+    <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+      <h3 class="font-bold text-sm text-slate-800 uppercase tracking-wide border-b border-slate-200 pb-2">4. ЭДО и Контактные лица</h3>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Идентификатор участника ЭДО <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-edo-id" placeholder="GUID из Диадок / СБИС" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Документ таможенного оформления <span class="text-red-500">*</span></label>
+          <input type="text" id="corp-customs-doc" placeholder="Номер ГТД или 'Отсутствует'" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition" />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Телефон руководителя <span class="text-red-500">*</span></label>
+          <input type="tel" id="corp-print-phone" placeholder="8 (999) 000-00-00" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Email для Личного Кабинета <span class="text-red-500">*</span></label>
+          <input type="email" id="corp-lk-email" placeholder="logistics@company.ru" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Email Бухгалтерии (акты/сверки) <span class="text-red-500">*</span></label>
+          <input type="email" id="corp-buh-email" placeholder="buh@company.ru" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-slate-400 outline-none text-sm transition" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Кнопка и статус -->
+    <div class="pt-2">
+      <button 
+        type="submit" 
+        id="corp-submit-btn"
+        class="w-full bg-slate-800 hover:bg-slate-900 text-white font-black text-sm uppercase tracking-wider py-4 px-6 rounded-2xl transition duration-200 shadow-lg shadow-slate-900/25 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+        Отправить на тендерный комитет
+      </button>
+      
+      <p class="text-[11px] text-slate-400 text-center leading-relaxed mt-3">
+        Нажимая кнопку, вы подтверждаете достоверность введенных данных, даете согласие на обработку ПДн (ФЗ-152) и инициируете проверку компании службой безопасности.
+      </p>
+
+      <div id="corp-status" class="text-xs text-red-500 font-semibold mt-4 p-4 bg-red-50 rounded-xl hidden"></div>
+    </div>
+  </form>
+
+  <!-- Экран успеха -->
+  <div id="corp-success" class="hidden py-10 text-center space-y-4">
+    <div class="w-16 h-16 bg-slate-800 text-white rounded-full flex items-center justify-center mx-auto shadow-lg">
+      <svg class="w-8 h-8 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    </div>
+    <h3 class="text-2xl font-black text-slate-900 tracking-tight">Квалификационная анкета принята</h3>
+    <p class="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+      Данные переданы в юридический отдел. Проверка по базам ФНС, ФССП и реестру недобросовестных поставщиков займет до <strong>2 рабочих дней</strong>.
+    </p>
+  </div>
+</div>
