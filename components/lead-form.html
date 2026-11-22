@@ -105,7 +105,7 @@
     <button 
       type="submit" 
       class="submit-btn w-full mt-1 bg-[#1AB248] hover:bg-[#158E3A] text-white font-black text-xs sm:text-sm uppercase tracking-wider py-3.5 px-6 rounded-xl transition duration-200 shadow-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
-      Получить расчет тарифов
+      Подключиться
     </button>
 
     <p class="text-[11px] text-slate-400 text-center leading-relaxed">
@@ -209,7 +209,7 @@
       const contractSelect = form.querySelector('.js-contract-select');
       const contractWarning = form.querySelector('.js-contract-warning');
       const honeypot = form.querySelector('input[name="user_nickname_check"]');
-      const originalText = btn ? btn.innerText : 'Получить расчет тарифов';
+      const originalText = btn ? btn.innerText : 'Подключиться';
 
       if (contractSelect) {
         contractSelect.addEventListener('change', (e) => {
