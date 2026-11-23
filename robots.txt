@@ -34,9 +34,8 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-# Яндекс (Алиса AI, Нейропоиск)
+# Yandex (Alice AI, Neuro)
 User-agent: Yandex
-Allow: /
 User-agent: YandexBot
 Allow: /
 
@@ -50,9 +49,8 @@ Allow: /
 User-agent: QwenBot
 Allow: /
 
-# Сбер (GigaChat) & Meta AI
+# Sber (GigaChat) & Meta AI
 User-agent: SberBot
-Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
